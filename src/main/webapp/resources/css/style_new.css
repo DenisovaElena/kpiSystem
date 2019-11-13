@@ -99,3 +99,8 @@ sup {font-size: 6px;}
 
 .chosen-invalid, .invalid {border: 1px solid #f00!important;}
 /*.invalid-feedback {text-align: left!important; margin-top: 0!important; padding-top: 0!important;}*/
+
+.col-2 {
+  border-bottom: 1px solid #000;
+  border-right: 1px solid #000;
+}
