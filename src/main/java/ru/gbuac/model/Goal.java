@@ -6,7 +6,7 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -21,15 +21,18 @@ public class Goal extends NamedEntity {
     private String description;
 
     @Column(name = "create_date")
-    private LocalDateTime createDate;
+    private LocalDate createDate;
 
-    @Column(name = "executive_date")
-    private  LocalDateTime executiveDate;
+    @Column(name = "execution_date")
+    private LocalDate executiveDate;
 
     @Column(name = "control_date")
-    private LocalDateTime controlDate;
+    private LocalDate controlDate;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "goal", cascade = CascadeType.ALL)
-    private List<GoalsDivisions> goalsDivisions;
-
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "division_goal",
+            joinColumns = @JoinColumn(name = "division_id"),
+            inverseJoinColumns = @JoinColumn(name = "goal_id")
+    )
+    private List<Division> divisions;
 }

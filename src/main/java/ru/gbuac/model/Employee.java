@@ -39,9 +39,13 @@ public class Employee extends NamedEntity {
     @Column(name = "phone")
     private String phone;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "division_employee",
+            joinColumns = @JoinColumn(name = "division_id"),
+            inverseJoinColumns = @JoinColumn(name = "employee_id")
+    )
     private List<Division> divisions;
 
-
-
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Employee> childEmployees;
 }
