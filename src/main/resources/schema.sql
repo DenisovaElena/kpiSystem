@@ -20,19 +20,23 @@ CREATE TABLE kpi.legal_documents
 
 CREATE TABLE kpi.division
 (
-  id                      INTEGER PRIMARY KEY DEFAULT nextval('kpi.global_seq'),
-  id_parent               INTEGER                      NOT NULL,
-  name                    VARCHAR                              ,
-  FOREIGN KEY (employee_id) REFERENCES kpi.employee (id) ON DELETE CASCADE,
-  FOREIGN KEY (division_id) REFERENCES kpi.division (id) ON DELETE CASCADE
+    id          INTEGER PRIMARY KEY DEFAULT nextval('kpi.global_seq'),
+    id_parent            INTEGER                   NOT NULL,
+    name                 VARCHAR                           ,
+    employee_id          INTEGER                   NOT NULL,
+    division_id          INTEGER                   NOT NULL,
+    FOREIGN KEY (employee_id) REFERENCES kpi.employee (id) ON DELETE CASCADE,
+    FOREIGN KEY (division_id) REFERENCES kpi.division (id) ON DELETE CASCADE
 );
 
 CREATE TABLE kpi.divisions_employees
 (
-  id_division              INTEGER                     NOT NULL,
-  id_employee              INTEGER                     NOT NULL,
+  id_division             INTEGER                   NOT NULL,
+  id_employee             INTEGER                   NOT NULL,
+  division_id             INTEGER                   NOT NULL,
+  distribution_departments_id INTEGER               NOT NULL,
   FOREIGN KEY (division_id) REFERENCES kpi.division (id) ON DELETE CASCADE,
-  FOREIGN KEY (distribution_departments_id) REFERENCES esrd.department (id) ON DELETE CASCADE
+  FOREIGN KEY (id_employee) REFERENCES kpi.employee (id) ON DELETE CASCADE
 );
 
 CREATE TABLE kpi.employee
@@ -41,11 +45,11 @@ CREATE TABLE kpi.employee
   id_parent               INTEGER                      NOT NULL,
   id_division             INTEGER                              ,
   firstname               VARCHAR                              ,
-  lastname                VARCHAR                               ,
-  patronym                VARCHAR                               ,
-  position                VARCHAR                               ,
-  email                   VARCHAR                               ,
-  phone                   VARCHAR                               ,
+  lastname                VARCHAR                              ,
+  patronym                VARCHAR                              ,
+  position                VARCHAR                              ,
+  email                   VARCHAR                              ,
+  phone                   VARCHAR                              ,
   FOREIGN KEY (doctype_id) REFERENCES esrd.doctype (id) ON DELETE CASCADE,
   FOREIGN KEY (initial_user_id) REFERENCES esrd.users (id) ON DELETE CASCADE
 );
@@ -55,10 +59,10 @@ CREATE TABLE kpi.goal
   id                      INTEGER PRIMARY KEY DEFAULT nextval('kpi.global_seq'),
   id_parent               INTEGER                      NOT NULL,
   name                    VARCHAR                              ,
-  description             VARCHAR                               ,
-  create_date             TIMESTAMP                             ,
-  execution_date          TIMESTAMP                             ,
-  control_date            TIMESTAMP                              ,
+  description             VARCHAR                              ,
+  create_date             TIMESTAMP                            ,
+  execution_date          TIMESTAMP                            ,
+  control_date            TIMESTAMP                            ,
   FOREIGN KEY (goal_id) REFERENCES esrd.goal (id) ON DELETE CASCADE,
   FOREIGN KEY (division_id) REFERENCES esrd.division (id) ON DELETE CASCADE
 );

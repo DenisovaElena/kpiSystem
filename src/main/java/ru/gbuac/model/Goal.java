@@ -29,7 +29,5 @@ public class Goal extends NamedEntity {
     @Column(name = "control_date")
     private LocalDateTime controlDate;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "goal", cascade = CascadeType.ALL)
-    private List<GoalsDivisions> goalsDivisions;
 
 }
