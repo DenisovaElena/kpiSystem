@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,4 +15,7 @@ import javax.persistence.Table;
 @Setter
 @Table(name = "division")
 public class Division extends NamedEntity {
+    @ManyToOne
+    @JoinColumn(name = "employee_id", referencedColumnName = "division_id")
+    private Employee employee;
 }

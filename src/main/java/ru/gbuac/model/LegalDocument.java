@@ -23,7 +23,4 @@ public class LegalDocument extends NamedEntity {
     @JoinColumn(name = "division_id", referencedColumnName = "id")
     @JsonIgnore
     private Division division;
-
-
-
 }

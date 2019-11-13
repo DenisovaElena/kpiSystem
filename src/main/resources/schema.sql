@@ -12,9 +12,10 @@ CREATE TABLE kpi.legal_documents
 (
   id                      INTEGER PRIMARY KEY DEFAULT nextval('kpi.global_seq'),
   id_parent               INTEGER                 NOT NULL,
+  division_id             INTEGER                 NOT NULL,
   name                    VARCHAR                         ,
   filename                VARCHAR                         ,
-  FOREIGN KEY (division_id) REFERENCES kpi.division (id) ON DELETE CASCADE
+  FOREIGN KEY (division_id) REFERENCES kpi.legal_documents (id) ON DELETE CASCADE
 );
 
 CREATE TABLE kpi.division
@@ -45,7 +46,6 @@ CREATE TABLE kpi.employee
   position                VARCHAR                               ,
   email                   VARCHAR                               ,
   phone                   VARCHAR                               ,
-
   FOREIGN KEY (doctype_id) REFERENCES esrd.doctype (id) ON DELETE CASCADE,
   FOREIGN KEY (initial_user_id) REFERENCES esrd.users (id) ON DELETE CASCADE
 );
@@ -59,8 +59,8 @@ CREATE TABLE kpi.goal
   create_date             TIMESTAMP                             ,
   execution_date          TIMESTAMP                             ,
   control_date            TIMESTAMP                              ,
-  FOREIGN KEY (doctype_id) REFERENCES esrd.doctype (id) ON DELETE CASCADE,
-  FOREIGN KEY (initial_user_id) REFERENCES esrd.users (id) ON DELETE CASCADE
+  FOREIGN KEY (goal_id) REFERENCES esrd.goal (id) ON DELETE CASCADE,
+  FOREIGN KEY (division_id) REFERENCES esrd.division (id) ON DELETE CASCADE
 );
 
 CREATE TABLE kpi.authority
