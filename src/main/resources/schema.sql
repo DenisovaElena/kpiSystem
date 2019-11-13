@@ -33,9 +33,7 @@ CREATE TABLE kpi.divisions_employees
 (
   id_division             INTEGER                   NOT NULL,
   id_employee             INTEGER                   NOT NULL,
-  division_id             INTEGER                   NOT NULL,
-  distribution_departments_id INTEGER               NOT NULL,
-  FOREIGN KEY (division_id) REFERENCES kpi.division (id) ON DELETE CASCADE,
+  FOREIGN KEY (id_division) REFERENCES kpi.division (id) ON DELETE CASCADE,
   FOREIGN KEY (id_employee) REFERENCES kpi.employee (id) ON DELETE CASCADE
 );
 
@@ -50,7 +48,7 @@ CREATE TABLE kpi.employee
   position                VARCHAR                              ,
   email                   VARCHAR                              ,
   phone                   VARCHAR                              ,
-  FOREIGN KEY (doctype_id) REFERENCES esrd.doctype (id) ON DELETE CASCADE,
+  FOREIGN KEY (doctype_id) REFERENCES kpi.doctype (id) ON DELETE CASCADE,
   FOREIGN KEY (initial_user_id) REFERENCES esrd.users (id) ON DELETE CASCADE
 );
 
