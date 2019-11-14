@@ -1,4 +1,6 @@
 package ru.gbuac.to;
 
-public class LegalDocumentTo {
+import ru.gbuac.model.LegalDocument;
+
+public class LegalDocumentTo extends BaseTo {
 }

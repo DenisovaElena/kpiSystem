@@ -1,4 +1,4 @@
 package ru.gbuac.to;
 
-public class EmployeeTo {
+public class EmployeeTo extends BaseTo {
 }

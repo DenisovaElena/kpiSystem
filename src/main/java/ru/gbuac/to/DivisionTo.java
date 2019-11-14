@@ -1,4 +1,4 @@
 package ru.gbuac.to;
 
-public class DivisionTo {
+public class DivisionTo extends BaseTo {
 }

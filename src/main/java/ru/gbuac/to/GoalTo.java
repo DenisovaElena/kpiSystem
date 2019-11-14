@@ -1,4 +1,4 @@
 package ru.gbuac.to;
 
-public class GoalTo {
+public class GoalTo extends BaseTo {
 }

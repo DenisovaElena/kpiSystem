@@ -1,4 +1,4 @@
 package ru.gbuac.to;
 
-public class AuthorityTo {
+public class AuthorityTo extends BaseTo {
 }
