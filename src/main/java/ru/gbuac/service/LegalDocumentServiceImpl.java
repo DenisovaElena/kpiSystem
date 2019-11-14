@@ -28,7 +28,7 @@ public class LegalDocumentServiceImpl implements LegalDocumentService {
     }
 
     @Override
-    public LegalDocument save(LegalDocument legalDocument, int id) {
+    public LegalDocument save(LegalDocument legalDocument) {
         Assert.notNull(legalDocument, "catalog must not be null");
         return legalDocumentRepository.save(legalDocument);
     }

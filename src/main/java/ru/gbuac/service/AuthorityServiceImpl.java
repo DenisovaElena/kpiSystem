@@ -28,7 +28,7 @@ public class AuthorityServiceImpl implements AuthorityService {
     }
 
     @Override
-    public Authority save(Authority authority, int id) {
+    public Authority save(Authority authority) {
         Assert.notNull(authority, "catalog must not be null");
         return authorityRepository.save(authority);
     }

@@ -28,7 +28,7 @@ public class DivisionServiceImpl implements DivisionService {
     }
 
     @Override
-    public Division save(Division division, int id) {
+    public Division save(Division division) {
         Assert.notNull(division, "catalog must not be null");
         return divisionRepository.save(division);
     }

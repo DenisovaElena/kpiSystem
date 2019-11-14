@@ -11,7 +11,7 @@ public interface DivisionService {
 
     List<Division> getAll();
 
-    Division save(Division division, int id);
+    Division save(Division division);
 
     void delete(int id);
 

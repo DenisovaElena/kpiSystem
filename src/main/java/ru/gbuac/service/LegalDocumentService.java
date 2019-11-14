@@ -11,7 +11,7 @@ public interface LegalDocumentService {
 
     List<LegalDocument> getAll();
 
-    LegalDocument save(LegalDocument legalDocument, int id);
+    LegalDocument save(LegalDocument legalDocument);
 
     void delete(int id);
 

@@ -1,13 +1,44 @@
 package ru.gbuac.controller.authority;
 
+import javassist.NotFoundException;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import ru.gbuac.model.Authority;
+
+import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = AuthorityRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class AuthorityRestController extends AbstractAuthorityRestController {
+
     public static final String REST_URL = "/rest/profile/authorities";
 
+    @Override
+    @GetMapping(value = "/{id}")
+    public Authority get(@PathVariable("id") int id) throws NotFoundException {
+        return super.get(id);
+    }
+
+    @Override
+    @DeleteMapping(value = "/{id}")
+    public void delete(@PathVariable("id") int id) {
+        super.delete(id);
+    }
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Authority updateOrCreate(@Valid @RequestBody Authority authority) {
+        if (authority.isNew()) {
+            return super.create(authority);
+        } else {
+            return super.update(authority, authority.getId());
+        }
+    }
+
+    @Override
+    @GetMapping
+    public List<Authority> getAll() {
+        return super.getAll();
+    }
 
 }

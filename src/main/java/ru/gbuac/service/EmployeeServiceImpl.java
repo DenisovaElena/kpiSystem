@@ -28,7 +28,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee save(Employee employee, int id) {
+    public Employee save(Employee employee) {
         Assert.notNull(employee, "catalog must not be null");
         return employeeRepository.save(employee);
     }

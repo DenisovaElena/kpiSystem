@@ -11,7 +11,7 @@ public interface GoalService {
 
     List<Goal> getAll();
 
-    Goal save(Goal goal, int id);
+    Goal save(Goal goal);
 
     void delete(int id);
 

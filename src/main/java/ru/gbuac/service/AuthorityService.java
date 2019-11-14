@@ -11,7 +11,7 @@ public interface AuthorityService {
 
     List<Authority> getAll();
 
-    Authority save(Authority authority, int id);
+    Authority save(Authority authority);
 
     void delete(int id);
 

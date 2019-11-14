@@ -28,7 +28,7 @@ public class GoalServiceImpl implements GoalService {
     }
 
     @Override
-    public Goal save(Goal goal, int id) {
+    public Goal save(Goal goal) {
         Assert.notNull(goal, "catalog must not be null");
         return goalRepository.save(goal);
     }
