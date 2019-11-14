@@ -13,11 +13,9 @@ public interface DivisionService {
 
     Division save(Division division, int id);
 
-    Division create(Division division);
-
     void delete(int id);
 
     Division update(Division division, int id);
 
-    List<Division> getTopLevel();
+    List<Division> getAllTopLevel();
 }

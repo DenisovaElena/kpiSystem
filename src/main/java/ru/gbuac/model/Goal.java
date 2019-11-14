@@ -30,9 +30,5 @@ public class Goal extends NamedEntity {
     private LocalDate controlDate;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "division_goal",
-            joinColumns = @JoinColumn(name = "division_id"),
-            inverseJoinColumns = @JoinColumn(name = "goal_id")
-    )
     private List<Division> divisions;
 }

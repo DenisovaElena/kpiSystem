@@ -16,5 +16,4 @@ public class Authority extends NamedEntity {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Division> divisions;
-
 }

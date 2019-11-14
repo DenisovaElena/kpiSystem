@@ -40,10 +40,6 @@ public class Employee extends NamedEntity {
     private String phone;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "division_employee",
-            joinColumns = @JoinColumn(name = "division_id"),
-            inverseJoinColumns = @JoinColumn(name = "employee_id")
-    )
     private List<Division> divisions;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

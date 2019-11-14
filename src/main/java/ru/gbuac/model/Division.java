@@ -29,10 +29,6 @@ public class Division extends NamedEntity {
     private List<Goal> goals;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "authority_division",
-            joinColumns = @JoinColumn(name = "authority_id"),
-            inverseJoinColumns = @JoinColumn(name = "division_id")
-    )
     private List<Authority> authorities;
 
     @ManyToOne(fetch = FetchType.LAZY)

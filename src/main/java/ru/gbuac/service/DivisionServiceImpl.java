@@ -19,38 +19,34 @@ public class DivisionServiceImpl implements DivisionService {
 
     @Override
     public Division get(int id) throws NotFoundException {
-        return null;
+        return checkNotFoundWithId(divisionRepository.findById(id).orElse(null), id);
     }
 
     @Override
     public List<Division> getAll() {
-        return null;
+        return divisionRepository.findAll();
     }
 
     @Override
     public Division save(Division division, int id) {
-        Assert.notNull(division, "division must not be null");
+        Assert.notNull(division, "catalog must not be null");
+        return divisionRepository.save(division);
+    }
+
+    @Override
+    public void delete(int id) {
+        divisionRepository.delete(id);
+    }
+
+    @Override
+    public Division update(Division division, int id) {
+        Assert.notNull(division, "catalog must not be null");
         Division savedDivision = checkNotFoundWithId(divisionRepository.save(division), id);
         return savedDivision;
     }
 
     @Override
-    public Division create(Division division) {
-        return null;
-    }
-
-    @Override
-    public void delete(int id) {
-
-    }
-
-    @Override
-    public Division update(Division division, int id) {
-        return null;
-    }
-
-    @Override
-    public List<Division> getTopLevel() {
-        return null;
+    public List<Division> getAllTopLevel() {
+        return divisionRepository.getAllTopLevel();
     }
 }
