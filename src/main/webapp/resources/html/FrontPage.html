@@ -1,14 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>KPI</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<header>
-    <div class="container">
+    <title>jsPlumb - state machine demonstration</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/jsplumbtoolkit-defaults.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/jsplumbtoolkit-demo.css">
+    <link rel="stylesheet" href="../css/front-jsplumb.css">
+
+    <div>
         <nav class="navbar navbar-expand-lg navbar-light">
             <a class="navbar-brand" href="#">KPI</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,68 +29,49 @@
             </div>
         </nav>
     </div>
-</header>
-<main>
-
-    <div class="list">
-        <div class="list_item"></div>
-        <div class="list_item"></div>
-        <div class="list_item"></div>
-        <div class="list_item"></div>
-        <div class="list_item"></div>
-    </div>
-
-    <div class="container">
-        <div class="flex-container flex-sm-row p-2 bd-highlight mb-3">
-            <div class="flex-container flex-column p-2 bd-highlight flex1">Департамент
-                <div class="p-2 bd-highlight flex11">Разработка ПО
-
-                </div>
-            </div>
-
-            <div class="flex-container flex-sm-column p-2 bd-highlight mb-3">
-                <div class="p-2 bd-highlight flex2">Проектный офис №7
-                    <div class="flex-container flex-row p-2 bd-highlight mb-3 flex11">
-                        Разработка Front-end
-
-                    </div>
-                </div>
-                <div class="p-2 bd-highlight flex2">Проектный офис №8</div>
-                <div class="p-2 bd-highlight flex2">Проектный офис №9</div>
-                <div class="p-2 bd-highlight flex2">Проектный офис №10</div>
-            </div>
-            <div class="flex-container flex-sm-column p-2 bd-highlight mb-3">
-                <div class="p-2 bd-highlight flex2">Отдел макроэкономики
-                    <div class="flex-container flex-column p-2 bd-highlight mb-3 flex11">
-                        Разработка Front-end
-
-                    </div>
-                </div>
-                <div class="p-2 bd-highlight flex2">Отдел макроэкономики</div>
-                <div class="p-2 bd-highlight flex2">Отдел макроэкономики</div>
-                <div class="p-2 bd-highlight flex2">Отдел макроэкономики</div>
-            </div>
+</head>
+<body >
 
 
+<div data-demo-id="statemachine">
+<div class="jtk-demo-main">
+    <!-- demo -->
+    <div class="jtk-demo-canvas canvas-wide statemachine-demo jtk-surface jtk-surface-nopan" id="canvas">
+        <div class="w" id="opened">ПО №7
+            <div class="ep" action="begin"></div>
         </div>
-
-        <div class="flex-container flex-sm-row p-2 bd-highlight mb-3">
-            <div class="flex-container flex-column p-2 bd-highlight flex1">Департамент
-                <div class="p-2 bd-highlight flex11">Аналитика</div>
+        <div class="w" id="phone1">Департамент
+            <div class="w" id="phone5">Отдел макроэкономики
+                <div class="ep" action="phone5"></div>
             </div>
-            <div class="flex-container flex-sm-column p-2 bd-highlight mb-3">
-                <div class="p-2 bd-highlight flex2">Проектный офис №11</div>
-                <div class="p-2 bd-highlight flex2">Проектный офис №12</div>
-                <div class="p-2 bd-highlight flex2">Проектный офис №13</div>
+            <div class="ep" action="phone1">
             </div>
         </div>
-
-
+        <div class="w" id="phone2">Отдел макроэкономики
+            <div class="ep" action="phone2"></div>
+        </div>
+        <div class="w" id="inperson">Отдел микроэкономики
+            <div class="ep" action="inperson"></div>
+        </div>
+        <div class="w" id="rejected">ПО №8
+            <div class="ep" action="rejected"></div>
+        </div>
     </div>
+    <!-- /demo -->
+    <!-- explanation -->
+    <!-- /explanation -->
+</div>
 
-</main>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<!-- JS -->
+<script src="../js/jsplumb.js"></script>
+<!-- /JS -->
+
+<!--  demo code -->
+<script src="../js/front-jsplimb.js"></script>
+
+<script src="../js/front-jsplimb-list.js"></script>
+</div>
 </body>
 </html>
