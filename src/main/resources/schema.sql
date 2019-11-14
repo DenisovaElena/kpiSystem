@@ -80,7 +80,7 @@ CREATE TABLE kpi.goal
 CREATE TABLE kpi.division_goal
 (
     goal_id                 INTEGER             NOT NULL              ,
-    division_id                INTEGER             NOT NULL              ,
+    division_id             INTEGER             NOT NULL              ,
     FOREIGN KEY (goal_id) REFERENCES kpi.goal (id) ON DELETE CASCADE,
     FOREIGN KEY (division_id) REFERENCES kpi.division (id) ON DELETE CASCADE
 );

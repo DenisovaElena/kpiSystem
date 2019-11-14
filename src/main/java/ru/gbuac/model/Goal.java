@@ -29,6 +29,6 @@ public class Goal extends NamedEntity {
     @Column(name = "control_date")
     private LocalDate controlDate;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Division> divisions;
 }
