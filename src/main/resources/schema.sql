@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS kpi.division CASCADE;
 DROP TABLE IF EXISTS kpi.employee CASCADE;
 DROP TABLE IF EXISTS kpi.authority CASCADE;
 DROP TABLE IF EXISTS kpi.goal CASCADE;
-DROP TABLE IF EXISTS kpi.divisions_employees CASCADE;
+DROP TABLE IF EXISTS kpi.division_employee CASCADE;
 DROP TABLE IF EXISTS kpi.division_child_division CASCADE;
 DROP TABLE IF EXISTS kpi.employee_child_employee CASCADE;
 DROP TABLE IF EXISTS kpi.authority_division CASCADE;
