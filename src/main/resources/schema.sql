@@ -47,8 +47,7 @@ CREATE TABLE kpi.employee
     patronym                VARCHAR                               ,
     position                VARCHAR                               ,
     email                   VARCHAR                               ,
-    phone                   VARCHAR                               ,
-    FOREIGN KEY (division_id) REFERENCES kpi.division (id) ON DELETE CASCADE
+    phone                   VARCHAR
 );
 
 CREATE TABLE kpi.division_employee

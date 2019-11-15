@@ -14,6 +14,6 @@ import java.util.List;
 @Table(name = "authority")
 public class Authority extends NamedEntity {
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Division> divisions;
 }

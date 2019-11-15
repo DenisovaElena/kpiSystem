@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @Table(name = "employee")
-public class Employee extends NamedEntity {
+public class Employee extends BaseEntity {
 
     @SafeHtml
     @Column(name = "firstname")

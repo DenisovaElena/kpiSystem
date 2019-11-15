@@ -32,7 +32,7 @@ public class Division extends NamedEntity {
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Authority> authorities;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "chief_employee_id", nullable = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Employee chiefEmployee;
