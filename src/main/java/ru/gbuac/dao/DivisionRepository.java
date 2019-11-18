@@ -16,6 +16,6 @@ public interface DivisionRepository extends JpaRepository<Division, Integer> {
     @Query("DELETE FROM Division d WHERE d.id=:id")
     int delete(@Param("id") int id);
 
-    @Query("SELECT d FROM Division d WHERE d.topLevel=:TRUE")
+    @Query("SELECT d FROM Division d WHERE d.topLevel=TRUE")
     List<Division> getAllTopLevel();
 }

@@ -108,10 +108,10 @@ INSERT  INTO kpi.division_goal(goal_id, division_id) VALUES (46, 4);
 INSERT  INTO kpi.division_goal(goal_id, division_id) VALUES (47, 5);
 INSERT  INTO kpi.division_goal(goal_id, division_id) VALUES (48, 6);
 
-INSERT  INTO kpi.authority(id, name) VALUES (49, 'Департамент осуществляет свою деятельность во взаимодействии с федеральными органами государственной власти');
-INSERT  INTO kpi.authority(id, name) VALUES (50, 'Департамент осуществляет свою деятельность во взаимодействии с федеральными органами государственной власти');
-INSERT  INTO kpi.authority(id, name) VALUES (51, 'Департамент осуществляет свою деятельность во взаимодействии с федеральными органами государственной власти');
-INSERT  INTO kpi.authority(id, name) VALUES (52, 'Департамент осуществляет свою деятельность во взаимодействии с федеральными органами государственной власти');
+INSERT  INTO kpi.authority(id, name, top_level) VALUES (49, 'Департамент осуществляет свою деятельность во взаимодействии с федеральными органами государственной власти', true);
+INSERT  INTO kpi.authority(id, name, top_level) VALUES (50, 'Департамент осуществляет свою деятельность во взаимодействии с федеральными органами государственной власти', true);
+INSERT  INTO kpi.authority(id, name, top_level) VALUES (51, 'Департамент осуществляет свою деятельность во взаимодействии с федеральными органами государственной власти', true);
+INSERT  INTO kpi.authority(id, name, top_level) VALUES (52, 'Департамент осуществляет свою деятельность во взаимодействии с федеральными органами государственной власти', true);
 
 INSERT  INTO kpi.authority_division(authority_id, division_id) VALUES (49, 1);
 INSERT  INTO kpi.authority_division(authority_id, division_id) VALUES (50, 2);

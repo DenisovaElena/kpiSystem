@@ -16,4 +16,6 @@ public interface AuthorityService {
     void delete(int id);
 
     Authority update(Authority authority, int id);
+
+    List<Authority> getAllTopLevel();
 }

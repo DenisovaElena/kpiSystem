@@ -87,7 +87,8 @@ CREATE TABLE kpi.division_goal
 CREATE TABLE kpi.authority
 (
     id                      INTEGER PRIMARY KEY DEFAULT nextval('kpi.global_seq'),
-    name                    VARCHAR
+    name                    VARCHAR                                     ,
+    top_level               BOOLEAN
 );
 
 CREATE TABLE kpi.authority_division

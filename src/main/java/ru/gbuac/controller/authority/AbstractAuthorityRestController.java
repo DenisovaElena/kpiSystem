@@ -45,4 +45,9 @@ public abstract class AbstractAuthorityRestController {
         LOG.info("delete " + id);
         authorityService.delete(id);
     }
+
+    public List<Authority> getAllTopLevel() {
+        LOG.info("getAllTopLevel");
+        return authorityService.getAllTopLevel();
+    }
 }

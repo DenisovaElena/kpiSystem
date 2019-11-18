@@ -44,4 +44,9 @@ public class AuthorityServiceImpl implements AuthorityService {
         Authority savedAuthority = checkNotFoundWithId(authorityRepository.save(authority), id);
         return savedAuthority;
     }
+
+    @Override
+    public List<Authority> getAllTopLevel() {
+        return authorityRepository.getAllTopLevel();
+    }
 }

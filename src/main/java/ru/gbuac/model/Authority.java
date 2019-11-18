@@ -14,6 +14,9 @@ import java.util.List;
 @Table(name = "authority")
 public class Authority extends NamedEntity {
 
+    @Column(name = "top_level")
+    private boolean topLevel;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Division> divisions;
 }
