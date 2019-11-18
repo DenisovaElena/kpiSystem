@@ -22,43 +22,42 @@ jsPlumb.ready(function () {
 
     var canvas = document.getElementById("canvas");
     var windows = jsPlumb.getSelector(".statemachine-demo .w");
+
     // привязать прослушиватель кликов к каждому соединению
     instance.bind("click", function (c) {
         instance.deleteConnection(c);
     });
+
     // привязать слушателя двойного щелчка к «canvas»; добавьте новый узел, когда это произойдет.
     jsPlumb.on(canvas, "dblclick", function(e) {
         newNode(e.offsetX, e.offsetY);
     });
 
-    // инициализировать элемент как цели соединения и источник.
+    // инициализация элемента как источник и цель соединения.
     var initNode = function(el) {
-
         // initialise draggable elements.
-        instance.draggable(el);
-
-        instance.makeSource(el, {
-            filter: ".ep",
-            anchor: "Continuous",
-            connectorStyle: { stroke: "#5c96bc", strokeWidth: 3, outlineStroke: "transparent", outlineWidth: 4 },
-            connectionType:"basic",
-            extract:{
-                "action":"the-action"
-            },
-            maxConnections: 5,
-            onMaxConnections: function (info, e) {
-                alert("Maximum connections (" + info.maxConnections + ") reached");
-            }
-        });
-
-        instance.makeTarget(el, {
-            dropOptions: { hoverClass: "dragHover" },
-            anchor: "Continuous",
-            allowLoopback: false //Предотвращение петлевых подключений
-        });
-
+                instance.draggable(el);
+                instance.makeSource(el, {
+                    filter: ".ep",
+                    anchor: "Continuous",
+                    connectorStyle: { stroke: "#5c96bc", strokeWidth: 3, outlineStroke: "transparent", outlineWidth: 4 },
+                    connectionType:"basic",
+                    extract:{
+                        "action":"the-action"
+                    },
+                    maxConnections: 5,
+                    onMaxConnections: function (info, e) {
+                        alert("Maximum connections (" + info.maxConnections + ") reached");
+                    }
+                });
+                instance.makeTarget(el, {
+                    isTarget:true,
+                    dropOptions: { hoverClass: "dragHover" },
+                    anchor: "Continuous",
+                    allowLoopback: false //Предотвращение петлевых подключений
+                });
         };
-
+    // создание новго элемента.
     var newNode = function(x, y) {
         var d = document.createElement("div");
         var id = jsPlumbUtil.uuid();
@@ -71,23 +70,22 @@ jsPlumb.ready(function () {
         initNode(d);
         return d;
     };
-    // приостановить рисование и инициализировать..
+    // приостановить рисование и инициализировать
     instance.batch(function () {
-        for (var i = 0; i < windows.length; i++) {
-            initNode(windows[i], true);
-        }
-        // make a few connections
-
-       // instance.connect({ source: "dep", target: "division3", type:"basic" });
-        //instance.connect({ source: "dep", target: "division2", type:"basic" });
-        //instance.connect({source:"dep", target:"division4", type:"basic"});
-        //instance.connect({ source: "dep", target: "division1", type:"basic" });
-       // instance.connect({ source: "division1", target: "branch1", type:"basic" });
-        instance.connect({ source: "division1", target: "branch2", type:"basic" });
-
-
+            for (var i = 0; i < windows.length; i++) {
+                initNode(windows[i], true);
+            }
+            // Соединители
+            // instance.connect({ source: "dep", target: "division3", type:"basic" });
+            //instance.connect({ source: "dep", target: "division2", type:"basic" });
+            //instance.connect({source:"dep", target:"division4", type:"basic"});
+            //instance.connect({ source: "dep", target: "division1", type:"basic" });
+            instance.connect({ source: "division1", target: "branch3", type:"basic" });
+            instance.connect({ source: "division1", target: "branch2", type:"basic" });
      });
-    //jsPlumb.draggable(division1);
+
+    //instance.hide("branch3"); //сокрытие связей
+
     instance.addGroup({
         el: dep,
         id:"aGroup",
@@ -98,14 +96,25 @@ jsPlumb.ready(function () {
         autoSize:true,
         draggable: false, //отмена перетаскивания
         anchor:"Continuous",
-        endpoint:"Blank"
-        //droppable:true //По умолчанию группы настроены на прием элементов, сбрасываемых на них - любого элемента,
+        endpoint:"Blank",
+        droppable:true //По умолчанию группы настроены на прием элементов, сбрасываемых на них - любого элемента,
         // который в данный момент управляется экземпляром jsPlumb, а не только существующих членов других групп.
     });
     instance.addToGroup("aGroup", division1);
     instance.addToGroup("aGroup", division2);
     instance.addToGroup("aGroup", division3);
     instance.addToGroup("aGroup", division4);
+
+
+    var endpointOptions = {
+        anchor:"division1",
+        isSource:true,
+        isTarget:true,
+        connector : "Straight",
+        connectorStyle: { lineWidth:20, strokeStyle:'blue' },
+        scope:"blueline",
+        dragAllowedWhenFull:false
+    };
 
     instance.addGroup({
         el: branch1,
@@ -118,30 +127,51 @@ jsPlumb.ready(function () {
         draggable: true, //отмена перетаскивания
         anchor:"Continuous",
         endpoint:"Blank",
-        //droppable:true //По умолчанию группы настроены на прием элементов, сбрасываемых на них - любого элемента,
+        droppable:true //По умолчанию группы настроены на прием элементов, сбрасываемых на них - любого элемента,
         // который в данный момент управляется экземпляром jsPlumb, а не только существующих членов других групп.
     });
     instance.addToGroup("bGroup", branch2);
     instance.addToGroup("bGroup", branch3);
     instance.addToGroup("bGroup", branch4);
 
-   // jsPlumb.draggable(division2);
-    jsPlumb.fire("jsPlumbDemoLoaded", instance);
+// delete group button
+    instance.on(canvas, "click", ".ep", function() {
+    var g = this.parentNode.getAttribute("group");
+    instance.removeGroup(g, this.getAttribute("delete-all") != null);
+});
 
-    /*
-    jsPlumb.addGroup({
-        el: "#dep",
-        id:"aGroup",
-        draggable: true, //отмена перетаскивания
-        dropOptions: true //Указывает, что соединения с дочерними элементами внутри Группы (которые исходят из-за пределов Группы) должны быть проксированы
-
+    // delete group button
+    instance.on(canvas, "click", function() {
+        console.log('Клик по кнопке');
     });
-    jsPlumb.addToGroup("aGroup", division1);
-*/
 
+// collapse/expand group button
+    instance.on(canvas, "click", ".node-collapse", function() {
+    var g = this.parentNode.getAttribute("group"), collapsed = instance.hasClass(this.parentNode, "collapsed");
+
+    instance[collapsed ? "removeClass" : "addClass"](this.parentNode, "collapsed");
+    instance[collapsed ? "expandGroup" : "collapseGroup"](g);
+});
+
+jsPlumb.fire("jsPlumbDemoLoaded", instance);
 
 });
 
+
+var connection = jsPlumb.connect({source:"division1", target:"branch3"});
+connection.bind("click", function(connection ) {
+    alert("you clicked on ", connection );
+});
+
+instance.addEventListener('keydown', function(evt) {
+    // Проверяем, что код клавиши равен 27
+    if (evt.keyCode === 27) {
+        // Код отсюда выполнится только при нажатии ESC
+    }
+});
+
+//Zoom
+/*
 window.setZoom = function(zoom, instance, transformOrigin, el) {
     transformOrigin = transformOrigin || [ 0.5, 0.5 ];
     instance = instance || jsPlumb;
@@ -171,3 +201,4 @@ $("#dep").css({
 });
 
 jsPlumb.setZoom(3.75);
+*/
