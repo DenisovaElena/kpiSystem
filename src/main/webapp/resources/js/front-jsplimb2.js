@@ -56,15 +56,15 @@ jsPlumb.ready(function () {
                         allowLoopback: false //Предотвращение петлевых подключений
                     });
             };
-// создание новго элемента.
-            var newNode = function(x, y) {
+// создание нового элемента.
+            var newNode = function() {
                     var d = document.createElement("div");
                     var id = jsPlumbUtil.uuid();
                     d.className = "w";
                     d.id = id;
-                    d.innerHTML = id.substring(0, 7) + "<div class=\"ep\"></div>";
-                    d.style.left = x + "px";
-                    d.style.top = y + "px";
+                    d.innerHTML = id.substring(0, 8) /*подпись блока*/ + "<div class='ep'></div>" + "<div class='main-btn1'></div>";
+                    d.style.left = 0 + "px";
+                    d.style.top = 0 + "px";
                     instance.getContainer().appendChild(d);
                     initNode(d);
                     return d;
@@ -75,7 +75,6 @@ jsPlumb.ready(function () {
                         initNode(windows[i], true);
                     }
              });
-
 //Группы
             instance.addGroup({
                 el: dep,
@@ -106,7 +105,6 @@ jsPlumb.ready(function () {
                 scope:"blueline",
                 dragAllowedWhenFull:false
             };
-
             instance.addGroup({
                 el: branch1,
                 id:"bGroup",
@@ -124,14 +122,10 @@ jsPlumb.ready(function () {
             instance.addToGroup("bGroup", branch2);
             instance.addToGroup("bGroup", branch3);
             instance.addToGroup("bGroup", branch4);
-
 // Соединители
             instance.connect({ source: "division1", target: "branch3", type:"basic" });
             instance.connect({ source: "division1", target: "branch2", type:"basic"
             });
-
-
-
 // collapse/expand group button
             instance.on(canvas, "click", ".node-collapse", function() {
                 var g = this.parentNode.getAttribute("group"), collapsed = instance.hasClass(this.parentNode, "collapsed");
@@ -139,16 +133,15 @@ jsPlumb.ready(function () {
                 instance[collapsed ? "removeClass" : "addClass"](this.parentNode, "collapsed");
                 instance[collapsed ? "expandGroup" : "collapseGroup"](g);
             });
-
             jsPlumb.fire("jsPlumbDemoLoaded", instance);
 
-// collapse/expand group button
+// Модальное окно
     var modal = document.getElementById('myModal');
     var btn= document.getElementById('myBtn');
     var span = document.getElementById('myClose');
     var btn1 = document.getElementsByClassName('main-btn');
 
-    btn.onclick = function () {modal.style.display = "block";}
+    btn.onclick = function () {modal.style.display = "block";};
 
     span.onclick = function () {
         modal.style.display = "none";
@@ -159,37 +152,26 @@ jsPlumb.ready(function () {
         }
     };
 
+// Создание нового элемента
     $('.main-btn').click(function(e) {
-
         newNode(e.offsetX, e.offsetY);
         modal.style.display = "none";
     });
 
 
-    // delete group button
-
-    $('.close1').click(function () {
-       var g = $(this).attr("data-value");
-      $('.w').hasAttr('id', g).css('background-color', 'red !important');
-
-
-
-
-       /*
-       instance.empty(g);
-
-        var conn = jsPlumb.getConnections({
-            //only one of source and target is needed, better if both setted
+// Кнопка удаления
+    $('.main-btn1').click(function (e) {
+        var g = $(this).parent().remove();
+        /*
+        var conn = g.getConnections({
             source: sourceId,
             target: targetId
         });
         if (conn[0]) {
             instance.detach(conn[0]);
         }
-
-        */
+         */
     });
-
 });
 
 
