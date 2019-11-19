@@ -26,24 +26,19 @@
     -moz-transition: background-color 0.25s ease-in;
     transition: background-color 0.25s ease-in;
 }
-
 .w:hover {
     background-color: #5c96bc;
     color: white;
-
 }
-
 .aLabel {
     -webkit-transition: background-color 0.25s ease-in;
     -moz-transition: background-color 0.25s ease-in;
     transition: background-color 0.25s ease-in;
 }
-
 .aLabel.jtk-hover, .jtk-source-hover, .jtk-target-hover {
     background-color: #1e8151;
     color: white;
 }
-
 .aLabel {
     background-color: white;
     opacity: 0.8;
@@ -52,10 +47,9 @@
     border: 1px solid #346789;
     cursor: pointer;
 }
-
 .ep {
     position: absolute;
-    bottom: 37%;
+    bottom: 10%;
     right: 5px;
     width: 1em;
     height: 1em;
@@ -75,8 +69,38 @@
     z-index: 3;
 }
 
-
-
+.statemachine {
+    margin: 5% !important;
+}
+/* ----------------------Модальное окно-------------------*/
+.modal {
+    display: none;
+   position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+}
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 10px solid #888;
+    width: 50% !important;
+}
+#myBtn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: center;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+/*----------------------------------------------- */
 #dep {
     left: 5em;
     top: 5em;
@@ -90,18 +114,14 @@
     top: 10em;
     width: 10em;
     z-index: 1;
-
 }
-
 #division2 {
     position:absolute;
     left: 7em;
     top: 15em;
     width: 10em;
     z-index: 1;
-
 }
-
 #division3 {
     left: 7em;
     top: 20em;
@@ -109,7 +129,6 @@
     z-index: 1;
     position:absolute;
 }
-
 #division4 {
     left: 7em;
     top: 25em;
@@ -141,6 +160,21 @@
     width: 10em;
     z-index: 1;
 }
+
+.close1 {
+    position: absolute;
+    bottom: 200%;
+    right: 4px;
+    width: 0.5em;
+    height: 2em;
+    background-color: palevioletred;
+    cursor: pointer;
+    box-shadow: 0 0 2px black;
+    -webkit-transition: -webkit-box-shadow 0.25s ease-in;
+    -moz-transition: -moz-box-shadow 0.25s ease-in;
+    transition: box-shadow 0.25s ease-in;
+}
+
 
 .dragHover {
     border: 2px solid orange;
