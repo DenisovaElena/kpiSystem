@@ -46,7 +46,12 @@ public abstract class AbstractEmployeeRestController {
     }
 
     public List<Employee> getEmployeesByChief(int id) {
-        LOG.info("getEmployeesByChief");
+        LOG.info("getEmployeesByChief" + id);
         return employeeService.getEmployeesByChief(id);
+    }
+
+    public List<Employee> getEmployeesByDivisionId(int id) {
+        LOG.info("/getEmployeesByDivisionId");
+        return employeeService.getEmployeesByDivisionId(id);
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = DivisionRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
-public class DivisionRestController extends AbstractDivisionRestCotroller {
+public class DivisionRestController extends AbstractDivisionRestController {
     public static final String REST_URL = "/rest/profile/divisions";
 
     @Override

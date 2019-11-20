@@ -49,4 +49,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> getEmployeesByChief(int id) {
         return employeeRepository.getEmployeesByChief(id);
     }
-}
+
+    @Override
+    public List<Employee> getEmployeesByDivisionId(int id) {
+        return employeeRepository.getEmployeesByDivisionId(id);
+    }
+ }

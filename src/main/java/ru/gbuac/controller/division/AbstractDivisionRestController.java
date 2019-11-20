@@ -12,7 +12,7 @@ import java.util.List;
 import static ru.gbuac.util.ValidationUtil.assureIdConsistent;
 import static ru.gbuac.util.ValidationUtil.checkNew;
 
-public abstract class AbstractDivisionRestCotroller {
+public abstract class AbstractDivisionRestController {
     protected final Logger LOG = LoggerFactory.getLogger(getClass());
 
     @Autowired

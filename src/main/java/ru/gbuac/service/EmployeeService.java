@@ -18,4 +18,6 @@ public interface EmployeeService {
     Employee update(Employee employee, int id);
 
     List<Employee> getEmployeesByChief(int id);
+
+    List<Employee> getEmployeesByDivisionId(int id);
 }

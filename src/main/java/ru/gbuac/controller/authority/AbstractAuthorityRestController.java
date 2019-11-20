@@ -50,4 +50,9 @@ public abstract class AbstractAuthorityRestController {
         LOG.info("getAllTopLevel");
         return authorityService.getAllTopLevel();
     }
+
+    public List<Authority> getAuthoritiesByDivisionId(int id) {
+        LOG.info("getEmployeesByDivisionId" + id);
+        return authorityService.getAuthoritiesByDivisionId(id);
+    }
 }

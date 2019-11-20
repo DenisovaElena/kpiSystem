@@ -44,4 +44,9 @@ public class EmployeeRestController extends AbstractEmployeeRestController {
     public List<Employee> getEmployeesByChief(int id) {
         return super.getEmployeesByChief(id);
     }
+
+    @GetMapping(value = "/getEmployeesByDivisionId/{id}")
+    public List<Employee> getEmployeesByDivisionId(@PathVariable("id") int id) {
+        return super.getEmployeesByDivisionId(id);
+    }
 }
