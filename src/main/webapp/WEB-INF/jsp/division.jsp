@@ -1,12 +1,14 @@
-
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Bootstrap 4 Website Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../resources/css/index.css">
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/css/index.css">
 
 </head>
 <body>
@@ -16,7 +18,7 @@
             <div class="row">
                 <div class="col-3">
                     <div class="fakeimg d-flex align-items-center justify-content-center">
-                        <img class="img-fluid" src="../../resources/img/logo.png" alt="Fake Image">
+                        <img class="img-fluid" src="resources/img/Logo.png" alt="Fake Image">
                     </div>
                 </div>
                 <div class="col-9">
@@ -155,9 +157,9 @@
             </div>
         </form>
     </div>
-    <script src="../../resources/js/jquery-3.3.1.min.js"></script>
-    <script src="../../resources/js/popper.min.js"></script>
-    <script src="../../resources/js/bootstrap.min.js"></script>
-    <script src="../../resources/js/divisionsUtil.js"></script>
+    <script src="resources/js/jquery-3.3.1.min.js"></script>
+    <script src="resources/js/popper.min.js"></script>
+    <script src="resources/js/bootstrap.min.js"></script>
+    <script src="resources/js/divisionsUtil.js"></script>
 </body>
 </html>
