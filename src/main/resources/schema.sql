@@ -3,11 +3,11 @@ DROP TABLE IF EXISTS kpi.division CASCADE;
 DROP TABLE IF EXISTS kpi.employee CASCADE;
 DROP TABLE IF EXISTS kpi.authority CASCADE;
 DROP TABLE IF EXISTS kpi.goal CASCADE;
-DROP TABLE IF EXISTS kpi.division_employee CASCADE;
+DROP TABLE IF EXISTS kpi.division_employees CASCADE;
 DROP TABLE IF EXISTS kpi.division_child_division CASCADE;
-DROP TABLE IF EXISTS kpi.employee_child_employee CASCADE;
-DROP TABLE IF EXISTS kpi.authority_division CASCADE;
-DROP TABLE IF EXISTS kpi.division_goal CASCADE;
+DROP TABLE IF EXISTS kpi.employee_child_employees CASCADE;
+DROP TABLE IF EXISTS kpi.authority_divisions CASCADE;
+DROP TABLE IF EXISTS kpi.division_goals CASCADE;
 DROP SEQUENCE IF EXISTS kpi.global_seq;
 
 CREATE SEQUENCE kpi.global_seq START 100000;
@@ -50,7 +50,7 @@ CREATE TABLE kpi.employee
     phone                   VARCHAR
 );
 
-CREATE TABLE kpi.division_employee
+CREATE TABLE kpi.division_employees
 (
     division_id              INTEGER                     NOT NULL,
     employee_id             INTEGER                     NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE kpi.division_employee
     FOREIGN KEY (employee_id) REFERENCES kpi.employee (id) ON DELETE CASCADE
 );
 
-CREATE TABLE kpi.employee_child_employee
+CREATE TABLE kpi.employee_child_employees
 (
     employee_id                  INTEGER        NOT NULL           ,
     child_employee_id            INTEGER        NOT NULL           ,
@@ -76,7 +76,7 @@ CREATE TABLE kpi.goal
     control_date            DATE
 );
 
-CREATE TABLE kpi.division_goal
+CREATE TABLE kpi.division_goals
 (
     goal_id                 INTEGER             NOT NULL              ,
     division_id             INTEGER             NOT NULL              ,
@@ -91,7 +91,7 @@ CREATE TABLE kpi.authority
     top_level               BOOLEAN
 );
 
-CREATE TABLE kpi.authority_division
+CREATE TABLE kpi.authority_divisions
 (
     authority_id               INTEGER             NOT NULL              ,
     division_id                INTEGER             NOT NULL              ,

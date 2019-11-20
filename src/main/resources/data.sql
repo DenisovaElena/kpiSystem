@@ -44,41 +44,41 @@ INSERT  INTO kpi.division_child_division(division_id, child_division_id) VALUES 
 INSERT  INTO kpi.division_child_division(division_id, child_division_id) VALUES (6, 12);
 
 
-INSERT  INTO kpi.employee_child_employee(employee_id, child_employee_id) VALUES (13,19);
-INSERT  INTO kpi.employee_child_employee(employee_id, child_employee_id) VALUES (14,20);
-INSERT  INTO kpi.employee_child_employee(employee_id, child_employee_id) VALUES (15,21);
-INSERT  INTO kpi.employee_child_employee(employee_id, child_employee_id) VALUES (16,22);
-INSERT  INTO kpi.employee_child_employee(employee_id, child_employee_id) VALUES (17,23);
-INSERT  INTO kpi.employee_child_employee(employee_id, child_employee_id) VALUES (18,24);
+INSERT  INTO kpi.employee_child_employees(employee_id, child_employee_id) VALUES (13,19);
+INSERT  INTO kpi.employee_child_employees(employee_id, child_employee_id) VALUES (14,20);
+INSERT  INTO kpi.employee_child_employees(employee_id, child_employee_id) VALUES (15,21);
+INSERT  INTO kpi.employee_child_employees(employee_id, child_employee_id) VALUES (16,22);
+INSERT  INTO kpi.employee_child_employees(employee_id, child_employee_id) VALUES (17,23);
+INSERT  INTO kpi.employee_child_employees(employee_id, child_employee_id) VALUES (18,24);
 
 
-INSERT  INTO kpi.employee_child_employee(employee_id, child_employee_id) VALUES (19,25);
-INSERT  INTO kpi.employee_child_employee(employee_id, child_employee_id) VALUES (20,26);
-INSERT  INTO kpi.employee_child_employee(employee_id, child_employee_id) VALUES (21,27);
-INSERT  INTO kpi.employee_child_employee(employee_id, child_employee_id) VALUES (22,28);
-INSERT  INTO kpi.employee_child_employee(employee_id, child_employee_id) VALUES (23,29);
-INSERT  INTO kpi.employee_child_employee(employee_id, child_employee_id) VALUES (24,30);
+INSERT  INTO kpi.employee_child_employees(employee_id, child_employee_id) VALUES (19,25);
+INSERT  INTO kpi.employee_child_employees(employee_id, child_employee_id) VALUES (20,26);
+INSERT  INTO kpi.employee_child_employees(employee_id, child_employee_id) VALUES (21,27);
+INSERT  INTO kpi.employee_child_employees(employee_id, child_employee_id) VALUES (22,28);
+INSERT  INTO kpi.employee_child_employees(employee_id, child_employee_id) VALUES (23,29);
+INSERT  INTO kpi.employee_child_employees(employee_id, child_employee_id) VALUES (24,30);
 
-INSERT  INTO kpi.division_employee(division_id, employee_id) VALUES (1, 13);
-INSERT  INTO kpi.division_employee(division_id, employee_id) VALUES (2, 14);
-INSERT  INTO kpi.division_employee(division_id, employee_id) VALUES (3, 15);
-INSERT  INTO kpi.division_employee(division_id, employee_id) VALUES (4, 16);
-INSERT  INTO kpi.division_employee(division_id, employee_id) VALUES (5, 17);
-INSERT  INTO kpi.division_employee(division_id, employee_id) VALUES (6, 18);
+INSERT  INTO kpi.division_employees(division_id, employee_id) VALUES (1, 13);
+INSERT  INTO kpi.division_employees(division_id, employee_id) VALUES (2, 14);
+INSERT  INTO kpi.division_employees(division_id, employee_id) VALUES (3, 15);
+INSERT  INTO kpi.division_employees(division_id, employee_id) VALUES (4, 16);
+INSERT  INTO kpi.division_employees(division_id, employee_id) VALUES (5, 17);
+INSERT  INTO kpi.division_employees(division_id, employee_id) VALUES (6, 18);
 
 
-INSERT  INTO kpi.division_employee(division_id, employee_id) VALUES (7, 19);
-INSERT  INTO kpi.division_employee(division_id, employee_id) VALUES (7, 25);
-INSERT  INTO kpi.division_employee(division_id, employee_id) VALUES (8, 20);
-INSERT  INTO kpi.division_employee(division_id, employee_id) VALUES (8, 26);
-INSERT  INTO kpi.division_employee(division_id, employee_id) VALUES (9, 21);
-INSERT  INTO kpi.division_employee(division_id, employee_id) VALUES (9, 27);
-INSERT  INTO kpi.division_employee(division_id, employee_id) VALUES (10, 22);
-INSERT  INTO kpi.division_employee(division_id, employee_id) VALUES (10, 28);
-INSERT  INTO kpi.division_employee(division_id, employee_id) VALUES (11, 23);
-INSERT  INTO kpi.division_employee(division_id, employee_id) VALUES (11, 29);
-INSERT  INTO kpi.division_employee(division_id, employee_id) VALUES (12, 24);
-INSERT  INTO kpi.division_employee(division_id, employee_id) VALUES (12, 30);
+INSERT  INTO kpi.division_employees(division_id, employee_id) VALUES (7, 19);
+INSERT  INTO kpi.division_employees(division_id, employee_id) VALUES (7, 25);
+INSERT  INTO kpi.division_employees(division_id, employee_id) VALUES (8, 20);
+INSERT  INTO kpi.division_employees(division_id, employee_id) VALUES (8, 26);
+INSERT  INTO kpi.division_employees(division_id, employee_id) VALUES (9, 21);
+INSERT  INTO kpi.division_employees(division_id, employee_id) VALUES (9, 27);
+INSERT  INTO kpi.division_employees(division_id, employee_id) VALUES (10, 22);
+INSERT  INTO kpi.division_employees(division_id, employee_id) VALUES (10, 28);
+INSERT  INTO kpi.division_employees(division_id, employee_id) VALUES (11, 23);
+INSERT  INTO kpi.division_employees(division_id, employee_id) VALUES (11, 29);
+INSERT  INTO kpi.division_employees(division_id, employee_id) VALUES (12, 24);
+INSERT  INTO kpi.division_employees(division_id, employee_id) VALUES (12, 30);
 
 
 INSERT  INTO kpi.legal_document(id, name, filename, division_id) VALUES(31, 'Постановление Правительства Москвы от 17.05.2011 № 210-ПП','postanovlenie.docx', 1);
@@ -101,22 +101,22 @@ INSERT  INTO kpi.goal(id, name, description, create_date, execution_date, contro
 INSERT  INTO kpi.goal(id, name, description, create_date, execution_date, control_date) VALUES (47, 'подготовка справок', 'Обеспечивает подготовку заключений на вносимые федеральными и городскими органами исполнительной власти проекты нормативных правовых актов по вопросам, относящимся к установленной сфере деятельности', '2017-02-19', '2017-03-02', '2017-03-05');
 INSERT  INTO kpi.goal(id, name, description, create_date, execution_date, control_date) VALUES (48, 'подготовка справок', 'Обеспечивает подготовку заключений на вносимые федеральными и городскими органами исполнительной власти проекты нормативных правовых актов по вопросам, относящимся к установленной сфере деятельности', '2017-02-20', '2017-03-03', '2017-03-06');
 
-INSERT  INTO kpi.division_goal(goal_id, division_id) VALUES (43, 1);
-INSERT  INTO kpi.division_goal(goal_id, division_id) VALUES (44, 2);
-INSERT  INTO kpi.division_goal(goal_id, division_id) VALUES (45, 3);
-INSERT  INTO kpi.division_goal(goal_id, division_id) VALUES (46, 4);
-INSERT  INTO kpi.division_goal(goal_id, division_id) VALUES (47, 5);
-INSERT  INTO kpi.division_goal(goal_id, division_id) VALUES (48, 6);
+INSERT  INTO kpi.division_goals(goal_id, division_id) VALUES (43, 1);
+INSERT  INTO kpi.division_goals(goal_id, division_id) VALUES (44, 2);
+INSERT  INTO kpi.division_goals(goal_id, division_id) VALUES (45, 3);
+INSERT  INTO kpi.division_goals(goal_id, division_id) VALUES (46, 4);
+INSERT  INTO kpi.division_goals(goal_id, division_id) VALUES (47, 5);
+INSERT  INTO kpi.division_goals(goal_id, division_id) VALUES (48, 6);
 
 INSERT  INTO kpi.authority(id, name, top_level) VALUES (49, 'Департамент осуществляет свою деятельность во взаимодействии с федеральными органами государственной власти', true);
 INSERT  INTO kpi.authority(id, name, top_level) VALUES (50, 'Департамент осуществляет свою деятельность во взаимодействии с федеральными органами государственной власти', true);
 INSERT  INTO kpi.authority(id, name, top_level) VALUES (51, 'Департамент осуществляет свою деятельность во взаимодействии с федеральными органами государственной власти', true);
 INSERT  INTO kpi.authority(id, name, top_level) VALUES (52, 'Департамент осуществляет свою деятельность во взаимодействии с федеральными органами государственной власти', true);
 
-INSERT  INTO kpi.authority_division(authority_id, division_id) VALUES (49, 1);
-INSERT  INTO kpi.authority_division(authority_id, division_id) VALUES (50, 2);
-INSERT  INTO kpi.authority_division(authority_id, division_id) VALUES (51, 3);
-INSERT  INTO kpi.authority_division(authority_id, division_id) VALUES (52, 4);
+INSERT  INTO kpi.authority_divisions(authority_id, division_id) VALUES (49, 1);
+INSERT  INTO kpi.authority_divisions(authority_id, division_id) VALUES (50, 2);
+INSERT  INTO kpi.authority_divisions(authority_id, division_id) VALUES (51, 3);
+INSERT  INTO kpi.authority_divisions(authority_id, division_id) VALUES (52, 4);
 --
 
 
