@@ -46,5 +46,4 @@ public class AuthorityRestController extends AbstractAuthorityRestController {
     public List<Authority> getAllTopLevel() {
         return super.getAllTopLevel();
     }
-
 }
