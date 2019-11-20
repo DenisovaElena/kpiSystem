@@ -40,9 +40,8 @@ public class EmployeeRestController extends AbstractEmployeeRestController {
         }
     }
 
-    @Override
-    @GetMapping(value = "/getAllChildEmployees/{id}")
-    public List<Employee> getChildEmployeesByChief(Integer id) {
-        return super.getChildEmployeesByChief(id);
+    @GetMapping(value = "/getEmployeesByChief/{id}")
+    public List<Employee> getEmployeesByChief(int id) {
+        return super.getEmployeesByChief(id);
     }
 }

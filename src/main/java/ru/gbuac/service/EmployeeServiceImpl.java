@@ -46,7 +46,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<Employee> getChildEmployeesByChief(Integer id) {
-        return employeeRepository.getChildEmployeesByChief(id);
+    public List<Employee> getEmployeesByChief(int id) {
+        return employeeRepository.getEmployeesByChief(id);
     }
 }
