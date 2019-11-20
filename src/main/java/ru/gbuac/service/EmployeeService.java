@@ -16,4 +16,6 @@ public interface EmployeeService {
     void delete(int id);
 
     Employee update(Employee employee, int id);
+
+    List<Employee> getChildEmployeesByChief(Integer id);
 }

@@ -44,4 +44,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee savedEmployee = checkNotFoundWithId(employeeRepository.save(employee), id);
         return savedEmployee;
     }
+
+    @Override
+    public List<Employee> getChildEmployeesByChief(Integer id) {
+        return employeeRepository.getChildEmployeesByChief(id);
+    }
 }
