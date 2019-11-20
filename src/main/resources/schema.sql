@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS kpi.division_child_division CASCADE;
 DROP TABLE IF EXISTS kpi.employee_child_employees CASCADE;
 DROP TABLE IF EXISTS kpi.authority_divisions CASCADE;
 DROP TABLE IF EXISTS kpi.division_goals CASCADE;
+DROP TABLE IF EXISTS authority_child_authorities CASCADE;
 DROP SEQUENCE IF EXISTS kpi.global_seq;
 
 CREATE SEQUENCE kpi.global_seq START 100000;
@@ -91,9 +92,17 @@ CREATE TABLE kpi.authority
     top_level               BOOLEAN
 );
 
+CREATE TABLE kpi.authority_child_authorities
+(
+    authority_id                  INTEGER                    ,
+    child_authority_id            INTEGER                    ,
+    FOREIGN KEY (authority_id) REFERENCES kpi.authority (id) ON DELETE CASCADE,
+    FOREIGN KEY (child_authority_id) REFERENCES kpi.authority (id) ON DELETE CASCADE
+);
+
 CREATE TABLE kpi.authority_divisions
 (
-    authority_id               INTEGER                          ,
+    authority_id               INTEGER                           ,
     division_id                INTEGER                           ,
     FOREIGN KEY (authority_id) REFERENCES kpi.authority (id) ON DELETE CASCADE,
     FOREIGN KEY (division_id) REFERENCES kpi.division (id) ON DELETE CASCADE

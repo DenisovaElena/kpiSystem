@@ -26,10 +26,18 @@ public class Division extends NamedEntity {
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "division_child_division",
+            joinColumns = @JoinColumn(name = "division_id"),
+            inverseJoinColumns = @JoinColumn(name = "child_division_id")
+    )
     private List<Division> childDivision;
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "division_goals",
+            joinColumns = @JoinColumn(name = "division_id"),
+            inverseJoinColumns = @JoinColumn(name = "goal_id")
+    )
     private List<Goal> goals;
 
     @JsonIgnore
