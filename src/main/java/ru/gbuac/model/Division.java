@@ -22,6 +22,10 @@ public class Division extends NamedEntity {
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "division_employees",
+            joinColumns = @JoinColumn(name = "division_id"),
+            inverseJoinColumns = @JoinColumn(name = "employee_id")
+    )
     private List<Employee> employees;
 
     @JsonIgnore
@@ -42,6 +46,10 @@ public class Division extends NamedEntity {
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "authority_divisions",
+            joinColumns = @JoinColumn(name = "authority_id"),
+            inverseJoinColumns = @JoinColumn(name = "division_id")
+    )
     private List<Authority> authorities;
 
     @ManyToOne(fetch = FetchType.EAGER)
