@@ -175,7 +175,6 @@
     transition: box-shadow 0.25s ease-in;
 }
 
-
 .dragHover {
     border: 2px solid orange;
 }
