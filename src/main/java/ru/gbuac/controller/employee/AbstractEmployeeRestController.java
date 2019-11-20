@@ -45,8 +45,8 @@ public abstract class AbstractEmployeeRestController {
         employeeService.delete(id);
     }
 
-    public List<Employee> getChildEmployeesByChief(Integer id) {
-        LOG.info("getAllChildEmployees");
-        return employeeService.getChildEmployeesByChief(id);
+    public List<Employee> getEmployeesByChief(int id) {
+        LOG.info("getEmployeesByChief");
+        return employeeService.getEmployeesByChief(id);
     }
 }

@@ -32,8 +32,8 @@ CREATE TABLE kpi.legal_document
 
 CREATE TABLE kpi.division_child_division
 (
-    division_id              INTEGER                      NOT NULL,
-    child_division_id        INTEGER                      NOT NULL,
+    division_id              INTEGER                      ,
+    child_division_id        INTEGER                      ,
     FOREIGN KEY (division_id) REFERENCES kpi.division (id) ON DELETE CASCADE,
     FOREIGN KEY (child_division_id) REFERENCES kpi.division (id) ON DELETE CASCADE
 );
@@ -52,16 +52,16 @@ CREATE TABLE kpi.employee
 
 CREATE TABLE kpi.division_employees
 (
-    division_id              INTEGER                     NOT NULL,
-    employee_id             INTEGER                     NOT NULL,
+    division_id              INTEGER                    ,
+    employee_id             INTEGER                     ,
     FOREIGN KEY (division_id) REFERENCES kpi.division (id) ON DELETE CASCADE,
     FOREIGN KEY (employee_id) REFERENCES kpi.employee (id) ON DELETE CASCADE
 );
 
 CREATE TABLE kpi.employee_child_employees
 (
-    employee_id                  INTEGER        NOT NULL           ,
-    child_employee_id            INTEGER        NOT NULL           ,
+    employee_id                  INTEGER                   ,
+    child_employee_id            INTEGER                 ,
     FOREIGN KEY (employee_id) REFERENCES kpi.employee (id) ON DELETE CASCADE,
     FOREIGN KEY (child_employee_id) REFERENCES kpi.employee (id) ON DELETE CASCADE
 );
@@ -78,8 +78,8 @@ CREATE TABLE kpi.goal
 
 CREATE TABLE kpi.division_goals
 (
-    goal_id                 INTEGER             NOT NULL              ,
-    division_id             INTEGER             NOT NULL              ,
+    goal_id                 INTEGER                           ,
+    division_id             INTEGER                           ,
     FOREIGN KEY (goal_id) REFERENCES kpi.goal (id) ON DELETE CASCADE,
     FOREIGN KEY (division_id) REFERENCES kpi.division (id) ON DELETE CASCADE
 );
@@ -93,8 +93,8 @@ CREATE TABLE kpi.authority
 
 CREATE TABLE kpi.authority_divisions
 (
-    authority_id               INTEGER             NOT NULL              ,
-    division_id                INTEGER             NOT NULL              ,
+    authority_id               INTEGER                          ,
+    division_id                INTEGER                           ,
     FOREIGN KEY (authority_id) REFERENCES kpi.authority (id) ON DELETE CASCADE,
     FOREIGN KEY (division_id) REFERENCES kpi.division (id) ON DELETE CASCADE
 );

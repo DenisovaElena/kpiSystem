@@ -32,6 +32,7 @@ public class Division extends NamedEntity {
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Goal> goals;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Authority> authorities;
 

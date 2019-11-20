@@ -17,5 +17,5 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
     @Query("SELECT e FROM Employee e JOIN e.divisions d JOIN d.chiefEmployee c " +
             "WHERE d.id=:id AND e.id <> c.id")
-    List<Employee> getChildEmployeesByChief(@Param("id") Integer id);
+    List<Employee> getEmployeesByChief(@Param("id") int id);
 }

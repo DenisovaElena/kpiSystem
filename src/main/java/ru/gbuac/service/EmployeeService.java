@@ -17,5 +17,5 @@ public interface EmployeeService {
 
     Employee update(Employee employee, int id);
 
-    List<Employee> getChildEmployeesByChief(Integer id);
+    List<Employee> getEmployeesByChief(int id);
 }
