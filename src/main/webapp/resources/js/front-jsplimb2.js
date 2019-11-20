@@ -1,199 +1,5 @@
-jsPlumb.ready(function () {
 
-// установить некоторые значения по умолчанию для jsPlumb.
-            var instance = jsPlumb.getInstance({
-                Endpoint: ["Dot", {radius: 2}],
-                Connector:"StateMachine",
-                HoverPaintStyle: {stroke: "#1e8151", strokeWidth: 2 },
-                ConnectionOverlays: [
-                    [ "Arrow", {
-                        location: 1,
-                        id: "arrow",
-                        length: 14,
-                        foldback: 0.8
-                    } ],
-                ],
-                Container: "canvas"
-            });
-
-            instance.registerConnectionType("basic", { anchor:"Continuous", connector:"Flowchart" });
-
-            window.jsp = instance;
-
-            var canvas = document.getElementById("canvas");
-            var windows = jsPlumb.getSelector(".statemachine-demo .w");
-
-// привязать прослушиватель кликов к каждому соединению
-            instance.bind("click", function (c) {
-                instance.deleteConnection(c);
-            });
 /*
-// привязать слушателя двойного щелчка к «canvas»; добавьте новый узел, когда это произойдет.
-            jsPlumb.on(canvas, "dblclick", function(e) {
-                newNode(e.offsetX, e.offsetY);
-            });
-*/
-// инициализация элемента как источник и цель соединения.
-            var initNode = function(el) {
-                    instance.draggable(el); // initialise draggable elements.
-                    instance.makeSource(el, {
-                        isSource: true,
-                        filter: ".ep",
-                        //createEndpoint:true,
-                        anchor: "Continuous",
-                        connectorStyle: { stroke: "#5c96bc", strokeWidth: 3, outlineStroke: "transparent", outlineWidth: 4 },
-                        connectionType:"basic",
-                        extract:{
-                            "action":"the-action"
-                        },
-                        maxConnections: 5,
-                        onMaxConnections: function (info, e) {
-                            alert("Maximum connections (" + info.maxConnections + ") reached");
-                        }
-
-
-                    });
-                    instance.makeTarget(el, {
-                        isTarget:true,
-                        dropOptions: { hoverClass: "dragHover" },
-                        createEndpoint:true,
-                        anchor: "Continuous",
-                        allowLoopback: false //Предотвращение петлевых подключений
-
-
-                    });
-            };
-// создание нового элемента.
-            var newNode = function() {
-                    var d = document.createElement("div");
-                    var id = jsPlumbUtil.uuid();
-                    d.className = "w";
-                    d.id = id;
-                    function name() {
-                    }
-                    //d.innerHTML = id.substring(0, 8) /*подпись блока*/ + "<div class='ep'></div>" + "<div class='main-btn1'></div>";
-                    d.style.left = 0 + "px";
-                    d.style.top = 0 + "px";
-                    instance.getContainer().appendChild(d);
-                    initNode(d);
-                    return d;
-            };
-// приостановить рисование и инициализировать
-            instance.batch(function () {
-                    for (var i = 0; i < windows.length; i++) {
-                        initNode(windows[i], true);
-                    }
-             });
-//Группы
-            instance.addGroup({
-                el: dep,
-                id:"aGroup",
-                dropOptions: true, //Указывает, что соединения с
-                // дочерними элементами внутри Группы (которые исходят из-за пределов Группы) должны быть проксированы
-                constrain:true, //препятствует принятию Группой пропущенных элементов
-                dropOverride:true, //предотвратит перетаскивание элементов за пределы группы
-                autoSize:true,
-                draggable: false, //отмена перетаскивания
-                anchor:"Continuous",
-                endpoint:"Blank",
-                droppable:true //По умолчанию группы настроены на прием элементов, сбрасываемых на них - любого элемента,
-                // который в данный момент управляется экземпляром jsPlumb, а не только существующих членов других групп.
-            });
-            instance.addToGroup("aGroup", division1);
-            instance.addToGroup("aGroup", division2);
-            instance.addToGroup("aGroup", division3);
-            instance.addToGroup("aGroup", division4);
-
-
-
-            instance.addGroup({
-                el: branch1,
-                id:"bGroup",
-                dropOptions: true, //Указывает, что соединения с
-                // дочерними элементами внутри Группы (которые исходят из-за пределов Группы) должны быть проксированы
-                constrain:true, //препятствует принятию Группой пропущенных элементов
-                dropOverride: true, //предотвратит перетаскивание элементов за пределы группы
-                autoSize:true,
-                draggable: true, //отмена перетаскивания
-                anchor:"Continuous",
-                endpoint:"Blank",
-                droppable:true //По умолчанию группы настроены на прием элементов, сбрасываемых на них - любого элемента,
-                // который в данный момент управляется экземпляром jsPlumb, а не только существующих членов других групп.
-            });
-            instance.addToGroup("bGroup", branch2);
-            instance.addToGroup("bGroup", branch3);
-            instance.addToGroup("bGroup", branch4);
-// Соединители
-            instance.connect({ source: "division1", target: "branch3", type:"basic"});
-            instance.connect({ source: "division1", target: "branch2", type:"basic"
-            });
-// collapse/expand group button
-            instance.on(canvas, "click", ".node-collapse", function() {
-                var g = this.parentNode.getAttribute("group"), collapsed = instance.hasClass(this.parentNode, "collapsed");
-
-                instance[collapsed ? "removeClass" : "addClass"](this.parentNode, "collapsed");
-                instance[collapsed ? "expandGroup" : "collapseGroup"](g);
-            });
-            jsPlumb.fire("jsPlumbDemoLoaded", instance);
-// Модальное окно
-    var modal = document.getElementById('myModal');
-    var btn= document.getElementById('myBtn');
-    var span = document.getElementById('myClose');
-    var btn1 = document.getElementsByClassName('main-btn');
-
-    btn.onclick = function () {modal.style.display = "block";};
-
-    span.onclick = function () {
-        modal.style.display = "none";
-    };
-    window.onclick = function (event) {
-        if(event.target == modal) {
-            modal.style.display ="none"
-        }
-    };
-
-// Создание нового элемента
-    $('.main-btn').click(function(e) {
-        newNode(e.offsetX, e.offsetY);
-        modal.style.display = "none";
-        d.innerHTML = id.substring(0, 8) /*подпись блока*/ + "<div class='ep'></div>" + "<div class='main-btn1'></div>";
-    });
-
-
-// Кнопка удаления
-    $('.main-btn1').on('click', function (c) {
-        var g= $(this).parent().remove();
-
-        // var conn = g.getConnections({
-        //     source: sourceId,
-        //     target: targetId
-        // });
-        // if (conn[0]) {
-        //     instance.deleteConnection(conn[0]);
-       // instance.bind("click", function (c) {
-       //      instance.deleteConnection(c);
-       //  });
-
-      //  $(this).parent().remove();
-     //  $(this).getConnections().hide();
-    });
-
-        //$(this).deleteConnection(c);
-        //jsPlumb.deleteEveryEndpoint();
-
-
-        //jsPlumb.deleteConnectionsForElement(el, [params])
-        /*
-                /*
-                var conn = g.getConnections({
-                    source: sourceId,
-                    target: targetId
-                });
-                if (conn[0]) {
-                    instance.detach(conn[0]);
-                }
-                 */
-});
 $(function(){
 
     $('.load-more').on('click', function(){
@@ -223,6 +29,240 @@ $(function(){
         });
     });
 });
+*/
+jsPlumb.ready(function () {
+
+// установить некоторые значения по умолчанию для jsPlumb.
+    var instance = jsPlumb.getInstance({
+        Endpoint: ["Dot", {radius: 2}],
+        Connector: "StateMachine",
+        HoverPaintStyle: {stroke: "#1e8151", strokeWidth: 2},
+        ConnectionOverlays: [
+            ["Arrow", {
+                location: 1,
+                id: "arrow",
+                length: 14,
+                foldback: 0.8
+            }],
+        ],
+        Container: "canvas"
+    });
+
+    instance.registerConnectionType("basic", {anchor: "Continuous", connector: "Flowchart"});
+
+    window.jsp = instance;
+
+    var canvas = document.getElementById("canvas");
+    var windows = jsPlumb.getSelector(".statemachine-demo .w");
+
+// привязать прослушиватель кликов к каждому соединению
+    instance.bind("click", function (c) {
+        instance.deleteConnection(c);
+    });
+    /*
+    // привязать слушателя двойного щелчка к «canvas»; добавьте новый узел, когда это произойдет.
+                jsPlumb.on(canvas, "dblclick", function(e) {
+                    newNode(e.offsetX, e.offsetY);
+                });
+    */
+// инициализация элемента как источник и цель соединения.
+    var initNode = function (el) {
+        instance.draggable(el); // initialise draggable elements.
+        instance.makeSource(el, {
+            isSource: true,
+            filter: ".ep",
+            //createEndpoint:true,
+            anchor: "Continuous",
+            connectorStyle: {stroke: "#5c96bc", strokeWidth: 3, outlineStroke: "transparent", outlineWidth: 4},
+            connectionType: "basic",
+            extract: {
+                "action": "the-action"
+            },
+            maxConnections: 5,
+            onMaxConnections: function (info, e) {
+                alert("Maximum connections (" + info.maxConnections + ") reached");
+            }
+
+
+        });
+        instance.makeTarget(el, {
+            isTarget: true,
+            dropOptions: {hoverClass: "dragHover"},
+            createEndpoint: true,
+            anchor: "Continuous",
+            allowLoopback: false //Предотвращение петлевых подключений
+
+
+        });
+    };
+// создание нового элемента.
+    var newNode = function () {
+        var d = document.createElement("div");
+        var id = jsPlumbUtil.uuid();
+        d.className = "w";
+        d.id = id;
+        d.innerHTML = id.substring(0, 8) /*подпись блока*/ + "<div class='ep'></div>" + "<div class='main-btn1'></div>";
+        d.style.left = 0 + "px";
+        d.style.top = 0 + "px";
+        instance.getContainer().appendChild(d);
+        initNode(d);
+        return d;
+    };
+// приостановить рисование и инициализировать
+    instance.batch(function () {
+        for (var i = 0; i < windows.length; i++) {
+            initNode(windows[i], true);
+        }
+    });
+//Группы
+    instance.addGroup({
+        el: dep,
+        id: "aGroup",
+        dropOptions: true, //Указывает, что соединения с
+        // дочерними элементами внутри Группы (которые исходят из-за пределов Группы) должны быть проксированы
+        constrain: true, //препятствует принятию Группой пропущенных элементов
+        dropOverride: true, //предотвратит перетаскивание элементов за пределы группы
+        autoSize: true,
+        draggable: false, //отмена перетаскивания
+        anchor: "Continuous",
+        endpoint: "Blank",
+        droppable: true //По умолчанию группы настроены на прием элементов, сбрасываемых на них - любого элемента,
+        // который в данный момент управляется экземпляром jsPlumb, а не только существующих членов других групп.
+    });
+    instance.addToGroup("aGroup", division1);
+    instance.addToGroup("aGroup", division2);
+    instance.addToGroup("aGroup", division3);
+    instance.addToGroup("aGroup", division4);
+
+
+    instance.addGroup({
+        el: branch1,
+        id: "bGroup",
+        dropOptions: true, //Указывает, что соединения с
+        // дочерними элементами внутри Группы (которые исходят из-за пределов Группы) должны быть проксированы
+        constrain: true, //препятствует принятию Группой пропущенных элементов
+        dropOverride: true, //предотвратит перетаскивание элементов за пределы группы
+        autoSize: true,
+        draggable: true, //отмена перетаскивания
+        anchor: "Continuous",
+        endpoint: "Blank",
+        droppable: true //По умолчанию группы настроены на прием элементов, сбрасываемых на них - любого элемента,
+        // который в данный момент управляется экземпляром jsPlumb, а не только существующих членов других групп.
+    });
+    instance.addToGroup("bGroup", branch2);
+    instance.addToGroup("bGroup", branch3);
+    instance.addToGroup("bGroup", branch4);
+// Соединители
+    instance.connect({source: "division1", target: "branch3", type: "basic"});
+    instance.connect({
+        source: "division1", target: "branch2", type: "basic"
+    });
+// collapse/expand group button
+    instance.on(canvas, "click", ".node-collapse", function () {
+        var g = this.parentNode.getAttribute("group"), collapsed = instance.hasClass(this.parentNode, "collapsed");
+
+        instance[collapsed ? "removeClass" : "addClass"](this.parentNode, "collapsed");
+        instance[collapsed ? "expandGroup" : "collapseGroup"](g);
+    });
+    jsPlumb.fire("jsPlumbDemoLoaded", instance);
+// Модальное окно
+    var modal = document.getElementById('myModal');
+    var btn = document.getElementById('myBtn');
+    var span = document.getElementById('myClose');
+    var btn1 = document.getElementsByClassName('main-btn');
+
+    btn.onclick = function () {
+        modal.style.display = "block";
+    };
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    };
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none"
+        }
+    };
+
+// Создание нового элемента
+    $('.main-btn').click(function (e) {
+        newNode(e.offsetX, e.offsetY);
+        modal.style.display = "none";
+        // d.innerHTML = id.substring(0, 8) /*подпись блока*/ + "<div class='ep'></div>" + "<div class='main-btn1'></div>";
+    });
+    //
+    // $(function req(data) {
+    //     const url= "rest/profile/authorities/getAllTopLevel";
+    //     const method= "GET";
+    //     const request = new XMLHttpRequest();
+    //     const isAsync = false;
+    //     request.open(method, url, isAsync);
+    //     request.send();
+    //
+    //     const data1 = JSON.parse(request.response)
+    //     console.log(data1)
+
+    // $('#division1').on('click', function (e) {
+    //     const btn = $(this);
+    //     const loader = btn.find('span');
+    $.ajax({
+        url: "rest/profile/authorities/getAllTopLevel",
+        method: "GET",
+        contentType: "application/json",
+        success: function (data) {
+            // console.log(data); // Возвращаемые данные выводим в консоль
+            // alert(data[0].name);
+            var y = 1;
+            // for (y in data) {
+            //     $('#division'+y).text(data[y].name);
+            // }
+            $('#division1').text(data[0].name);
+            $('#division2').text(data[1].name);
+            $('#division3').text(data[2].name);
+            $('#division4').text(data[3].name);
+
+        },
+        error: function () {
+            alert('Error!');
+        }
+    });
+
+    // Кнопка удаления
+    $('.main-btn1').on('click', function (c) {
+        var g = $(this).parent().remove();
+
+        // var conn = g.getConnections({
+        //     source: sourceId,
+        //     target: targetId
+        // });
+        // if (conn[0]) {
+        //     instance.deleteConnection(conn[0]);
+        // instance.bind("click", function (c) {
+        //      instance.deleteConnection(c);
+        //  });
+
+        //  $(this).parent().remove();
+        //  $(this).getConnections().hide();
+    });
+});
+
+        //$(this).deleteConnection(c);
+        //jsPlumb.deleteEveryEndpoint();
+
+
+        //jsPlumb.deleteConnectionsForElement(el, [params])
+        /*
+                /*
+                var conn = g.getConnections({
+                    source: sourceId,
+                    target: targetId
+                });
+                if (conn[0]) {
+                    instance.detach(conn[0]);
+                }
+                 */
+
+
 
 
 

@@ -104,35 +104,35 @@
 #dep {
     left: 5em;
     top: 5em;
-    width: 20em;
-    height: 40em;
+    width: 30em;
+    height: 60em;
     z-index: 0;
 }
 #division1 {
     position:absolute;
     left: 7em;
     top: 10em;
-    width: 10em;
+    width: 20em;
     z-index: 1;
 }
 #division2 {
     position:absolute;
     left: 7em;
-    top: 15em;
-    width: 10em;
+    top: 20em;
+    width: 20em;
     z-index: 1;
 }
 #division3 {
     left: 7em;
-    top: 20em;
-    width: 10em;
+    top: 40em;
+    width: 20em;
     z-index: 1;
     position:absolute;
 }
 #division4 {
     left: 7em;
-    top: 25em;
-    width: 10em;
+    top: 50em;
+    width: 20em;
     z-index: 1;
 }
 #branch1 {

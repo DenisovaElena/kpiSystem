@@ -1,6 +1,6 @@
-<!doctype html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<html lang="en">
+<html lang="ru">
 <head>
             <title>KPI</title>
 <!-- CSS -->
@@ -8,11 +8,11 @@
             <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
             <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
             <link href="//fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-            <link rel="stylesheet" href="../css/jsplumbtoolkit-defaults2.css">
-            <link rel="stylesheet" href="../css/main2.css">
-            <link rel="stylesheet" href="../css/jsplumbtoolkit-demo2.css">
-            <link rel="stylesheet" href="../css/front-jsplumb2.css">
-            <link rel="stylesheet" href="../css/bootstrap.min.css">
+            <link rel="stylesheet" href="resources/css/jsplumbtoolkit-defaults2.css">
+            <link rel="stylesheet" href="resources/css/main2.css">
+            <link rel="stylesheet" href="resources/css/jsplumbtoolkit-demo2.css">
+            <link rel="stylesheet" href="resources/css/front-jsplumb2.css">
+            <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <!-- Заголовок страницы -->
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light">
@@ -137,11 +137,11 @@
         </section>
 
 <!-- Scripts -->
-    <script src="../js/jsplumb.js"></script>
-    <script src="../js/front-jsplimb2.js"></script>
-    <script src="../js/front-jsplimb-list2.js"></script>
-    <script src="../js/bootstrap.js"></script>
-    <script src="../js/jquery-3.4.1.min.js"></script>
-    <script src="../js/popper.min.js"></script>
+    <script src="resources/js/jquery-3.3.1.min.js"></script>
+    <script src="resources/js/jsplumb.js"></script>
+    <script src="resources/js/front-jsplimb2.js"></script>
+    <script src="resources/js/front-jsplimb-list2.js"></script>
+    <script src="resources/js/bootstrap.js"></script>
+    <script src="resources/js/popper.min.js"></script>
 </body>
 </html>
