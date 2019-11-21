@@ -18,4 +18,6 @@ public interface DivisionService {
     Division update(Division division, int id);
 
     List<Division> getAllTopLevel();
+
+    List<Division> getChildDivisionByDivisionId(int id);
 }

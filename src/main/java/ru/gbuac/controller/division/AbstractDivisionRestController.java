@@ -49,4 +49,9 @@ public abstract class AbstractDivisionRestController {
         LOG.info("getAllTopLevelDivision");
         return divisionService.getAllTopLevel();
     }
+
+    public List<Division> getChildDivisionByDivisionId(int id) {
+        LOG.info("getChildDivisionByDivisionId");
+        return divisionService.getChildDivisionByDivisionId(id);
+    }
 }

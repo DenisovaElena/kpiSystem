@@ -49,4 +49,9 @@ public class DivisionServiceImpl implements DivisionService {
     public List<Division> getAllTopLevel() {
         return divisionRepository.getAllTopLevel();
     }
+
+    @Override
+    public List<Division> getChildDivisionByDivisionId(int id) {
+        return divisionRepository.getChildDivisionByDivisionId(id);
+    }
 }
