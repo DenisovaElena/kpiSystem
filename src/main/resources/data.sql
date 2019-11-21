@@ -13,27 +13,29 @@ INSERT INTO kpi.division(id, name, top_level, chief_employee_id) VALUES (11, 'О
 INSERT INTO kpi.division(id, name, top_level, chief_employee_id) VALUES (12, 'Отдел экономики образования и культуры/ГБУ ЦНД', false, 24);
 
 
-INSERT  INTO kpi.employee(id, division_id, lastname, firstname, patronym, position, email, phone) VALUES (13, 1, 'Иванов','Иван','Иванович', 'Начальник Управления ценовой и тарифной политики','iv@mail.ru', '15555');
-INSERT  INTO kpi.employee(id, division_id, lastname, firstname, patronym, position, email, phone) VALUES (14, 2, 'Петров','Иван','Иванович', 'Начальник Сводного управления бюджетных инвестиций', 'iv@mail.ru', '15555');
-INSERT  INTO kpi.employee(id, division_id, lastname, firstname, patronym, position, email, phone) VALUES (15, 3,  'Сидоров','Иван','Иванович', 'Начальник Управления бюджетных инвестиций дорожно-мостового, жилищного строительства и объектов инженерии', 'iv@mail.ru', '15555');
-INSERT  INTO kpi.employee(id, division_id, lastname, firstname, patronym, position, email, phone) VALUES (16, 4,  'Ларькова','Алиса','Петровна', 'Начальник Управления регулирования тарифов на услуги транспортных организаций', 'iv@mail.ru', '15555');
-INSERT  INTO kpi.employee(id, division_id, lastname, firstname, patronym, position, email, phone) VALUES (17, 5,  'Мирзоев','Ибрагим','Исмаилович', 'Начальник Управления бюджетной и налоговой политики', 'iv@mail.ru', '15555');
-INSERT  INTO kpi.employee(id, division_id, lastname, firstname, patronym, position, email, phone) VALUES (18, 6,  'Насраилова','Фируза','Алмазона', 'Начальник Управления миграционной политики','iv@mail.ru', '15555');
+INSERT  INTO kpi.employee(id, lastname, firstname, patronym, position, email, phone) VALUES (13, 'Иванов','Иван',
+                                                                                             'Иванович', 'Начальник Управления ценовой и тарифной политики','iv@mail.ru', '15555');
+INSERT  INTO kpi.employee(id, lastname, firstname, patronym, position, email, phone) VALUES (14, 'Петров','Иван',
+                                                                                             'Иванович', 'Начальник Сводного управления бюджетных инвестиций', 'iv@mail.ru', '15555');
+INSERT  INTO kpi.employee(id, lastname, firstname, patronym, position, email, phone) VALUES (15, 'Сидоров','Иван','Иванович', 'Начальник Управления бюджетных инвестиций дорожно-мостового, жилищного строительства и объектов инженерии', 'iv@mail.ru', '15555');
+INSERT  INTO kpi.employee(id, lastname, firstname, patronym, position, email, phone) VALUES (16, 'Ларькова','Алиса','Петровна', 'Начальник Управления регулирования тарифов на услуги транспортных организаций', 'iv@mail.ru', '15555');
+INSERT  INTO kpi.employee(id, lastname, firstname, patronym, position, email, phone) VALUES (17, 'Мирзоев','Ибрагим','Исмаилович', 'Начальник Управления бюджетной и налоговой политики', 'iv@mail.ru', '15555');
+INSERT  INTO kpi.employee(id, lastname, firstname, patronym, position, email, phone) VALUES (18, 'Насраилова','Фируза','Алмазона', 'Начальник Управления миграционной политики','iv@mail.ru', '15555');
 
-INSERT  INTO kpi.employee(id, division_id, lastname, firstname, patronym, position, email, phone) VALUES (19, 7, 'Очкова','Оксана','Евгеньевна', 'Начальник Отдела экономических нормативов и начальных (максимальных) цен контрактов', 'iv@mail.ru', '15555');
-INSERT  INTO kpi.employee(id, division_id, lastname, firstname, patronym, position, email, phone) VALUES (20, 8,  'Правдивый','Андрей','Иванович', 'Начальник Отдела цен и тарифной политики в городском хозяйстве', 'iv@mail.ru', '15555');
-INSERT  INTO kpi.employee(id, division_id, lastname, firstname, patronym, position, email, phone) VALUES (21, 9,  'Субботкина','Лариса','Петровна', 'Начальник Отдела развития инженерии','iv@mail.ru', '15555');
-INSERT  INTO kpi.employee(id, division_id, lastname, firstname, patronym, position, email, phone) VALUES (22, 10, 'Криворучко','Виктория','Валерьевна', 'Начальник Отдела экономики социальной защиты и прочих отраслей', 'iv@mail.ru', '15555');
-INSERT  INTO kpi.employee(id, division_id, lastname, firstname, patronym, position, email, phone) VALUES (23, 11, 'Скворцова','Татьяна','Педровна', 'Начальник Отдела строительства объектов социальной сферы','iv@mail.ru', '15555');
-INSERT  INTO kpi.employee(id, division_id, lastname, firstname, patronym, position, email, phone) VALUES (24, 12, 'Кобылко','Александр','Евстафьевич', 'Начальник Отдела экономики образования и культуры/ГБУ ЦНД','iv@mail.ru', '15555');
+INSERT  INTO kpi.employee(id, lastname, firstname, patronym, position, email, phone) VALUES (19, 'Очкова','Оксана','Евгеньевна', 'Начальник Отдела экономических нормативов и начальных (максимальных) цен контрактов', 'iv@mail.ru', '15555');
+INSERT  INTO kpi.employee(id, lastname, firstname, patronym, position, email, phone) VALUES (20, 'Правдивый','Андрей','Иванович', 'Начальник Отдела цен и тарифной политики в городском хозяйстве', 'iv@mail.ru', '15555');
+INSERT  INTO kpi.employee(id, lastname, firstname, patronym, position, email, phone) VALUES (21, 'Субботкина','Лариса','Петровна', 'Начальник Отдела развития инженерии','iv@mail.ru', '15555');
+INSERT  INTO kpi.employee(id, lastname, firstname, patronym, position, email, phone) VALUES (22, 'Криворучко','Виктория','Валерьевна', 'Начальник Отдела экономики социальной защиты и прочих отраслей', 'iv@mail.ru', '15555');
+INSERT  INTO kpi.employee(id, lastname, firstname, patronym, position, email, phone) VALUES (23, 'Скворцова','Татьяна','Педровна', 'Начальник Отдела строительства объектов социальной сферы','iv@mail.ru', '15555');
+INSERT  INTO kpi.employee(id, lastname, firstname, patronym, position, email, phone) VALUES (24, 'Кобылко','Александр','Евстафьевич', 'Начальник Отдела экономики образования и культуры/ГБУ ЦНД','iv@mail.ru', '15555');
 
 
-INSERT  INTO kpi.employee(id, division_id, lastname, firstname, patronym, position, email, phone) VALUES (25, 7,  'Чирикишвилли','Натэлла','Тамазиковна', 'Советник Отдела экономических нормативов и начальных (максимальных) цен контрактов','iv@mail.ru', '15555');
-INSERT  INTO kpi.employee(id, division_id, lastname, firstname, patronym, position, email, phone) VALUES (26, 8,  'Рукомойкин','Марат','Иванович', 'Главный эксперт Отдела цен и тарифной политики в городском хозяйстве', 'iv@mail.ru', '15555');
-INSERT  INTO kpi.employee(id, division_id, lastname, firstname, patronym, position, email, phone) VALUES (27, 9,  'Лобкова','Аполинария','Модестовна', 'Главный эксперт Отдела развития инженерии','iv@mail.ru', '15555');
-INSERT  INTO kpi.employee(id, division_id, lastname, firstname, patronym, position, email, phone) VALUES (28, 10, 'Филиппова','Анджела','ЦирковаяЛошадь', 'Специалист Отдела экономики социальной защиты и прочих отраслей', 'iv@mail.ru', '15555');
-INSERT  INTO kpi.employee(id, division_id, lastname, firstname, patronym, position, email, phone) VALUES (29, 11, 'Добровольская','Снежанна','Викторовна', 'Инженер Отдела строительства объектов социальной сферы', 'iv@mail.ru', '15555');
-INSERT  INTO kpi.employee(id, division_id, lastname, firstname, patronym, position, email, phone) VALUES (30, 12, 'Голобородько','Инокентий','Петрович', 'Старший специалист Отдела экономики образования и культуры/ГБУ ЦНД', 'iv@mail.ru', '15555');
+INSERT  INTO kpi.employee(id, lastname, firstname, patronym, position, email, phone) VALUES (25, 'Чирикишвилли','Натэлла','Тамазиковна', 'Советник Отдела экономических нормативов и начальных (максимальных) цен контрактов','iv@mail.ru', '15555');
+INSERT  INTO kpi.employee(id, lastname, firstname, patronym, position, email, phone) VALUES (26, 'Рукомойкин','Марат','Иванович', 'Главный эксперт Отдела цен и тарифной политики в городском хозяйстве', 'iv@mail.ru', '15555');
+INSERT  INTO kpi.employee(id, lastname, firstname, patronym, position, email, phone) VALUES (27, 'Лобкова','Аполинария','Модестовна', 'Главный эксперт Отдела развития инженерии','iv@mail.ru', '15555');
+INSERT  INTO kpi.employee(id, lastname, firstname, patronym, position, email, phone) VALUES (28, 'Филиппова','Анджела','ЦирковаяЛошадь', 'Специалист Отдела экономики социальной защиты и прочих отраслей', 'iv@mail.ru', '15555');
+INSERT  INTO kpi.employee(id, lastname, firstname, patronym, position, email, phone) VALUES (29, 'Добровольская','Снежанна','Викторовна', 'Инженер Отдела строительства объектов социальной сферы', 'iv@mail.ru', '15555');
+INSERT  INTO kpi.employee(id, lastname, firstname, patronym, position, email, phone) VALUES (30, 'Голобородько','Инокентий','Петрович', 'Старший специалист Отдела экономики образования и культуры/ГБУ ЦНД', 'iv@mail.ru', '15555');
 
 
 INSERT  INTO kpi.division_child_division(division_id, child_division_id) VALUES (1, 7);

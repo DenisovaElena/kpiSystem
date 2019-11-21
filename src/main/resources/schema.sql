@@ -42,7 +42,6 @@ CREATE TABLE kpi.division_child_division
 CREATE TABLE kpi.employee
 (
     id                      INTEGER PRIMARY KEY DEFAULT nextval('kpi.global_seq'),
-    division_id             INTEGER                               ,
     firstname               VARCHAR                               ,
     lastname                VARCHAR                               ,
     patronym                VARCHAR                               ,
