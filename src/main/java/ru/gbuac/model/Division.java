@@ -28,7 +28,6 @@ public class Division extends NamedEntity {
     )
     private List<Employee> employees;
 
-    @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "division_child_division",
             joinColumns = @JoinColumn(name = "division_id"),
