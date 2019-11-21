@@ -40,50 +40,50 @@
 
                 <div class="jtk-demo-canvas canvas-wide statemachine-demo jtk-surface jtk-surface-nopan" id="canvas">
 
-                    <div class="w" id="dep">Департамент
-                        <div class="main-btn1" type="button" value="1">&times;</div>
+                    <div class="w" id="dep"><span class="nameBlock">Департамент</span>
+                        <div class="main-btn1" type="button" id="submit1" value="1">&times;</div>
                         <div class="ep" action="dep"></div>
                     </div>
 
-                    <div class="w" id="division1">Разработка
-                        <button class="main-btn1" type="submit" value="1">&times;</button>
+                    <div class="w" id="division1"><span class="nameBlock">Разработка</span>
+                        <button class="main-btn1" type="submit2" value="1">&times;</button>
                         <div class="ep" action="division1"></div>
                     </div>
 
-                    <div class="w" id="division2">Аналитика
-                        <button class="main-btn1" type="button" value="1">&times;</button>
+                    <div class="w" id="division2"><span class="nameBlock">Аналитика</span>
+                        <button class="main-btn1" type="button" id="submit3" value="1">&times;</button>
                         <div class="ep" action="division2"></div>
                     </div>
 
-                    <div class="w" id="division3">Анализ
-                        <button class="main-btn1" type="button" value="1">&times;</button>
+                    <div class="w" id="division3"><span class="nameBlock">Анализ</span>
+                        <button class="main-btn1" type="button" id="submit4" value="1">&times;</button>
                         <div class="ep" action="division3"></div>
                     </div>
 
-                    <div class="w" id="division4">Аудит
-                        <button class="main-btn1" type="button" value="1">&times;</button>
+                    <div class="w" id="division4"><span class="nameBlock">Аудит</span>
+                        <button class="main-btn1" type="button" id="submit5" value="1">&times;</button>
                         <div class="ep" action="division4"></div>
                     </div>
 
                     <div class="w" id="branch1">ПО №1
-                        <button class="main-btn1" type="button" value="1">&times;</button>
+                        <button class="main-btn1" type="button" id="submit6" value="1">&times;</button>
                         <div class="ep" action="branch1"></div>
                     </div>
 
-                    <div class="w" id="branch2">Отдел аналитики
-                        <button class="main-btn1" type="button" value="1">&times;</button>
+                    <div class="w" id="branch2"><span class="nameBlock">Отдел аналитики</span>
+                        <button class="main-btn1" type="button"id="submit7" value="1">&times;</button>
                         <div class="ep" action="branch2"></div>
                     </div>
 
-                    <div class="w" id="branch3">Отдел аудита
-                        <button class="main-btn1" type="button" value="1">&times;</button>
+                    <div class="w" id="branch3"><span class="nameBlock">Отдел аудита</span>
+                        <button class="main-btn1" type="button" id="submit8"value="1">&times;</button>
                         <div class="ep" action="branch3"></div>
                     </div>
 
-                    <div class="w" id="branch4">Отдел менеджмента
-                        <button class="main-btn1" type="button" value="1">&times;</button>
-                        <div class="ep" action="branch4"></div>
-                    </div>
+<%--                    <div class="w" id="branch4"><span class="nameBlock">Отдел менеджмента</span>--%>
+<%--                        <button class="main-btn1" type="button" id="submit9" value="1">&times;</button>--%>
+<%--                        <div class="ep" action="branch4"></div>--%>
+<%--                    </div>--%>
                 </div>
                 <button id="myBtn">Новый элемент</button>
             </div>
