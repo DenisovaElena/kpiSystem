@@ -78,29 +78,12 @@
                     <!--третья штука-->
                     <h5 class="my-3">Подразделения</h5>
                     <div class="card bg-light my-3">
-                        <div class="card-body">
-                            <div class="row d-flex align-items-center mb-3">
-                                <div class="col-3 text-right">
-                                    <label for="column1">1.</label>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" class="form-control" id="column1" name="column1" value="">
-                                </div>
-                            </div>
-                            <div class="row d-flex align-items-center mb-3">
-                                <div class="col-3 text-right">
-                                    <label for="column1">2.</label>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" class="form-control" id="column2" name="column2" value="">
-                                </div>
-                            </div>
-                        </div>
+                        <div class="card-body" id="childDivisionBlock"></div>
                     </div>
                     <!--Четвертая  штука-->
-                    <h5 class="my-3">Сотрудники</h5>
+                    <h5 class="my-3">Сотрудники"</h5>
                     <div class="card bg-light my-3">
-                        <div class="card-body py-0">
+                        <div class="card-body py-0" id="employeesDivisionBlock">
                             <div class="row d-flex align-items-center justify-content-center text-center font-weight-bold">
                                 <div class="col-1 border-right border-bottom my-0 py-2">#</div>
                                 <div class="col-2 border-right border-bottom my-0 py-2">Фамилия</div>
@@ -108,30 +91,6 @@
                                 <div class="col-3 border-right border-bottom my-0 py-2">Отчество</div>
                                 <div class="col-2 border-right border-bottom my-0 py-2">Должность</div>
                                 <div class="col-2 border-bottom my-0 py-2">Email</div>
-                            </div>
-                            <div class="row d-flex align-items-center justify-content-center text-center" >
-                                <div class="col-1 border-right border-bottom my-0 py-2">1</div>
-                                <div class="col-2 border-right border-bottom my-0 py-2">Каркоцкий</div>
-                                <div class="col-2 border-right border-bottom my-0 py-2">Антон</div>
-                                <div class="col-3 border-right border-bottom my-0 py-2">Геннадьевич</div>
-                                <div class="col-2 border-right border-bottom my-0 py-2">Сотрудник</div>
-                                <div class="col-2 border-bottom my-0 py-2">test@mail.ru</div>
-                            </div>
-                            <div class="row d-flex align-items-center justify-content-center text-center">
-                                <div class="col-1 border-right border-bottom my-0 py-2">2</div>
-                                <div class="col-2 border-right border-bottom my-0 py-2">Халиллова</div>
-                                <div class="col-2 border-right border-bottom my-0 py-2">Лаура</div>
-                                <div class="col-3 border-right border-bottom my-0 py-2">Серкалиевна</div>
-                                <div class="col-2 border-right border-bottom my-0 py-2">Сотрудник</div>
-                                <div class="col-2 border-bottom my-0 py-2">test@mail.ru</div>
-                            </div>
-                            <div class="row d-flex align-items-center justify-content-center text-center">
-                                <div class="col-1 border-right my-0 py-2">3</div>
-                                <div class="col-2 border-right my-0 py-2">Жукова</div>
-                                <div class="col-2 border-right my-0 py-2">Светлана</div>
-                                <div class="col-3 border-right my-0 py-2">Дмитриевна</div>
-                                <div class="col-2 border-right my-0 py-2">Сотрудник</div>
-                                <div class="col-2 my-0 py-2">test@mail.ru</div>
                             </div>
                         </div>
                     </div>
