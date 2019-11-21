@@ -51,4 +51,10 @@ public class DivisionRestController extends AbstractDivisionRestController {
     public List<Division> getChildDivisionByDivisionId (@PathVariable("id") int id) {
         return super.getChildDivisionByDivisionId(id);
     }
+
+    @Override
+    @GetMapping(value = "/getDivisionByAuthorityId/{id}")
+    public List<Division> getDivisionByAuthorityId(@PathVariable("id") int id) {
+        return super.getDivisionByAuthorityId(id);
+    }
 }

@@ -22,4 +22,7 @@ public interface DivisionRepository extends JpaRepository<Division, Integer> {
 
     @Query("SELECT c FROM Division d JOIN d.childDivision c WHERE d.id=:id")
     List<Division> getChildDivisionByDivisionId(@Param("id") int id);
+
+    @Query("SELECT d FROM Division d JOIN d.authorities a WHERE a.id=:id")
+    List<Division> getDivisionByAuthorityId(@Param("id") int id);
 }

@@ -20,4 +20,6 @@ public interface DivisionService {
     List<Division> getAllTopLevel();
 
     List<Division> getChildDivisionByDivisionId(int id);
+
+    List<Division> getDivisionByAuthorityId(int id);
 }

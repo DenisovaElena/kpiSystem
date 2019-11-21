@@ -46,8 +46,8 @@ public class Division extends NamedEntity {
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "authority_divisions",
-            joinColumns = @JoinColumn(name = "authority_id"),
-            inverseJoinColumns = @JoinColumn(name = "division_id")
+            joinColumns = @JoinColumn(name = "division_id"),
+            inverseJoinColumns = @JoinColumn(name = "authority_id")
     )
     private List<Authority> authorities;
 
