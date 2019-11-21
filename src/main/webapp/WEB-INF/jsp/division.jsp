@@ -1,12 +1,14 @@
-
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Bootstrap 4 Website Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../resources/css/index.css">
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/css/index.css">
 
 </head>
 <body>
@@ -16,7 +18,7 @@
             <div class="row">
                 <div class="col-3">
                     <div class="fakeimg d-flex align-items-center justify-content-center">
-                        <img class="img-fluid" src="../../resources/img/logo.png" alt="Fake Image">
+                        <img class="img-fluid" src="resources/img/Logo.png" alt="Fake Image">
                     </div>
                 </div>
                 <div class="col-9">
@@ -71,24 +73,7 @@
                     <!--вторая штука-->
                     <h5 class="my-3">Функции</h5>
                     <div class="card bg-light my-3">
-                        <div class="card-body">
-                            <div class="row d-flex align-items-center mb-3">
-                                <div class="col-3 text-right">
-                                    <label for="funcN1">1.</label>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" class="form-control" id="funcN1" name="funcN1">
-                                </div>
-                            </div>
-                            <div class="row d-flex align-items-center mb-3">
-                                <div class="col-3 text-right">
-                                    <label for="funcN2">2.</label>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" class="form-control" id="funcN2" name="funcN2">
-                                </div>
-                            </div>
-                        </div>
+                        <div class="card-body" id="functionBlock"></div>
                     </div>
                     <!--третья штука-->
                     <h5 class="my-3">Подразделения</h5>
@@ -99,7 +84,7 @@
                                     <label for="column1">1.</label>
                                 </div>
                                 <div class="col-9">
-                                    <input type="text" class="form-control" id="column1" name="column1">
+                                    <input type="text" class="form-control" id="column1" name="column1" value="">
                                 </div>
                             </div>
                             <div class="row d-flex align-items-center mb-3">
@@ -107,7 +92,7 @@
                                     <label for="column1">2.</label>
                                 </div>
                                 <div class="col-9">
-                                    <input type="text" class="form-control" id="column2" name="column2">
+                                    <input type="text" class="form-control" id="column2" name="column2" value="">
                                 </div>
                             </div>
                         </div>
@@ -155,9 +140,9 @@
             </div>
         </form>
     </div>
-    <script src="../../resources/js/jquery-3.3.1.min.js"></script>
-    <script src="../../resources/js/popper.min.js"></script>
-    <script src="../../resources/js/bootstrap.min.js"></script>
-    <script src="../../resources/js/divisionsUtil.js"></script>
+    <script src="resources/js/jquery-3.3.1.min.js"></script>
+    <script src="resources/js/popper.min.js"></script>
+    <script src="resources/js/bootstrap.min.js"></script>
+    <script src="resources/js/divisionsUtil.js"></script>
 </body>
 </html>
