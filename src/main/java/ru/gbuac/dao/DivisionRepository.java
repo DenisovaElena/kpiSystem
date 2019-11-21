@@ -20,6 +20,6 @@ public interface DivisionRepository extends JpaRepository<Division, Integer> {
     @Query("SELECT d FROM Division d WHERE d.topLevel=TRUE")
     List<Division> getAllTopLevel();
 
-    @Query("SELECT d FROM Division d JOIN d.childDivision c WHERE d.id=:id")
+    @Query("SELECT c FROM Division d JOIN d.childDivision c WHERE d.id=:id")
     List<Division> getChildDivisionByDivisionId(@Param("id") int id);
 }
