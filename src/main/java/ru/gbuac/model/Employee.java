@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @Table(name = "employee")
-public class Employee extends BaseEntity {
+public class Employee extends NamedEntity {
 
     @SafeHtml
     @Column(name = "firstname")
