@@ -12,12 +12,12 @@
 
 </head>
 <body>
-    <div class="container w-sm-100">
+    <div class="container-fluid w-sm-100">
         <h2 class="text-center my-5">Наименование структуры</h2>
         <form>
             <div class="row">
-                <div class="col-3">
-                    <div class="fakeimg d-flex align-items-center justify-content-center">
+                <div class="col-lg-3">
+                <div class="fakeimg d-flex align-items-md-center justify-content-md-center">
                         <img class="img-fluid" src="resources/img/Logo.png" alt="Fake Image">
                     </div>
                 </div>
@@ -81,20 +81,30 @@
                         <div class="card-body" id="childDivisionBlock"></div>
                     </div>
                     <!--Четвертая  штука-->
-                    <h5 class="my-3">Сотрудники"</h5>
+                    <h5 class="my-3">Сотрудники</h5>
                     <div class="card bg-light my-3">
-                        <div class="card-body py-0" id="employeesDivisionBlock">
-                            <div class="row d-flex align-items-center justify-content-center text-center font-weight-bold">
+                        <div class="card-body py-0">
+                            <table class="table table-bordered mt-3" id="employeesDivisionBlock">
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Фамилия</th>
+                                    <th class="text-center">Имя</th>
+                                    <th class="text-center">Отчество</th>
+                                    <th class="text-center">Должность</th>
+                                    <th class="text-center">Email</th>
+                                </tr>
+                            </table>
+                            <%--<div class="row d-flex align-items-center justify-content-center text-center font-weight-bold">
                                 <div class="col-1 border-right border-bottom my-0 py-2">#</div>
                                 <div class="col-2 border-right border-bottom my-0 py-2">Фамилия</div>
                                 <div class="col-2 border-right border-bottom my-0 py-2">Имя</div>
-                                <div class="col-3 border-right border-bottom my-0 py-2">Отчество</div>
-                                <div class="col-2 border-right border-bottom my-0 py-2">Должность</div>
-                                <div class="col-2 border-bottom my-0 py-2">Email</div>
-                            </div>
+                                <div class="col-2 border-right border-bottom my-0 py-2">Отчество</div>
+                                <div class="col-3 border-right border-bottom my-0 py-2">Должность</div>
+                                <div class="col-2 border-bottom my-0 py-0">Email</div>
+                            </div>--%>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-success" onclick="save()">Success</button>
+                    <button type="button" class="btn btn-success" onclick="save()">Нажми меня</button>
                 </div>
             </div>
         </form>
