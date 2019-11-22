@@ -16,6 +16,11 @@ public class RootController {
         return "redirect:login";
     }
 
+    @GetMapping(value = "/division")
+    public String division() {
+        return "division";
+    }
+
     @GetMapping(value = "/admin/quests")
     public String quests() {
         return "admin/quests";

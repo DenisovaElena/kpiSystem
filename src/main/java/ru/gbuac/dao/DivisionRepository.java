@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
+import ru.gbuac.model.Authority;
 import ru.gbuac.model.Division;
 
 import java.util.List;
@@ -18,4 +19,10 @@ public interface DivisionRepository extends JpaRepository<Division, Integer> {
 
     @Query("SELECT d FROM Division d WHERE d.topLevel=TRUE")
     List<Division> getAllTopLevel();
+
+    @Query("SELECT c FROM Division d JOIN d.childDivision c WHERE d.id=:id")
+    List<Division> getChildDivisionByDivisionId(@Param("id") int id);
+
+    @Query("SELECT d FROM Division d JOIN d.authorities a WHERE a.id=:id")
+    List<Division> getDivisionByAuthorityId(@Param("id") int id);
 }

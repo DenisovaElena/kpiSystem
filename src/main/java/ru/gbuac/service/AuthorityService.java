@@ -18,4 +18,6 @@ public interface AuthorityService {
     Authority update(Authority authority, int id);
 
     List<Authority> getAllTopLevel();
+
+    List<Authority> getAuthoritiesByDivisionId(int id);
 }

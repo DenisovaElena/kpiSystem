@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = DivisionRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
-public class DivisionRestController extends AbstractDivisionRestCotroller {
+public class DivisionRestController extends AbstractDivisionRestController {
     public static final String REST_URL = "/rest/profile/divisions";
 
     @Override
@@ -44,5 +44,17 @@ public class DivisionRestController extends AbstractDivisionRestCotroller {
     @GetMapping(value = "/getAllTopLevel")
     public List<Division> getAllTopLevel() {
         return super.getAllTopLevel();
+    }
+
+    @Override
+    @GetMapping(value = "/getChildDivisionByDivisionId/{id}")
+    public List<Division> getChildDivisionByDivisionId (@PathVariable("id") int id) {
+        return super.getChildDivisionByDivisionId(id);
+    }
+
+    @Override
+    @GetMapping(value = "/getDivisionByAuthorityId/{id}")
+    public List<Division> getDivisionByAuthorityId(@PathVariable("id") int id) {
+        return super.getDivisionByAuthorityId(id);
     }
 }

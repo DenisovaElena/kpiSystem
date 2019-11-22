@@ -29,7 +29,7 @@ public class DivisionServiceImpl implements DivisionService {
 
     @Override
     public Division save(Division division) {
-        Assert.notNull(division, "catalog must not be null");
+        Assert.notNull(division, "division must not be null");
         return divisionRepository.save(division);
     }
 
@@ -40,7 +40,7 @@ public class DivisionServiceImpl implements DivisionService {
 
     @Override
     public Division update(Division division, int id) {
-        Assert.notNull(division, "catalog must not be null");
+        Assert.notNull(division, "division must not be null");
         Division savedDivision = checkNotFoundWithId(divisionRepository.save(division), id);
         return savedDivision;
     }
@@ -48,5 +48,15 @@ public class DivisionServiceImpl implements DivisionService {
     @Override
     public List<Division> getAllTopLevel() {
         return divisionRepository.getAllTopLevel();
+    }
+
+    @Override
+    public List<Division> getChildDivisionByDivisionId(int id) {
+        return divisionRepository.getChildDivisionByDivisionId(id);
+    }
+
+    @Override
+    public List<Division> getDivisionByAuthorityId(int id) {
+        return divisionRepository.getDivisionByAuthorityId(id);
     }
 }
