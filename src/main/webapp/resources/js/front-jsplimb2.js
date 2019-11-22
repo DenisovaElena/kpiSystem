@@ -93,6 +93,7 @@ jsPlumb.ready(function () {
         draggable: false, //отмена перетаскивания
         anchor: "Continuous",
         endpoint: "Blank",
+        orphan: true,
         droppable: true //По умолчанию группы настроены на прием элементов, сбрасываемых на них - любого элемента,
         // который в данный момент управляется экземпляром jsPlumb, а не только существующих членов других групп.
     });
@@ -100,7 +101,6 @@ jsPlumb.ready(function () {
     instance.addToGroup("aGroup", division2);
     instance.addToGroup("aGroup", division3);
     instance.addToGroup("aGroup", division4);
-
 
     instance.addGroup({
         el: branch1,
@@ -167,8 +167,7 @@ jsPlumb.ready(function () {
                         for (var m in data[y].childAuthorities) {
                             var m1 = parseInt(y)+1;
                             $('#branch' + m1 + ' .nameBlock').text(data[y].childAuthorities[m].name);
-
-                            y+=1;
+                           // y+=1;
                         }
                 }
                 // $('#division1').text(data[0].name);
@@ -188,7 +187,45 @@ jsPlumb.ready(function () {
                 var group1 = instance.getMembers(g);
                 instance.deleteConnectionsForElement(group1);
            });
-
-
 });
+
+
+
+function getData() { //Получаем дату
+    const data = Cookies.getCookie('data') || getDefaultJSONData()
+    return JSON.parse(data)
+}
+function saveData() { //Сохраняем дату
+    const options = {
+        expires:1e10
+    }
+
+}
+// //таймер
+// window.onload = function() {
+//     var div = document.querySelect('.items .item');
+//     var timer = new Timer(60, div);
+//
+//     setInterval(function() {
+//         timer.tick();
+//         }, 1000);
+//     }
+// function Timer(time, elem) {
+//     this.time = time;
+//     this.elem = elem;
+//
+//     this.tick = function(){
+//         this.time = time;
+//         this.elem = elem;
+//
+//         this.tick = function() {
+//             this.time--;
+//             this.elem.innerHTML = this.time;
+//         }
+//     }
+
+
+
+
+
 
