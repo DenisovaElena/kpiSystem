@@ -57,6 +57,6 @@ public class DivisionServiceImpl implements DivisionService {
 
     @Override
     public List<Division> getDivisionByAuthorityId(int id) {
-        return divisionRepository.getChildDivisionByDivisionId(id);
+        return divisionRepository.getDivisionByAuthorityId(id);
     }
 }
