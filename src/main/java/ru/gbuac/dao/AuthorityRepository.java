@@ -6,8 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import ru.gbuac.model.Authority;
+import ru.gbuac.to.AuthorityTo;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface AuthorityRepository extends JpaRepository<Authority, Integer> {
     @Transactional
@@ -20,6 +22,4 @@ public interface AuthorityRepository extends JpaRepository<Authority, Integer> {
 
     @Query("SELECT a FROM Authority a JOIN a.divisions d WHERE d.id=:id")
     List<Authority> getAuthoritiesByDivisionId(@Param("id") int id);
-
-
 }

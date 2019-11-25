@@ -4,6 +4,7 @@ import javassist.NotFoundException;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import ru.gbuac.model.Authority;
+import ru.gbuac.to.AuthorityTo;
 
 import javax.validation.Valid;
 import java.util.List;

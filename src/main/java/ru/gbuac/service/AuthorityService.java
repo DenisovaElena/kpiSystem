@@ -2,6 +2,7 @@ package ru.gbuac.service;
 
 import javassist.NotFoundException;
 import ru.gbuac.model.Authority;
+import ru.gbuac.to.AuthorityTo;
 
 import java.util.List;
 
@@ -20,4 +21,6 @@ public interface AuthorityService {
     List<Authority> getAllTopLevel();
 
     List<Authority> getAuthoritiesByDivisionId(int id);
+
+   // List<Authority> searchAuthorities(String word);
 }

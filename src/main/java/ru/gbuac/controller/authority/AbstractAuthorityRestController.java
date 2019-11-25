@@ -4,9 +4,9 @@ import javassist.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.gbuac.dao.AuthorityRepository;
 import ru.gbuac.model.Authority;
 import ru.gbuac.service.AuthorityService;
+import ru.gbuac.to.AuthorityTo;
 
 import java.util.List;
 

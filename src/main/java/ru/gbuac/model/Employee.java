@@ -40,6 +40,10 @@ public class Employee extends NamedEntity {
     @Column(name = "phone")
     private String phone;
 
+    @SafeHtml
+    @Column(name = "photo")
+    private String photo;
+
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "division_employees",

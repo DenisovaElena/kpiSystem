@@ -51,7 +51,8 @@ CREATE TABLE kpi.employee
     patronym                VARCHAR                               ,
     position                VARCHAR                               ,
     email                   VARCHAR                               ,
-    phone                   VARCHAR
+    phone                   VARCHAR                               ,
+    photo                   VARCHAR
 );
 
 CREATE TABLE kpi.division_employees

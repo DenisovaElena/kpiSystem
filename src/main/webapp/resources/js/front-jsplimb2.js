@@ -1,5 +1,31 @@
-
 jsPlumb.ready(function () {
+    //    $(document).on('click','#authorities4', function() {
+        //     var dataId = $(this).attr('data-parent');
+        //
+        //     instance.connect({source: "division1", target: "branch3", type: "basic"});
+        //
+        //     console.log(dataId);
+        // });
+
+
+    // function getConnect(url, id) {
+    //     $.getJSON(url+id, function(data) {
+    //
+    //     });
+    //
+    //
+    //
+    // }
+    //$(document).on('ready', function() {
+    //     $('.childBlock').each(function() {
+    //         // $.each($('.childBlock'), function (index, value) {
+    //         // $(document).on('each', '.childBlock', function() {
+    //         //var dataParent = $(this).attr('data-parent');
+    //         var dataId = $(this).attr('id');
+    //         console.log(dataId);
+    //     });
+    // });
+
     function getId() {return new URL(window.location.href).searchParams.get("id");}
 // установить некоторые значения по умолчанию для jsPlumb.
     var instance = jsPlumb.getInstance({
@@ -13,6 +39,7 @@ jsPlumb.ready(function () {
                 length: 14,
                 foldback: 0.8
             }],
+
         ],
         Container: "canvas"
     });
@@ -116,7 +143,7 @@ jsPlumb.ready(function () {
         droppable: true //По умолчанию группы настроены на прием элементов, сбрасываемых на них - любого элемента,
         // который в данный момент управляется экземпляром jsPlumb, а не только существующих членов других групп.
     });
-    instance.addToGroup("bGroup", authorities3);
+    instance.addToGroup("bGroup", authorities4);
 
     instance.addGroup({
         el: division3,
@@ -133,7 +160,7 @@ jsPlumb.ready(function () {
         droppable: true //По умолчанию группы настроены на прием элементов, сбрасываемых на них - любого элемента,
         // который в данный момент управляется экземпляром jsPlumb, а не только существующих членов других групп.
     });
-    instance.addToGroup("cGroup", authorities4);
+    instance.addToGroup("cGroup", authorities3);
 
 
 // Соединители
@@ -202,32 +229,17 @@ jsPlumb.ready(function () {
     //Функция для работы с Authorities (названия блоков: Функция 1, Функция 2, Подфункция 3, ...)
     function getAuthorities(newId)
     {
-        $.ajax({
-            url: "rest/profile/authorities/getAuthoritiesByDivisionId/1",
-            method: "GET",
-            contentType: "application/json",
-            success: function (data) {
-                for (var y in data) {
-                        var k = parseInt(y) + 1;
-                        $('#authorities' + k + ' .nameBlock1').text(data[y].name);
-                        $('#authorities' + k).attr('data-value', data[y].id);
 
-                }
-
-            },
-            error: function () {
-                alert('Error!');
-            }
-        });
         $.ajax({
             url: "rest/profile/authorities/getAuthoritiesByDivisionId/2",
             method: "GET",
             contentType: "application/json",
+            async: false,
             success: function (data) {
                 for (var y in data) {
                         var k = parseInt(y) + 3;
                         $('#authorities' + k + ' .nameBlock2').text(data[y].name);
-                        $('#authorities' + k).attr('data-parent', data[y].id);
+                        $('#authorities' + k).attr('data-value', data[y].id);
                 }
             },
             error: function () {
@@ -238,11 +250,35 @@ jsPlumb.ready(function () {
             url: "rest/profile/authorities/getAuthoritiesByDivisionId/3",
             method: "GET",
             contentType: "application/json",
+            async: false,
             success: function (data) {
                 for (var y in data) {
                         var k = parseInt(y) + 4;
                         $('#authorities' + k + ' .nameBlock2').text(data[y].name);
-                        $('#authorities' + k).attr('data-parent', data[y].id);
+                        $('#authorities' + k).attr('data-value', data[y].id );  //даем атрибут "data-parent", сюда надо вставить вместо 49 - parentId, было: data[y].id
+                }
+            },
+            error: function () {
+                alert('Error!');
+            }
+        });
+        $.ajax({
+            url: "rest/profile/authorities/getAuthoritiesByDivisionId/1",
+            method: "GET",
+            contentType: "application/json",
+            async: false,
+            success: function (data) {
+                for (var y in data) {
+                    var k = parseInt(y) + 1;
+                    $('#authorities' + k + ' .nameBlock1').text(data[y].name);
+                    $('#authorities' + k).attr('data-value', data[y].id);
+                    var m = data[y].childAuthorities
+                    if (m.length > 0) {
+                        for (var i in m) {
+                            var childId = m[i].id;
+                            $('[data-value = '+childId+']').attr('data-parent',  data[y].id);
+                        }
+                    }
                 }
             },
             error: function () {
@@ -251,21 +287,24 @@ jsPlumb.ready(function () {
         });
     }
     getAuthorities();
-
-    //Функция для работы с Authorities (названия блоков: Функция 1, Функция 2, Подфункция 3, ...)
+   // $(document).on('click','#authorities4', function() {
+   //      var dataId = $(this).attr('data-parent');
+   //      console.log(dataId);
+   //  });
+    //Функция: id и создаем связи
     function getConnect() {
-        $('.childBlock').each(function() {
-       // $(document).on('each', '.childBlock', function() {
+        $('.childBlock').each(function () {
+            // $.each($('.childBlock'), function (index, value) {
+            // $(document).on('each', '.childBlock', function() {
             var dataParent = $(this).attr('data-parent');
-            var dataId = $(this).attr('id');
-            console.log(dataId);
-
+            var childId = $(this).attr('id');
+            var dataId = $('[data-value = '+dataParent+']').attr('id');
+            //var dataId = $(this).attr('id');
+            //console.log(dataId);
+            instance.connect({source: dataId, target: childId, type: "basic"});
         });
-            //     instance.connect({source: "division1", target: "branch3", type: "basic"});
     }
-    getConnect();
-
-
+   getConnect();
     // var newId =  getId();
     // function getDivision(url, newId)   //Функция работы с контроллером при изменяющемся id (в окончании контроллера)
     // {
@@ -317,18 +356,19 @@ jsPlumb.ready(function () {
                 var g = $(this).parent();
                 g.remove();
                 instance.deleteConnectionsForElement(g);//Удаление всех соединений из одного элемента
-
                 //Нахождение группы и удаление коннектеров
                 var group1 = instance.getMembers(g);
                 instance.deleteConnectionsForElement(group1);
            });
+
+// Соединнение блоков
+    jsPlumb.batch(function() {
+        // import here
+        for (var i = 0, j = connections.length; i < j; i++) {
+            jsPlumb.connect(connections[i]);
+        }
+    });
 });
-
-
-
-
-
-
 
 
 
