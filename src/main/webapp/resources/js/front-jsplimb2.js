@@ -39,6 +39,7 @@ jsPlumb.ready(function () {
                 length: 14,
                 foldback: 0.8
             }],
+
         ],
         Container: "canvas"
     });
@@ -228,22 +229,7 @@ jsPlumb.ready(function () {
     //Функция для работы с Authorities (названия блоков: Функция 1, Функция 2, Подфункция 3, ...)
     function getAuthorities(newId)
     {
-        $.ajax({
-            url: "rest/profile/authorities/getAuthoritiesByDivisionId/1",
-            method: "GET",
-            contentType: "application/json",
-            async: false,
-            success: function (data) {
-                for (var y in data) {
-                        var k = parseInt(y) + 1;
-                        $('#authorities' + k + ' .nameBlock1').text(data[y].name);
-                        $('#authorities' + k).attr('data-value', data[y].id);
-                }
-            },
-            error: function () {
-                alert('Error!');
-            }
-        });
+
         $.ajax({
             url: "rest/profile/authorities/getAuthoritiesByDivisionId/2",
             method: "GET",
@@ -253,7 +239,7 @@ jsPlumb.ready(function () {
                 for (var y in data) {
                         var k = parseInt(y) + 3;
                         $('#authorities' + k + ' .nameBlock2').text(data[y].name);
-                        $('#authorities' + k).attr('data-parent', '50');
+                        $('#authorities' + k).attr('data-value', data[y].id);
                 }
             },
             error: function () {
@@ -269,7 +255,30 @@ jsPlumb.ready(function () {
                 for (var y in data) {
                         var k = parseInt(y) + 4;
                         $('#authorities' + k + ' .nameBlock2').text(data[y].name);
-                        $('#authorities' + k).attr('data-parent', '49' );  //даем атрибут "data-parent", сюда надо вставить вместо 49 - parentId, было: data[y].id
+                        $('#authorities' + k).attr('data-value', data[y].id );  //даем атрибут "data-parent", сюда надо вставить вместо 49 - parentId, было: data[y].id
+                }
+            },
+            error: function () {
+                alert('Error!');
+            }
+        });
+        $.ajax({
+            url: "rest/profile/authorities/getAuthoritiesByDivisionId/1",
+            method: "GET",
+            contentType: "application/json",
+            async: false,
+            success: function (data) {
+                for (var y in data) {
+                    var k = parseInt(y) + 1;
+                    $('#authorities' + k + ' .nameBlock1').text(data[y].name);
+                    $('#authorities' + k).attr('data-value', data[y].id);
+                    var m = data[y].childAuthorities
+                    if (m.length > 0) {
+                        for (var i in m) {
+                            var childId = m[i].id;
+                            $('[data-value = '+childId+']').attr('data-parent',  data[y].id);
+                        }
+                    }
                 }
             },
             error: function () {
@@ -278,12 +287,10 @@ jsPlumb.ready(function () {
         });
     }
     getAuthorities();
-
    // $(document).on('click','#authorities4', function() {
    //      var dataId = $(this).attr('data-parent');
    //      console.log(dataId);
    //  });
-
     //Функция: id и создаем связи
     function getConnect() {
         $('.childBlock').each(function () {
@@ -353,6 +360,14 @@ jsPlumb.ready(function () {
                 var group1 = instance.getMembers(g);
                 instance.deleteConnectionsForElement(group1);
            });
+
+// Соединнение блоков
+    jsPlumb.batch(function() {
+        // import here
+        for (var i = 0, j = connections.length; i < j; i++) {
+            jsPlumb.connect(connections[i]);
+        }
+    });
 });
 
 
