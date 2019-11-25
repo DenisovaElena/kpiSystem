@@ -1,5 +1,6 @@
-jsPlumb.ready(function () {
 
+jsPlumb.ready(function () {
+    function getId() {return new URL(window.location.href).searchParams.get("id");}
 // установить некоторые значения по умолчанию для jsPlumb.
     var instance = jsPlumb.getInstance({
         Endpoint: ["Dot", {radius: 2}],
@@ -82,7 +83,7 @@ jsPlumb.ready(function () {
     });
 //Группы
     instance.addGroup({
-        el: dep,
+        el: division1,
         id: "aGroup",
         dropOptions: false, //Указывает, что соединения с
         // дочерними элементами внутри Группы (которые исходят из-за пределов Группы) должны быть проксированы
@@ -97,13 +98,11 @@ jsPlumb.ready(function () {
         droppable: true //По умолчанию группы настроены на прием элементов, сбрасываемых на них - любого элемента,
         // который в данный момент управляется экземпляром jsPlumb, а не только существующих членов других групп.
     });
-    instance.addToGroup("aGroup", division1);
-    instance.addToGroup("aGroup", division2);
-    instance.addToGroup("aGroup", division3);
-    instance.addToGroup("aGroup", division4);
+    instance.addToGroup("aGroup", authorities1);
+    instance.addToGroup("aGroup", authorities2);
 
     instance.addGroup({
-        el: branch1,
+        el: division2,
         id: "bGroup",
         dropOptions: false, //Указывает, что соединения с
         // дочерними элементами внутри Группы (которые исходят из-за пределов Группы) должны быть проксированы
@@ -117,9 +116,26 @@ jsPlumb.ready(function () {
         droppable: true //По умолчанию группы настроены на прием элементов, сбрасываемых на них - любого элемента,
         // который в данный момент управляется экземпляром jsPlumb, а не только существующих членов других групп.
     });
-    instance.addToGroup("bGroup", branch2);
-    instance.addToGroup("bGroup", branch3);
-    //instance.addToGroup("bGroup", branch4);
+    instance.addToGroup("bGroup", authorities3);
+
+    instance.addGroup({
+        el: division3,
+        id: "cGroup",
+        dropOptions: false, //Указывает, что соединения с
+        // дочерними элементами внутри Группы (которые исходят из-за пределов Группы) должны быть проксированы
+        constrain: true, //препятствует принятию Группой пропущенных элементов
+        dropOverride: true, //предотвратит перетаскивание элементов за пределы группы
+        autoSize:true,
+        maxSize:[600,600],
+        draggable: true, //отмена перетаскивания
+        anchor: "Continuous",
+        endpoint: "Blank",
+        droppable: true //По умолчанию группы настроены на прием элементов, сбрасываемых на них - любого элемента,
+        // который в данный момент управляется экземпляром jsPlumb, а не только существующих членов других групп.
+    });
+    instance.addToGroup("cGroup", authorities4);
+
+
 // Соединители
     instance.connect({source: "division1", target: "branch3", type: "basic"});
     instance.connect({source: "division2", target: "branch2", type: "basic"});
@@ -155,28 +171,147 @@ jsPlumb.ready(function () {
             modal.style.display = "none";
             // d.innerHTML = id.substring(0, 8) /*подпись блока*/ + "<div class='ep'></div>" + "<div class='main-btn1'></div>";
         });
-// Запрос к серверу
+
+// Запросы к серверу
+    // Функция для работы с division (названия подложек: Департамент, Проектный офис 1, ...)
+    function getAllTopLevel()
+    {
         $.ajax({
-            url: "rest/profile/authorities/getAllTopLevel",
+            url: "rest/profile/divisions/getAllTopLevel",
             method: "GET",
             contentType: "application/json",
             success: function (data) {
                 for (var y in data) {
                     var k = parseInt(y)+1;
-                    $('#division'+k+' .nameBlock').text(data[y].name);
-                        for (var m in data[y].childAuthorities) {
-                            var m1 = parseInt(y)+1;
-                            $('#branch' + m1 + ' .nameBlock').text(data[y].childAuthorities[m].name);
-                           // y+=1;
+                    $('#division'+k +' .nameBlock').text(data[y].name);
+                        for (var m in data[y].childDivision) {
+                            var m1 = parseInt(m)+2;
+                            $('#division' + m1 + ' .nameBlock').text(data[y].childDivision[m].name);
                         }
                 }
-                // $('#division1').text(data[0].name);
-                // $('#division2').text(data[1].name);
+                //$('#division1').text(data[0].name);
+                 //$('#division2').text(data[0].childAuthorities[0].name);
             },
             error: function () {
                 alert('Error!');
             }
         });
+    }
+    getAllTopLevel();
+
+    //Функция для работы с Authorities (названия блоков: Функция 1, Функция 2, Подфункция 3, ...)
+    function getAuthorities(newId)
+    {
+        $.ajax({
+            url: "rest/profile/authorities/getAuthoritiesByDivisionId/1",
+            method: "GET",
+            contentType: "application/json",
+            success: function (data) {
+                for (var y in data) {
+                        var k = parseInt(y) + 1;
+                        $('#authorities' + k + ' .nameBlock1').text(data[y].name);
+                        $('#authorities' + k).attr('data-value', data[y].id);
+
+                }
+
+            },
+            error: function () {
+                alert('Error!');
+            }
+        });
+        $.ajax({
+            url: "rest/profile/authorities/getAuthoritiesByDivisionId/2",
+            method: "GET",
+            contentType: "application/json",
+            success: function (data) {
+                for (var y in data) {
+                        var k = parseInt(y) + 3;
+                        $('#authorities' + k + ' .nameBlock2').text(data[y].name);
+                        $('#authorities' + k).attr('data-parent', data[y].id);
+                }
+            },
+            error: function () {
+                alert('Error!');
+            }
+        });
+        $.ajax({
+            url: "rest/profile/authorities/getAuthoritiesByDivisionId/3",
+            method: "GET",
+            contentType: "application/json",
+            success: function (data) {
+                for (var y in data) {
+                        var k = parseInt(y) + 4;
+                        $('#authorities' + k + ' .nameBlock2').text(data[y].name);
+                        $('#authorities' + k).attr('data-parent', data[y].id);
+                }
+            },
+            error: function () {
+                alert('Error!');
+            }
+        });
+    }
+    getAuthorities();
+
+    //Функция для работы с Authorities (названия блоков: Функция 1, Функция 2, Подфункция 3, ...)
+    function getConnect() {
+        $('.childBlock').each(function() {
+       // $(document).on('each', '.childBlock', function() {
+            var dataParent = $(this).attr('data-parent');
+            var dataId = $(this).attr('id');
+            console.log(dataId);
+
+        });
+            //     instance.connect({source: "division1", target: "branch3", type: "basic"});
+    }
+    getConnect();
+
+
+    // var newId =  getId();
+    // function getDivision(url, newId)   //Функция работы с контроллером при изменяющемся id (в окончании контроллера)
+    // {
+    //     $.ajax({
+    //         url: url+newId,
+    //         method: "GET",
+    //         contentType: "application/json",
+    //         success: function (data) {
+    //             if (id == 1) {
+    //                 for (var y in data) {
+    //                     if (data[y].topLevel === true) {
+    //                         var k = parseInt(y) + 1;
+    //                         $('#authorities' + k + ' .nameBlock1').text(data[y].name);
+    //                     }
+    //                 }
+    //             }
+    //             for (var y in data) {
+    //                     if (data[y].topLevel === true) {
+    //                         var k = parseInt(y) + 1;
+    //                         $('#authorities' + k + ' .nameBlock1').text(data[y].name);
+    //                             for (var m in data[y].childAuthorities) {
+    //                                 var m1 = parseInt(y) + 3;
+    //                                 $('#authorities' + m1 + ' .nameBlock2').text(data[y].childAuthorities[m].name);
+    //                             }
+    //                     }
+    //
+    //                     else {
+    //                             for (var y in data) {
+    //                                 var k = parseInt(y) + 3;
+    //                                 $('#authorities' + k + ' .nameBlock2').text(data[y].name);
+    //                             }
+    //                     }
+    //              }
+    //            // console.log(data[0].childAuthorities[0].name);
+    //            //  $('#authorities1').text(data[0].name);
+    //            //  $('#authorities2').text(data[1].name);
+    //            //  $('#authorities3').text(data[0].childAuthorities[0].name);
+    //            //  $('#authorities4').text(data[1].childAuthorities[0].name);
+    //         },
+    //         error: function () {
+    //             alert('Error!');
+    //         }
+    //     });
+    // }
+    // getDivision('rest/profile/authorities/getAuthoritiesByDivisionId/', 2);  //в конце обязательно "/"
+
 // Кнопка удаления
             $(document).on('click', '.main-btn1', function (conn) {  //в новых созданных кнопках работает функция "закрыть"
                 var g = $(this).parent();
@@ -191,38 +326,7 @@ jsPlumb.ready(function () {
 
 
 
-function getData() { //Получаем дату
-    const data = Cookies.getCookie('data') || getDefaultJSONData()
-    return JSON.parse(data)
-}
-function saveData() { //Сохраняем дату
-    const options = {
-        expires:1e10
-    }
 
-}
-// //таймер
-// window.onload = function() {
-//     var div = document.querySelect('.items .item');
-//     var timer = new Timer(60, div);
-//
-//     setInterval(function() {
-//         timer.tick();
-//         }, 1000);
-//     }
-// function Timer(time, elem) {
-//     this.time = time;
-//     this.elem = elem;
-//
-//     this.tick = function(){
-//         this.time = time;
-//         this.elem = elem;
-//
-//         this.tick = function() {
-//             this.time--;
-//             this.elem.innerHTML = this.time;
-//         }
-//     }
 
 
 

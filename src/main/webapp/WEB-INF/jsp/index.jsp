@@ -1,240 +1,148 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="fn" uri="http://topjava.javawebinar.ru/functions" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<!doctype html>
 
-<jsp:include page="fragments/headerIndex.jsp"/>
-<c:set var = "main" />
-<main>
-    <div class="container-fluid mb-4 pt-4">
-        <div class="card mt-5 white-text rgba-black-strong">
-            <div class="card-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <section class="mb-5">
-                                <div class="row mb-2">
-                                    <div class="col-5">
-                                        <h3><i class="fas fa-id-card white-text mr-2"></i>Мои документы</h3>
-                                    </div>
-                                    <div class="col-7">
-                                        <h3 class="ml-n5 pl-2">Тарифное регулирование</h3>
-                                    </div>
-                                </div>
-                                <div class="row my-2 text-center">
-                                    <div class="col-lg-4 col-md-12 mb-lg-0 mb-4 wow bounceInDown" >
-                                        <h4 class="my-2">На исполнении (<span class="inWorkSum"></span>)</h4>
-                                        <div class="blockChart">
-                                            <div class="myImg">
-                                                <i class="fas fa-briefcase white-text fa-4x" id="iconMenu1"></i>
-                                            </div>
-                                            <div id="chartDiv1" class="chartDiv"></div>
-                                        </div>
-                                        <a href="in-work" class="chartLink" data-icon="1"></a>
-                                    </div>
-                                    <div class="col-lg-4 col-md-12 mb-lg-0 mb-4 wow bounceInDown" data-wow-delay="0.3s">
-                                        <h4 class="my-2">На согласовании (<span class="agreementSum"></span>)</h4>
-                                        <div class="blockChart">
-                                            <div class="myImg">
-                                                <i class="fas fa-edit white-text fa-4x" id="iconMenu2"></i>
-                                            </div>
-                                            <div id="chartDiv2" class="chartDiv"></div>
-                                        </div>
-                                        <a href="agreement" class="chartLink" data-icon="2"></a>
-                                    </div>
-                                    <div class="col-lg-4 col-md-12 mb-lg-0 mb-4 wow bounceInDown" data-wow-delay="0.6s">
-                                        <h4 class="my-2">На распределении (<span class="distributionSum"></span>)</h4>
-                                        <div class="blockChart">
-                                            <div class="myImg">
-                                                <i class="fas fa-user-plus white-text fa-4x" id="iconMenu3"></i>
-                                            </div>
-                                            <div id="chartDiv3" class="chartDiv"></div>
-                                        </div>
-                                        <a href="distribution" class="chartLink" data-icon="3"></a>
-                                    </div>
-                                </div>
-                            </section>
-                            <section>
-                                <div class="row my-2 text-center">
-                                    <div class="col-lg-4 col-md-12 mb-lg-0 mb-4 wow fadeInLeft">
-                                        <h4 class="my-3">Документы управления</h4>
-                                        <h6>На исполнении</h6>
-                                        <div class="row d-flex align-items-center white-text">
-                                            <div class="col-md-4 text-right">
-                                                срок более 3 дней
-                                            </div>
-                                            <div class="col-md-6 text-left">
-                                                <a href="temp-list?page=inworkMoreDeadlineByDepartment" class="fontBig btn btn-sm btn-default font-weight-bold px-1" id="inWorkSuccess"></a>
-                                            </div>
-                                        </div>
-                                        <div class="row d-flex align-items-center white-text">
-                                            <div class="col-md-4 text-right">
-                                                срок 3 дня и меньше
-                                            </div>
-                                            <div class="col-md-6 text-left">
-                                                <a href="temp-list?page=inworkLessDeadlineByDepartment" class="fontBig btn btn-sm btn-danger font-weight-bold px-1" id="inWorkDanger"></a>
-                                            </div>
-                                        </div>
-                                        <h6>На согласовании</h6>
-                                        <div class="row d-flex align-items-center white-text">
-                                            <div class="col-md-4 text-right">
-                                                срок более 3 дней
-                                            </div>
-                                            <div class="col-md-6 text-left">
-                                                <a href="temp-list?page=agreementMoreDeadlineByDepartment" class="fontBig btn btn-sm btn-default font-weight-bold px-1" id="agreeSuccess"></a>
-                                            </div>
-                                        </div>
-                                        <div class="row d-flex align-items-center white-text">
-                                            <div class="col-md-4 text-right">
-                                                срок 3 дня и меньше
-                                            </div>
-                                            <div class="col-md-6 text-left">
-                                                <a href="temp-list?page=agreementLessDeadlineByDepartment" class="fontBig btn btn-sm btn-danger font-weight-bold px-1" id="agreeDanger"></a>
-                                            </div>
-                                        </div>
-                                        <h6>На распределении</h6>
-                                        <div class="row d-flex align-items-center white-text">
-                                            <div class="col-md-4 text-right">
-                                                срок более 3 дней
-                                            </div>
-                                            <div class="col-md-6 text-left">
-                                                <a href="temp-list?page=distributionMoreDeadlineByDepartment" class="fontBig btn btn-sm btn-default font-weight-bold px-1" id="distSuccess"></a>
-                                            </div>
-                                        </div>
-                                        <div class="row d-flex align-items-center white-text">
-                                            <div class="col-md-4 text-right">
-                                                срок 3 дня и меньше
-                                            </div>
-                                            <div class="col-md-6 text-left">
-                                                <a href="temp-list?page=distributionLessDeadlineByDepartment" class="fontBig btn btn-sm btn-danger font-weight-bold px-1" id="distDanger"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-12 mb-lg-0 mb-4 wow fadeInUp">
-                                        <h4 class="my-3">Регистрация документа</h4>
-                                        <a href="new-document" title="Создать новый документ">
-                                            <i class="fas fa-file-alt fa-6x white-text newDoc"></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-4 col-md-12 mb-lg-0 mb-4 wow fadeInRight">
-                                        <h4 class="my-3">Моя дисциплина за месяц</h4>
-                                        <div class="row d-flex align-items-center justify-content-center white-text">
-                                            <div class="col-md-4 text-right">Всего было на контроле</div>
-                                            <div class="col-md-6 text-left">
-                                                <a href="temp-list?page=atThisMounthOnControl" class="fontBig btn btn-sm btn-indigo font-weight-bold px-1" id="mySum" data-value="0"></a>
-                                            </div>
-                                        </div>
-                                        <div class="row d-flex align-items-center justify-content-center white-text">
-                                            <div class="col-md-4 text-right">Исполнено в срок</div>
-                                            <div class="col-md-6 text-left">
-                                                <a href="temp-list?page=atThisMounthOnControlCompletedInTime" class="fontBig btn btn-sm btn-default font-weight-bold px-1" id="mySuccess"></a>
-                                            </div>
-                                        </div>
-                                        <div class="row d-flex align-items-center justify-content-center white-text">
-                                            <div class="col-md-4 text-right">Исполнено с нарушением срока</div>
-                                            <div class="col-md-6 text-left">
-                                                <a href="temp-list?page=atThisMounthOnControlCompletedAfterTime" class="fontBig btn btn-sm btn-warning font-weight-bold px-1" id="myWarning"></a>
-                                            </div>
-                                        </div>
-                                        <div class="row d-flex align-items-center justify-content-center white-text">
-                                            <div class="col-md-4 text-right">Не исполнено (срок вышел)</div>
-                                            <div class="col-md-6 text-left">
-                                                <a href="temp-list?page=atThisMounthOnControlNotCompleted" class="fontBig btn btn-sm btn-danger font-weight-bold px-1" id="myDanger"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-                </div>
+<html lang="en">
+<head>
+    <title>KPI</title>
+    <!-- CSS -->
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="../css/jsplumbtoolkit-defaults2.css">
+    <link rel="stylesheet" href="../css/main2.css">
+    <link rel="stylesheet" href="../css/jsplumbtoolkit-demo2.css">
+    <link rel="stylesheet" href="../css/front-jsplumb2.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <!-- Заголовок страницы -->
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">KPI</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Поддержка</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Личный кабинет</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Пользователь</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</head>
+<body>
+<!-- Кнопка новый элемент -->
+
+<!-- Элементы -->
+<div class="statemachine">
+    <div class="jtk-demo-main">
+
+        <div class="jtk-demo-canvas canvas-wide statemachine-demo jtk-surface jtk-surface-nopan" id="canvas">
+
+            <div class="w" id="dep">Департамент
+                <div class="main-btn1" type="button" value="1">&times;</div>
+                <div class="ep" action="dep"></div>
+            </div>
+
+            <div class="w" id="division1">Разработка
+                <button class="main-btn1" type="submit" value="1">&times;</button>
+                <div class="ep" action="division1"></div>
+            </div>
+
+            <div class="w" id="division2">Аналитика
+                <button class="main-btn1" type="button" value="1">&times;</button>
+                <div class="ep" action="division2"></div>
+            </div>
+
+            <div class="w" id="division3">Анализ
+                <button class="main-btn1" type="button" value="1">&times;</button>
+                <div class="ep" action="division3"></div>
+            </div>
+
+            <div class="w" id="division4">Аудит
+                <button class="main-btn1" type="button" value="1">&times;</button>
+                <div class="ep" action="division4"></div>
+            </div>
+
+            <div class="w" id="branch1">ПО №1
+                <button class="main-btn1" type="button" value="1">&times;</button>
+                <div class="ep" action="branch1"></div>
+            </div>
+
+            <div class="w" id="branch2">Отдел аналитики
+                <button class="main-btn1" type="button" value="1">&times;</button>
+                <div class="ep" action="branch2"></div>
+            </div>
+
+            <div class="w" id="branch3">Отдел аудита
+                <button class="main-btn1" type="button" value="1">&times;</button>
+                <div class="ep" action="branch3"></div>
+            </div>
+
+            <div class="w" id="branch4">Отдел менеджмента
+                <button class="main-btn1" type="button" value="1">&times;</button>
+                <div class="ep" action="branch4"></div>
             </div>
         </div>
+        <button id="myBtn">Новый элемент</button>
     </div>
-</main>
+</div>
+<!-- Карточка -->
+<!--
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+-->
+<!-- Модальное окно -->
+<section>
+    <div id = "myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Новый элемент</h4>
+                <button type="button" class="close" id="myClose" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <div class="md-form mb-5">
+                    <i class="fas fa-envelope prefix grey-text"></i>
+                    <input type="email" id="defaultForm-email" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="defaultForm-email">Выберите название подразделения</label>
+                </div>
+                <div class="md-form mb-4">
+                    <i class="fas fa-lock prefix grey-text"></i>
+                    <input type="password" id="defaultForm-pass" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="defaultForm-pass">Введите название</label>
+                </div>
+            </div>
+            <!--
+           <button class="modal-footer d-flex justify-content-center" class="btn btn-default" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">Создать</span>
+           </button>
+            -->
+            <button id="submit" class="main-btn" type="submit" value="add">Добавить</button>
+            <!--
+            <div class="modal-footer d-flex justify-content-center">
+                <button class="btn btn-default" id="newEl">Создать</button>
+            </div>
+            -->
+        </div>
+    </div>
+</section>
 
-<jsp:include page="fragments/footerIndex.jsp"/>
-<jsp:include page="fragments/modals/newDocumentModal.jsp"/>
-<jsp:include page="fragments/modals/viewDocumentModal.jsp"/>
-<jsp:include page="fragments/footerScript.jsp"/>
-<script>
-    $(function() {
-        $('header, main, footer').css('padding-left',0);
+<!-- Scripts -->
+<script src="../js/jsplumb.js"></script>
+<script src="../js/front-jsplimb2.js"></script>
+<script src="../js/front-jsplimb-list2.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/popper.min.js"></script>
+</body>
+</html>
 
-        $('.chartLink').hover(
-            function() {
-                var id = $(this).attr('data-icon');
-                $('#iconMenu'+id).addClass('animated rotateIn');
-            },
-            function() {
-                var id = $(this).attr('data-icon');
-                $('#iconMenu'+id).removeClass('animated rotateIn');
-            });
-
-        $('.newDoc').hover(
-            function() {
-                $(this).addClass('animated heartBeat');
-            },
-            function() {
-                $(this).removeClass('animated heartBeat');
-            });
-
-        // Показ цифр в блоке: Моя дисциплина за месяц
-        countElemJSON('rest/profile/docs/counters', 1); // Список всех моих документов
-        // Показ цифр в блоке: Документы управления
-        countElemJSON('rest/profile/docs/counters', 2); // Список документов на исполнении
-        countElemJSON('rest/profile/docs/counters', 3); // Список документов на согласовании
-        countElemJSON('rest/profile/docs/counters', 4); // Список документов на регистрации
-
-        // Показ модального окна для секретаря - данные
-        $.getJSON('rest/profile/users/getDelegationUsers', function(data) {
-            if(data.length !== 0) {
-                setTimeout(function() {
-                    $('#choiseUser').modal('show');
-                    $('.choiseUserName').removeClass('alert alert-info mb-0 active');
-                    $('#btnChoiseUser').attr('disabled', true);
-                }, 1500);
-                for(var i in data) {
-                    var fulName = data[i].lastname+' '+data[i].firstname+' '+data[i].patronym;
-                    $('#choiseUserBlock').append('<div class="col-12 border border-info rounded py-2 px-4 pointer choiseUserName mb-2" data-value="'+data[i].name+'">'+fulName+'<small class="text-muted ml-2">'+data[i].position+'</small></div>');
-                }
-            }
-        });
-
-        // Показ модального окна для секретаря - выбрать пользователя
-        $(document).on('click', '.choiseUserName', function() {
-            $('.choiseUserName').removeClass('alert alert-info mb-0 active');
-            $('#btnChoiseUser').attr('disabled', false);
-            $(this).toggleClass('alert alert-info mb-0 active');
-        });
-        $('#choiseUser').on('hidden.bs.modal', function() {
-            $('.choiseUserName').removeClass('alert alert-info mb-0 active');
-            $('#btnChoiseUser').attr('disabled', true);
-        });
-
-        // Показ модального окна для секретаря - отправка запроса
-        $('#btnChoiseUser').click(function(event) {
-            event.preventDefault();
-            var userId = $('.choiseUserName.active').attr('data-value');
-            var serverGetUserName = $.ajax({
-                type: 'POST',
-                url: 'rest/profile/users/setDelegatedUser?name='+userId,
-                contentType: 'application/json; charset=utf-8'
-            });
-            serverGetUserName.done(function() {
-                toastr["success"]("Успешно!");
-                setTimeout(function() {
-                    $('#choiseUser').modal('hide');
-                    $('.choiseUserName').removeClass('alert alert-info mb-0 active');
-                    $('#btnChoiseUser').attr('disabled', true);
-                }, 1000);
-            });
-            serverGetUserName.fail(function() {
-                toastr["error"]("Ошибка отправки запроса!");
-            });
-        });
-
-    });
-</script>
-<jsp:include page="fragments/footerBasement.jsp"/>
