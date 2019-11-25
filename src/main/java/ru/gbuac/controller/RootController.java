@@ -21,6 +21,11 @@ public class RootController {
         return "division";
     }
 
+    @GetMapping(value = "/authorities")
+    public String authorities() {
+        return "authorities";
+    }
+
     @GetMapping(value = "/admin/quests")
     public String quests() {
         return "admin/quests";

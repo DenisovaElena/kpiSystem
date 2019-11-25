@@ -100,67 +100,102 @@
     margin-top: 10px;
     margin-bottom: 0;
 }
-/*----------------------------------------------- */
-#dep {
+/*----------------------Блоки------------------------- */
+#division1 {
     left: 5em;
     top: 5em;
     width: 20em;
-    height: 40em;
+    height: 44em;
     z-index: 0;
 }
-#division1 {
+#division2 {
+    left: 35em;
+    top: 5em;
+    width: 20em;
+    height: 22em;
+    z-index: 0;
+}
+#division3 {
+    left: 35em;
+    top: 30em;
+    width: 20em;
+    height: 22em;
+    z-index: 0;
+}
+#authorities1 {
     position:absolute;
     left: 7em;
     top: 10em;
     width: 10em;
     z-index: 1;
 }
-#division2 {
+#authorities2 {
     position:absolute;
     left: 7em;
     top: 15em;
     width: 10em;
     z-index: 1;
 }
-#division3 {
-    left: 7em;
-    top: 20em;
-    width: 10em;
-    z-index: 1;
+#authorities4 {
     position:absolute;
-}
-#division4 {
-    left: 7em;
-    top: 25em;
+    left: 40em;
+    top: 10em;
     width: 10em;
     z-index: 1;
 }
-#branch1 {
-    left: 50em;
-    top: 5em;
-    width: 20em;
-    height: 22em;
-    z-index: 0;
-}
-#branch2 {
-    left: 52em;
-    top: 14em;
+#authorities3 {
+    position:absolute;
+    left: 40em;
+    top: 40em;
     width: 10em;
     z-index: 1;
 }
-#branch3 {
-    left: 52em;
-    top: 8em;
-    width: 10em;
-    z-index: 1;
-}
-#branch4 {
-    left: 52em;
-    top: 20em;
-    width: 10em;
-    z-index: 1;
-}
-
+/*#division2 {*/
+/*    position:absolute;*/
+/*    left: 7em;*/
+/*    top: 15em;*/
+/*    width: 10em;*/
+/*    z-index: 1;*/
+/*}*/
+/*#division3 {*/
+/*    left: 7em;*/
+/*    top: 20em;*/
+/*    width: 10em;*/
+/*    z-index: 1;*/
+/*    position:absolute;*/
+/*}*/
+/*#division4 {*/
+/*    left: 7em;*/
+/*    top: 25em;*/
+/*    width: 10em;*/
+/*    z-index: 1;*/
+/*}*/
+/*#branch1 {*/
+/*    left: 50em;*/
+/*    top: 5em;*/
+/*    width: 20em;*/
+/*    height: 22em;*/
+/*    z-index: 0;*/
+/*}*/
+/*#branch2 {*/
+/*    left: 52em;*/
+/*    top: 14em;*/
+/*    width: 10em;*/
+/*    z-index: 1;*/
+/*}*/
+/*#branch3 {*/
+/*    left: 52em;*/
+/*    top: 8em;*/
+/*    width: 10em;*/
+/*    z-index: 1;*/
+/*}*/
+/*#branch4 {*/
+/*    left: 52em;*/
+/*    top: 20em;*/
+/*    width: 10em;*/
+/*    z-index: 1;*/
+/*}*/
+/*--------------------------------------------------------------*/
 .main-btn1 {
     position: absolute;
     top: -10px;
