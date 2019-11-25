@@ -15,9 +15,7 @@
 <div class="logo-container">
     <img class="logo" src="resources/images/logo.png" alt="">
     <ul class="dgi-name">
-        <li>ДОКУМЕНТООБОРОТ АИС "ТАРИФ"</li>
-        <li>ДЕПАРТАМЕНТА ЭКОНОМИЧЕСКОЙ ПОЛИТИКИ И</li>
-        <li>РАЗВИТИЯ ГОРОДА МОСКВЫ</li>
+        <li>АВТОМАТИЗИРОВАННАЯ СИСТЕМА KPI</li>
     </ul>
 </div>
 <div class="body-container">

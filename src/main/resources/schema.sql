@@ -45,6 +45,7 @@ CREATE TABLE kpi.division_child_division
 CREATE TABLE kpi.employee
 (
     id                      INTEGER PRIMARY KEY DEFAULT nextval('kpi.global_seq'),
+    name                    VARCHAR                               ,
     firstname               VARCHAR                               ,
     lastname                VARCHAR                               ,
     patronym                VARCHAR                               ,
@@ -113,7 +114,7 @@ CREATE TABLE kpi.authority_divisions
 CREATE TABLE kpi.role
 (
     id               INTEGER PRIMARY KEY DEFAULT nextval('kpi.global_seq'),
-    name              VARCHAR
+    name             VARCHAR
 );
 CREATE TABLE kpi.role_employees
 (

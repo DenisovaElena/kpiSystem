@@ -16,8 +16,8 @@ public interface RoleRepository extends JpaRepository<Role, Integer> {
     @Query("DELETE FROM Role r WHERE r.id=:id")
     int delete(@Param("id") int id);
 
-    @Query("SELECT r FROM Role r JOIN r.employees e WHERE lower(e.name)=lower(:employeeName)")
-    List<Role> getRolesByUsername(@Param("userName") String employeeName);
+    @Query("SELECT r FROM Role r JOIN r.employees e WHERE lower(e.name)=lower(:userName)")
+    List<Role> getRolesByUsername(@Param("userName") String userName);
 
     @Query(value = "SELECT r.* FROM role r WHERE 'ROLE_'||=:name " +
             "UNION "+
