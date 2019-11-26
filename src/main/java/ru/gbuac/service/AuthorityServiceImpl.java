@@ -59,38 +59,8 @@ public class AuthorityServiceImpl implements AuthorityService {
         return authorityRepository.getAuthoritiesByDivisionId(id);
     }
 
-//    @Override
-//    public List<Authority> searchAuthorities(String word) {
-//        return null;
-//
-//        List<Authority> authorities = authorityRepository.findAll();
-//        List<Authority> topSearchResults = new ArrayList<>();
-//        for (Authority authority: authorities) {
-//            List<Authority> searchResults = new ArrayList<>();
-//            for (Authority authChild: authority.getChildAuthorities()) {
-//                doSearch(authChild, searchResults, word);
-//            }
-//            authority.getChildAuthorities(searchResults);
-//            doSearch(authority, topSearchResults, word);
-//        }
-//
-//        return topSearchResults;
-//    }
-//
-//    void doSearch(Authority toSearch, List<Authority> searchResults, String val) {
-//        if (toSearch.getName() != null) {
-//            Pattern pattern = Pattern.compile("<p>(.+?)"+ val +"(.+?)</p>", Pattern.DOTALL);
-//            Matcher matcher = pattern.matcher(toSearch.getName());
-//            if (matcher.find()) {
-//                toSearch.setName(matcher.group(0).replace(val,
-//                        "<span style=\"background-color: #f1c40f;\"><strong>" + val + "</strong></span>"));
-//                searchResults.add(toSearch);
-//            } else {
-//                if (!toSearch.getChildAuthorities().isEmpty()) {
-//                    searchResults.add(toSearch);
-//                }
-//            }
-//        }
-////    }
-
+    @Override
+    public List<Authority> searchAuthorities(String word) {
+        return authorityRepository.searchAuthorities(word);
+    }
 }

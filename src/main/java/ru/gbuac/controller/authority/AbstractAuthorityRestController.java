@@ -56,8 +56,8 @@ public abstract class AbstractAuthorityRestController {
         return authorityService.getAuthoritiesByDivisionId(id);
     }
 
-//    public List<Authority> searchAuthorities(String word) {
-//        LOG.info("searchAuthorities");
-//        return authorityService.searchAuthorities(word);
-//    }
+    public List<Authority> searchAuthorities(String word) {
+        LOG.info("searchAuthorities");
+        return authorityService.searchAuthorities(word);
+    }
 }

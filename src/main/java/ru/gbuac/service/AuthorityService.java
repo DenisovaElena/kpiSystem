@@ -22,5 +22,5 @@ public interface AuthorityService {
 
     List<Authority> getAuthoritiesByDivisionId(int id);
 
-   //List<Authority> searchAuthorities(String word);
+   List<Authority> searchAuthorities(String word);
 }
