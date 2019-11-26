@@ -61,6 +61,26 @@ jsPlumb.ready(function () {
                     newNode(e.offsetX, e.offsetY);
                 });
     */
+
+//Автоматическое создание новых элементов
+    function newElem1() {
+        for (var i=2; i<10; i++) {
+            var t=i+1;
+            $('<div class="w" id="authorities'+i+'" ><span class="nameBlock1">Функция</span>\n' +
+                '                        <button class="main-btn1" type="submit" value="1">&times;</button>\n' +
+                '                        <div class="ep" action="authorities'+i+'"></div>\n' +
+                '                    </div>').insertAfter( '<div class="w" id="authorities'+t+'" ><span class="nameBlock1">Функция</span>\n' +
+                '                        <button class="main-btn1" type="submit" value="1">&times;</button>\n' +
+                '                        <div class="ep" action="authorities'+t+'"></div>\n' +
+                '                    </div>');
+            // instance.addToGroup("division1", "authorities'+i+'");
+        }
+    }
+    newElem1();
+
+
+
+
 // инициализация элемента как источник и цель соединения.
     var initNode = function (el) {
         instance.draggable(el); // initialise draggable elements.
@@ -98,7 +118,6 @@ jsPlumb.ready(function () {
         d.style.top = 0 + "px";
         instance.getContainer().appendChild(d);
         initNode(d);
-
         return d;
     };
 
@@ -111,7 +130,7 @@ jsPlumb.ready(function () {
 //Группы
     instance.addGroup({
         el: division1,
-        id: "aGroup",
+        id: "division1",
         dropOptions: false, //Указывает, что соединения с
         // дочерними элементами внутри Группы (которые исходят из-за пределов Группы) должны быть проксированы
         constrain: true, //препятствует принятию Группой пропущенных элементов
@@ -125,12 +144,12 @@ jsPlumb.ready(function () {
         droppable: true //По умолчанию группы настроены на прием элементов, сбрасываемых на них - любого элемента,
         // который в данный момент управляется экземпляром jsPlumb, а не только существующих членов других групп.
     });
-    instance.addToGroup("aGroup", authorities1);
-    instance.addToGroup("aGroup", authorities2);
+    instance.addToGroup("division1", childDivId);
+   // instance.addToGroup("division1", authorities2);
 
     instance.addGroup({
         el: division2,
-        id: "bGroup",
+        id: "division2",
         dropOptions: false, //Указывает, что соединения с
         // дочерними элементами внутри Группы (которые исходят из-за пределов Группы) должны быть проксированы
         constrain: true, //препятствует принятию Группой пропущенных элементов
@@ -143,11 +162,11 @@ jsPlumb.ready(function () {
         droppable: true //По умолчанию группы настроены на прием элементов, сбрасываемых на них - любого элемента,
         // который в данный момент управляется экземпляром jsPlumb, а не только существующих членов других групп.
     });
-    instance.addToGroup("bGroup", authorities4);
+    instance.addToGroup("division2", authorities4);
 
     instance.addGroup({
         el: division3,
-        id: "cGroup",
+        id: "division3",
         dropOptions: false, //Указывает, что соединения с
         // дочерними элементами внутри Группы (которые исходят из-за пределов Группы) должны быть проксированы
         constrain: true, //препятствует принятию Группой пропущенных элементов
@@ -160,7 +179,26 @@ jsPlumb.ready(function () {
         droppable: true //По умолчанию группы настроены на прием элементов, сбрасываемых на них - любого элемента,
         // который в данный момент управляется экземпляром jsPlumb, а не только существующих членов других групп.
     });
-    instance.addToGroup("cGroup", authorities3);
+    instance.addToGroup("division3", authorities3);
+
+    instance.addGroup({
+        el: division4,
+        id: "division4",
+        dropOptions: false, //Указывает, что соединения с
+        // дочерними элементами внутри Группы (которые исходят из-за пределов Группы) должны быть проксированы
+        constrain: true, //препятствует принятию Группой пропущенных элементов
+        dropOverride: true, //предотвратит перетаскивание элементов за пределы группы
+        autoSize:true,
+        maxSize:[600,600],
+        draggable: true, //отмена перетаскивания
+        anchor: "Continuous",
+        endpoint: "Blank",
+        droppable: true //По умолчанию группы настроены на прием элементов, сбрасываемых на них - любого элемента,
+        // который в данный момент управляется экземпляром jsPlumb, а не только существующих членов других групп.
+    });
+
+    //instance.addToGroup("division4", authorities3);
+
 
 
 // Соединители

@@ -38,11 +38,10 @@
 
                 <div class="jtk-demo-canvas canvas-wide statemachine-demo jtk-surface jtk-surface-nopan" id="canvas">
 
-                    <div class="w" id="division1" ><span class="nameBlock">Деп</span>
+                    <div class="w division" id="division1" ><span class="nameBlock">Деп</span>
                         <button class="main-btn1" type="submit" value="1">&times;</button>
                         <div class="ep" action="division1"></div>
                     </div>
-
                     <div class="w" id="division2" ><span class="nameBlock">ПО</span>
                         <button class="main-btn1" type="submit" value="1">&times;</button>
                         <div class="ep" action="division2"></div>
@@ -51,27 +50,46 @@
                         <button class="main-btn1" type="submit" value="1">&times;</button>
                         <div class="ep" action="division3"></div>
                     </div>
+                    <div class="w" id="division4" ><span class="nameBlock">ПО</span>
+                        <button class="main-btn1" type="submit" value="1">&times;</button>
+                        <div class="ep" action="division3"></div>
+                    </div>
+                    <div class="w" id="division5" ><span class="nameBlock">ПО</span>
+                        <button class="main-btn1" type="submit" value="1">&times;</button>
+                        <div class="ep" action="division3"></div>
+                    </div>
+
 
                     <div class="w" id="authorities1" ><span class="nameBlock1">Функция</span>
                         <button class="main-btn1" type="submit" value="1">&times;</button>
                         <div class="ep" action="authorities1"></div>
                     </div>
-                    <div class="w" id="authorities2" ><span class="nameBlock1">Функция</span>
-                        <button class="main-btn1" type="submit" value="1">&times;</button>
-                        <div class="ep" action="authorities2"></div>
-                    </div>
+<%--                    <div class="w" id="authorities2" ><span class="nameBlock1">Функция</span>--%>
+<%--                        <button class="main-btn1" type="submit" value="1">&times;</button>--%>
+<%--                        <div class="ep" action="authorities2"></div>--%>
+<%--                    </div>--%>
+<%--                    <div class="w" id="authorities3" ><span class="nameBlock1">Функция</span>--%>
+<%--                        <button class="main-btn1" type="submit" value="1">&times;</button>--%>
+<%--                        <div class="ep" action="authorities2"></div>--%>
+<%--                    </div>--%>
+<%--                    <div class="w" id="authorities4" ><span class="nameBlock1">Функция</span>--%>
+<%--                        <button class="main-btn1" type="submit" value="1">&times;</button>--%>
+<%--                        <div class="ep" action="authorities2"></div>--%>
+<%--                    </div>--%>
 
-                    <div class="w childBlock" id="authorities3" ><span class="nameBlock2">Функция</span>
-                        <button class="main-btn1" type="submit" value="1">&times;</button>
-                        <div class="ep" action="authorities3"></div>
-                    </div>
-                    <div class="w childBlock" id="authorities4" ><span class="nameBlock2">Функция</span>
-                        <button class="main-btn1" type="submit" value="1">&times;</button>
-                        <div class="ep" action="authorities4"></div>
-                    </div>
+<%--                    Подфункции--%>
+<%--                    <div class="w childBlock" id="authorities3" ><span class="nameBlock2">Функция</span>--%>
+<%--                        <button class="main-btn1" type="submit" value="1">&times;</button>--%>
+<%--                        <div class="ep" action="authorities3"></div>--%>
+<%--                    </div>--%>
+<%--                    <div class="w childBlock" id="authorities4" ><span class="nameBlock2">Функция</span>--%>
+<%--                        <button class="main-btn1" type="submit" value="1">&times;</button>--%>
+<%--                        <div class="ep" action="authorities4"></div>--%>
+<%--                    </div>--%>
                 </div>
                 <!-- Кнопка новый элемент -->
                 <button id="myBtn">Новый элемент</button>
+
             </div>
         </div>
 <!-- Карточка -->

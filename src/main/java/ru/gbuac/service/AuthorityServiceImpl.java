@@ -62,17 +62,16 @@ public class AuthorityServiceImpl implements AuthorityService {
 //    @Override
 //    public List<Authority> searchAuthorities(String word) {
 //        return null;
-//    }    @Override
-//    public List<Authority> search(String val) {
+//
 //        List<Authority> authorities = authorityRepository.findAll();
 //        List<Authority> topSearchResults = new ArrayList<>();
 //        for (Authority authority: authorities) {
 //            List<Authority> searchResults = new ArrayList<>();
 //            for (Authority authChild: authority.getChildAuthorities()) {
-//                doSearch(authChild, searchResults, val);
+//                doSearch(authChild, searchResults, word);
 //            }
 //            authority.getChildAuthorities(searchResults);
-//            doSearch(authority, topSearchResults, val);
+//            doSearch(authority, topSearchResults, word);
 //        }
 //
 //        return topSearchResults;
@@ -92,6 +91,6 @@ public class AuthorityServiceImpl implements AuthorityService {
 //                }
 //            }
 //        }
-//    }
+////    }
 
 }
