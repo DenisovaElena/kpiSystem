@@ -139,28 +139,48 @@ INSERT  INTO kpi.goal(id, name, description, create_date, execution_date, contro
 INSERT  INTO kpi.goal(id, name, description, create_date, execution_date, control_date) VALUES (47, 'подготовка справок', 'Обеспечивает подготовку заключений на вносимые федеральными и городскими органами исполнительной власти проекты нормативных правовых актов по вопросам, относящимся к установленной сфере деятельности', '2017-02-19', '2017-03-02', '2017-03-05');
 INSERT  INTO kpi.goal(id, name, description, create_date, execution_date, control_date) VALUES (48, 'подготовка справок', 'Обеспечивает подготовку заключений на вносимые федеральными и городскими органами исполнительной власти проекты нормативных правовых актов по вопросам, относящимся к установленной сфере деятельности', '2017-02-20', '2017-03-03', '2017-03-06');
 
-INSERT  INTO kpi.division_goals(goal_id, division_id) VALUES (43, 1);
-INSERT  INTO kpi.division_goals(goal_id, division_id) VALUES (44, 2);
-INSERT  INTO kpi.division_goals(goal_id, division_id) VALUES (45, 3);
-INSERT  INTO kpi.division_goals(goal_id, division_id) VALUES (46, 4);
-INSERT  INTO kpi.division_goals(goal_id, division_id) VALUES (47, 5);
-INSERT  INTO kpi.division_goals(goal_id, division_id) VALUES (48, 6);
+INSERT INTO kpi.division_goals(goal_id, division_id) VALUES (43, 1);
+INSERT INTO kpi.division_goals(goal_id, division_id) VALUES (44, 2);
+INSERT INTO kpi.division_goals(goal_id, division_id) VALUES (45, 3);
+INSERT INTO kpi.division_goals(goal_id, division_id) VALUES (46, 4);
+INSERT INTO kpi.division_goals(goal_id, division_id) VALUES (47, 5);
+INSERT INTO kpi.division_goals(goal_id, division_id) VALUES (48, 6);
 
-INSERT  INTO kpi.authority(id, name, top_level) VALUES (49, 'Департамент осуществляет свою деятельность во взаимодействии с федеральными органами государственной власти', true);
-INSERT  INTO kpi.authority(id, name, top_level) VALUES (50, 'Департамент осуществляет свою деятельность во взаимодействии с федеральными органами государственной власти', true);
-INSERT  INTO kpi.authority(id, name, top_level) VALUES (51, 'Департамент осуществляет свою деятельность во ' ||
+INSERT INTO kpi.authority(id, name, top_level) VALUES (49, 'Департамент осуществляет свою деятельность во взаимодействии с федеральными органами государственной власти', true);
+INSERT INTO kpi.authority(id, name, top_level) VALUES (50, 'Департамент осуществляет свою деятельность во взаимодействии с федеральными органами государственной власти', true);
+INSERT INTO kpi.authority(id, name, top_level) VALUES (51, 'Департамент осуществляет свою деятельность во ' ||
                                                             'взаимодействии с федеральными органами государственной власти', false);
-INSERT  INTO kpi.authority(id, name, top_level) VALUES (52, 'Департамент осуществляет свою деятельность во ' ||
+INSERT INTO kpi.authority(id, name, top_level) VALUES (52, 'Департамент осуществляет свою деятельность во ' ||
                                                             'взаимодействии с федеральными органами государственной власти', false);
 
-INSERT  INTO kpi.authority_divisions(authority_id, division_id) VALUES (49, 1);
-INSERT  INTO kpi.authority_divisions(authority_id, division_id) VALUES (50, 2);
-INSERT  INTO kpi.authority_divisions(authority_id, division_id) VALUES (51, 3);
-INSERT  INTO kpi.authority_divisions(authority_id, division_id) VALUES (52, 4);
+INSERT INTO kpi.authority_divisions(authority_id, division_id) VALUES (49, 1);
+INSERT INTO kpi.authority_divisions(authority_id, division_id) VALUES (50, 2);
+INSERT INTO kpi.authority_divisions(authority_id, division_id) VALUES (51, 3);
+INSERT INTO kpi.authority_divisions(authority_id, division_id) VALUES (52, 4);
 
 INSERT  INTO kpi.authority_child_authorities(authority_id, child_authority_id) VALUES (49, 51);
 INSERT  INTO kpi.authority_child_authorities(authority_id, child_authority_id) VALUES (50, 52);
 --
+
+INSERT INTO kpi.role(id, name) VALUES (54, 'администратор');
+INSERT INTO kpi.role(id, name) VALUES (55, 'пользователь');
+INSERT INTO kpi.role(id, name) VALUES (56, 'Отдел экономики социальной защиты и прочих отраслей');
+INSERT INTO kpi.role(id, name) values (57, 'Отдел строительства объектов социальной сферы');
+
+INSERT  INTO kpi.role_child_roles(role_id, child_role_id) VALUES (55, 56);
+INSERT  INTO kpi.role_child_roles(role_id, child_role_id) VALUES (55, 57);
+
+INSERT  INTO kpi.role_divisions(role_id, division_id) VALUES (54, 1);
+INSERT  INTO kpi.role_divisions(role_id, division_id) VALUES (55, 11);
+INSERT  INTO kpi.role_divisions(role_id, division_id) VALUES (55, 10);
+
+INSERT  INTO kpi.role_employees(role_id, employee_id) VALUES (54, 53);
+INSERT  INTO kpi.role_employees(role_id, employee_id) VALUES (56, 22);
+INSERT  INTO kpi.role_employees(role_id, employee_id) VALUES (57, 25);
+
+
+
+
 
 
 
