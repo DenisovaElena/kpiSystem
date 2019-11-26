@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import ru.gbuac.model.Authority;
 import ru.gbuac.model.Division;
+import ru.gbuac.model.Role;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,4 +26,7 @@ public interface DivisionRepository extends JpaRepository<Division, Integer> {
 
     @Query("SELECT d FROM Division d JOIN d.authorities a WHERE a.id=:id")
     List<Division> getDivisionByAuthorityId(@Param("id") int id);
+
+    @Query("SELECT d FROM Division d JOIN d.roles r WHERE r.id=:id")
+    List<Role> getRolesByDivisionId(@Param("id") int id);
 }

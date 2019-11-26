@@ -4,6 +4,7 @@ import javassist.NotFoundException;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import ru.gbuac.model.Employee;
+import ru.gbuac.to.EmployeeTo;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -15,7 +16,7 @@ public class EmployeeRestController extends AbstractEmployeeRestController {
 
     @Override
     @GetMapping
-    public List<Employee> getAll() {
+    public List<EmployeeTo> getAll() {
         return super.getAll();
     }
 
@@ -27,12 +28,12 @@ public class EmployeeRestController extends AbstractEmployeeRestController {
 
     @Override
     @DeleteMapping(value = "/{id}")
-    public void delete(@PathVariable("id") int id) {
+    public void delete(@PathVariable("id") int id) throws NotFoundException {
         super.delete(id);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Employee updateOrCreate(@Valid @RequestBody Employee employee) {
+    public Employee updateOrCreate(@Valid @RequestBody Employee employee) throws NotFoundException {
         if (employee.isNew()) {
             return super.create(employee);
         } else {
@@ -48,5 +49,29 @@ public class EmployeeRestController extends AbstractEmployeeRestController {
     @GetMapping(value = "/getEmployeesByDivisionId/{id}")
     public List<Employee> getEmployeesByDivisionId(@PathVariable("id") int id) {
         return super.getEmployeesByDivisionId(id);
+    }
+
+    @Override
+    @GetMapping(value = "/getAllLdapUsers")
+    public List<Employee> getAllLdapUsers() {
+        return super.getAllLdapUsers();
+    }
+
+    @Override
+    @GetMapping(value = "/getByName")
+    Employee getByName(@RequestParam("name") String name) throws NotFoundException {
+        return super.getByName(name);
+    }
+
+    @Override
+    @GetMapping(value = "/filtered")
+    List<EmployeeTo> getAllFiltered() {
+        return super.getAll();
+    }
+
+    @Override
+    @PostMapping(value = "/sinchronizeUsersByLdap", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void sinchronizeUsersByLdap() {
+        super.sinchronizeUsersByLdap();
     }
 }

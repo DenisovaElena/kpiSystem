@@ -58,4 +58,9 @@ public class Division extends NamedEntity {
 
     @OneToOne(mappedBy = "division", cascade = CascadeType.ALL)
     private LegalDocument legalDocument;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "role_divisions", joinColumns = @JoinColumn(name = "role_id"), inverseJoinColumns =
+    @JoinColumn(name = "division_id"))
+    private List<Role> roles;
 }

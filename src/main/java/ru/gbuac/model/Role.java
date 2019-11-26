@@ -28,6 +28,11 @@ public class Role extends NamedEntity implements GrantedAuthority {
     )
     private List<Role> childRole;
 
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "role_divisions", joinColumns = @JoinColumn(name = "role_id"), inverseJoinColumns =
+    @JoinColumn(name = "division_id"))
+    private List<Division> divisions;
+
     @Override
     public String getAuthority() {
         return "ROLE_" + this.getName();

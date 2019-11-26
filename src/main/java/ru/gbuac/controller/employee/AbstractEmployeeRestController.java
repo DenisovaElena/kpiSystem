@@ -4,8 +4,10 @@ import javassist.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.gbuac.AuthorizedUser;
 import ru.gbuac.model.Employee;
 import ru.gbuac.service.EmployeeService;
+import ru.gbuac.to.EmployeeTo;
 
 import java.util.List;
 
@@ -23,7 +25,7 @@ public abstract class AbstractEmployeeRestController {
         return employeeService.get(id);
     }
 
-    public List<Employee> getAll() {
+    public List<EmployeeTo> getAll() {
         LOG.info("getAll");
         return employeeService.getAll();
     }
@@ -34,13 +36,13 @@ public abstract class AbstractEmployeeRestController {
         return employeeService.save(employee);
     }
 
-    public Employee update(Employee employee, int id) {
+    public Employee update(Employee employee, int id) throws NotFoundException {
         LOG.info("update " + employee);
         assureIdConsistent(employee, id);
         return employeeService.update(employee, id);
     }
 
-    public void delete(int id) {
+    public void delete(int id) throws NotFoundException {
         LOG.info("delete " + id);
         employeeService.delete(id);
     }
@@ -53,5 +55,24 @@ public abstract class AbstractEmployeeRestController {
     public List<Employee> getEmployeesByDivisionId(int id) {
         LOG.info("/getEmployeesByDivisionId");
         return employeeService.getEmployeesByDivisionId(id);
+    }
+
+    List<Employee> getAllLdapUsers() {
+        LOG.info("getAllLdapUsers");
+        return employeeService.getAllLdapUsers();
+    }
+
+    public void sinchronizeUsersByLdap() {
+        LOG.info("sinchronizeUsersByLdap");
+        employeeService.sinchronizeUsersByLdap();
+    }
+
+    Employee getByName(String name) throws NotFoundException {
+        LOG.info("getByName");
+        return employeeService.getByName(name);
+    }
+    List<EmployeeTo> getAllFiltered() {
+        LOG.info("getAllFiltered");
+        return employeeService.getAllFiltered(AuthorizedUser.getUserName());
     }
 }
