@@ -18,8 +18,15 @@
 
         <div class="row">
             <div class="col-sm-3">
-                <div class="card mb-3 mx-4" id="division">
-                    <h5 class="alert-primary p-2"></h5>
+                <div class="card border border-dark mb-3 mx-4" id="division">
+                   <h5 class="bg-primary p-2 text-white font-weight-bold">
+                       <span id="departmentName"></span>
+                       <div class="my-2">
+                           <i class="far fa-file-word mx-2 fa-2x pointer"></i>
+                           <i class="far fa-address-card mx-2 fa-2x pointer"></i>
+                           <i class="fas fa-chart-pie mx-2 fa-2x pointer"></i>
+                       </div>
+                   </h5>
                 </div>
             </div>
             <div class="col-sm-3" id="administrators"></div>
@@ -62,7 +69,6 @@
 
             instance.registerConnectionType("basic", {
                 anchor : ["Right", "Left", "Continuous"],
-                //anchor : "Continuous",
                 connector: "Flowchart"
             });
 
@@ -85,7 +91,7 @@
                     for(var i in data) {
                         var row = data[i];
                         if(row.id == id) {
-                            $('#division h5').html(row.name);
+                            $('#departmentName').html(row.name);
                             getFunctionsDepartments(row.id, '#division');
                             if (row.childDivision.length > 0) {
                                 for(var y in row.childDivision) {
@@ -137,8 +143,14 @@
                                                     var departments =  managements.childDivision[a];
                                                     var keyd = parseInt(a)+1;
                                                     $('#departments').append(
-                                                        '<div class="card mb-3 mx-4" id="departments'+key+keys+keyd+'">' +
-                                                        '   <h6 class="alert-success p-2">'+departments.name+'</h6>' +
+                                                        '<div class="card border border-dark mb-3 mx-4" id="departments'+key+keys+keyd+'">' +
+                                                        '   <h6 class="bg-primary p-2 text-white font-weight-bold">'+departments.name+'' +
+                                                        '       <div class="my-2">' +
+                                                        '           <i class="far fa-file-word mx-2 fa-2x pointer"></i>' +
+                                                        '           <i class="far fa-address-card mx-2 fa-2x pointer"></i>' +
+                                                        '           <i class="fas fa-chart-pie mx-2 fa-2x pointer"></i>' +
+                                                        '       </div>' +
+                                                        '   </h6>' +
                                                         '</div>'
                                                     );
                                                     getFunctionsDepartments(departments.id, '#departments'+key+keys+keyd);
