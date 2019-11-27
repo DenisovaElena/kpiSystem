@@ -44,11 +44,19 @@
         $('.searchBtn').click(function(e) {
             e.preventDefault();
             var word = $('#seacrhWord').val();
-            $.getJSON('rest/profile/authorities/searchAuthorities?word='+word, function(data) {
-                for(var i in data) {
-                    $('[data-id='+data[i].id+']').css('background','#f00');
-                }
-            });
+            if(word!= '') {
+                $.getJSON('rest/profile/authorities/searchAuthorities?word='+word, function(data) {
+                    if(data.length > 0) {
+                        for(var i in data) {
+                            $('.card [data-id='+data[i].id+']').css('background','#f00');
+                        }
+                    } else {
+                        $('.card').css('background','#fff');
+                    }
+                });
+            } else {
+                $('.card').css('background','#fff');
+            }
         });
 
         jsPlumb.ready(function() {
@@ -101,9 +109,9 @@
                                         '<div class="card border border-dark mb-3 mx-4" id="administrators'+key+'">' +
                                         '   <h6 class="bg-primary p-2 text-white font-weight-bold">'+administrators.name+'' +
                                         '       <div class="my-2">' +
-                                        '           <i class="far fa-file-word mx-2 fa-2x pointer"></i>' +
-                                        '           <i class="far fa-address-card mx-2 fa-2x pointer"></i>' +
-                                        '           <i class="fas fa-chart-pie mx-2 fa-2x pointer"></i>' +
+                                        '           <i class="far fa-file-word mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Нормативный документ"></i>' +
+                                        '           <i class="far fa-address-card mx-2 fa-2x pointer" title="Карточка"></i>' +
+                                        '           <i class="fas fa-chart-pie mx-2 fa-2x pointer" title="Проказатель качества"></i>' +
                                         '       </div>' +
                                         '   </h6>' +
                                         '</div>'
