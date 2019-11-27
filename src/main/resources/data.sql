@@ -1,88 +1,109 @@
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (26, 'Управление оценки', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (5, 'Заместитель руководителя Путин Д.В.', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (4, 'Заместитель руководителя Крючкова П.В.', false, null);
 INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (1, 'Департамент экономической политики и развития города Москвы', true, 13);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (31, 'Отдел экономических нормативов и начальных (максимальных) цен контрактов', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (32, 'Отдел  цен и тарифной политики в городском хозяйстве', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (33, 'Зам.начальника Управления ценовой и тарифной политики', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (34, 'Отдел строительства объектов социальной сферы
-Отдел градостроительной политики
-Отдел свода АИП и отраслевых показателей
-', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (35, 'Отдел градостроительной политики
-Отдел свода АИП и отраслевых показателей
-', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (36, '1. Отдел развития транспорта и дорожно-мостового строительства
-2. Отдел жилищного строительства
-3. Отдел развития инженерии', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (37, 'Управление регулирования тарифов на услуги транспортных организаций', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (38, 'Отдел налоговой политики и мобилизации доходов/ГБУ ЦНД', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (30, 'Управлении координации деятельности Департамента и государственной гражданской службы', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (25, 'Управление ценообразования в теплоснабжении и коммунальной сфере', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (24, 'Управление топливно-энергетических балансов и инвестиционной политики', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (27, 'Управление финансового контроля и аудита', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (7, 'Заместитель руководителя Тетушкин Д.Н.', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (6, 'Заместитель руководителя Сибрин А.Э.', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (3, 'Заместитель руководителя и.о. Сибрин А.Э.', false, null);
 INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (2, 'Заместитель руководителя Багреева М.А.', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (13, 'Управление регулирования тарифов на услуги транспортных организаций', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (12, 'Управление бюджетных инвестиций дорожно-мостового, жилищного строительства и объектов инженерии', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (15, 'Управление миграционной политики', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (14, 'Управление бюджетной и налоговой политики', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (9, 'Руководитель', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (3, 'Заместитель руководителя и.о. Сибрин А.Э.', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (4, 'Заместитель руководителя Крючкова П.В.', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (5, 'Заместитель руководителя Путин Д.В.', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (6, 'Заместитель руководителя Сибрин А.Э.', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (7, 'Заместитель руководителя Тетушкин Д.Н.', false, null);
 INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (8, 'Заместитель руководителя Федоров П.Д.', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (11, 'Сводное управление бюджетных инвестиций', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (9, 'Руководитель', false, null);
 INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (10, 'Управление ценовой и тарифной политики', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (21, 'Управление сводных экономических показателей', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (20, 'Юридическое управление', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (23, 'Управление регулирования тарифов в электроэнергетике', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (22, 'Управление ценообразования в теплоснабжении и коммунальной сфере', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (17, 'Управление экономики жилищного хозяйства', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (11, 'Сводное управление бюджетных инвестиций', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (12, 'Управление бюджетных инвестиций дорожно-мостового, жилищного строительства и объектов инженерии', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (13, 'Управление регулирования тарифов на услуги транспортных организаций', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (14, 'Управление бюджетной и налоговой политики', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (15, 'Управление миграционной политики', false, null);
 INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (16, 'Управление экономики отраслей социальной сферы', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (17, 'Управление экономики жилищного хозяйства', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (18, 'Управление информатизации и связи', false, null);
 INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (19, 'Управление стандартизации государственных закупок и тарифного
 регулирования в сфере ЖКХ', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (18, 'Управление информатизации и связи', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (29, 'Управлении координации деятельности Департамента и государственной гражданской службы', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (20, 'Юридическое управление', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (21, 'Управление сводных экономических показателей', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (22, 'Управление ценообразования в теплоснабжении и коммунальной сфере', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (23, 'Управление регулирования тарифов в электроэнергетике', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (24, 'Управление топливно-энергетических балансов и инвестиционной политики', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (25, 'Отдел оценки недвижимости', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (26, 'Управление оценки', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (27, 'Управление финансового контроля и аудита', false, null);
 INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (28, 'Управление бюджетного планирования, бухгалтерского учета и государственного заказа', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (39, 'Отдел экономики социальной защиты и прочих отраслей', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (40, 'Отдел экономики образования и культуры/ГБУ ЦНД', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (41, 'Отдел экономики здравоохранения, физической культуры и спорта', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (42, '1. Отдел развития жилищного хозяйства и содержания территорий города.
-2. Отдел охраны окружающей среды и совершенствования системы расчетов ЖКУ.', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (43, 'Отдел планирования, сопровождения и контроля проектов', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (44, 'Управление стандартизации государственных закупок и тарифного
-регулирования в сфере ЖКХ', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (45, 'Сектор  тарифного регулирования ЖКУ', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (46, 'Отдел подготовки нормативных актов и применения законодательства в сфере государственного регулирования тарифов
-Отдел правовой защиты и досудебного урегулирования споров.
-Отдел договоров, нормативной работы и судебной практики.', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (47, 'Отдел экономического анализа и прогнозирования', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (48, '1. Отдел развития транспорта и дорожно-мостового строительства
-2. Отдел жилищного строительства
-', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (49, 'Отдел развития жилищного хозяйства и содержания территорий города.', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (50, '1. Отдел охраны окружающей среды и совершенствования системы расчетов ЖКУ.
-2. Прикрепленные сотрудники.', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (51, 'Отдел охраны окружающей среды и совершенствования системы расчетов ЖКУ.', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (52, 'Прикрепленные сотрудники.', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (53, 'Отдел развития жилищного хозяйства и содержания территорий города.', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (54, '1. Отдел охраны окружающей среды и совершенствования системы расчетов ЖКУ.
-2. Отдел развития жилищного хозяйства и содержания территорий города.
-', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (55, '1. Отдел развития жилищного хозяйства и содержания территорий города.
-2. Отдел охраны окружающей среды и совершенствования системы расчетов ЖКУ.
-3. Прикрепленные сотрудники.', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (56, 'Отдел развития жилищного хозяйства и содержания территорий города.
-', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (57, 'Отдел стратегического планирования и анализа реализации государственных программ', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (58, 'Отдел свода АИП и отраслевых показателей Отдел строительства объектов социальной сферы', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (59, 'Отдел свода АИП и отраслевых показателей
-', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (60, 'Отдел свода АИП и отраслевых показателей', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (61, '1. Отдел развития транспорта и дорожно-мостового строительства
-2. Отдел жилищного строительства', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (62, 'Отдел налоговой политики и мобилизации доходов', false, null);
-INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (63, 'Отдел мониторинга доходов бюджета/ГБУ ЦНД', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (29, 'Управлении координации деятельности Департамента и государственной гражданской службы', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (30, 'Пресс-служба', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (31, 'Отдел экономических нормативов и начальных (максимальных) цен контрактов', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (32, 'Отдел  цен и тарифной политики в городском хозяйстве', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (33, 'Зам.начальника Управления ценовой и тарифной политики ГБУ', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (34, 'Отдел "Разработка предельных ценовых показателей, методологии разработки форм типовых документов" ГБУ "ГАУИ"', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (35, 'Отдел цен и тарифной политики в городском хозяйстве', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (36, 'Отдел строительства объектов социальной сферы', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (37, 'Отдел градостроительной политики', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (38, 'Отдел свода АИП и отраслевых показателей', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (39, 'Проектный офис №3 ГБУ АЦ', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (40, 'Отдел развития транспорта и дорожно-мостового строительства', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (41, 'Отдел жилищного строительства', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (42, 'Отдел развития инженерии', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (43, 'отдел регулирования тарифов на транспортные услуги для населения', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (44, 'отдел экономики транспорта', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (45, 'отдел регулирования тарифов на транспортные услуги для организаций', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (46, 'Отдел налоговой политики и мобилизации доходов/ГБУ ЦНД', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (47, 'Отдел налоговой политики и мобилизации доходов', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (48, 'Отдел мониторинга доходов бюджета/ГБУ ЦНД', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (49, 'Отдел администрирования торгового сбора/ГБУ ЦНД', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (50, 'Отдел сводного бюджетного планирования/ГБУ ЦНД', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (51, 'Отдел методологии  государственных программ/ГБУ ЦНД', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (52, 'Отдел мониторинга доходов бюджета/ГБУ АЦ/ГБУ ЦНД', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (53, 'Отдел сводного бюджетного планирования/ГБУ АЦ', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (54, 'Отдел экономики социальной защиты и прочих отраслей', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (55, 'Отдел экономики образования и культуры/ГБУ ЦНД', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (56, 'Отдел экономики здравоохранения, физической культуры и спорта', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (57, 'Управление экономики отраслей социальной сферы', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (58, 'Отдел развития жилищного хозяйства и содержания территорий города.', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (59, 'Отдел охраны окружающей среды и совершенствования системы расчетов ЖКУ.', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (60, 'Отдел планирования, сопровождения и контроля проектов', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (61, 'Сектор IT', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (62, 'Сектор  тарифного регулирования ЖКУ', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (63, 'Отдел подготовки нормативных актов и применения законодательства в сфере государственного регулирования тарифов', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (64, 'Отдел правовой защиты и досудебного урегулирования споров', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (65, 'Отдел договоров, нормативной работы и судебной практики', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (66, 'Отдел подготовки нормативных актов и применения законодательства в сфере государственного регулирования тарифов', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (67, 'Сектор правления', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (68, 'Отдел экономического анализа и прогнозирования', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (69, 'Отдел стратегического планирования и анализа реализации государственных программ', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (70, 'Отдел анализа секторов экономики ', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (71, 'Отдел экономического анализа и прогнозирования (в части предоставления статистической и аналитической информации)', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (72, 'Отдел сводных работ и анализа реализации указов Президента РФ в области социально-экономической политики', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (73, 'Отдел сводных работ и анализа реализации указов Президента РФ в области социально-экономической политики по вопросам, входящим в компетенцию отдела (в части взаимодействия с отраслевыми, функциональными и территориальными структурами города Москвы, профсоюзными объединениями и общественными организациями)', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (74, 'Отдел стратегического планирования и анализа реализации государственных программ по вопросам, входящим в компетенцию отдела', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (75, 'Отдел анализа секторов экономики по вопросам, входящим в компетенцию отдела', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (76, 'Отдел экономического анализа и прогнозирования по вопросам, входящим в компетенцию отдела', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (77, 'Отдел экономического анализа и прогнозирования (в части предоставления документов стратегического планирования, а именно размещение прогнозов СЭР г.Москвы и заполнение формы 2П)', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (78, 'Отдел сводных работ и анализа реализации указов Президента РФ в области социально-экономической политики (по формам мониторинга майских указов и 806-р)', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (79, 'Отдел сводных работ и анализа реализации указов Президента РФ в области социально-экономической политики ', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (80, 'Отдел регулирования тарифов (цен) в сфере теплоснабжения', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (81, 'Отдел регулирования тарифов на присоединение к сетям ресурсоснабжающих организаций', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (82, 'Отдел регулирования тарифов в сфере холодного водоснабжения и водоотведения', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (83, 'Отдел регулирования тарифов в сфере обращения с отходами', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (84, 'Отдел регулирования тарифов (цен) в сфере электроэнергетики', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (85, 'Отдел регулирования платы за технологическое присоединение к электрическим сетям', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (86, 'Отдел регулирования тарифов (цен) в сфере электроэнергетики', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (87, 'Отдел регулирования платы за технологическое присоединение к электрическим сетям', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (88, 'Отдел топливно-энергетических балансов', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (89, 'Отдел инвестиционной политики', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (90, 'Отдел оценки прав аренды и постановки на баланс', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (91, 'Отдел оценки акционерного капитала, финансовых активов и рассмотрения отчетов', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (92, 'Отдел оценки недвижимости', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (93, 'Отдел контроля', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (94, 'Планово-экономический отдел Управления бюджетного планирования, бухгалтерского учета и государственного заказа', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (95, 'Контрактная служба/отдел государственного заказа Управления бюджетного планирования, бухгалтерского учета и государственного заказа', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (96, 'ПО ГБУ АЦ', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (97, 'административно-организационный отдел,', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (98, 'ПО ГБУ ЦНД', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (99, 'ПО ГБУ ГАУИ', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (100, 'отдел государственной службы и кадров ', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (101, 'отдел входящей и исходящей корреспонденции', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (102, 'отдел контроля исполнения поручений', false, null);
+INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (103, 'ПО ГБУ ММЦ', false, null);
+
+
 
 
 
@@ -112,13 +133,110 @@ INSERT  INTO kpi.employee(id, lastname, firstname, patronym, position, email, ph
 
 
 
-INSERT  INTO kpi.division_child_division(division_id, child_division_id) VALUES (1, 7);
-INSERT  INTO kpi.division_child_division(division_id, child_division_id) VALUES (2, 8);
-INSERT  INTO kpi.division_child_division(division_id, child_division_id) VALUES (3, 9);
-INSERT  INTO kpi.division_child_division(division_id, child_division_id) VALUES (4, 10);
-INSERT  INTO kpi.division_child_division(division_id, child_division_id) VALUES (5, 11);
-INSERT  INTO kpi.division_child_division(division_id, child_division_id) VALUES (6, 12);
-
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (1, 9);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (9, 2);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (9, 3);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (9, 4);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (9, 5);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (9, 6);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (9, 7);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (9, 8);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (2, 14);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (2, 15);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (2, 16);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (3, 20);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (3, 26);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (4, 21);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (5, 13);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (5, 20);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (5, 22);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (6, 11);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (6, 13);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (6, 23);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (6, 12);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (6, 24);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (6, 10);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (7, 17);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (7, 18);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (7, 19);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (8, 20);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (8, 23);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (8, 24);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (11, 39);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (10, 33);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (10, 34);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (11, 38);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (10, 32);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (11, 37);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (10, 36);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (10, 31);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (10, 35);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (12, 40);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (12, 41);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (12, 42);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (13, 43);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (13, 44);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (13, 45);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (14, 46);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (14, 47);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (14, 48);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (14, 49);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (14, 50);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (14, 51);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (14, 52);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (14, 53);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (16, 57);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (16, 55);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (16, 56);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (16, 54);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (17, 58);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (17, 59);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (18, 60);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (18, 61);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (19, 62);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (20, 63);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (20, 64);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (20, 65);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (20, 66);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (20, 67);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (21, 68);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (21, 69);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (21, 70);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (21, 71);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (21, 72);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (21, 73);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (21, 74);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (21, 75);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (21, 76);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (21, 77);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (21, 78);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (21, 79);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (22, 80);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (22, 81);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (22, 82);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (22, 83);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (23, 84);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (23, 85);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (23, 86);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (23, 87);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (24, 88);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (24, 89);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (26, 90);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (26, 91);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (26, 92);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (26, 25);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (27, 93);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (28, 94);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (28, 95);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (29, 96);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (29, 97);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (29, 98);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (29, 99);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (29, 100);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (29, 101);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (29, 102);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (29, 103);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (29, 30);
 
 
 
@@ -300,8 +418,7 @@ INSERT INTO kpi.authority (id, name, top_level) VALUES (99, '2.10.Подгото
 INSERT INTO kpi.authority (id, name, top_level) VALUES (122, '3.10.100 Согласованию в случаях, установленных законодательством Российской Федерации о концессионных соглашениях, установлению, изменению и корректировке регулируемых цен (тарифов) на производимые и реализуемые концессионером товары и оказываемые услуги в сферах электроснабжения, теплоснабжения, водоснабжения и водоотведения', true);
 INSERT INTO kpi.authority (id, name, top_level) VALUES (126, '3.10.58  Обеспечению осуществления оценки проектов технических заданий на разработку инвестиционных программ организаций, осуществляющих регулируемые виды деятельности в сфере водоснабжения и водоотведения, в части тарифных последствий при реализации инвестиционных программ.', true);
 INSERT INTO kpi.authority (id, name, top_level) VALUES (128, '3.10.29. Утверждению целевых показателей деятельности организаций, осуществляющих горячее водоснабжение, холодное водоснабжение и (или) водоотведение.', true);
-INSERT INTO kpi.authority (id, name, top_level) VALUES (125, '3.10.98. Согласованию решения организатора конкурса или' ||
-                                                             ' концедента о выборе метода регулирования тарифов в сфере теплоснабжения, содержащегося в проекте концессионного соглашения', true);
+INSERT INTO kpi.authority (id, name, top_level) VALUES (125, '3.10.98. Согласованию решения организатора конкурса или концедента о выборе метода регулирования трифов в сфере теплоснабжения, содержащегося в проекте концессионного соглашения', true);
 INSERT INTO kpi.authority (id, name, top_level) VALUES (124, '3.10.70. Формированию сводного прогнозного баланса производства и поставок электрической энергии (мощности) в рамках Единой энергетической системы России по городу Москве.', true);
 INSERT INTO kpi.authority (id, name, top_level) VALUES (116, '3.10.86. Согласованию нормативов удельного расхода топлива при производстве тепловой энергии источниками тепловой энергии', true);
 INSERT INTO kpi.authority (id, name, top_level) VALUES (118, '3.10.74.1. Основных показателей прогнозного энергетического баланса города Москвы и Московской области.', true);
