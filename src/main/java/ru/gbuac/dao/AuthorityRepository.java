@@ -23,6 +23,6 @@ public interface AuthorityRepository extends JpaRepository<Authority, Integer> {
     @Query("SELECT a FROM Authority a JOIN a.divisions d WHERE d.id=:id")
     List<Authority> getAuthoritiesByDivisionId(@Param("id") int id);
 
-    @Query("SELECT a FROM Authority a WHERE LOWER(a.name) LIKE %:name%")
+    @Query("SELECT a FROM Authority a WHERE LOWER(a.name) LIKE CONCAT('%', LOWER(:name), '%')")
     List<Authority> searchAuthorities(@Param("name") String name);
 }

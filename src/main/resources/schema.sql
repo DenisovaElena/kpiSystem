@@ -134,7 +134,7 @@ CREATE TABLE kpi.role_child_roles
 );
 
 CREATE TABLE kpi.role_divisions
-(   role_id                     INTEGER,
+(   role_id                   INTEGER,
     division_id               INTEGER,
     FOREIGN KEY (role_id) REFERENCES kpi.role (id) ON DELETE CASCADE,
     FOREIGN KEY (division_id) REFERENCES kpi.division (id) ON DELETE CASCADE
