@@ -94,7 +94,7 @@ CREATE TABLE kpi.authority
 (
     id                      INTEGER PRIMARY KEY DEFAULT nextval('kpi.global_seq'),
     name                    VARCHAR                                     ,
-    top_level               BOOLEAN
+    top_level               BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE kpi.authority_child_authorities

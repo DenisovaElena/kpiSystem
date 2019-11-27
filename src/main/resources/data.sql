@@ -105,8 +105,14 @@ INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (103, '
 
 
 
-
-
+INSERT INTO kpi.employee(id, name, lastname, firstname, patronym, position, email, phone) VALUES (10000, 'admin',
+                                                                                                  'Махров',
+                                                                                                  'Станислав',
+                                                                                                  'Станиславович',
+                                                                                                  'Начальник ' ||
+                                                                                                  'Отдела анализа',
+                                                                                                  'mak@mail.ru',
+                                                                                                  '15555');
 INSERT  INTO kpi.employee(id, lastname, firstname, patronym, position, email, phone) VALUES (13, 'Иванов','Иван',
                                                                                              'Иванович', 'Начальник Управления ценовой и тарифной политики','iv@mail.ru', '15555');
 INSERT  INTO kpi.employee(id, lastname, firstname, patronym, position, email, phone) VALUES (14, 'Петров','Иван',

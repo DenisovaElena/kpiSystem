@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -18,8 +19,9 @@ import java.util.List;
 @Table(name = "authority")
 public class Authority extends NamedEntity {
 
+    @NotNull
     @Column(name = "top_level")
-    private boolean topLevel;
+    private boolean topLevel = false;
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
