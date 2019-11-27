@@ -1,0 +1,31 @@
+@import url("bootstrap.min.css");
+@import url("jsplumbtoolkit-defaults2.css");
+@import url("jsplumbtoolkit-demo2.css");
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
+
+html {font: 0.8rem 'Roboto Condensed', sans-serif;}
+.pointer {cursor: pointer;}
+.font-size-small {font-size: 0.7rem;}
+.functions:hover {
+    background: #CCCCCC;
+    color: #000000;
+}
+/*
+.arrow {
+    width: auto;
+    margin: 0 auto;
+    position: relative;
+    background: #eee;
+    border-radius: 3px;
+    text-align: center;
+}
+.arrow:before {
+    content: "";
+    border: solid transparent;
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    border-left-color: #eee;
+    border-width: 9px;
+    margin-top: -1px;
+}*/

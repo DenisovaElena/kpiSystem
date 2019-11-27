@@ -15,7 +15,7 @@
 <div class="logo-container">
     <img class="logo" src="resources/images/logo.png" alt="">
     <ul class="dgi-name">
-        <li>АВТОМАТИЗИРОВАННАЯ СИСТЕМА KPI</li>
+        <li>АИС 'КОНТРОЛЬ КАЧЕСТВА КЛЮЧЕВЫХ ПОКАЗАТЕЛЕЙ'</li>
     </ul>
 </div>
 <div class="body-container">
