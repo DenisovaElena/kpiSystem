@@ -86,11 +86,11 @@
                 });
             }
 
-            function getDepartments (id) {
+            function getDepartments () {/*id*/
                 $.getJSON('rest/profile/divisions/getAllTopLevel/', function(data) {
                     for(var i in data) {
                         var row = data[i];
-                        if(row.id == id) {
+                        if(row.id == 1) {/*id*/
                             $('#departmentName').html(row.name);
                             getFunctionsDepartments(row.id, '#division');
                             if (row.childDivision.length > 0) {
