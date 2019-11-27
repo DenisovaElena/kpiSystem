@@ -7,12 +7,8 @@
             <form class="form-inline my-2 my-lg-0">
                 <input class="w-75 form-control mr-sm-2 border border-dark"
                        type="search" placeholder="Поиск совпадения функций"
-                       aria-label="Поиск совпадения функций"
-                       id="seacrhWord"
-                >
-                <button class="btn btn-dark px-4 my-2 my-sm-0 searchBtn"
-                        type="submit">Искать
-                </button>
+                       aria-label="Поиск совпадения функций" id="seacrhWord">
+                <button class="btn btn-dark px-4 my-2 my-sm-0 searchBtn" type="submit">Искать</button>
             </form>
         </div>
 
@@ -22,9 +18,9 @@
                    <h5 class="bg-primary p-2 text-white font-weight-bold">
                        <span id="departmentName"></span>
                        <div class="my-2">
-                           <i class="far fa-file-word mx-2 fa-2x pointer"></i>
-                           <i class="far fa-address-card mx-2 fa-2x pointer"></i>
-                           <i class="fas fa-chart-pie mx-2 fa-2x pointer"></i>
+                           <i class="far fa-file-word mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Нормативный документ"></i>
+                           <i class="far fa-address-card mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Карточка"></i>
+                           <i class="fas fa-chart-pie mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Проказатель качества"></i>
                        </div>
                    </h5>
                 </div>
@@ -110,8 +106,8 @@
                                         '   <h6 class="bg-primary p-2 text-white font-weight-bold">'+administrators.name+'' +
                                         '       <div class="my-2">' +
                                         '           <i class="far fa-file-word mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Нормативный документ"></i>' +
-                                        '           <i class="far fa-address-card mx-2 fa-2x pointer" title="Карточка"></i>' +
-                                        '           <i class="fas fa-chart-pie mx-2 fa-2x pointer" title="Проказатель качества"></i>' +
+                                        '           <i class="far fa-address-card mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Карточка"></i>' +
+                                        '           <i class="fas fa-chart-pie mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Проказатель качества"></i>' +
                                         '       </div>' +
                                         '   </h6>' +
                                         '</div>'
@@ -131,9 +127,9 @@
                                                 '<div class="card border border-dark mb-3 mx-4" id="managements'+key+keys+'">' +
                                                 '   <h6 class="bg-primary p-2 text-white font-weight-bold">'+managements.name+'' +
                                                 '       <div class="my-2">' +
-                                                '           <i class="far fa-file-word mx-2 fa-2x pointer"></i>' +
-                                                '           <i class="far fa-address-card mx-2 fa-2x pointer"></i>' +
-                                                '           <i class="fas fa-chart-pie mx-2 fa-2x pointer"></i>' +
+                                                '           <i class="far fa-file-word mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Нормативный документ"></i>' +
+                                                '           <i class="far fa-address-card mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Карточка"></i>' +
+                                                '           <i class="fas fa-chart-pie mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Проказатель качества"></i>' +
                                                 '       </div>' +
                                                 '   </h6>' +
                                                 '</div>'
@@ -154,9 +150,9 @@
                                                         '<div class="card border border-dark mb-3 mx-4" id="departments'+key+keys+keyd+'">' +
                                                         '   <h6 class="bg-primary p-2 text-white font-weight-bold">'+departments.name+'' +
                                                         '       <div class="my-2">' +
-                                                        '           <i class="far fa-file-word mx-2 fa-2x pointer"></i>' +
-                                                        '           <i class="far fa-address-card mx-2 fa-2x pointer"></i>' +
-                                                        '           <i class="fas fa-chart-pie mx-2 fa-2x pointer"></i>' +
+                                                        '           <i class="far fa-file-word mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Нормативный документ"></i>' +
+                                                        '           <i class="far fa-address-card mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Карточка"></i>' +
+                                                        '           <i class="fas fa-chart-pie mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Проказатель качества"></i>' +
                                                         '       </div>' +
                                                         '   </h6>' +
                                                         '</div>'
