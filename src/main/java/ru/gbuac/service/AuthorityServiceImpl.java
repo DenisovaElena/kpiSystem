@@ -61,8 +61,8 @@ public class AuthorityServiceImpl implements AuthorityService {
 
     @Override
     public List<Authority> searchAuthorities(String word) {
-        List<Authority> returned;
-        if (word.equals("")) {
+        List<Authority> returned = authorityRepository.searchAuthorities(word);
+        if (word == "") {
             returned= null;
         }
         else returned = authorityRepository.searchAuthorities(word);
