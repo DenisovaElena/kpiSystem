@@ -6,12 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import ru.gbuac.dao.AuthorityRepository;
 import ru.gbuac.model.Authority;
-import ru.gbuac.to.AuthorityTo;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static ru.gbuac.util.ValidationUtil.checkNotFoundWithId;
 
@@ -62,7 +58,7 @@ public class AuthorityServiceImpl implements AuthorityService {
     @Override
     public List<Authority> searchAuthorities(String word) {
         List<Authority> returned = authorityRepository.searchAuthorities(word);
-        if (word == "") {
+        if (word.equals("")) {
             returned= null;
         }
         else returned = authorityRepository.searchAuthorities(word);
