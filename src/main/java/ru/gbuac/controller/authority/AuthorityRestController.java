@@ -59,4 +59,10 @@ public class AuthorityRestController extends AbstractAuthorityRestController {
     public List<Authority> searchAuthorities(@RequestParam("word") String word) {
         return super.searchAuthorities(word);
     }
+
+    @Override
+    @GetMapping("/getAuthoritiesByEmployeeId/{id}")
+    public List<Authority> getAuthoritiesByEmployeeId(@PathVariable("id") int id) {
+        return authorityService.getAuthoritiesByDivisionId(id);
+    }
 }

@@ -59,4 +59,12 @@ public class Employee extends NamedEntity {
             inverseJoinColumns = @JoinColumn(name = "child_employee_id")
     )
     private List<Employee> childEmployees;
+
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "authority_employees",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "authority_id")
+    )
+    private List<Authority> authorities;
 }

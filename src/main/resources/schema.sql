@@ -13,6 +13,7 @@ DROP TABLE IF EXISTS kpi.role CASCADE;
 DROP TABLE IF EXISTS kpi.role_employees CASCADE;
 DROP TABLE IF EXISTS kpi.role_child_roles CASCADE;
 DROP TABLE IF EXISTS kpi.role_divisions CASCADE;
+DROP TABLE IF EXISTS kpi.authority_employees CASCADE;
 DROP SEQUENCE IF EXISTS kpi.global_seq;
 
 CREATE SEQUENCE kpi.global_seq START 100000;
@@ -111,6 +112,14 @@ CREATE TABLE kpi.authority_divisions
     division_id                INTEGER                           ,
     FOREIGN KEY (authority_id) REFERENCES kpi.authority (id) ON DELETE CASCADE,
     FOREIGN KEY (division_id) REFERENCES kpi.division (id) ON DELETE CASCADE
+);
+
+CREATE TABLE kpi.authority_employees
+(
+    authority_id               INTEGER                           ,
+    employee_id                INTEGER                           ,
+    FOREIGN KEY (authority_id) REFERENCES kpi.authority (id) ON DELETE CASCADE,
+    FOREIGN KEY (employee_id) REFERENCES kpi.employee (id) ON DELETE CASCADE
 );
 
 CREATE TABLE kpi.role

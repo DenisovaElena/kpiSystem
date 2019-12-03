@@ -64,4 +64,9 @@ public class AuthorityServiceImpl implements AuthorityService {
         else returned = authorityRepository.searchAuthorities(word);
         return returned;
     }
+
+    @Override
+    public List<Authority> getAuthoritiesByEmployeeId(int id) {
+        return authorityRepository.getAllTopLevelAuthoritiesByEmployeeId(id);
+    }
 }

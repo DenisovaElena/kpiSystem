@@ -4565,18 +4565,6 @@ INSERT INTO kpi.authority_divisions (authority_id, division_id) VALUES (890, 527
 INSERT INTO kpi.authority_divisions (authority_id, division_id) VALUES (889, 527);
 INSERT INTO kpi.authority_divisions (authority_id, division_id) VALUES (893, 527);
 
-
-
-
-
-
-
-
-
-
-
-
-
 INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) VALUES (82, 1073);
 INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) VALUES (425, 1009);
 INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) VALUES (426, 1009);
@@ -4737,3 +4725,9 @@ INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) V
 INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) VALUES (1106, 1100);
 INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) VALUES (1108, 1101);
 INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) VALUES (1109, 1102);
+
+--Test data
+INSERT INTO kpi.authority_employees (authority_id, employee_id) VALUES (1, 4233);
+INSERT INTO kpi.authority_employees (authority_id, employee_id) VALUES (30, 4234);
+INSERT INTO kpi.authority_employees (authority_id, employee_id) VALUES (500, 4280);
+--

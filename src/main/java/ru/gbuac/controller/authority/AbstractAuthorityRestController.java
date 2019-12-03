@@ -60,4 +60,9 @@ public abstract class AbstractAuthorityRestController {
         LOG.info("searchAuthorities");
         return authorityService.searchAuthorities(word);
     }
+
+    public List<Authority> getAuthoritiesByEmployeeId(int id) {
+        LOG.info("getAuthoritiesByEmployeeId");
+        return authorityService.getAuthoritiesByDivisionId(id);
+    }
 }
