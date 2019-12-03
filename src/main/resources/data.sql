@@ -94,7 +94,6 @@ INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (575, '
 
 
 
-
 INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (562, 505);
 INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (562, 506);
 INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (562, 507);
@@ -143,6 +142,34 @@ INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES 
 INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (582, 554);
 INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (582, 555);
 INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (582, 556);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (1, 2);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (1, 3);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (1, 4);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (1, 5);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (1, 6);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (1, 7);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (1, 8);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (1, 584);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (6, 573);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (6, 565);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (6, 567);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (6, 578);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (6, 581);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (6, 580);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (6, 579);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (7, 574);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (7, 564);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (7, 569);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (8, 580);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (5, 578);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (4, 563);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (3, 582);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (3, 575);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (2, 562);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (2, 566);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (584, 573);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (584, 571);
+INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (584, 570);
 
 
 
@@ -4565,6 +4592,18 @@ INSERT INTO kpi.authority_divisions (authority_id, division_id) VALUES (890, 527
 INSERT INTO kpi.authority_divisions (authority_id, division_id) VALUES (889, 527);
 INSERT INTO kpi.authority_divisions (authority_id, division_id) VALUES (893, 527);
 
+
+
+
+
+
+
+
+
+
+
+
+
 INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) VALUES (82, 1073);
 INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) VALUES (425, 1009);
 INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) VALUES (426, 1009);
@@ -4725,9 +4764,3 @@ INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) V
 INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) VALUES (1106, 1100);
 INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) VALUES (1108, 1101);
 INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) VALUES (1109, 1102);
-
---Test data
-INSERT INTO kpi.authority_employees (authority_id, employee_id) VALUES (1, 4233);
-INSERT INTO kpi.authority_employees (authority_id, employee_id) VALUES (30, 4234);
-INSERT INTO kpi.authority_employees (authority_id, employee_id) VALUES (500, 4280);
---
