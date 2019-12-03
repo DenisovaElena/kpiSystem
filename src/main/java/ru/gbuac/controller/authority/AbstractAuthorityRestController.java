@@ -61,8 +61,8 @@ public abstract class AbstractAuthorityRestController {
         return authorityService.searchAuthorities(word);
     }
 
-    public List<Authority> getAuthoritiesByEmployeeId(int id) {
+    public List<Authority> getAllTopLevelAuthoritiesByEmployeeId(int id) {
         LOG.info("getAuthoritiesByEmployeeId");
-        return authorityService.getAuthoritiesByDivisionId(id);
+        return authorityService.getAllTopLevelAuthoritiesByEmployeeId(id);
     }
 }

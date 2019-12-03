@@ -148,10 +148,8 @@ INSERT  INTO kpi.division_goals(goal_id, division_id) VALUES (48, 6);
 
 INSERT  INTO kpi.authority(id, name, top_level) VALUES (49, 'Департамент осуществляет свою деятельность во взаимодействии с федеральными органами государственной власти', true);
 INSERT  INTO kpi.authority(id, name, top_level) VALUES (50, 'Департамент осуществляет свою деятельность во взаимодействии с федеральными органами государственной власти', true);
-INSERT  INTO kpi.authority(id, name, top_level) VALUES (51, 'Департамент осуществляет свою деятельность во ' ||
-                                                            'взаимодействии с федеральными органами государственной власти', false);
-INSERT  INTO kpi.authority(id, name, top_level) VALUES (52, 'Департамент осуществляет свою деятельность во ' ||
-                                                            'взаимодействии с федеральными органами государственной власти', false);
+INSERT  INTO kpi.authority(id, name, top_level) VALUES (51, 'Департамент осуществляет свою деятельность во взаимодействии с федеральными органами государственной власти', false);
+INSERT  INTO kpi.authority(id, name, top_level) VALUES (52, 'Департамент осуществляет свою деятельность во взаимодействии с федеральными органами государственной власти', false);
 
 INSERT  INTO kpi.authority_divisions(authority_id, division_id) VALUES (49, 1);
 INSERT  INTO kpi.authority_divisions(authority_id, division_id) VALUES (50, 2);
@@ -160,6 +158,13 @@ INSERT  INTO kpi.authority_divisions(authority_id, division_id) VALUES (52, 4);
 
 INSERT  INTO kpi.authority_child_authorities(authority_id, child_authority_id) VALUES (49, 51);
 INSERT  INTO kpi.authority_child_authorities(authority_id, child_authority_id) VALUES (50, 52);
+
+INSERT  INTO kpi.authority_employees(authority_id, employee_id) VALUES (49, 22);
+INSERT  INTO kpi.authority_employees(authority_id, employee_id) VALUES (50, 23);
+INSERT  INTO kpi.authority_employees(authority_id, employee_id) VALUES (51, 22);
+INSERT  INTO kpi.authority_employees(authority_id, employee_id) VALUES (52, 23);
+
+
 --
 
 

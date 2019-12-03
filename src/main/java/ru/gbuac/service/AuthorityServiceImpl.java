@@ -66,7 +66,7 @@ public class AuthorityServiceImpl implements AuthorityService {
     }
 
     @Override
-    public List<Authority> getAuthoritiesByEmployeeId(int id) {
+    public List<Authority> getAllTopLevelAuthoritiesByEmployeeId(int id) {
         return authorityRepository.getAllTopLevelAuthoritiesByEmployeeId(id);
     }
 }

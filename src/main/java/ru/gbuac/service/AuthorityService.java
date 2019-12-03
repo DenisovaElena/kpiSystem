@@ -24,5 +24,5 @@ public interface AuthorityService {
 
    List<Authority> searchAuthorities(String word);
 
-   List<Authority> getAuthoritiesByEmployeeId(int id);
+   List<Authority> getAllTopLevelAuthoritiesByEmployeeId(int id);
 }
