@@ -61,7 +61,7 @@ public class AuthorityRestController extends AbstractAuthorityRestController {
     }
 
     @Override
-    @GetMapping("/getAuthoritiesByEmployeeId/{id}")
+    @GetMapping("/getAllTopLevelAuthoritiesByEmployeeId/{id}")
     public List<Authority> getAllTopLevelAuthoritiesByEmployeeId(@PathVariable("id") int id) {
         return authorityService.getAllTopLevelAuthoritiesByEmployeeId(id);
     }
