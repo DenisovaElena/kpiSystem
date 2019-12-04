@@ -406,25 +406,39 @@
                 if (id > 0) {
                     $.getJSON('rest/profile/authorities/getAllTopLevelAuthoritiesByChildAuthorityId/' + id, function (data) {
                         if (data.length > 0) {
+                            var array1 = []; var array2 = []; var array3= [];
                             for (var i in data) {
                                 var row = data[i];
-                                $('.card[data-id=' + row.id + ']').css('background', '#fc6');
+                                array1.push(row.id);
+                                //$('.card[data-id='+row.id+']').css('background', '#fc6');
                                 if(row.childAuthorities.length > 0) {
-                                    //console.log('row - '+ row.id);
                                     for (var y in row.childAuthorities) {
                                         var rowChild = row.childAuthorities[y];
-                                        //console.log('rowChild - '+ rowChild.id);
-                                        $('.card[data-id='+rowChild.id+']').css('background', '#fc6');
+                                        array2.push(rowChild.id);
+                                        //$('.card[data-id='+rowChild.id+']').css('background', '#fc6');
                                         if(rowChild.childAuthorities.length > 0) {
                                             for (var z in rowChild.childAuthorities) {
                                                 var rowChild1 = rowChild.childAuthorities[z];
-                                                //console.log('rowChild1 - '+ rowChild1.id);
-                                                if(id != rowChild1.id) {
-                                                    $('.card[data-id='+rowChild1.id+']').css('background', '#fc6');
-                                                }
+                                                array3.push(rowChild1.id);
+                                                //$('.card[data-id='+rowChild1.id+']').css('background', '#fc6');
                                             }
                                         }
                                     }
+                                }
+                            }
+                            if($.inArray(id, array1) == -1) {
+                                for (var i in array1) {
+                                    $('.card[data-id='+array1[i]+']').css('background', '#fc6');
+                                }
+                            }
+                            if($.inArray(id, array2) == -1) {
+                                for (var i in array2) {
+                                    $('.card[data-id='+array2[i]+']').css('background', '#fc6');
+                                }
+                            }
+                            if($.inArray(id, array3) == -1) {
+                                for (var i in array3) {
+                                    $('.card[data-id='+array3[i]+']').css('background', '#fc6');
                                 }
                             }
                         } else {
