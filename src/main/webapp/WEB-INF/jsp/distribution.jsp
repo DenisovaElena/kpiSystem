@@ -3,32 +3,59 @@
 
 <main>
     <div class="container-fluid">
-        <div class="container mb-4">
+
+        <%--<div class="container mb-4">
             <form class="form-inline my-2 my-lg-0">
                 <input class="w-75 form-control mr-sm-2 border border-dark"
                        type="search" placeholder="Поиск совпадения функций"
-                       aria-label="Поиск совпадения функций" id="seacrhWord">
+                       aria-label="Поиск совпадения функций" id="searchWord">
                 <button class="btn btn-dark px-4 my-2 my-sm-0 searchBtn" type="submit">Искать</button>
             </form>
-        </div>
+        </div>--%>
 
-        <div class="row">
+        <div class="row" id="iconBlock">
             <div class="col-sm-3">
-                <div class="card border border-dark mb-3 mx-4" id="division">
-                   <h5 class="bg-primary p-2 text-white font-weight-bold">
-                       <span id="departmentName"></span>
-                       <div class="my-2">
-                           <i class="far fa-file-word mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Нормативный документ"></i>
-                           <i class="far fa-address-card mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Карточка"></i>
-                           <i class="fas fa-chart-pie mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Проказатель качества"></i>
-                       </div>
-                   </h5>
+                <div class="mb-3" id="division">
+                    <h5 class="bg-primary p-3 text-white">
+                        <div class="row">
+                            <div class="col-2 d-flex align-items-center justify-content-center">
+                                <img class="img-fluid" src="resources/images/logo.png">
+                            </div>
+                            <div class="col-10">
+                                <div class="row">
+                                    <div class="col-9 d-flex align-items-center justify-content-center">
+                                        <div id="departmentName"></div>
+                                    </div>
+                                    <div class="col-3 d-flex align-items-start justify-content-end">
+                                        <div class="pointer addBtn"
+                                             data-block="division"
+                                             data-id="1">
+                                            <i class="far fa-minus-square minusBtn d-none"></i>
+                                            <i class="far fa-plus-square plusBtn"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 my-3 mr-3 d-flex align-items-center">
+                                        <i class="far fa-file-word mr-4 fa-2x pointer"
+                                           data-toggle="tooltip" data-placement="bottom" title="Нормативный документ"></i>
+                                        <i class="far fa-address-card mr-4 fa-2x pointer"
+                                           data-toggle="tooltip" data-placement="bottom" title="Карточка"></i>
+                                        <i class="fas fa-chart-pie mr-4 fa-2x pointer"
+                                           data-toggle="tooltip" data-placement="bottom" title="Проказатель качества"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </h5>
                 </div>
             </div>
-            <div class="col-sm-3" id="administrators"></div>
-            <div class="col-sm-3" id="managements"></div>
-            <div class="col-sm-3" id="departments"></div>
+            <div class="col-sm-3 d-none" id="administrators"></div>
+            <div class="col-sm-3 d-none" id="managements"></div>
+            <div class="col-sm-3 d-none" id="departments"></div>
+            <%--<div class="col-sm-2 d-none" id="users"></div>--%>
         </div>
+
     </div>
 </main>
 
@@ -36,10 +63,28 @@
 <jsp:include page="fragments/footerScript.jsp"/>
 <script>
     $(function() {
+        // Определим «общего родителя», на котором будут рисоваться стрелки (создаваться холст – canvas)
+        var arrowsAngle = $cArrows(
+            '#iconBlock', {
+                arrow: {
+                    connectionType: 'rectangleAngle',
+                    angleFrom: 0,
+                    angleTo: 180
+                }
+            });
 
+        /*var arrowsCenter = $cArrows(
+            '#iconBlock', {
+                arrow: {
+                    connectionType: 'center',
+                    arrowType: 'line'
+                }
+            });*/
+
+        // Поиск по функциям
         $('.searchBtn').click(function(e) {
             e.preventDefault();
-            var word = $('#seacrhWord').val();
+            var word = $('#searchWord').val();
             if(word!= '') {
                 $.getJSON('rest/profile/authorities/searchAuthorities?word='+word, function(data) {
                     if(data.length > 0) {
@@ -55,9 +100,9 @@
             }
         });
 
-        jsPlumb.ready(function() {
+        /*jsPlumb.ready(function() {
             var instance = jsPlumb.getInstance({
-                Endpoint: /*["Dot", {radius: 4}]*/ "Blank",
+                Endpoint: /!*["Dot", {radius: 4}]*!/ "Blank",
                 Connector: "StateMachine", //Flowchart
                 HoverPaintStyle: {stroke: "red", strokeWidth: 2},
                 PaintStyle: {stroke: "black", strokeWidth: 1},
@@ -72,39 +117,159 @@
             });
 
             instance.registerConnectionType("basic", {
-                anchor : ["Right", "Left", "Continuous"],
+                anchor: ["Right", "Left", "Continuous"],
                 connector: "Flowchart"
-            });
+            });*/
 
-            function getId() {return new URL(window.location.href).searchParams.get("id");}
-
-            // Получаем функции по элементам
-            function getFunctionsDepartments (id, element) {
-                $.getJSON('rest/profile/authorities/getAuthoritiesByDivisionId/'+id, function(data) {
-                    for(var i in data) {
-                        var row = data[i];
-                        $(element).append(
-                            '<div class="card functions p-2 m-2 font-size-small pointer" data-id="'+row.id+'">'+row.name+'</div>'
-                        );
+            // Рисуем стрелочки
+            function getArrow (id, element) {
+                $.getJSON('rest/profile/authorities/'+id, function(data) {
+                    if(data.childAuthorities.length > 0) {
+                        for(var i in data.childAuthorities) {
+                            var end = '#arrow'+data.childAuthorities[i].id;
+                            arrowsAngle.arrow(element, end);
+                            arrowsAngle.redraw();
+                            /*instance.connect({
+                                source : element,
+                                target : end,
+                                type : 'basic'
+                            });*/
+                        }
                     }
                 });
             }
 
-            function getDepartments () {/*id*/
-                $.getJSON('rest/profile/divisions/getAllTopLevel/', function(data) {
-                    for(var i in data) {
+            function getId() {
+                return new URL(window.location.href).searchParams.get("id");
+            }
+
+            // Получаем функции по элементам
+            function getFunctionsDepartments(id, element) {
+                $.getJSON('rest/profile/authorities/getAuthoritiesByDivisionId/' + id, function (data) {
+                    for (var i in data) {
                         var row = data[i];
-                        if(row.id == 1) {/*id*/
+                        $(element).append(
+                            '<div class="card functions p-2 m-2 font-size-small pointer" id="arrow' + row.id + '" data-id="' + row.id + '">' + row.name + '</div>'
+                        );
+                        getArrow(row.id, '#arrow' + row.id);
+                    }
+                });
+            }
+
+            // Получаем элементы
+            function getTopLevel() {
+                $.getJSON('rest/profile/divisions/getAllTopLevel/', function (data) {
+                    for (var i in data) {
+                        var row = data[i];
+                        if (row.childDivision.length > 0) {
+                            for (var y in row.childDivision) {
+                                var administrators = row.childDivision[y];
+                                var key = parseInt(y) + 1;
+                                $('#administrators').append(
+                                    '<div class="mb-3" id="administrators'+key+'">' + //border border-dark
+                                    '   <h5 class="bg-primary p-3 text-white">' +
+                                    '       <div class="row">' +
+                                    '           <div class="col-2 d-flex align-items-center justify-content-center">' +
+                                    '               <img class="img-fluid" src="resources/images/logo.png">' +
+                                    '           </div>' +
+                                    '           <div class="col-10">' +
+                                    '               <div class="row">' +
+                                    '                   <div class="col-9 d-flex align-items-center justify-content-start">'+administrators.name+'</div>' +
+                                    '                   <div class="col-3 d-flex align-items-start justify-content-end">' +
+                                    '                       <div class="pointer addBtn" data-block="administrators" data-id="'+administrators.id+'" data-key='+key+'>' +
+                                    '                           <i class="far fa-minus-square fa-2x minusBtn d-none"></i>' +
+                                    '                           <i class="far fa-plus-square fa-2x plusBtn"></i>' +
+                                    '                       </div>' +
+                                    '                   </div>' +
+                                    '               </div>' +
+                                    '               <div class="row">' +
+                                    '                   <div class="col-12 my-3 mr-3 d-flex align-items-center">' +
+                                    '                       <i class="far fa-file-word mr-4 fa-2x pointer"' +
+                                    ' data-toggle="tooltip" data-placement="bottom" title="Нормативный документ"></i>' +
+                                    '                       <i class="far fa-address-card mr-4 fa-2x pointer"' +
+                                    ' data-toggle="tooltip" data-placement="bottom" title="Карточка"></i>' +
+                                    '                       <i class="fas fa-chart-pie mr-4 fa-2x pointer"' +
+                                    ' data-toggle="tooltip" data-placement="bottom" title="Проказатель качества"></i>' +
+                                    '                   </div>' +
+                                    '               </div>' +
+                                    '           </div>' +
+                                    '       </div>' +
+                                    '   </h5>' +
+                                    '</div>'
+                                );
+                            }
+                        }
+                    }
+                });
+            }
+
+            function getDivisions(id, key, level) {
+                $.getJSON('rest/profile/divisions/'+id, function (row) {
+                    if (row.childDivision.length > 0) {
+                        for (var z in row.childDivision) {
+                            var item = row.childDivision[z];
+                            var keys = parseInt(z) + 1;
+                            $('#' + level).append(
+                                '<div class="mb-3" id="'+level+key+keys+'">' + //border border-dark
+                                '   <h5 class="bg-primary p-3 text-white">' +
+                                '       <div class="row">' +
+                                '           <div class="col-2 d-flex align-items-center justify-content-center">' +
+                                '               <img class="img-fluid" src="resources/images/logo.png">' +
+                                '           </div>' +
+                                '           <div class="col-10">' +
+                                '               <div class="row">' +
+                                '                   <div class="col-9 d-flex align-items-center justify-content-start">'+item.name+'</div>' +
+                                '                   <div class="col-3 d-flex align-items-start justify-content-end">' +
+                                '                       <div class="pointer addBtn" data-block="'+level+'" data-id="'+item.id+'" data-key='+key+keys+'>' +
+                                '                           <i class="far fa-minus-square minusBtn d-none"></i>' +
+                                '                           <i class="far fa-plus-square plusBtn"></i>' +
+                                '                       </div>' +
+                                '                   </div>' +
+                                '               </div>' +
+                                '               <div class="row">' +
+                                '                   <div class="col-12 my-3 mr-3 d-flex align-items-center">' +
+                                '                       <i class="far fa-file-word mr-4 fa-2x pointer"' +
+                                ' data-toggle="tooltip" data-placement="bottom" title="Нормативный документ"></i>' +
+                                '                       <i class="far fa-address-card mr-4 fa-2x pointer"' +
+                                ' data-toggle="tooltip" data-placement="bottom" title="Карточка"></i>' +
+                                '                       <i class="fas fa-chart-pie mr-4 fa-2x pointer"' +
+                                ' data-toggle="tooltip" data-placement="bottom" title="Проказатель качества"></i>' +
+                                '                   </div>' +
+                                '               </div>' +
+                                '           </div>' +
+                                '       </div>' +
+                                '   </h5>' +
+                                '</div>'
+                            );
+                        }
+                    }
+                });
+            }
+
+            function getDepartments() {
+                $.getJSON('rest/profile/divisions/getAllTopLevel/', function (data) {
+                    for (var i in data) {
+                        var row = data[i];
+                        if (row.id == 1) {
                             $('#departmentName').html(row.name);
-                            getFunctionsDepartments(row.id, '#division');
-                            if (row.childDivision.length > 0) {
+                            //getFunctionsDepartments(row.id, '#division');
+                            /*if (row.childDivision.length > 0) {
                                 for(var y in row.childDivision) {
                                     var administrators = row.childDivision[y];
                                     var key = parseInt(y)+1;
                                     $('#administrators').append(
-                                        '<div class="card border border-dark mb-3 mx-4" id="administrators'+key+'">' +
-                                        '   <h6 class="bg-primary p-2 text-white font-weight-bold">'+administrators.name+'' +
-                                        '       <div class="my-2">' +
+                                        '<div class="mb-3" id="administrators'+key+'">' + //border border-dark
+                                        '   <h6 class="bg-primary p-3 text-white font-weight-bold">'+administrators.name +
+                                        '       <img class="logo float-left mr-3" src="resources/images/logo.png">'+
+                                        '       <div class="pointer addBtn" data-block="administrators" data-id="'+key+'">' +
+                                        '           <span class="pointer addBtn"' +
+                                        ' data-block="administrators"' +
+                                        ' data-id="'+key+'">' +
+                                        '               <i class="far fa-minus-square minusBtn d-none"></i>' +
+                                        '               <i class="far fa-plus-square plusBtn"></i>' +
+                                        '           </span>' +
+                                        '       </div>' +
+                                        '       <div class="my-3">' +
                                         '           <i class="far fa-file-word mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Нормативный документ"></i>' +
                                         '           <i class="far fa-address-card mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Карточка"></i>' +
                                         '           <i class="fas fa-chart-pie mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Проказатель качества"></i>' +
@@ -112,21 +277,21 @@
                                         '   </h6>' +
                                         '</div>'
                                     );
-                                    instance.connect({
+
+                                    /!*instance.connect({
                                         source : 'division',
                                         target : 'administrators'+key,
                                         type : 'basic'
-                                    });
-                                    getFunctionsDepartments(administrators.id, '#administrators'+key);
-
+                                    });*!/
+                                    //getFunctionsDepartments(administrators.id, '#administrators'+key);
                                     if(administrators.childDivision.length > 0) {
                                         for(var z in administrators.childDivision) {
                                             var managements = administrators.childDivision[z];
                                             var keys = parseInt(z)+1;
                                             $('#managements').append(
-                                                '<div class="card border border-dark mb-3 mx-4" id="managements'+key+keys+'">' +
-                                                '   <h6 class="bg-primary p-2 text-white font-weight-bold">'+managements.name+'' +
-                                                '       <div class="my-2">' +
+                                                '<div class="mb-3" id="managements'+key+keys+'">' + //border border-dark
+                                                '   <h6 class="bg-primary p-3 text-white font-weight-bold">'+managements.name +
+                                                '       <div class="my-3">' +
                                                 '           <i class="far fa-file-word mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Нормативный документ"></i>' +
                                                 '           <i class="far fa-address-card mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Карточка"></i>' +
                                                 '           <i class="fas fa-chart-pie mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Проказатель качества"></i>' +
@@ -134,22 +299,20 @@
                                                 '   </h6>' +
                                                 '</div>'
                                             );
-                                            getFunctionsDepartments(managements.id, '#managements'+key+keys);
-                                            console.log('administrators'+key+' - managements'+key+keys);
-
-                                            instance.connect({
+                                            //getFunctionsDepartments(managements.id, '#managements'+key+keys);
+                                            /!*instance.connect({
                                                 source : 'administrators'+key,
                                                 target : 'managements'+key+keys,
                                                 type : 'basic'
-                                            });
+                                            });*!/
                                             if(managements.childDivision.length > 0) {
                                                 for(var a in managements.childDivision) {
                                                     var departments =  managements.childDivision[a];
                                                     var keyd = parseInt(a)+1;
                                                     $('#departments').append(
-                                                        '<div class="card border border-dark mb-3 mx-4" id="departments'+key+keys+keyd+'">' +
-                                                        '   <h6 class="bg-primary p-2 text-white font-weight-bold">'+departments.name+'' +
-                                                        '       <div class="my-2">' +
+                                                        '<div class="mb-3" id="departments'+key+keys+keyd+'">' + //border border-dark
+                                                        '   <h6 class="bg-primary p-3 text-white font-weight-bold">'+departments.name +
+                                                        '       <div class="my-3">' +
                                                         '           <i class="far fa-file-word mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Нормативный документ"></i>' +
                                                         '           <i class="far fa-address-card mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Карточка"></i>' +
                                                         '           <i class="fas fa-chart-pie mx-2 fa-2x pointer" data-toggle="tooltip" data-placement="bottom" title="Проказатель качества"></i>' +
@@ -157,27 +320,124 @@
                                                         '   </h6>' +
                                                         '</div>'
                                                     );
-                                                    getFunctionsDepartments(departments.id, '#departments'+key+keys+keyd);
-                                                    console.log('managements'+key+keys+' - departments'+key+keys+keyd);
-                                                    instance.connect({
+                                                    //getFunctionsDepartments(departments.id, '#departments'+key+keys+keyd);
+                                                    /!*instance.connect({
                                                         source : 'managements'+key+keys,
                                                         target : 'departments'+key+keys+keyd,
                                                         type : 'basic'
-                                                    });
+                                                    });*!/
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }*/
+                        }
+                    }
+                });
+            }
+
+            getDepartments(getId());
+
+            /*});*/
+
+            // Получаем список функций по клику
+            $(document).on('click', '.plusBtn', function () {
+                var parent = $(this).parent('.addBtn');
+                $(this).addClass('d-none');
+                var row = $(parent).attr('data-block');
+                var id = $(parent).attr('data-id');
+                var key = $(parent).attr('data-key');
+                $('.minusBtn', parent).removeClass('d-none');
+                if (row === 'division') {
+                    $('#administrators').removeClass('d-none');
+                    getTopLevel();
+                    getFunctionsDepartments(id, '#' + row);
+                    arrowsAngle.arrow();
+                }
+                if (row === 'administrators') {
+                    $('#managements').removeClass('d-none');
+                    getDivisions(id, key, 'managements');
+                    getFunctionsDepartments(id, '#' + row + key);
+                }
+                if (row === 'managements') {
+                    $('#departments').removeClass('d-none');
+                    getDivisions(id, key, 'departments');
+                    getFunctionsDepartments(id, '#' + row + key);
+                }
+                if (row === 'departments') {
+                    getFunctionsDepartments(id, '#' + row + key);
+                }
+                arrowsAngle.redraw();
+            });
+
+            $(document).on('click', '.minusBtn', function () {
+                var parent = $(this).parent('.addBtn');
+                $(this).addClass('d-none');
+                var row = $(parent).attr('data-block');
+                //var id = $(parent).attr('data-id');
+                var key = $(parent).attr('data-key');
+                $('.plusBtn', parent).removeClass('d-none');
+                if (row === 'division') {
+                    $('#administrators, #managements, #departments').empty().addClass('d-none');
+                    $('.functions').remove();
+                }
+                if (row === 'administrators') {
+                    $('#managements, #departments').empty().addClass('d-none');
+                    $('#' + row + key + ' .functions').remove();
+                }
+                if (row === 'managements') {
+                    $('#departments').empty().addClass('d-none');
+                    $('#' + row + key + ' .functions').remove();
+                }
+                if (row === 'departments') {
+                    $('#' + row + key + ' .functions').remove();
+                }
+                arrowsAngle.redraw();
+            });
+
+            // Подсветка похожих функций при нажатии на отдел
+            $(document).on('click', '.functions', function () {
+                $('.card').css('background', '#fff');
+                var id = parseInt($(this).attr('data-id'));
+                $('.card[data-id='+id+']').css('background', '#fc6');
+                console.log('.card[data-id='+id+']');
+                //alert(id);
+                if (id > 0) {
+                    $.getJSON('rest/profile/authorities/getAllTopLevelAuthoritiesByChildAuthorityId/' + id, function (data) {
+                        if (data.length > 0) {
+                            for (var i in data) {
+                                var row = data[i];
+                                $('.card[data-id=' + row.id + ']').css('background', '#fc6');
+                                if(row.childAuthorities.length > 0) {
+                                    //console.log('row - '+ row.id);
+                                    for (var y in row.childAuthorities) {
+                                        var rowChild = row.childAuthorities[y];
+                                        //console.log('rowChild - '+ rowChild.id);
+                                        $('.card[data-id='+rowChild.id+']').css('background', '#fc6');
+                                        if(rowChild.childAuthorities.length > 0) {
+                                            for (var z in rowChild.childAuthorities) {
+                                                var rowChild1 = rowChild.childAuthorities[z];
+                                                //console.log('rowChild1 - '+ rowChild1.id);
+                                                if(id != rowChild1.id) {
+                                                    $('.card[data-id='+rowChild1.id+']').css('background', '#fc6');
                                                 }
                                             }
                                         }
                                     }
                                 }
                             }
+                        } else {
+                            //alert('Совпадений не найдено!');
+                            //$('.card').css('background', '#fff');
                         }
-                    }
-                });
-            }
-            getDepartments (getId());
+                    });
+                } else {
+                    $('.card').css('background', '#fff');
+                }
+            });
 
-        });
-
+        /*});*/
     });
 </script>
 <jsp:include page="fragments/footerBasement.jsp"/>

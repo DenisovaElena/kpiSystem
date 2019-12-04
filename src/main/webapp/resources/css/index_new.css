@@ -3,29 +3,19 @@
 @import url("jsplumbtoolkit-demo2.css");
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
 
-html {font: 0.8rem 'Roboto Condensed', sans-serif;}
+html {font: 0.6rem 'Roboto Condensed', sans-serif;}
 .pointer {cursor: pointer;}
-.font-size-small {font-size: 0.7rem;}
+.font-size-small {font-size: 0.8rem;}
 .functions:hover {
     background: #CCCCCC;
     color: #000000;
 }
-/*
-.arrow {
-    width: auto;
-    margin: 0 auto;
-    position: relative;
-    background: #eee;
-    border-radius: 3px;
-    text-align: center;
+
+canvas {
+    width: 100%;
+    padding: 0!important;
+    margin: 0!important;
 }
-.arrow:before {
-    content: "";
-    border: solid transparent;
-    position: absolute;
-    left: 100%;
-    top: 50%;
-    border-left-color: #eee;
-    border-width: 9px;
-    margin-top: -1px;
-}*/
+
+.addBtn {color: #ffffff;}
+.addBtn i {font-size: 1.5rem;}

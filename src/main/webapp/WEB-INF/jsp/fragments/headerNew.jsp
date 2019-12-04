@@ -11,6 +11,7 @@
     <link href="resources/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="resources/css/index_new.css">
+    <script src='resources/js/arrows.js' type='text/javascript'></script>
 </head>
 <body>
 
