@@ -57,9 +57,9 @@ public class AuthorityServiceImpl implements AuthorityService {
 
     @Override
     public List<Authority> searchAuthorities(String word) {
-        List<Authority> returned = authorityRepository.searchAuthorities(word);
+        List<Authority> returned;
         if (word.equals("")) {
-            returned= null;
+            returned = null;
         }
         else returned = authorityRepository.searchAuthorities(word);
         return returned;
@@ -68,5 +68,10 @@ public class AuthorityServiceImpl implements AuthorityService {
     @Override
     public List<Authority> getAllTopLevelAuthoritiesByEmployeeId(int id) {
         return authorityRepository.getAllTopLevelAuthoritiesByEmployeeId(id);
+    }
+
+    @Override
+    public List<Authority> getAllTopLevelAuthoritiesByChildAuthorityId(int id) {
+        return authorityRepository.getAllTopLevelAuthoritiesByChildAuthorityId(id);
     }
 }

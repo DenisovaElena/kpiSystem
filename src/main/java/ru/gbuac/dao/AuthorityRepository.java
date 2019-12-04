@@ -28,4 +28,7 @@ public interface AuthorityRepository extends JpaRepository<Authority, Integer> {
 
     @Query("SELECT a FROM Authority a JOIN a.employees e WHERE e.id=:id AND a.topLevel=true")
     List<Authority> getAllTopLevelAuthoritiesByEmployeeId(@Param("id") int id);
+
+    @Query("SELECT a FROM Authority a JOIN a.childAuthorities c WHERE c.id=:id AND a.topLevel=true")
+    List<Authority> getAllTopLevelAuthoritiesByChildAuthorityId(@Param("id") int id);
 }

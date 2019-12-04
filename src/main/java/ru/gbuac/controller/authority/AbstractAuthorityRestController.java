@@ -65,4 +65,9 @@ public abstract class AbstractAuthorityRestController {
         LOG.info("getAuthoritiesByEmployeeId");
         return authorityService.getAllTopLevelAuthoritiesByEmployeeId(id);
     }
+
+    public List<Authority> getAllTopLevelAuthoritiesByChildAuthorityId(int id) {
+        LOG.info("getAllTopLevelAuthoritiesByChildAuthorityId");
+        return authorityService.getAllTopLevelAuthoritiesByChildAuthorityId(id);
+    }
 }
