@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="fragments/headerNew.jsp"/>
 
-<main>
+<main id="iconBlock">
     <div class="container-fluid">
 
         <%--<div class="container mb-4">
@@ -13,7 +13,7 @@
             </form>
         </div>--%>
 
-        <div class="row" id="iconBlock">
+        <div class="row">
             <div class="col-sm-3">
                 <div class="mb-3" id="division">
                     <h5 class="bg-primary p-3 text-white">
@@ -56,6 +56,9 @@
             <%--<div class="col-sm-2 d-none" id="users"></div>--%>
         </div>
 
+            <%--<div id="block2" style="width: 300px; height: 150px;" class="bg-primary float-left mb-5"></div>
+            <div id="block1" style="width: 300px; height: 150px;" class="bg-success float-right mb-5"></div>
+            <div style="clear: both;"></div>--%>
     </div>
 </main>
 
@@ -63,8 +66,7 @@
 <jsp:include page="fragments/footerScript.jsp"/>
 <script>
     $(function() {
-        // Определим «общего родителя», на котором будут рисоваться стрелки (создаваться холст – canvas)
-        var arrowsAngle = $cArrows(
+        /*var arrowsAngle = $cArrows(
             '#iconBlock', {
                 arrow: {
                     connectionType: 'rectangleAngle',
@@ -73,13 +75,15 @@
                 }
             });
 
-        /*var arrowsCenter = $cArrows(
+        var arrowsCenter = $cArrows(
             '#iconBlock', {
                 arrow: {
                     connectionType: 'center',
                     arrowType: 'line'
                 }
-            });*/
+            });
+
+        arrowsCenter.arrow('#block2', '#block1');*/
 
         // Поиск по функциям
         $('.searchBtn').click(function(e) {
@@ -100,8 +104,23 @@
             }
         });
 
-        /*jsPlumb.ready(function() {
+        jsPlumb.ready(function() {
             var instance = jsPlumb.getInstance({
+                Endpoint: ["Dot", {radius: 2}],
+                Connector: "StateMachine", //Flowchart
+                HoverPaintStyle: {stroke: "#1e8151", strokeWidth: 2},
+                ConnectionOverlays: [
+                    ["Arrow", {
+                        location: 1,
+                        id: "arrow",
+                        length: 14,
+                        foldback: 0.8
+                    }],
+                ],
+                Container: "canvas"
+            });
+
+            /*var instance = jsPlumb.getInstance({
                 Endpoint: /!*["Dot", {radius: 4}]*!/ "Blank",
                 Connector: "StateMachine", //Flowchart
                 HoverPaintStyle: {stroke: "red", strokeWidth: 2},
@@ -114,26 +133,56 @@
                         foldback: 0.5
                     }]
                 ]
-            });
+            });*/
 
             instance.registerConnectionType("basic", {
                 anchor: ["Right", "Left", "Continuous"],
                 connector: "Flowchart"
+            });
+
+            window.jsp = instance;
+
+            var canvas = document.getElementById("canvas");
+            var windows = jsPlumb.getSelector(".statemachine-demo .w");
+
+            // удалить стрелочки по клику
+            instance.bind("click", function (c) {
+                instance.deleteConnection(c);
+            });
+
+            /*instance.connect({
+                source : 'block2',
+                target : 'block1',
+                type : 'basic'
             });*/
 
             // Рисуем стрелочки
             function getArrow (id, element) {
+                /*$.ajax({
+                    url: 'rest/profile/authorities/'+id,
+                    dataType: 'json',
+                    async: false,
+                    success: function(data) {
+                        if(data.childAuthorities.length > 0) {
+                            for(var i in data.childAuthorities) {
+                                var end = '#arrow'+data.childAuthorities[i].id;
+                                console.log(element+' - '+end);
+                                arrowsAngle.arrow(element, end);
+                            }
+                        }
+                    }
+                });*/
                 $.getJSON('rest/profile/authorities/'+id, function(data) {
                     if(data.childAuthorities.length > 0) {
                         for(var i in data.childAuthorities) {
-                            var end = '#arrow'+data.childAuthorities[i].id;
-                            arrowsAngle.arrow(element, end);
-                            arrowsAngle.redraw();
-                            /*instance.connect({
+                            var end = 'arrow'+data.childAuthorities[i].id;
+                            //arrowsAngle.arrow(element, end);
+                            //console.log(element);
+                            instance.connect({
                                 source : element,
                                 target : end,
                                 type : 'basic'
-                            });*/
+                            });
                         }
                     }
                 });
@@ -145,13 +194,27 @@
 
             // Получаем функции по элементам
             function getFunctionsDepartments(id, element) {
+                /*$.ajax({
+                    url: 'rest/profile/authorities/getAuthoritiesByDivisionId/' + id,
+                    dataType: 'json',
+                    async: false,
+                    success: function(data) {
+                        for (var i in data) {
+                            var row = data[i];
+                            $(element).append(
+                                '<div class="card functions p-2 m-2 font-size-small pointer" id="arrow' + row.id + '" data-id="' + row.id + '">' + row.name + '</div>'
+                            );
+                            getArrow(row.id, '#arrow' + row.id);
+                        }
+                    }
+                });*/
                 $.getJSON('rest/profile/authorities/getAuthoritiesByDivisionId/' + id, function (data) {
                     for (var i in data) {
                         var row = data[i];
                         $(element).append(
                             '<div class="card functions p-2 m-2 font-size-small pointer" id="arrow' + row.id + '" data-id="' + row.id + '">' + row.name + '</div>'
                         );
-                        getArrow(row.id, '#arrow' + row.id);
+                        getArrow(row.id, 'arrow' + row.id);
                     }
                 });
             }
@@ -353,7 +416,11 @@
                     $('#administrators').removeClass('d-none');
                     getTopLevel();
                     getFunctionsDepartments(id, '#' + row);
-                    arrowsAngle.arrow();
+                    instance.connect({
+                        source : 'division',
+                        target : 'administrators',
+                        type : 'basic'
+                    });
                 }
                 if (row === 'administrators') {
                     $('#managements').removeClass('d-none');
@@ -368,19 +435,18 @@
                 if (row === 'departments') {
                     getFunctionsDepartments(id, '#' + row + key);
                 }
-                arrowsAngle.redraw();
             });
 
             $(document).on('click', '.minusBtn', function () {
                 var parent = $(this).parent('.addBtn');
                 $(this).addClass('d-none');
                 var row = $(parent).attr('data-block');
-                //var id = $(parent).attr('data-id');
                 var key = $(parent).attr('data-key');
                 $('.plusBtn', parent).removeClass('d-none');
                 if (row === 'division') {
                     $('#administrators, #managements, #departments').empty().addClass('d-none');
                     $('.functions').remove();
+                    instance.deleteConnection();
                 }
                 if (row === 'administrators') {
                     $('#managements, #departments').empty().addClass('d-none');
@@ -393,7 +459,6 @@
                 if (row === 'departments') {
                     $('#' + row + key + ' .functions').remove();
                 }
-                arrowsAngle.redraw();
             });
 
             // Подсветка похожих функций при нажатии на отдел
@@ -401,30 +466,51 @@
                 $('.card').css('background', '#fff');
                 var id = parseInt($(this).attr('data-id'));
                 $('.card[data-id='+id+']').css('background', '#fc6');
-                console.log('.card[data-id='+id+']');
                 //alert(id);
                 if (id > 0) {
                     $.getJSON('rest/profile/authorities/getAllTopLevelAuthoritiesByChildAuthorityId/' + id, function (data) {
                         if (data.length > 0) {
+                            var array1 = []; var array2 = []; var array3= []; var array4= [];
                             for (var i in data) {
                                 var row = data[i];
-                                $('.card[data-id=' + row.id + ']').css('background', '#fc6');
+                                array1.push(row.id);
                                 if(row.childAuthorities.length > 0) {
-                                    //console.log('row - '+ row.id);
                                     for (var y in row.childAuthorities) {
                                         var rowChild = row.childAuthorities[y];
-                                        //console.log('rowChild - '+ rowChild.id);
-                                        $('.card[data-id='+rowChild.id+']').css('background', '#fc6');
+                                        array2.push(rowChild.id);
                                         if(rowChild.childAuthorities.length > 0) {
                                             for (var z in rowChild.childAuthorities) {
                                                 var rowChild1 = rowChild.childAuthorities[z];
-                                                //console.log('rowChild1 - '+ rowChild1.id);
-                                                if(id != rowChild1.id) {
-                                                    $('.card[data-id='+rowChild1.id+']').css('background', '#fc6');
+                                                array3.push(rowChild1.id);
+                                                if(rowChild1.childAuthorities.length > 0) {
+                                                    for (var j in rowChild1.childAuthorities) {
+                                                        var rowChild2 = rowChild1.childAuthorities[j];
+                                                        array4.push(rowChild2.id);
+                                                    }
                                                 }
                                             }
                                         }
                                     }
+                                }
+                            }
+                            if($.inArray(id, array1) == -1) {
+                                for (var i in array1) {
+                                    $('.card[data-id='+array1[i]+']').css('background', '#fc6');
+                                }
+                            }
+                            if($.inArray(id, array2) == -1) {
+                                for (var i in array2) {
+                                    $('.card[data-id='+array2[i]+']').css('background', '#fc6');
+                                }
+                            }
+                            if($.inArray(id, array3) == -1) {
+                                for (var i in array3) {
+                                    $('.card[data-id='+array3[i]+']').css('background', '#fc6');
+                                }
+                            }
+                            if($.inArray(id, array4) == -1) {
+                                for (var i in array4) {
+                                    $('.card[data-id='+array4[i]+']').css('background', '#fc6');
                                 }
                             }
                         } else {
@@ -437,7 +523,9 @@
                 }
             });
 
-        /*});*/
+            // Перересовываем все стрелочки
+            jsPlumb.repaintEverything();
+        });
     });
 </script>
 <jsp:include page="fragments/footerBasement.jsp"/>
