@@ -131,60 +131,32 @@
             }
         });
 
-            /*var instance = jsPlumb.getInstance({
-                Endpoint: ["Dot", {radius: 2}],
-                Connector: "StateMachine", //Flowchart
-                HoverPaintStyle: {stroke: "#1e8151", strokeWidth: 2},
-                ConnectionOverlays: [
-                    ["Arrow", {
-                        location: 1,
-                        id: "arrow",
-                        length: 14,
-                        foldback: 0.8
-                    }],
-                ],
-                Container: "#iconBlock"
-            });
-
-            instance.registerConnectionType("basic", {
-                anchor: ["Right", "Left", "Continuous"],
-                connector: "Flowchart"
-            });
-
-            // удалить стрелочки по клику
-            instance.bind("click", function (c) {
-                instance.deleteConnection(c);
-            });*/
-
-            /*instance.connect({
-                source : 'block2',
-                target : 'block1',
-                type : 'basic'
-            });*/
-
             // Рисуем стрелочки
             function getArrow (id, element, dep) {
-                $.getJSON('rest/profile/authorities/'+id, function(data) {
-                    if(data.childAuthorities.length > 0) {
+                //rest/profile/authorities/
+                $.getJSON('rest/profile/authorities/getAllTopLevelAuthoritiesByChildAuthorityId/'+id, function(data) {
+                    /*if(data.childAuthorities.length > 0) {
                         for(var i in data.childAuthorities) {
                             var end = parseInt(data.childAuthorities[i].id);
-                            end = 'arrow'+end;
-                            arrowAdd5.arrow(element, end);
-                            //console.log(element+' - '+end);
-                            //$('#'+element).css('background', '#fc6');
-                            //$('#'+end).css('background', '#fc6');
-                            arrowAdd5.arrow('#arrow1244', '#arrow212');
+                            end = '#arrow'+end;
+                            console.log(element+' - '+end);
                             if(dep != '#division') {
-                                $('#arrow1244, #arrow212').css('background', '#fc6');
+                                arrowAdd5.arrow(end, element);
+                                $(element).css('background', '#fc6');
+                                $(end).css('background', '#fc6');
                             }
-                            /*instance.connect({
-                                source : element,
-                                target : end,
-                                type : 'basic'
-                            });
-                            jsPlumb.repaintEverything();*/
                         }
-                    }
+                    }*/
+                        for(var i in data) {
+                            var end = parseInt(data[i].id);
+                            end = '#arrow'+end;
+                            console.log(element+' - '+end);
+                            if(dep != '#division') {
+                                arrowAdd5.arrow(end, element);
+                                $(element).css('background', '#fc6');
+                                $(end).css('background', '#fc6');
+                            }
+                        }
                 });
             }
 
@@ -200,7 +172,9 @@
                         $(element).append(
                             '<div class="card functions p-2 my-2 mx-5 font-size-small pointer" id="arrow' + row.id + '" data-id="' + row.id + '">' + row.name + '</div>'
                         );
-                        getArrow(row.id, 'arrow' + row.id, element);
+                        if(element != '#division') {
+                            getArrow(row.id, '#arrow' + row.id, element);
+                        }
                     }
                 });
             }
@@ -442,7 +416,6 @@
                 if (row === 'division') {
                     $('#administrators, #managements, #departments').empty().addClass('d-none');
                     $('.functions').remove();
-                    //instance.deleteConnection();
                     arrowAdd1.clear();
                     arrowAdd2.clear();
                     arrowAdd3.clear();
@@ -533,9 +506,6 @@
                 }
             });
 
-            // Перересовываем все стрелочки
-            //jsPlumb.repaintEverything();
-        //});
     });
 </script>
 <jsp:include page="fragments/footerBasement.jsp"/>
