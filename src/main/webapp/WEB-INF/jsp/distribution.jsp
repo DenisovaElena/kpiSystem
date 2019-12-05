@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="fragments/headerNew.jsp"/>
 
-<main id="iconBlock">
-    <div class="container-fluid">
+<main>
+    <div class="container-fluid" id="iconBlock">
 
         <%--<div class="container mb-4">
             <form class="form-inline my-2 my-lg-0">
@@ -13,10 +13,10 @@
             </form>
         </div>--%>
 
-        <div class="row">
+        <div class="row canvas">
             <div class="col-sm-3">
                 <div class="mb-3" id="division">
-                    <h5 class="bg-primary p-3 text-white">
+                    <h5 class="bg-primary mx-5 p-3 text-white" id="divisionName">
                         <div class="row">
                             <div class="col-2 d-flex align-items-center justify-content-center">
                                 <img class="img-fluid" src="resources/images/logo.png">
@@ -56,9 +56,6 @@
             <%--<div class="col-sm-2 d-none" id="users"></div>--%>
         </div>
 
-            <%--<div id="block2" style="width: 300px; height: 150px;" class="bg-primary float-left mb-5"></div>
-            <div id="block1" style="width: 300px; height: 150px;" class="bg-success float-right mb-5"></div>
-            <div style="clear: both;"></div>--%>
     </div>
 </main>
 
@@ -66,25 +63,54 @@
 <jsp:include page="fragments/footerScript.jsp"/>
 <script>
     $(function() {
-        jsPlumb.ready(function() {
-        /*var arrowsAngle = $cArrows(
-            '#iconBlock', {
-                arrow: {
-                    connectionType: 'rectangleAngle',
-                    angleFrom: 0,
-                    angleTo: 180
-                }
-            });
+        //jsPlumb.ready(function() {
 
-        var arrowsCenter = $cArrows(
-            '#iconBlock', {
-                arrow: {
-                    connectionType: 'center',
-                    arrowType: 'line'
-                }
-            });
+        var arrowAdd1 = $cArrows('#iconBlock', {
+            render : { strokeStyle: '#999999'},
+            arrow: {
+                arrowType: 'line',
+                connectionType: 'rectangleAngle',
+                angleFrom: 0,
+                angleTo: 180
+            }
+        });
 
-        arrowsCenter.arrow('#block2', '#block1');*/
+        var arrowAdd2 = $cArrows('#iconBlock', {
+            render : { strokeStyle: '#999999'},
+            arrow: {
+                arrowType: 'line',
+                connectionType: 'rectangleAngle',
+                angleFrom: 0,
+                angleTo: 180
+            }
+        });
+
+        var arrowAdd3 = $cArrows('#iconBlock', {
+            render : { strokeStyle: '#999999'},
+            arrow: {
+                arrowType: 'line',
+                connectionType: 'rectangleAngle',
+                angleFrom: 0,
+                angleTo: 180
+            }
+        });
+
+        var arrowAdd5 = $cArrows('#iconBlock', {
+            render : { strokeStyle: '#999999'},
+            arrow: {
+                arrowType: 'arrow',
+                connectionType: 'rectangleAngle',
+                angleFrom: 0,
+                angleTo: 180
+            }
+        });
+
+        var arrowReturn1 = $cArrows('#iconBlock', {
+            render : { strokeStyle: 'red'},
+            arrow: { connectionType: 'rectangleAngle', angleFrom: 180,
+                angleTo: 0}
+        });
+
 
         // Поиск по функциям
         $('.searchBtn').click(function(e) {
@@ -105,8 +131,7 @@
             }
         });
 
-
-            var instance = jsPlumb.getInstance({
+            /*var instance = jsPlumb.getInstance({
                 Endpoint: ["Dot", {radius: 2}],
                 Connector: "StateMachine", //Flowchart
                 HoverPaintStyle: {stroke: "#1e8151", strokeWidth: 2},
@@ -121,35 +146,15 @@
                 Container: "#iconBlock"
             });
 
-            /*var instance = jsPlumb.getInstance({
-                Endpoint: /!*["Dot", {radius: 4}]*!/ "Blank",
-                Connector: "StateMachine", //Flowchart
-                HoverPaintStyle: {stroke: "red", strokeWidth: 2},
-                PaintStyle: {stroke: "black", strokeWidth: 1},
-                ConnectionOverlays: [
-                    ["Arrow", {
-                        location: 1,
-                        id: "arrow",
-                        length: 8,
-                        foldback: 0.5
-                    }]
-                ]
-            });*/
-
             instance.registerConnectionType("basic", {
                 anchor: ["Right", "Left", "Continuous"],
                 connector: "Flowchart"
             });
 
-            //window.jsp = instance;
-
-            var canvas = document.getElementById("canvas");
-            var windows = jsPlumb.getSelector(".statemachine-demo .w");
-
             // удалить стрелочки по клику
             instance.bind("click", function (c) {
                 instance.deleteConnection(c);
-            });
+            });*/
 
             /*instance.connect({
                 source : 'block2',
@@ -158,23 +163,26 @@
             });*/
 
             // Рисуем стрелочки
-            function getArrow (id, element) {
+            function getArrow (id, element, dep) {
                 $.getJSON('rest/profile/authorities/'+id, function(data) {
                     if(data.childAuthorities.length > 0) {
                         for(var i in data.childAuthorities) {
-                            //var end = parseInt(data.childAuthorities[i].id);
-                            //end = 'arrow'+end;
-                            var end = 'arrow18';
-                            //arrowsAngle.arrow(element, end);
-                            console.log(element+' - '+end);
-                            $('#'+element).css('background', '#fc6');
-                            $('#'+end).css('background', '#fc6');
-                            instance.connect({
+                            var end = parseInt(data.childAuthorities[i].id);
+                            end = 'arrow'+end;
+                            arrowAdd5.arrow(element, end);
+                            //console.log(element+' - '+end);
+                            //$('#'+element).css('background', '#fc6');
+                            //$('#'+end).css('background', '#fc6');
+                            arrowAdd5.arrow('#arrow1244', '#arrow212');
+                            if(dep != '#division') {
+                                $('#arrow1244, #arrow212').css('background', '#fc6');
+                            }
+                            /*instance.connect({
                                 source : element,
                                 target : end,
                                 type : 'basic'
                             });
-                            jsPlumb.repaintEverything();
+                            jsPlumb.repaintEverything();*/
                         }
                     }
                 });
@@ -190,9 +198,9 @@
                     for (var i in data) {
                         var row = data[i];
                         $(element).append(
-                            '<div class="card functions p-2 m-2 font-size-small pointer" id="arrow' + row.id + '" data-id="' + row.id + '">' + row.name + '</div>'
+                            '<div class="card functions p-2 my-2 mx-5 font-size-small pointer" id="arrow' + row.id + '" data-id="' + row.id + '">' + row.name + '</div>'
                         );
-                        getArrow(row.id, 'arrow' + row.id);
+                        getArrow(row.id, 'arrow' + row.id, element);
                     }
                 });
             }
@@ -208,7 +216,7 @@
                                 var key = parseInt(y) + 1;
                                 $('#administrators').append(
                                     '<div class="mb-3" id="administrators'+key+'">' + //border border-dark
-                                    '   <h5 class="bg-primary p-3 text-white">' +
+                                    '   <h5 class="bg-primary p-3 mx-5 text-white" id="administratorsName'+key+'">' +
                                     '       <div class="row">' +
                                     '           <div class="col-2 d-flex align-items-center justify-content-center">' +
                                     '               <img class="img-fluid" src="resources/images/logo.png">' +
@@ -238,13 +246,14 @@
                                     '   </h5>' +
                                     '</div>'
                                 );
+                                arrowAdd1.arrow('#divisionName','#administratorsName'+key);
                             }
                         }
                     }
                 });
             }
 
-            function getDivisions(id, key, level) {
+            function getDivisions(id, key, level, levelUp) {
                 $.getJSON('rest/profile/divisions/'+id, function (row) {
                     if (row.childDivision.length > 0) {
                         for (var z in row.childDivision) {
@@ -252,7 +261,7 @@
                             var keys = parseInt(z) + 1;
                             $('#' + level).append(
                                 '<div class="mb-3" id="'+level+key+keys+'">' + //border border-dark
-                                '   <h5 class="bg-primary p-3 text-white">' +
+                                '   <h5 class="bg-primary p-3 mx-5 text-white" id="'+level+'Name'+key+keys+'">' +
                                 '       <div class="row">' +
                                 '           <div class="col-2 d-flex align-items-center justify-content-center">' +
                                 '               <img class="img-fluid" src="resources/images/logo.png">' +
@@ -282,6 +291,13 @@
                                 '   </h5>' +
                                 '</div>'
                             );
+                            //console.log(levelUp);
+                            if(level == 'managements') {
+                                arrowAdd2.arrow('#'+levelUp,'#'+level+'Name'+key+keys);
+                            }
+                            if(level == 'departments') {
+                                arrowAdd3.arrow('#'+levelUp,'#'+level+'Name'+key+keys);
+                            }
                         }
                     }
                 });
@@ -392,20 +408,27 @@
                 $('.minusBtn', parent).removeClass('d-none');
                 if (row === 'division') {
                     $('#administrators').removeClass('d-none');
+                    arrowAdd5.clear();
+                    arrowAdd2.clear();
+                    arrowAdd3.clear();
                     getTopLevel();
                     getFunctionsDepartments(id, '#' + row);
                }
                 if (row === 'administrators') {
                     $('#managements').removeClass('d-none');
-                    getDivisions(id, key, 'managements');
+                    arrowAdd1.clear();
+                    getDivisions(id, key, 'managements', 'administratorsName'+key);
                     getFunctionsDepartments(id, '#' + row + key);
                 }
                 if (row === 'managements') {
                     $('#departments').removeClass('d-none');
-                    getDivisions(id, key, 'departments');
+                    arrowAdd2.clear();
+                    arrowAdd3.clear();
+                    getDivisions(id, key, 'departments', 'managementsName'+key);
                     getFunctionsDepartments(id, '#' + row + key);
                 }
                 if (row === 'departments') {
+                    arrowAdd3.clear();
                     getFunctionsDepartments(id, '#' + row + key);
                 }
             });
@@ -419,23 +442,33 @@
                 if (row === 'division') {
                     $('#administrators, #managements, #departments').empty().addClass('d-none');
                     $('.functions').remove();
-                    instance.deleteConnection();
+                    //instance.deleteConnection();
+                    arrowAdd1.clear();
+                    arrowAdd2.clear();
+                    arrowAdd3.clear();
+                    arrowAdd5.clear();
                 }
                 if (row === 'administrators') {
+                    arrowAdd2.clear();
+                    arrowAdd3.clear();
                     $('#managements, #departments').empty().addClass('d-none');
                     $('#' + row + key + ' .functions').remove();
                 }
                 if (row === 'managements') {
+                    arrowAdd3.clear();
                     $('#departments').empty().addClass('d-none');
                     $('#' + row + key + ' .functions').remove();
                 }
                 if (row === 'departments') {
+                    arrowAdd3.clear();
                     $('#' + row + key + ' .functions').remove();
                 }
             });
 
             // Подсветка похожих функций при нажатии на отдел
             $(document).on('click', '.functions', function () {
+                arrowAdd5.clear();
+                arrowReturn1.clear();
                 $('.card').css('background', '#fff');
                 var id = parseInt($(this).attr('data-id'));
                 $('.card[data-id='+id+']').css('background', '#fc6');
@@ -443,7 +476,7 @@
                 if (id > 0) {
                     $.getJSON('rest/profile/authorities/getAllTopLevelAuthoritiesByChildAuthorityId/' + id, function (data) {
                         if (data.length > 0) {
-                            var array1 = []; var array2 = []; var array3= []; var array4= [];
+                            var array1 = []; var array2 = []; var array3 = []; var array4 = [];
                             for (var i in data) {
                                 var row = data[i];
                                 array1.push(row.id);
@@ -469,21 +502,25 @@
                             if($.inArray(id, array1) == -1) {
                                 for (var i in array1) {
                                     $('.card[data-id='+array1[i]+']').css('background', '#fc6');
+                                    arrowReturn1.arrow('#arrow'+id,'#arrow'+array1[i]);
                                 }
                             }
                             if($.inArray(id, array2) == -1) {
                                 for (var i in array2) {
                                     $('.card[data-id='+array2[i]+']').css('background', '#fc6');
+                                    arrowReturn1.arrow('#arrow'+id,'#arrow'+array2[i]);
                                 }
                             }
                             if($.inArray(id, array3) == -1) {
                                 for (var i in array3) {
                                     $('.card[data-id='+array3[i]+']').css('background', '#fc6');
+                                    arrowReturn1.arrow('#arrow'+id,'#arrow'+array3[i]);
                                 }
                             }
                             if($.inArray(id, array4) == -1) {
                                 for (var i in array4) {
                                     $('.card[data-id='+array4[i]+']').css('background', '#fc6');
+                                    arrowReturn1.arrow('#arrow'+id,'#arrow'+array4[i]);
                                 }
                             }
                         } else {
@@ -497,8 +534,8 @@
             });
 
             // Перересовываем все стрелочки
-            jsPlumb.repaintEverything();
-        });
+            //jsPlumb.repaintEverything();
+        //});
     });
 </script>
 <jsp:include page="fragments/footerBasement.jsp"/>

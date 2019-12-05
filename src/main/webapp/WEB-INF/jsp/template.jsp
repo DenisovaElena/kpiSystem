@@ -1,160 +1,145 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="fn" uri="http://topjava.javawebinar.ru/functions" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
 <jsp:include page="fragments/headerNew.jsp"/>
-<c:set var = "main" />
 <main>
-    <div class="container-fluid text-center mb-4 pt-5">
-        <div class="row">
-            <div class="col-md-6">
-                <section class="my-5">
-                    <h2 class="alert alert-primary">Мои документы</h2>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-12 mb-lg-0 mb-4 wow bounceInDown">
-                            <div class="card-wrapper myCard">
-                                <div id="card-1" class="card card-rotating text-center">
-                                    <!-- Front Side -->
-                                    <div class="face front">
-                                        <div class="card-up">
-                                            <img class="card-img-top" src="resources/img/in-work.jpg" alt="На исполнении">
-                                        </div>
-                                        <div class="avatar mx-auto white rounded-circle">
-                                            <img class="p-2" src="resources/img/in-work.png" alt="Иконка">
-                                        </div>
-                                        <div class="card-body">
-                                            <h4 class="font-weight-bold mt-1 mb-3">На исполнении</h4>
-                                            <div class="text-center">
-                                                <a href="in-work" class="btn btn-primary rounded">Перейти</a>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <a class="rotate-btn grey-text" data-card="card-1"><i class="fas fa-redo-alt grey-text mr-2"></i> Подробная информация</a>
-                                        </div>
-                                    </div>
-                                    <!-- Front Side -->
-                                    <!-- Back Side -->
-                                    <div class="face back h-100">
-                                        <div class="card-title mb-5">
-                                            <h4 class="font-weight-bold mt-4 mb-2">
-                                                <strong>Подробная информация</strong>
-                                            </h4>
-                                        </div>
-                                        <div class="card-body text-left py-5 my-5">
-                                            <h6 class="my-3">Всего документов <span class="badge badge-primary">17486</span></h6>
-                                            <h6 class="my-3">Срок контроля более 3-х дней <span class="badge badge-success">13486</span></h6>
-                                            <h6 class="my-3">Срок контроля 3 дня <span class="badge badge-danger">4000</span></h6>
-                                        </div>
-                                        <div>
-                                            <a class="rotate-btn grey-text" data-card="card-1"><i class="fas fa-redo-alt grey-text mr-2"></i> Вернуться</a>
-                                        </div>
-                                    </div>
-                                    <!-- Back Side -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12 mb-lg-0 mb-4 wow bounceInDown" data-wow-delay="0.3s">
-                            <div class="card-wrapper myCard">
-                                <div id="card-2" class="card card-rotating text-center">
-                                    <!-- Front Side -->
-                                    <div class="face front">
-                                        <div class="card-up">
-                                            <img class="card-img-top" src="resources/img/agreement.jpg" alt="Согласование">
-                                        </div>
-                                        <div class="avatar mx-auto white rounded-circle">
-                                            <img class="p-2" src="resources/img/agreement.png" alt="Иконка">
-                                        </div>
-                                        <div class="card-body">
-                                            <h4 class="font-weight-bold mt-1 mb-3">Согласование</h4>
-                                            <div class="text-center">
-                                                <button class="btn btn-primary btn-floating" title="Всего документов">24517</button>
-                                                <button class="btn btn-success btn-floating" title="Всего документов">24469</button>
-                                                <button class="btn btn-danger btn-floating" title="Всего документов">48</button>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer white">
-                                            <a class="rotate-btn grey-text" data-card="card-2"><i class="fas fa-redo-alt grey-text mr-2"></i> Подробная информация</a>
-                                        </div>
-                                    </div>
-                                    <!-- Front Side -->
-                                    <!-- Back Side -->
-                                    <div class="face back h-100">
-                                        <div class="card-title">
-                                            <h4 class="font-weight-bold mt-4 mb-2">
-                                                <strong>Подробная информация</strong>
-                                            </h4>
-                                        </div>
-                                        <div class="card-body">
-                                            <canvas id="lineChart"></canvas>
-                                            <a class="rotate-btn grey-text" data-card="card-2"><i class="fas fa-redo-alt grey-text mr-2"></i> Вернуться</a>
-                                        </div>
-                                    </div>
-                                    <!-- Back Side -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12 wow bounceInDown" data-wow-delay="0.6s">
-                            <div class="card-wrapper myCard">
-                                <div id="card-3" class="card card-rotating text-center">
-                                    <!-- Front Side -->
-                                    <div class="face front">
-                                        <div class="card-up">
-                                            <img class="card-img-top" src="resources/img/distribution.jpg"
-                                                 alt="Распределение">
-                                        </div>
-                                        <div class="avatar mx-auto white rounded-circle">
-                                            <img class="p-2" src="resources/img/distribution.png" alt="Иконка">
-                                        </div>
-                                        <div class="card-body">
-                                            <h4 class="font-weight-bold mt-1 mb-3">Распределение</h4>
-                                            <div class="text-center">
-                                                <button class="btn btn-primary btn-floating" title="Всего документов">5849</button>
-                                                <button class="btn btn-success btn-floating" title="Всего документов">4286</button>
-                                                <button class="btn btn-danger btn-floating" title="Всего документов">1563</button>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer white">
-                                            <a class="rotate-btn grey-text" data-card="card-3"><i class="fas fa-redo-alt grey-text mr-2"></i> Подробная информация</a>
-                                        </div>
-                                    </div>
-                                    <!-- Front Side -->
-                                    <!-- Back Side -->
-                                    <div class="face back h-100">
-                                        <div class="card-title">
-                                            <h4 class="font-weight-bold mt-4 mb-2">
-                                                <strong>Подробная информация</strong>
-                                            </h4>
-                                        </div>
-                                        <div class="card-body">
-                                            <canvas id="horizontalBar"></canvas>
-                                            <a class="rotate-btn grey-text" data-card="card-3"><i class="fas fa-redo-alt grey-text mr-2"></i> Вернуться</a>
-                                        </div>
-                                    </div>
-                                    <!-- Back Side -->
-                                </div>
-                            </div>
-                        </div>
+    <div class="container-fluid" id="iconBlock">
+        <div class="row canvas">
+            <div class="col-3">
+                <div id="element1">
+                    <div style="width: 300px; height: 100px;"
+                          class="bg-primary" id="name1"></div>
+                    <div class="elementBlock d-none" style="width: 300px;">
+                        <div class="child bg-warning my-3" style="height: 50px;"
+                             id="child1"></div>
+                        <div class="child bg-warning my-3" style="height: 50px;"
+                             id="child2"></div>
+                        <div class="child bg-warning my-3" style="height: 50px;"
+                             id="child3"></div>
+                        <div class="child bg-warning my-3" style="height: 50px;"
+                             id="child4"></div>
                     </div>
-                </section>
+                </div>
             </div>
-            <div class="col-md-6"></div>
+            <div class="col-3">
+                <div id="element2" class="d-none">
+                    <div style="width: 300px; height: 100px;"
+                         class="bg-success" id="name2"></div>
+                    <div class="elementBlock d-none" style="width: 300px;">
+                        <div class="child bg-warning my-3" style="height: 50px;"
+                             id="child5" data-id="5"></div>
+                        <div class="child bg-warning my-3" style="height: 50px;"
+                             id="child6" data-id="6"></div>
+                        <div class="child bg-warning my-3" style="height: 50px;"
+                             id="child7" data-id="7"></div>
+                        <div class="child bg-warning my-3" style="height: 50px;"
+                             id="child8" data-id="8"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div id="element3" class="d-none">
+                    <div style="width: 300px; height: 100px;"
+                         class="bg-secondary" id="name3"></div>
+                    <div class="elementBlock d-none" style="width: 300px;">
+                        <div class="child bg-warning my-3" style="height: 50px;"
+                             id="child9" data-id="9"></div>
+                        <div class="child bg-warning my-3" style="height: 50px;"
+                             id="child10" data-id="10"></div>
+                        <div class="child bg-warning my-3" style="height: 50px;"
+                             id="child11" data-id="11"></div>
+                        <div class="child bg-warning my-3" style="height: 50px;"
+                             id="child12" data-id="12"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="btn btn-primary" id="addArrow1">Add</div>
+                <div class="btn btn-primary" id="addArrow">Add</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 my-5">
+                <svg id="circle"></svg>
+            </div>
         </div>
     </div>
 </main>
 
 <jsp:include page="fragments/footerNew.jsp"/>
-<jsp:include page="fragments/modals/newDocumentModal.jsp"/>
-<jsp:include page="fragments/modals/viewDocumentModal.jsp"/>
 <jsp:include page="fragments/footerScript.jsp"/>
 <script>
     $(function() {
-        $('body').css('background','none');
-        $('#customSkin').removeClass('fixed-sn');
-        $('#slide-out').hide();
-        $('header, main, footer').css('padding-left',0);
-        $('.float-left').addClass('d-none');
+        var arrowAdd1 = $cArrows('#iconBlock', {
+            render : { strokeStyle: 'green'},
+            arrow: { connectionType: 'rectangleAngle', angleFrom: 0, angleTo: 180}
+        });
+
+        var arrowAdd2 = $cArrows('#iconBlock', {
+            render : { strokeStyle: 'red'},
+            arrow: { connectionType: 'rectangleAngle', angleFrom: 180,
+                angleTo: 0}
+        });
+
+        function getBlockArrow () {
+            arrowAdd1.arrow('#name1', '#name2');
+            arrowAdd1.arrow('#name1', '#name5');
+            arrowAdd1.arrow('#name1', '#name6');
+            arrowAdd1.arrow('#name1', '#name7');
+            arrowAdd1.arrow('#name1', '#name8');
+        }
+
+        function getArrowRight () {
+            arrowAdd1.arrow('#child1', '#child5');
+            arrowAdd1.arrow('#child2', '#child5');
+            arrowAdd1.arrow('#child5', '#child9');
+            arrowAdd1.arrow('#child5', '#child10');
+        }
+
+
+        function getArrow () {
+            $.getJSON('rest/profile/authorities/1110', function() {
+                var id = parseInt($('#element3 .child:last').attr('data-id'));
+                var newId = id+1;
+                var oldId1 = id-5;
+                var oldId2 = id-6;
+                $('#element3 .elementBlock').append(
+                    '<div class="child bg-warning my-3" style="height: 50px;" id="child'+newId+'" data-id="'+newId+'"></div>'
+                );
+                arrowAdd2.arrow('#child'+newId, '#child'+oldId1);
+                arrowAdd2.arrow('#child'+oldId1, '#child1');
+                arrowAdd2.arrow('#child'+newId, '#child'+oldId2);
+                arrowAdd2.arrow('#child'+oldId2, '#child2');
+            });
+        }
+
+        $(document).on('click', '#addArrow1', function() {
+            $('#element2').append(
+                '<div style="width: 300px; height: 100px;" class="bg-success my-3" id="name5"></div>'
+            );
+            $('#element1 .elementBlock, #element2').removeClass('d-none');
+            getBlockArrow();
+        });
+
+        $(document).on('click', '#addArrow', function() {
+            arrowAdd1.clear();
+            $('#element3, .elementBlock').removeClass('d-none');
+            getArrowRight();
+            getArrow();
+        });
+
+        /*$(document).on('click', '#addArrow', function() {
+            var id = parseInt($('#element3 .child:last').attr('data-id'));
+            var newId = id+1;
+            $('#element3 .elementBlock').append(
+                '<div class="child bg-warning my-3" style="height: 50px;" id="child'+newId+'" data-id="'+newId+'"></div>'
+            );
+            arrowAdd2.arrow('#child'+newId, '#child5');
+        });*/
+
+        /*var s = Snap("#circle");
+        var circle = s.circle(150, 150, 100);*/
+
     });
 </script>
 <jsp:include page="fragments/footerBasement.jsp"/>
