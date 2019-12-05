@@ -66,6 +66,7 @@
 <jsp:include page="fragments/footerScript.jsp"/>
 <script>
     $(function() {
+        jsPlumb.ready(function() {
         /*var arrowsAngle = $cArrows(
             '#iconBlock', {
                 arrow: {
@@ -104,7 +105,7 @@
             }
         });
 
-        jsPlumb.ready(function() {
+
             var instance = jsPlumb.getInstance({
                 Endpoint: ["Dot", {radius: 2}],
                 Connector: "StateMachine", //Flowchart
@@ -117,7 +118,7 @@
                         foldback: 0.8
                     }],
                 ],
-                Container: "canvas"
+                Container: "#iconBlock"
             });
 
             /*var instance = jsPlumb.getInstance({
@@ -140,7 +141,7 @@
                 connector: "Flowchart"
             });
 
-            window.jsp = instance;
+            //window.jsp = instance;
 
             var canvas = document.getElementById("canvas");
             var windows = jsPlumb.getSelector(".statemachine-demo .w");
@@ -158,31 +159,22 @@
 
             // Рисуем стрелочки
             function getArrow (id, element) {
-                /*$.ajax({
-                    url: 'rest/profile/authorities/'+id,
-                    dataType: 'json',
-                    async: false,
-                    success: function(data) {
-                        if(data.childAuthorities.length > 0) {
-                            for(var i in data.childAuthorities) {
-                                var end = '#arrow'+data.childAuthorities[i].id;
-                                console.log(element+' - '+end);
-                                arrowsAngle.arrow(element, end);
-                            }
-                        }
-                    }
-                });*/
                 $.getJSON('rest/profile/authorities/'+id, function(data) {
                     if(data.childAuthorities.length > 0) {
                         for(var i in data.childAuthorities) {
-                            var end = 'arrow'+data.childAuthorities[i].id;
+                            //var end = parseInt(data.childAuthorities[i].id);
+                            //end = 'arrow'+end;
+                            var end = 'arrow18';
                             //arrowsAngle.arrow(element, end);
-                            //console.log(element);
+                            console.log(element+' - '+end);
+                            $('#'+element).css('background', '#fc6');
+                            $('#'+end).css('background', '#fc6');
                             instance.connect({
                                 source : element,
                                 target : end,
                                 type : 'basic'
                             });
+                            jsPlumb.repaintEverything();
                         }
                     }
                 });
@@ -194,20 +186,6 @@
 
             // Получаем функции по элементам
             function getFunctionsDepartments(id, element) {
-                /*$.ajax({
-                    url: 'rest/profile/authorities/getAuthoritiesByDivisionId/' + id,
-                    dataType: 'json',
-                    async: false,
-                    success: function(data) {
-                        for (var i in data) {
-                            var row = data[i];
-                            $(element).append(
-                                '<div class="card functions p-2 m-2 font-size-small pointer" id="arrow' + row.id + '" data-id="' + row.id + '">' + row.name + '</div>'
-                            );
-                            getArrow(row.id, '#arrow' + row.id);
-                        }
-                    }
-                });*/
                 $.getJSON('rest/profile/authorities/getAuthoritiesByDivisionId/' + id, function (data) {
                     for (var i in data) {
                         var row = data[i];
@@ -416,12 +394,7 @@
                     $('#administrators').removeClass('d-none');
                     getTopLevel();
                     getFunctionsDepartments(id, '#' + row);
-                    instance.connect({
-                        source : 'division',
-                        target : 'administrators',
-                        type : 'basic'
-                    });
-                }
+               }
                 if (row === 'administrators') {
                     $('#managements').removeClass('d-none');
                     getDivisions(id, key, 'managements');
