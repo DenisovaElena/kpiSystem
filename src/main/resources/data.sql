@@ -91,7 +91,6 @@ INSERT INTO kpi.division (id, name, top_level, chief_employee_id) VALUES (581, '
 
 
 
-
 INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (562, 505);
 INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (562, 506);
 INSERT INTO kpi.division_child_division (division_id, child_division_id) VALUES (562, 507);
@@ -812,11 +811,6 @@ INSERT INTO kpi.division_employees (division_id, employee_id) VALUES (582, 4205)
 INSERT INTO kpi.division_employees (division_id, employee_id) VALUES (587, 4118);
 INSERT INTO kpi.division_employees (division_id, employee_id) VALUES (587, 4259);
 INSERT INTO kpi.division_employees (division_id, employee_id) VALUES (587, 4260);
-
-
-
-
-
 
 
 
