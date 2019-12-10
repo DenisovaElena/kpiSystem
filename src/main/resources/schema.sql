@@ -14,6 +14,7 @@ DROP TABLE IF EXISTS kpi.role_employees CASCADE;
 DROP TABLE IF EXISTS kpi.role_child_roles CASCADE;
 DROP TABLE IF EXISTS kpi.role_divisions CASCADE;
 DROP TABLE IF EXISTS kpi.authority_employees CASCADE;
+DROP TABLE IF EXISTS kpi.goal_child_goals CASCADE;
 DROP SEQUENCE IF EXISTS kpi.global_seq;
 
 CREATE SEQUENCE kpi.global_seq START 100000;
