@@ -26,5 +26,5 @@ public interface AuthorityService {
 
    List<Authority> getAllTopLevelAuthoritiesByEmployeeId(int id);
 
-    List<Authority> getAllTopLevelAuthoritiesByChildAuthorityId(int id);
+    List<Authority> getAllTopLevelAuthoritiesByChildAuthorityId(int childId);
 }
