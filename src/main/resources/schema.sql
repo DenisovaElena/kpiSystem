@@ -148,3 +148,12 @@ CREATE TABLE kpi.role_divisions
     FOREIGN KEY (role_id) REFERENCES kpi.role (id) ON DELETE CASCADE,
     FOREIGN KEY (division_id) REFERENCES kpi.division (id) ON DELETE CASCADE
 );
+
+CREATE TABLE kpi.goal_child_goals
+(   goal_id                   INTEGER,
+    child_goal_id               INTEGER,
+    FOREIGN KEY (goal_id) REFERENCES kpi.goal(id) ON DELETE CASCADE,
+    FOREIGN KEY (child_goal_id) REFERENCES kpi.goal (id) ON DELETE CASCADE
+);
+
+

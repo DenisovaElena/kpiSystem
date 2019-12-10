@@ -35,4 +35,11 @@ public class Goal extends NamedEntity {
             inverseJoinColumns = @JoinColumn(name = "division_id")
     )
     private List<Division> divisions;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "goal_child_goals",
+            joinColumns = @JoinColumn(name = "goal_id"),
+            inverseJoinColumns = @JoinColumn(name = "child_goal_id")
+    )
+    private List<Goal> childGoals;
 }
