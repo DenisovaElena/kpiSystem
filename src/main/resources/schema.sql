@@ -174,7 +174,6 @@ BEGIN
     SELECT id, Name INTO Result
     FROM RCTE r
              inner JOIN kpi.authority p ON p.id = r.authority_id
-    ORDER BY lvl DESC
-    LIMIT 1;
+    ORDER BY lvl DESC;
     RETURN Result;
 END; $$ LANGUAGE plpgsql;
