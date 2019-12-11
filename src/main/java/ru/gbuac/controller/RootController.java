@@ -46,9 +46,9 @@ public class RootController {
         return "login";
     }
 
-    @GetMapping(value = "/new-document")
-    public String newDocument() {
-        return "new-document";
+    @GetMapping(value = "/managements")
+    public String managements() {
+        return "managements";
     }
 
     @GetMapping(value = "/index")
@@ -61,8 +61,13 @@ public class RootController {
         return "template";
     }
 
-    @GetMapping(value = "/agree-document")
-    public String agreeDocument() { return "agree-document"; }
+    @GetMapping(value = "/administrators")
+    public String administrators() {
+        return "administrators";
+    }
+
+    @GetMapping(value = "/departments")
+    public String departments() { return "departments"; }
 
     @GetMapping(value = "/temp-list")
     public String tempList() { return "temp-list"; }
