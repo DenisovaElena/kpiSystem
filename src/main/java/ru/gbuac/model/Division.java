@@ -1,6 +1,7 @@
 package ru.gbuac.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -54,6 +55,7 @@ public class Division extends NamedEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "chief_employee_id", nullable = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonInclude
     private Employee chiefEmployee;
 
     @OneToOne(mappedBy = "division", cascade = CascadeType.ALL)
