@@ -6,6 +6,9 @@ function getId(id) {
     return new URL(window.location.href).searchParams.get(id);
 }
 
+// Подсчёт элементов в массиве
+function countElem (array) {return array.length;}
+
 // Поиск по функциям
 $('.searchBtn').click(function(e) {
     e.preventDefault();
@@ -31,6 +34,9 @@ function getDepartments(url, id, pole) {
         $('#departmentName').html(data.name);
         $('#'+pole+' .addBtn').attr('data-id', id);
         $('#'+pole+' .Sitemap').attr('data-id', id);
+        if(row.photo && row.photo != '') {
+            $('.photoUser').attr('src', row.photo);
+        }
     });
 }
 
@@ -136,16 +142,21 @@ function getDivisions(id, key, level, levelUp, levelUp1) {
                 } else {
                     link = level+'?id='+item.id+'&levelUp='+id;
                 }
+                var img = 'resources/images/logo.png';
+                if(item.chiefEmployee.photo && item.chiefEmployee.photo != '') {
+                    img = item.chiefEmployee.photo;
+                }
                 $('#' + level).append(
                     '<div class="mb-3" id="'+level+key+keys+'">' + //border border-dark
                     '   <h5 class="bg-primary p-3 mx-5 text-white" id="'+level+'Name'+key+keys+'">' +
                     '       <div class="row">' +
-                    '           <div class="col-2 d-flex align-items-center justify-content-center">' +
-                    '               <img class="img-fluid" src="resources/images/logo.png">' +
+                    '           <div class="col-3 d-flex' +
+                    ' align-items-center justify-content-center">' +
+                    '               <img class="img-fluid" src="'+img+'">' +
                     '           </div>' +
-                    '           <div class="col-10">' +
+                    '           <div class="col-9">' +
                     '               <div class="row">' +
-                    '                   <div class="col-9 d-flex align-items-center justify-content-start">'+item.name+'</div>' +
+                    '                   <div class="col-9 d-flex align-items-center justify-content-start font-size-middle">'+item.name+'</div>' +
                     '                   <div class="col-3 d-flex align-items-start justify-content-end">' +
                     '                       <div class="pointer addBtn"' +
                     ' data-block="'+level+'"' +
@@ -159,16 +170,21 @@ function getDivisions(id, key, level, levelUp, levelUp1) {
                     '               <div class="row">' +
                     '                   <div class="col-12 my-3 mr-3 d-flex align-items-center">' +
                     '                       <a href="'+link+'">' +
-                    '                           <i class="fas fa-sitemap mr-4 fa-2x pointer text-white Sitemap"' +
+                    '                           <i class="fas fa-sitemap mr-4 pointer text-white Sitemap"' +
                     ' data-toggle="tooltip" data-placement="bottom"' +
                     ' title="Карта подразделения">' +
                     '                           </i>' +
                     '                       </a>' +
-                    '                       <i class="far fa-file-word mr-4 fa-2x pointer"' +
+                    '                       <i class="far fa-file-word mr-4 pointer"' +
                     ' data-toggle="tooltip" data-placement="bottom" title="Нормативный документ"></i>' +
-                    '                       <i class="far fa-address-card mr-4 fa-2x pointer"' +
-                    ' data-toggle="tooltip" data-placement="bottom" title="Карточка"></i>' +
-                    '                       <i class="fas fa-chart-pie mr-4 fa-2x pointer"' +
+                    '                       <a href="division?id='+item.id+'">' +
+                    '                           <i class="far fa-address-card mr-4 pointer text-white"' +
+                    ' data-toggle="tooltip"' +
+                    ' data-placement="bottom"' +
+                    ' title="Карточка подразделения">' +
+                    '                           </i>' +
+                    '                       </a>' +
+                    '                       <i class="fas fa-chart-pie mr-4 pointer"' +
                     ' data-toggle="tooltip" data-placement="bottom" title="Проказатель качества"></i>' +
                     '                   </div>' +
                     '               </div>' +
@@ -177,7 +193,7 @@ function getDivisions(id, key, level, levelUp, levelUp1) {
                     '   </h5>' +
                     '</div>'
                 );
-                console.log(levelUp);
+                //console.log(levelUp);
                 if(level == 'managements') {
                     arrowAdd2.arrow('#'+levelUp,'#'+level+'Name'+key+keys);
                 }
@@ -188,6 +204,18 @@ function getDivisions(id, key, level, levelUp, levelUp1) {
         }
     });
 }
+
+// Получение функций по отделу
+function getArrowLevel (id, level) {
+    $.getJSON('rest/profile/authorities/getAllTopLevelAuthoritiesByChildAuthorityId/' + id, function (data) {
+        for(var i in data) {
+            if(level == 3) {
+                //console.log(data);
+            }
+        }
+    });
+}
+
 
 // Подсветка похожих функций при нажатии на отдел
 $(document).on('click', '.functions', function () {
@@ -223,22 +251,22 @@ $(document).on('click', '.functions', function () {
                         }
                     }
                 }
-                if($.inArray(id, array1) == -1) {
+                /*if($.inArray(id, array1) == -1) {
                     for (var i in array1) {
                         $('.card[data-id='+array1[i]+']').css('background', '#fc6');
                         arrowReturn1.arrow('#arrow'+id,'#arrow'+array1[i]);
                     }
-                }
+                }*/
                 if($.inArray(id, array2) == -1) {
                     for (var i in array2) {
                         $('.card[data-id='+array2[i]+']').css('background', '#fc6');
-                        arrowReturn1.arrow('#arrow'+id,'#arrow'+array2[i]);
+                        arrowReturn1.arrow('#arrow'+array2[i],'#arrow'+array1[0]);
                     }
                 }
                 if($.inArray(id, array3) == -1) {
                     for (var i in array3) {
                         $('.card[data-id='+array3[i]+']').css('background', '#fc6');
-                        arrowReturn1.arrow('#arrow'+id,'#arrow'+array3[i]);
+                        getArrowLevel(array3[i], 3);
                     }
                 }
                 if($.inArray(id, array4) == -1) {
@@ -247,6 +275,10 @@ $(document).on('click', '.functions', function () {
                         arrowReturn1.arrow('#arrow'+id,'#arrow'+array4[i]);
                     }
                 }
+                console.log('array1 - '+array1);
+                console.log('array2 - '+array2);
+                console.log('array3 - '+array3);
+                console.log('array4 - '+array4);
             } else {
                 //alert('Совпадений не найдено!');
                 //$('.card').css('background', '#fff');

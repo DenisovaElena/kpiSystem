@@ -22,13 +22,13 @@
                 <div class="mb-3">
                     <h5 class="bg-primary mx-5 p-3 text-white" id="departmentsName1">
                         <div class="row">
-                            <div class="col-2 d-flex align-items-center justify-content-center">
-                                <img class="img-fluid" src="resources/images/logo.png">
+                            <div class="col-3 d-flex align-items-center justify-content-center">
+                                <img class="img-fluid photoUser" src="resources/images/logo.png">
                             </div>
-                            <div class="col-10">
+                            <div class="col-9">
                                 <div class="row">
                                     <div class="col-9 d-flex align-items-center justify-content-center">
-                                        <div id="departmentName"></div>
+                                        <div id="departmentName" class="font-size-middle"></div>
                                     </div>
                                     <div class="col-3 d-flex align-items-start justify-content-end">
                                         <div class="pointer addBtn"
@@ -53,8 +53,13 @@
                                            title="Карта подразделения"></i>--%>
                                         <i class="far fa-file-word mr-4 fa-2x pointer"
                                            data-toggle="tooltip" data-placement="bottom" title="Нормативный документ"></i>
-                                        <i class="far fa-address-card mr-4 fa-2x pointer"
-                                           data-toggle="tooltip" data-placement="bottom" title="Карточка"></i>
+                                        <a href="" id="divisionId">
+                                            <i class="far fa-address-card mr-4 fa-2x pointer text-white"
+                                               data-toggle="tooltip"
+                                               data-placement="bottom"
+                                               title="Карточка подразделения">
+                                            </i>
+                                        </a>
                                         <i class="fas fa-chart-pie mr-4 fa-2x pointer"
                                            data-toggle="tooltip" data-placement="bottom" title="Проказатель качества"></i>
                                     </div>
@@ -73,6 +78,7 @@
 <script>
     $(function() {
         var poleId = getId('id');
+        $('#divisionId').attr('href', 'division?id='+poleId);
         var levelUp = getId('levelUp');
         var levelUp1 = getId('levelUp1');
         $('.levelUp1 a').attr('href', 'administrators?id='+levelUp1);

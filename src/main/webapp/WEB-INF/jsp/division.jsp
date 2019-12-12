@@ -1,32 +1,35 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Bootstrap 4 Website Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="resources/css/index.css">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:include page="fragments/headerNew.jsp"/>
 
-</head>
-<body>
-    <div class="container-fluid w-sm-100">
+<main>
+    <div class="text-uppercase">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="index">Главная</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a onclick="javascript:history.back(); return false;">
+                        Назад
+                    </a>
+                </li>
+                <li class="breadcrumb-item active"></li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid w-sm-100" id="iconBlock">
         <h2 class="text-center my-5">Наименование структуры</h2>
         <form>
             <div class="row">
-                <div class="col-3">&nbsp;</div>
-                <div class="col-9">
-                    <label for="nameOtdel">Наименование структуры</label>
-                    <input type="text" class="form-control" id="nameOtdel" name="nameOtdel">
-                </div>
-                <div class="col-3 pt-3">
-                    <div class="fakeimg d-flex align-items-center justify-content-center">
-                        <img class="img-fluid" src="resources/img/Logo.png" alt="Fake Image">
+                <div class="col-3">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <img class="img-fluid rounded photoUser" src="" alt="">
                     </div>
                 </div>
                 <div class="col-9">
+                    <label for="nameOtdel">Наименование структуры</label>
+                    <input type="text" class="form-control" id="nameOtdel" name="nameOtdel">
                     <h5 class="my-3">Руководство структуры</h5>
                     <!--первая  штука-->
                     <div class="card bg-light my-3">
@@ -84,37 +87,42 @@
                         <div class="card-body" id="childDivisionBlock"></div>
                     </div>
                     <!--Четвертая  штука-->
-                    <h5 class="my-3">Сотрудники</h5>
-                    <div class="card bg-light my-3">
-                        <div class="card-body py-0">
-                            <table class="table table-bordered mt-3" id="employeesDivisionBlock">
-                                <tr>
-                                    <th class="text-center">#</th>
-                                    <th class="text-center">Фамилия</th>
-                                    <th class="text-center">Имя</th>
-                                    <th class="text-center">Отчество</th>
-                                    <th class="text-center">Должность</th>
-                                    <th class="text-center">Email</th>
-                                </tr>
-                            </table>
-                            <%--<div class="row d-flex align-items-center justify-content-center text-center font-weight-bold">
-                                <div class="col-1 border-right border-bottom my-0 py-2">#</div>
-                                <div class="col-2 border-right border-bottom my-0 py-2">Фамилия</div>
-                                <div class="col-2 border-right border-bottom my-0 py-2">Имя</div>
-                                <div class="col-2 border-right border-bottom my-0 py-2">Отчество</div>
-                                <div class="col-3 border-right border-bottom my-0 py-2">Должность</div>
-                                <div class="col-2 border-bottom my-0 py-0">Email</div>
-                            </div>--%>
+                    <div id="chiefEmployees" class="d-none">
+                        <h5 class="my-3">Сотрудники</h5>
+                        <div class="card bg-light my-3">
+                            <div class="card-body py-0">
+                                <table class="table table-bordered table-striped white mt-3"
+                                       id="employeesDivisionBlock">
+                                    <tr>
+                                        <th class="text-center">#</th>
+                                        <th class="text-center">Фамилия</th>
+                                        <th class="text-center">Имя</th>
+                                        <th class="text-center">Отчество</th>
+                                        <th class="text-center">Должность</th>
+                                        <th class="text-center">Email</th>
+                                    </tr>
+                                </table>
+                                <%--<div class="row d-flex align-items-center justify-content-center text-center font-weight-bold">
+                                    <div class="col-1 border-right border-bottom my-0 py-2">#</div>
+                                    <div class="col-2 border-right border-bottom my-0 py-2">Фамилия</div>
+                                    <div class="col-2 border-right border-bottom my-0 py-2">Имя</div>
+                                    <div class="col-2 border-right border-bottom my-0 py-2">Отчество</div>
+                                    <div class="col-3 border-right border-bottom my-0 py-2">Должность</div>
+                                    <div class="col-2 border-bottom my-0 py-0">Email</div>
+                                </div>--%>
+                            </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-success" onclick="save()">Нажми меня</button>
+                    <div>
+                        <button type="button" class="btn btn-success my-3 px-5">
+                            Сохранить</button>
+                    </div>
                 </div>
             </div>
         </form>
     </div>
-    <script src="resources/js/jquery-3.3.1.min.js"></script>
-    <script src="resources/js/popper.min.js"></script>
-    <script src="resources/js/bootstrap.min.js"></script>
-    <script src="resources/js/divisionsUtil.js"></script>
-</body>
-</html>
+</main>
+<jsp:include page="fragments/footerNew.jsp"/>
+<jsp:include page="fragments/footerScript.jsp"/>
+<script src="resources/js/divisionsUtil.js"></script>
+<jsp:include page="fragments/footerBasement.jsp"/>
