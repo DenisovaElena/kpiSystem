@@ -1,3 +1,10 @@
+//Загрузка документа всегда сверху
+$(document).ready(function(){
+    setTimeout(function(){
+        window.scrollTo(0, 0);
+    }, 1);
+});
+
 // Подсказки
 $('[data-toggle="tooltip"]').tooltip();
 
@@ -209,17 +216,29 @@ function getDivisions(id, key, level, levelUp, levelUp1) {
     });
 }
 
-// Получение функций по отделу
-function getArrowLevel (id, level) {
-    $.getJSON('rest/profile/authorities/getAllTopLevelAuthoritiesByChildAuthorityId/' + id, function (data) {
+// Получение связанных функций детей
+function getArrowChild (id) {
+    $.getJSON('rest/profile/authorities/getAllChilds/' + id, function (data) {
         for(var i in data) {
-            if(level == 3) {
-                //console.log(data);
+            var row = data[i].childAuthorities;
+            for(var y in row) {
+                $('.card[data-id='+row[y].id+']').css('background', '#fc6');
+                arrowReturn1.arrow('#arrow'+row[y].id, '#arrow'+id);
             }
         }
     });
 }
 
+// Получение связанных функций родителей
+function getArrowParent (id) {
+    $.getJSON('rest/profile/authorities/getAllParents/' + id, function (data) {
+        for(var i in data) {
+            var row = data[i];
+            $('.card[data-id='+row.id+']').css('background', '#fc6');
+            arrowReturn1.arrow('#arrow'+id,'#arrow'+row.id);
+        }
+    });
+}
 
 // Подсветка похожих функций при нажатии на отдел
 $(document).on('click', '.functions', function () {
@@ -230,7 +249,9 @@ $(document).on('click', '.functions', function () {
     $('.card[data-id='+id+']').css('background', '#fc6');
     //alert(id);
     if (id > 0) {
-        $.getJSON('rest/profile/authorities/getAllTopLevelAuthoritiesByChildAuthorityId/' + id, function (data) {
+        getArrowChild (id);
+        getArrowParent (id);
+        /*$.getJSON('rest/profile/authorities/getAllTopLevelAuthoritiesByChildAuthorityId/' + id, function (data) {
             if (data.length > 0) {
                 var array1 = []; var array2 = []; var array3 = []; var array4 = [];
                 for (var i in data) {
@@ -255,12 +276,12 @@ $(document).on('click', '.functions', function () {
                         }
                     }
                 }
-                /*if($.inArray(id, array1) == -1) {
+                if($.inArray(id, array1) == -1) {
                     for (var i in array1) {
                         $('.card[data-id='+array1[i]+']').css('background', '#fc6');
                         arrowReturn1.arrow('#arrow'+id,'#arrow'+array1[i]);
                     }
-                }*/
+                }
                 if($.inArray(id, array2) == -1) {
                     for (var i in array2) {
                         $('.card[data-id='+array2[i]+']').css('background', '#fc6');
@@ -283,11 +304,8 @@ $(document).on('click', '.functions', function () {
                 console.log('array2 - '+array2);
                 console.log('array3 - '+array3);
                 console.log('array4 - '+array4);
-            } else {
-                //alert('Совпадений не найдено!');
-                //$('.card').css('background', '#fff');
             }
-        });
+        });*/
     } else {
         $('.card').css('background', '#fff');
     }
