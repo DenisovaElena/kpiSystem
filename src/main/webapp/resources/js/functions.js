@@ -216,8 +216,8 @@ function getDivisions(id, key, level, levelUp, levelUp1) {
     });
 }
 
-// Получение связанных функций детей
-function getArrowChild (id) {
+// Получение связанных функций детей 3 порядка
+function getArrowChildDeep2 (id) {
     $.getJSON('rest/profile/authorities/getAllChilds/' + id, function (data) {
         for(var i in data) {
             var row = data[i].childAuthorities;
@@ -229,6 +229,57 @@ function getArrowChild (id) {
     });
 }
 
+// Получение связанных функций детей 2 порядка
+function getArrowChildDeep (id) {
+    $.getJSON('rest/profile/authorities/getAllChilds/' + id, function (data) {
+        for(var i in data) {
+            var row = data[i].childAuthorities;
+            for(var y in row) {
+                $('.card[data-id='+row[y].id+']').css('background', '#fc6');
+                arrowReturn1.arrow('#arrow'+row[y].id, '#arrow'+id);
+                getArrowChildDeep2(row[y].id);
+            }
+        }
+    });
+}
+
+// Получение связанных функций детей
+function getArrowChild (id) {
+    $.getJSON('rest/profile/authorities/getAllChilds/' + id, function (data) {
+        for(var i in data) {
+            var row = data[i].childAuthorities;
+            for(var y in row) {
+                $('.card[data-id='+row[y].id+']').css('background', '#fc6');
+                arrowReturn1.arrow('#arrow'+row[y].id, '#arrow'+id);
+                getArrowChildDeep(row[y].id);
+            }
+        }
+    });
+}
+
+// Получение связанных функций родителей 3 порядка
+function getArrowParentUp2 (id) {
+    $.getJSON('rest/profile/authorities/getAllParents/' + id, function (data) {
+        for(var i in data) {
+            var row = data[i];
+            $('.card[data-id='+row.id+']').css('background', '#fc6');
+            arrowReturn1.arrow('#arrow'+id,'#arrow'+row.id);
+        }
+    });
+}
+
+// Получение связанных функций родителей 2 порядка
+function getArrowParentUp (id) {
+    $.getJSON('rest/profile/authorities/getAllParents/' + id, function (data) {
+        for(var i in data) {
+            var row = data[i];
+            $('.card[data-id='+row.id+']').css('background', '#fc6');
+            arrowReturn1.arrow('#arrow'+id,'#arrow'+row.id);
+            getArrowParentUp2 (row.id);
+        }
+    });
+}
+
 // Получение связанных функций родителей
 function getArrowParent (id) {
     $.getJSON('rest/profile/authorities/getAllParents/' + id, function (data) {
@@ -236,6 +287,7 @@ function getArrowParent (id) {
             var row = data[i];
             $('.card[data-id='+row.id+']').css('background', '#fc6');
             arrowReturn1.arrow('#arrow'+id,'#arrow'+row.id);
+            getArrowParentUp(row.id);
         }
     });
 }
@@ -249,8 +301,8 @@ $(document).on('click', '.functions', function () {
     $('.card[data-id='+id+']').css('background', '#fc6');
     //alert(id);
     if (id > 0) {
-        getArrowChild (id);
-        getArrowParent (id);
+        getArrowChild(id);
+        getArrowParent(id);
         /*$.getJSON('rest/profile/authorities/getAllTopLevelAuthoritiesByChildAuthorityId/' + id, function (data) {
             if (data.length > 0) {
                 var array1 = []; var array2 = []; var array3 = []; var array4 = [];
