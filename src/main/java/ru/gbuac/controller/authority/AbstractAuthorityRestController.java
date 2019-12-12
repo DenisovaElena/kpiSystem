@@ -70,4 +70,14 @@ public abstract class AbstractAuthorityRestController {
         LOG.info("getAllTopLevelAuthoritiesByChildAuthorityId");
         return authorityService.getAllTopLevelAuthoritiesByChildAuthorityId(childId);
     }
+
+    public List<Authority> getAllParents(int id) {
+        LOG.info("getAllParents");
+        return authorityService.getAllParents(id);
+    }
+
+    public List<Authority> getAllChilds(int id) {
+        LOG.info("getAllChilds");
+        return authorityService.getAllChilds(id);
+    }
 }

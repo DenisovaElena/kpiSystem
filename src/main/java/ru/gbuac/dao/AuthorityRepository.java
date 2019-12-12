@@ -31,4 +31,10 @@ public interface AuthorityRepository extends JpaRepository<Authority, Integer> {
 
     @Query(value = "SELECT * FROM authority a WHERE a.id IN (SELECT * FROM getrootauthoritybychildid(:childId))", nativeQuery = true)
     List<Authority> getAllTopLevelAuthoritiesByChildAuthorityId(@Param("childId") int childId);
+
+    @Query("SELECT a FROM Authority a JOIN a.childAuthorities c WHERE c.id=:id")
+    List<Authority> getAllParents(@Param("id") int id);
+
+    @Query("SELECT a FROM Authority a WHERE a.id=:id")
+    List<Authority> getAllChilds(@Param("id") int id);
 }

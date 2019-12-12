@@ -74,4 +74,14 @@ public class AuthorityServiceImpl implements AuthorityService {
     public List<Authority> getAllTopLevelAuthoritiesByChildAuthorityId(int childId) {
         return authorityRepository.getAllTopLevelAuthoritiesByChildAuthorityId(childId);
     }
+
+    @Override
+    public List<Authority> getAllParents(int id) {
+        return authorityRepository.getAllParents(id);
+    }
+
+    @Override
+    public List<Authority> getAllChilds(int id) {
+        return authorityRepository.getAllChilds(id);
+    }
 }
