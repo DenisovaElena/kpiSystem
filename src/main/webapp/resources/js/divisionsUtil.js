@@ -1,6 +1,4 @@
-function getId() {
-    return new URL(window.location.href).searchParams.get("id");
-}
+var id = getId('id');
 
 function addElement (url, block, idName) {
     return $.getJSON(url, function(data) {
@@ -47,11 +45,16 @@ function addUsers (url, block) {
 }
 
 $.ajax({
-    url: "rest/profile/divisions/" + getId(),
+    url: "rest/profile/divisions/" + id,
     method: "GET",
     contentType: "application/json",
     success: function(data) {
         //console.log(data); // Возвращаемые данные выводим в консоль
+        $('.photoUser').attr({
+            'src' : data.chiefEmployee.photo,
+            'alt' : data.chiefEmployee.lastname+' '+data.chiefEmployee.firstname+' '+data.chiefEmployee.patronym
+        });
+        $('.breadcrumb-item .active').html(data.name);
         $('input#nameOtdel').val(data.name);
         $('input#firstName').val(data.chiefEmployee.firstname);
         $('input#lastName').val(data.chiefEmployee.lastname);
@@ -62,9 +65,14 @@ $.ajax({
 });
 
 
-addElement('rest/profile/authorities/getAuthoritiesByDivisionId/' + getId(), '#functionBlock', 'funcN');
-addElement('rest/profile/divisions/getChildDivisionByDivisionId/' + getId(), '#childDivisionBlock', 'column');
-addUsers('rest/profile/employees/getEmployeesByDivisionId/' + getId(), '#employeesDivisionBlock');
+addElement('rest/profile/authorities/getAuthoritiesByDivisionId/' + id, '#functionBlock', 'funcN');
+addElement('rest/profile/divisions/getChildDivisionByDivisionId/' + id, '#childDivisionBlock', 'column');
+addUsers('rest/profile/employees/getEmployeesByDivisionId/' + id, '#employeesDivisionBlock');
+var sumEmployees = countElem('rest/profile/employees/getEmployeesByDivisionId/' + id);
+console.log(sumEmployees);
+if (sumEmployees > 0) {
+    $('#chiefEmployees').removeClass('d-none');
+}
 /*
 $.ajax({
     url: "rest/profile/authorities/getAuthoritiesByDivisionId/" + getId(),

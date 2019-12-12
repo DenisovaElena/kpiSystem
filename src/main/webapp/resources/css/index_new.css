@@ -4,14 +4,14 @@
 @import url("jsplumbtoolkit-demo2.css");*/
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
 
-html {font: 0.8rem 'Roboto Condensed', sans-serif;}
+body {font: 0.8rem 'Roboto Condensed', sans-serif;}
 .pointer {cursor: pointer;}
 .font-size-small {font-size: 0.8rem;}
+.font-size-middle {font-size: 1rem;}
 .functions:hover {
     background: #CCCCCC;
     color: #000000;
 }
-
 #iconBlock {
     width: 100%;
     min-height: 1920px;
