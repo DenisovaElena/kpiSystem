@@ -34,8 +34,10 @@ function getDepartments(url, id, pole) {
         $('#departmentName').html(data.name);
         $('#'+pole+' .addBtn').attr('data-id', id);
         $('#'+pole+' .Sitemap').attr('data-id', id);
-        if(row.photo && row.photo != '') {
-            $('.photoUser').attr('src', row.photo);
+        if(data.chiefEmployee != null) {
+            if(data.chiefEmployee.photo) {
+                $('.photoUser').attr('src', data.chiefEmployee.photo);
+            }
         }
     });
 }
@@ -143,8 +145,10 @@ function getDivisions(id, key, level, levelUp, levelUp1) {
                     link = level+'?id='+item.id+'&levelUp='+id;
                 }
                 var img = 'resources/images/logo.png';
-                if(item.chiefEmployee.photo && item.chiefEmployee.photo != '') {
-                    img = item.chiefEmployee.photo;
+                if(item.chiefEmployee != null) {
+                    if(item.chiefEmployee.photo) {
+                        img = item.chiefEmployee.photo;
+                    }
                 }
                 $('#' + level).append(
                     '<div class="mb-3" id="'+level+key+keys+'">' + //border border-dark

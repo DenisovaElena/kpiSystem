@@ -88,9 +88,10 @@ $(function() {
                         var administrators = row.childDivision[y];
                         var key = parseInt(y) + 1;
                         var img = 'resources/images/logo.png';
-                        /*if(administrators.chiefEmployee.photo && administrators.chiefEmployee.photo != '') {
-                            img = 'resources/images/'+administrators.chiefEmployee.photo;
-                        }*/
+                        if(administrators.chiefEmployee &&
+                            administrators.chiefEmployee.photo !== '') {
+                            img = administrators.chiefEmployee.photo;
+                        }
                         $('#administrators').append(
                             '<div class="mb-3" id="administrators'+key+'">' + //border border-dark
                             '   <h5 class="bg-primary p-3 mx-5 text-white" id="administratorsName'+key+'">' +
@@ -147,8 +148,10 @@ $(function() {
                 var row = data[i];
                 if (row.id == 1) {
                     $('#departmentName').html(row.name);
-                    if(row.photo && row.photo != '') {
-                        $('.photoUser').attr('src', row.photo);
+                    if(row.chiefEmployee != null) {
+                        if(row.chiefEmployee.photo) {
+                            $('.photoUser').attr('src', row.chiefEmployee.photo);
+                        }
                     }
                 }
             }
@@ -174,13 +177,15 @@ $(function() {
             getFunctionsDepartments(id, '#' + row);
        }
         if (row === 'administrators') {
-            $('#managements').removeClass('d-none');
+            $('#managements').empty().removeClass('d-none');
             arrowAdd1.clear();
+            arrowAdd2.clear();
+            arrowAdd3.clear();
             getDivisions(id, key, 'managements', 'administratorsName'+key);
             getFunctionsDepartments(id, '#' + row + key);
         }
         if (row === 'managements') {
-            $('#departments').removeClass('d-none');
+            $('#departments').empty().removeClass('d-none');
             arrowAdd2.clear();
             arrowAdd3.clear();
             getDivisions(id, key, 'departments', 'managementsName'+key);
@@ -207,8 +212,10 @@ $(function() {
             arrowAdd5.clear();
         }
         if (row === 'administrators') {
+            arrowAdd1.clear();
             arrowAdd2.clear();
             arrowAdd3.clear();
+            arrowAdd5.clear();
             $('#managements, #departments').empty().addClass('d-none');
             $('#' + row + key + ' .functions').remove();
         }
@@ -228,6 +235,7 @@ $(function() {
         arrowAdd5.clear();
         arrowAdd2.clear();
         arrowAdd3.clear();
+        arrowAdd1.clear();
         $('#administrators').empty();
         var id = $(this).attr('data-id');
         var row = $(this).attr('data-block');

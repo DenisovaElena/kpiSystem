@@ -39,26 +39,26 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 my-3 mr-3 d-flex align-items-center">
-                                        <%--<i class="fas fa-sitemap mr-4 fa-2x pointer Sitemap"
+                                        <%--<i class="fas fa-sitemap mr-4 pointer Sitemap"
                                            data-toggle="tooltip"
                                            data-placement="bottom"
                                            data-id=""
                                            data-block="administrators"
                                            data-key="1"
                                            title="Карта подразделения"></i>--%>
-                                        <i class="far fa-file-word mr-4 fa-2x pointer"
+                                        <i class="far fa-file-word mr-4 pointer"
                                            data-toggle="tooltip"
                                            data-placement="bottom"
                                            title="Нормативный документ">
                                         </i>
                                         <a href="" id="divisionId">
-                                            <i class="far fa-address-card mr-4 fa-2x pointer text-white"
+                                            <i class="far fa-address-card mr-4 pointer text-white"
                                                data-toggle="tooltip"
                                                data-placement="bottom"
                                                title="Карточка подразделения">
                                             </i>
                                         </a>
-                                        <i class="fas fa-chart-pie mr-4 fa-2x pointer"
+                                        <i class="fas fa-chart-pie mr-4 pointer"
                                            data-toggle="tooltip" data-placement="bottom" title="Проказатель качества"></i>
                                     </div>
                                 </div>
@@ -121,7 +121,9 @@
                 $('#' + row + key + ' .functions').remove();
             }
             if (row === 'managements') {
+                arrowAdd2.clear();
                 arrowAdd3.clear();
+                arrowAdd5.clear();
                 $('#departments').empty().addClass('d-none');
                 $('#' + row + key + ' .functions').remove();
             }
@@ -148,6 +150,7 @@
                 $('#administrators').remove();
                 $('#departments').empty().removeClass('d-none');
                 arrowAdd2.clear();
+                arrowAdd3.clear();
                 getDivisions(id, key, 'departments', 'managementsName'+key);
             }
         });
