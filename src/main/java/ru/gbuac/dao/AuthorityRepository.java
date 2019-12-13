@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import ru.gbuac.model.Authority;
+import ru.gbuac.model.Goal;
 import ru.gbuac.to.AuthorityTo;
 
 import java.util.List;
@@ -37,4 +38,7 @@ public interface AuthorityRepository extends JpaRepository<Authority, Integer> {
 
     @Query("SELECT a FROM Authority a WHERE a.id=:id")
     List<Authority> getAllChilds(@Param("id") int id);
+
+    @Query("SELECT a FROM Authority a JOIN a.goals g WHERE g.id=:id")
+    List<Authority> getAuthoritiesByGoalId(@Param("id") int id);
 }

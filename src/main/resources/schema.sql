@@ -15,6 +15,7 @@ DROP TABLE IF EXISTS kpi.role_child_roles CASCADE;
 DROP TABLE IF EXISTS kpi.role_divisions CASCADE;
 DROP TABLE IF EXISTS kpi.authority_employees CASCADE;
 DROP TABLE IF EXISTS kpi.goal_child_goals CASCADE;
+DROP TABLE IF EXISTS kpi.authority_goals CASCADE;
 DROP SEQUENCE IF EXISTS kpi.global_seq;
 
 CREATE SEQUENCE kpi.global_seq START 100000;
@@ -155,6 +156,13 @@ CREATE TABLE kpi.goal_child_goals
     child_goal_id               INTEGER,
     FOREIGN KEY (goal_id) REFERENCES kpi.goal(id) ON DELETE CASCADE,
     FOREIGN KEY (child_goal_id) REFERENCES kpi.goal (id) ON DELETE CASCADE
+);
+
+CREATE TABLE kpi.authority_goals
+(   authority_id                   INTEGER,
+    goal_id                        INTEGER,
+    FOREIGN KEY (authority_id) REFERENCES kpi.authority(id) ON DELETE CASCADE,
+    FOREIGN KEY (goal_id) REFERENCES kpi.goal (id) ON DELETE CASCADE
 );
 
 -- CREATE OR REPLACE FUNCTION kpi.getRootAuthorityByChildId (childId INTEGER)

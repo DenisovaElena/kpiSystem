@@ -80,4 +80,9 @@ public abstract class AbstractAuthorityRestController {
         LOG.info("getAllChilds");
         return authorityService.getAllChilds(id);
     }
+
+    public List<Authority> getAuthoritiesByGoalId(int id) {
+        LOG.info("getAuthoritiesByGoalId");
+        return authorityService.getAuthoritiesByGoalId(id);
+    }
 }

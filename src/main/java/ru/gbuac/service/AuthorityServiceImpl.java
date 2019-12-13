@@ -84,4 +84,9 @@ public class AuthorityServiceImpl implements AuthorityService {
     public List<Authority> getAllChilds(int id) {
         return authorityRepository.getAllChilds(id);
     }
+
+    @Override
+    public List<Authority> getAuthoritiesByGoalId(int id) {
+        return authorityRepository.getAuthoritiesByGoalId(id);
+    }
 }

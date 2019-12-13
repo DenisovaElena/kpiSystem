@@ -164,6 +164,11 @@ INSERT  INTO kpi.authority_employees(authority_id, employee_id) VALUES (50, 23);
 INSERT  INTO kpi.authority_employees(authority_id, employee_id) VALUES (51, 22);
 INSERT  INTO kpi.authority_employees(authority_id, employee_id) VALUES (52, 23);
 
+INSERT INTO kpi.authority_goals(authority_id, goal_id) VALUES (51, 43);
+INSERT INTO kpi.authority_goals(authority_id, goal_id) VALUES (51, 44);
+INSERT INTO kpi.authority_goals(authority_id, goal_id) VALUES (52, 45);
+INSERT INTO kpi.authority_goals(authority_id, goal_id) VALUES (52, 46);
+
 
 --
 

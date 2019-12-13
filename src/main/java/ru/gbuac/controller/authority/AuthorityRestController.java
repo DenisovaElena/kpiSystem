@@ -83,4 +83,10 @@ public class AuthorityRestController extends AbstractAuthorityRestController {
     public List<Authority> getAllChilds(@PathVariable("id") int id) {
         return super.getAllChilds(id);
     }
+
+    @Override
+    @GetMapping("/getAuthoritiesByGoalId/{id}")
+    public List<Authority> getAuthoritiesByGoalId(@PathVariable("id") int id) {
+        return super.getAuthoritiesByGoalId(id);
+    }
 }

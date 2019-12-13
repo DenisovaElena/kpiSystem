@@ -31,4 +31,6 @@ public interface AuthorityService {
     List<Authority> getAllParents(int id);
 
     List<Authority> getAllChilds(int id);
+
+    List<Authority> getAuthoritiesByGoalId(int id);
 }

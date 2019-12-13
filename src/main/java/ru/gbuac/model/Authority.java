@@ -45,4 +45,12 @@ public class Authority extends NamedEntity {
             inverseJoinColumns = @JoinColumn(name = "employee_id")
     )
     private List<Employee> employees;
+
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "authority_goals",
+            joinColumns = @JoinColumn(name = "authority_id"),
+            inverseJoinColumns = @JoinColumn(name = "goal_id")
+    )
+    private List<Goal> goals;
 }
