@@ -157,23 +157,23 @@ CREATE TABLE kpi.goal_child_goals
     FOREIGN KEY (child_goal_id) REFERENCES kpi.goal (id) ON DELETE CASCADE
 );
 
-CREATE OR REPLACE FUNCTION kpi.getRootAuthorityByChildId (childId INTEGER)
-    RETURNS INTEGER AS $$
-DECLARE Result INTEGER;
-BEGIN
-    WITH RECURSIVE RCTE AS
-                       (
-                           SELECT *, 1 AS Lvl FROM kpi.authority_child_authorities
-                           WHERE child_authority_id = childId
-
-                           UNION ALL
-
-                           SELECT rh.*, Lvl+1 AS Lvl FROM kpi.authority_child_authorities rh
-                                                              INNER JOIN RCTE rc ON rh.child_authority_id = rc.authority_id
-                       )
-    SELECT id, Name INTO Result
-    FROM RCTE r
-             inner JOIN kpi.authority p ON p.id = r.authority_id
-    ORDER BY lvl DESC;
-    RETURN Result;
-END; $$ LANGUAGE plpgsql;
+-- CREATE OR REPLACE FUNCTION kpi.getRootAuthorityByChildId (childId INTEGER)
+--     RETURNS INTEGER AS $$
+-- DECLARE Result INTEGER;
+-- BEGIN
+--     WITH RECURSIVE RCTE AS
+--                        (
+--                            SELECT *, 1 AS Lvl FROM kpi.authority_child_authorities
+--                            WHERE child_authority_id = childId
+--
+--                            UNION ALL
+--
+--                            SELECT rh.*, Lvl+1 AS Lvl FROM kpi.authority_child_authorities rh
+--                                                               INNER JOIN RCTE rc ON rh.child_authority_id = rc.authority_id
+--                        )
+--     SELECT id, Name INTO Result
+--     FROM RCTE r
+--              inner JOIN kpi.authority p ON p.id = r.authority_id
+--     ORDER BY lvl DESC;
+--     RETURN Result;
+-- END; $$ LANGUAGE plpgsql;
