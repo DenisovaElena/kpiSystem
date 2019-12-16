@@ -24,9 +24,9 @@ public class Variance extends NamedEntity {
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "authority_variances",
+    @JoinTable(name = "goal_variances",
             joinColumns = @JoinColumn(name = "variance_id"),
-            inverseJoinColumns = @JoinColumn(name = "authority_id")
+            inverseJoinColumns = @JoinColumn(name = "goal_id")
     )
-    private List<Authority> authorities;
+    private List<Goal> goals;
 }

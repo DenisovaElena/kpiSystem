@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS kpi.authority_employees CASCADE;
 DROP TABLE IF EXISTS kpi.goal_child_goals CASCADE;
 DROP TABLE IF EXISTS kpi.authority_goals CASCADE;
 DROP TABLE IF EXISTS kpi.variance CASCADE;
-DROP TABLE IF EXISTS kpi.authority_variances CASCADE;
+DROP TABLE IF EXISTS kpi.goal_variances CASCADE;
 DROP SEQUENCE IF EXISTS kpi.global_seq;
 
 CREATE SEQUENCE kpi.global_seq START 100000;
@@ -173,10 +173,10 @@ CREATE TABLE kpi.variance
     value                VARCHAR
 );
 
-CREATE TABLE kpi.authority_variances
-(   authority_id                   INTEGER,
+CREATE TABLE kpi.goal_variances
+(   goal_id                   INTEGER,
     variance_id                    INTEGER,
-    FOREIGN KEY (authority_id) REFERENCES kpi.authority(id) ON DELETE CASCADE,
+    FOREIGN KEY (goal_id) REFERENCES kpi.goal(id) ON DELETE CASCADE,
     FOREIGN KEY (variance_id) REFERENCES kpi.variance (id) ON DELETE CASCADE
 );
 
