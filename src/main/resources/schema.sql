@@ -18,6 +18,9 @@ DROP TABLE IF EXISTS kpi.goal_child_goals CASCADE;
 DROP TABLE IF EXISTS kpi.authority_goals CASCADE;
 DROP TABLE IF EXISTS kpi.variance CASCADE;
 DROP TABLE IF EXISTS kpi.goal_variances CASCADE;
+DROP TABLE IF EXISTS kpi.employee_goals CASCADE;
+DROP TABLE IF EXISTS kpi.employee_variances CASCADE;
+DROP TABLE IF EXISTS kpi.division_variances CASCADE;
 DROP SEQUENCE IF EXISTS kpi.global_seq;
 
 CREATE SEQUENCE kpi.global_seq START 100000;
@@ -177,6 +180,27 @@ CREATE TABLE kpi.goal_variances
 (   goal_id                   INTEGER,
     variance_id                    INTEGER,
     FOREIGN KEY (goal_id) REFERENCES kpi.goal(id) ON DELETE CASCADE,
+    FOREIGN KEY (variance_id) REFERENCES kpi.variance (id) ON DELETE CASCADE
+);
+
+CREATE TABLE kpi.employee_goals
+(   employee_id                   INTEGER,
+    goal_id                    INTEGER,
+    FOREIGN KEY (goal_id) REFERENCES kpi.goal(id) ON DELETE CASCADE,
+    FOREIGN KEY (employee_id) REFERENCES kpi.employee (id) ON DELETE CASCADE
+);
+
+CREATE TABLE kpi.employee_variances
+(   employee_id                   INTEGER,
+    variance_id                    INTEGER,
+    FOREIGN KEY (employee_id) REFERENCES kpi.employee(id) ON DELETE CASCADE,
+    FOREIGN KEY (variance_id) REFERENCES kpi.variance (id) ON DELETE CASCADE
+);
+
+CREATE TABLE kpi.division_variances
+(   division_id                   INTEGER,
+    variance_id                    INTEGER,
+    FOREIGN KEY (division_id) REFERENCES kpi.division(id) ON DELETE CASCADE,
     FOREIGN KEY (variance_id) REFERENCES kpi.variance (id) ON DELETE CASCADE
 );
 

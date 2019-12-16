@@ -65,4 +65,14 @@ public class Division extends NamedEntity {
     @JoinTable(name = "role_divisions", joinColumns = @JoinColumn(name = "role_id"), inverseJoinColumns =
     @JoinColumn(name = "division_id"))
     private List<Role> roles;
+
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "division_variances",
+            joinColumns = @JoinColumn(name = "division_id"),
+            inverseJoinColumns = @JoinColumn(name = "variance_id")
+    )
+    private List<Variance> variances;
+
+
 }

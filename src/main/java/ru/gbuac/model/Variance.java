@@ -29,4 +29,20 @@ public class Variance extends NamedEntity {
             inverseJoinColumns = @JoinColumn(name = "goal_id")
     )
     private List<Goal> goals;
+
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "employee_variances",
+            joinColumns = @JoinColumn(name = "variance_id"),
+            inverseJoinColumns = @JoinColumn(name = "employee_id")
+    )
+    private List<Employee> employees;
+
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "division_variances",
+            joinColumns = @JoinColumn(name = "variance_id"),
+            inverseJoinColumns = @JoinColumn(name = "division_id")
+    )
+    private List<Division> divisions;
 }
