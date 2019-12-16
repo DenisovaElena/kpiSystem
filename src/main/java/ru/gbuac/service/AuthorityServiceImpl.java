@@ -29,7 +29,7 @@ public class AuthorityServiceImpl implements AuthorityService {
 
     @Override
     public Authority save(Authority authority) {
-        Assert.notNull(authority, "catalog must not be null");
+        Assert.notNull(authority, "authority must not be null");
         return authorityRepository.save(authority);
     }
 
@@ -40,7 +40,7 @@ public class AuthorityServiceImpl implements AuthorityService {
 
     @Override
     public Authority update(Authority authority, int id) {
-        Assert.notNull(authority, "catalog must not be null");
+        Assert.notNull(authority, "authority must not be null");
         Authority savedAuthority = checkNotFoundWithId(authorityRepository.save(authority), id);
         return savedAuthority;
     }

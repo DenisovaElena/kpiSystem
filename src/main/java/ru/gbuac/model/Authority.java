@@ -53,4 +53,12 @@ public class Authority extends NamedEntity {
             inverseJoinColumns = @JoinColumn(name = "goal_id")
     )
     private List<Goal> goals;
+
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "authority_variances",
+            joinColumns = @JoinColumn(name = "authority_id"),
+            inverseJoinColumns = @JoinColumn(name = "variance_id")
+    )
+    private List<Variance> variances;
 }
