@@ -35,8 +35,8 @@
                                              data-block="departments"
                                              data-id=""
                                              data-key="1">
-                                            <i class="far fa-minus-square minusBtn d-none"></i>
-                                            <i class="far fa-plus-square plusBtn"
+                                            <i class="far fa-minus-square minusBtn"></i>
+                                            <i class="far fa-plus-square plusBtn d-none"
                                                data-toggle="tooltip"
                                                data-placement="bottom"
                                                title="Список функций подразделения"></i>
@@ -84,6 +84,7 @@
         $('.levelUp1 a').attr('href', 'administrators?id='+levelUp1);
         $('.levelUp a').attr('href', 'managements?id='+levelUp);
         getDepartments('rest/profile/divisions/', poleId, 'departments');
+        getFunctionsDepartments(poleId, '#departments');
 
         // Получаем список функций по клику
         $(document).on('click', '.plusBtn', function () {
@@ -112,7 +113,7 @@
         });
 
         // Открываем подразделения по клику на карту
-        $(document).on('click', '.Sitemap', function() {
+        /*$(document).on('click', '.Sitemap', function() {
             arrowAdd1.clear();
             arrowAdd2.clear();
             arrowAdd3.clear();
@@ -120,13 +121,13 @@
             var id = $(this).attr('data-id');
             var row = $(this).attr('data-block');
             var key = $(this).attr('data-key');
-            /*if (row === 'managements') {
+            if (row === 'managements') {
                 $('#administrators').remove();
                 $('#departments').empty().removeClass('d-none');
                 arrowAdd2.clear();
                 getDivisions(id, key, 'departments', 'managementsName'+key);
-            }*/
-        });
+            }
+        });*/
 
     });
 </script>

@@ -1,6 +1,6 @@
 //Загрузка документа всегда сверху
-$(document).ready(function(){
-    setTimeout(function(){
+$(document).ready(function() {
+    setTimeout(function() {
         window.scrollTo(0, 0);
     }, 1);
 });
@@ -92,8 +92,12 @@ var arrowAdd5 = $cArrows('#iconBlock', {
 
 var arrowReturn1 = $cArrows('#iconBlock', {
     render : { strokeStyle: 'red'},
-    arrow: { connectionType: 'rectangleAngle', angleFrom: 180,
-        angleTo: 0}
+    arrow: {
+        arrowType: 'arrow',
+        connectionType: 'rectangleAngle',
+        angleFrom: 0,
+        angleTo: 180
+    }
 });
 
 // Рисуем стрелочки
@@ -127,13 +131,15 @@ function getArrow (id, element, dep) {
 // Получаем функции по элементам
 function getFunctionsDepartments(id, element) {
     $.getJSON('rest/profile/authorities/getAuthoritiesByDivisionId/' + id, function (data) {
+        //if(data.length == 0) {$(element+'
+        // .addBtn').removeClass('d-none').addClass('d-none');}
         for (var i in data) {
             var row = data[i];
             $(element).append(
                 '<div class="card functions p-2 my-2 mx-5 font-size-small pointer" id="arrow' + row.id + '" data-id="' + row.id + '">' + row.name + '</div>'
             );
             if(element != '#division') {
-                getArrow(row.id, '#arrow' + row.id, element);
+                //getArrow(row.id, '#arrow' + row.id, element);
             }
         }
     });
@@ -173,8 +179,8 @@ function getDivisions(id, key, level, levelUp, levelUp1) {
                     ' data-block="'+level+'"' +
                     ' data-id="'+item.id+'"' +
                     ' data-key='+key+keys+'>' +
-                    '                           <i class="far fa-minus-square minusBtn d-none"></i>' +
-                    '                           <i class="far fa-plus-square plusBtn"></i>' +
+                    '                           <i class="far fa-minus-square minusBtn"></i>' +
+                    '                           <i class="far fa-plus-square plusBtn d-none"></i>' +
                     '                       </div>' +
                     '                   </div>' +
                     '               </div>' +
@@ -204,13 +210,14 @@ function getDivisions(id, key, level, levelUp, levelUp1) {
                     '   </h5>' +
                     '</div>'
                 );
+                getFunctionsDepartments(id, '#'+level+key+keys);
                 //console.log(levelUp);
-                if(level == 'managements') {
+                /*if(level == 'managements') {
                     arrowAdd2.arrow('#'+levelUp,'#'+level+'Name'+key+keys);
                 }
                 if(level == 'departments') {
                     arrowAdd3.arrow('#'+levelUp,'#'+level+'Name'+key+keys);
-                }
+                }*/
             }
         }
     });
@@ -222,8 +229,9 @@ function getArrowChildDeep2 (id) {
         for(var i in data) {
             var row = data[i].childAuthorities;
             for(var y in row) {
-                $('.card[data-id='+row[y].id+']').css('background', '#fc6');
-                arrowReturn1.arrow('#arrow'+row[y].id, '#arrow'+id);
+                $('.card[data-id='+row[y].id+']').css('background', '#fc6').removeClass('d-none');
+                console.log('#arrow'+id, '#arrow'+row[y].id);
+                arrowReturn1.arrow('#arrow'+id, '#arrow'+row[y].id);
             }
         }
     });
@@ -235,8 +243,10 @@ function getArrowChildDeep (id) {
         for(var i in data) {
             var row = data[i].childAuthorities;
             for(var y in row) {
-                $('.card[data-id='+row[y].id+']').css('background', '#fc6');
-                arrowReturn1.arrow('#arrow'+row[y].id, '#arrow'+id);
+                $('.card[data-id='+row[y].id+']').css('background', '#fc6').removeClass('d-none');
+                arrowReturn1.arrow('#arrow'+id, '#arrow'+row[y].id);
+                //arrowReturn1.arrow('#arrow'+row[y].id, '#arrow'+id);
+                console.log('#arrow'+id, '#arrow'+row[y].id);
                 getArrowChildDeep2(row[y].id);
             }
         }
@@ -249,8 +259,10 @@ function getArrowChild (id) {
         for(var i in data) {
             var row = data[i].childAuthorities;
             for(var y in row) {
-                $('.card[data-id='+row[y].id+']').css('background', '#fc6');
-                arrowReturn1.arrow('#arrow'+row[y].id, '#arrow'+id);
+                $('.card[data-id='+row[y].id+']').css('background', '#fc6').removeClass('d-none');
+                arrowReturn1.arrow('#arrow'+id, '#arrow'+row[y].id);
+                //arrowReturn1.arrow('#arrow'+row[y].id, '#arrow'+id);
+                console.log('#arrow'+id, '#arrow'+row[y].id);
                 getArrowChildDeep(row[y].id);
             }
         }
@@ -260,10 +272,13 @@ function getArrowChild (id) {
 // Получение связанных функций родителей 3 порядка
 function getArrowParentUp2 (id) {
     $.getJSON('rest/profile/authorities/getAllParents/' + id, function (data) {
-        for(var i in data) {
-            var row = data[i];
-            $('.card[data-id='+row.id+']').css('background', '#fc6');
-            arrowReturn1.arrow('#arrow'+id,'#arrow'+row.id);
+        if(data.length > 0) {
+            for(var i in data) {
+                var row = data[i];
+                $('.card[data-id='+row.id+']').css('background', '#fc6').removeClass('d-none');
+                arrowReturn1.arrow('#arrow'+row.id, '#arrow'+id);
+                //arrowReturn1.arrow('#arrow'+id,'#arrow'+row.id);
+            }
         }
     });
 }
@@ -271,11 +286,14 @@ function getArrowParentUp2 (id) {
 // Получение связанных функций родителей 2 порядка
 function getArrowParentUp (id) {
     $.getJSON('rest/profile/authorities/getAllParents/' + id, function (data) {
-        for(var i in data) {
-            var row = data[i];
-            $('.card[data-id='+row.id+']').css('background', '#fc6');
-            arrowReturn1.arrow('#arrow'+id,'#arrow'+row.id);
-            getArrowParentUp2 (row.id);
+        if(data.length > 0) {
+            for(var i in data) {
+                var row = data[i];
+                $('.card[data-id='+row.id+']').css('background', '#fc6').removeClass('d-none');
+                //arrowReturn1.arrow('#arrow'+id,'#arrow'+row.id);
+                arrowReturn1.arrow('#arrow'+row.id, '#arrow'+id);
+                getArrowParentUp2 (row.id);
+            }
         }
     });
 }
@@ -283,11 +301,14 @@ function getArrowParentUp (id) {
 // Получение связанных функций родителей
 function getArrowParent (id) {
     $.getJSON('rest/profile/authorities/getAllParents/' + id, function (data) {
-        for(var i in data) {
-            var row = data[i];
-            $('.card[data-id='+row.id+']').css('background', '#fc6');
-            arrowReturn1.arrow('#arrow'+id,'#arrow'+row.id);
-            getArrowParentUp(row.id);
+        if(data.length > 0) {
+            for(var i in data) {
+                var row = data[i];
+                $('.card[data-id='+row.id+']').css('background', '#fc6').removeClass('d-none');
+                //arrowReturn1.arrow('#arrow'+id,'#arrow'+row.id);
+                arrowReturn1.arrow('#arrow'+row.id, '#arrow'+id);
+                getArrowParentUp(row.id);
+            }
         }
     });
 }
@@ -296,13 +317,16 @@ function getArrowParent (id) {
 $(document).on('click', '.functions', function () {
     arrowAdd5.clear();
     arrowReturn1.clear();
-    $('.card').css('background', '#fff');
+    $('.card').css('background', '#fff').addClass('d-none');
     var id = parseInt($(this).attr('data-id'));
-    $('.card[data-id='+id+']').css('background', '#fc6');
+    $('.card[data-id='+id+']').css('background', '#fc6').removeClass('d-none');
     //alert(id);
     if (id > 0) {
         getArrowChild(id);
         getArrowParent(id);
+        $('body,html').animate({
+            scrollTop: 0
+        }, 500);
         /*$.getJSON('rest/profile/authorities/getAllTopLevelAuthoritiesByChildAuthorityId/' + id, function (data) {
             if (data.length > 0) {
                 var array1 = []; var array2 = []; var array3 = []; var array4 = [];
@@ -361,4 +385,10 @@ $(document).on('click', '.functions', function () {
     } else {
         $('.card').css('background', '#fff');
     }
+
+    // Отменяем покраску всех блоков и стрелки
+    $(document).on('click', '#refresh', function() {
+        $('.card').css('background','#fff').removeClass('d-none');
+        arrowReturn1.clear();
+    });
 });
