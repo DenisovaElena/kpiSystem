@@ -21,6 +21,9 @@ DROP TABLE IF EXISTS kpi.goal_variances CASCADE;
 DROP TABLE IF EXISTS kpi.employee_goals CASCADE;
 DROP TABLE IF EXISTS kpi.employee_variances CASCADE;
 DROP TABLE IF EXISTS kpi.division_variances CASCADE;
+DROP TABLE IF EXISTS kpi.process CASCADE;
+DROP TABLE IF EXISTS kpi.task CASCADE;
+DROP TABLE IF EXISTS kpi.employee_tasks CASCADE;
 DROP SEQUENCE IF EXISTS kpi.global_seq;
 
 CREATE SEQUENCE kpi.global_seq START 100000;

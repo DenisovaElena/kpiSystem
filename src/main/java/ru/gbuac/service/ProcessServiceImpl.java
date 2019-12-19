@@ -39,7 +39,7 @@ public class ProcessServiceImpl implements ProcessService {
 
     @Override
     public Process update(Process process, int id) {
-        Assert.notNull(process, "authority must not be null");
+        Assert.notNull(process, "process must not be null");
         Process savedProcess = checkNotFoundWithId(processRepository.save(process), id);
         return savedProcess;
     }

@@ -12,7 +12,7 @@ import java.util.List;
 import static ru.gbuac.util.ValidationUtil.assureIdConsistent;
 import static ru.gbuac.util.ValidationUtil.checkNew;
 
-public class AbstractProcessRestController {
+public abstract class AbstractProcessRestController {
     protected final Logger LOG = LoggerFactory.getLogger(getClass());
 
     @Autowired
@@ -28,16 +28,16 @@ public class AbstractProcessRestController {
         return processService.getAll();
     }
 
-    public Process create(Process authority) {
-        LOG.info("create " + authority);
-        checkNew(authority);
-        return processService.save(authority);
+    public Process create(Process process) {
+        LOG.info("create " + process);
+        checkNew(process);
+        return processService.save(process);
     }
 
-    public Process update(Process authority, int id) {
-        LOG.info("update " + authority);
-        assureIdConsistent(authority, id);
-        return processService.update(authority, id);
+    public Process update(Process process, int id) {
+        LOG.info("update " + process);
+        assureIdConsistent(process, id);
+        return processService.update(process, id);
     }
 
     public void delete(int id) {

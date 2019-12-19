@@ -26,11 +26,11 @@ public class ProcessRestController extends AbstractProcessRestController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Process updateOrCreate(@Valid @RequestBody Process authority) {
-        if (authority.isNew()) {
-            return super.create(authority);
+    public Process updateOrCreate(@Valid @RequestBody Process process) {
+        if (process.isNew()) {
+            return super.create(process);
         } else {
-            return super.update(authority, authority.getId());
+            return super.update(process, process.getId());
         }
     }
 }
