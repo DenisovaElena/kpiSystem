@@ -13,7 +13,7 @@ import static ru.gbuac.util.ValidationUtil.assureIdConsistent;
 import static ru.gbuac.util.ValidationUtil.checkNew;
 
 public abstract class AbstractVarianceRestController {
-    protected final Logger LOG = (Logger) LoggerFactory.getLogger(getClass());
+    protected final Logger LOG = LoggerFactory.getLogger(getClass());
 
     @Autowired
     VarianceService varianceService;

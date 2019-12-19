@@ -21,7 +21,6 @@ public class Division extends NamedEntity {
     @Column(name="top_level")
     private boolean topLevel;
 
-    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "division_employees",
             joinColumns = @JoinColumn(name = "division_id"),
