@@ -170,6 +170,8 @@ INSERT INTO kpi.authority_goals(authority_id, goal_id) VALUES (52, 45);
 INSERT INTO kpi.authority_goals(authority_id, goal_id) VALUES (52, 46);
 
 
+
+
 --
 
 
