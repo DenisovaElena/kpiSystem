@@ -19,8 +19,9 @@
     <div class="container-fluid" id="iconBlock">
         <div class="row canvas">
             <div class="col-sm-3" id="departments">
-                <div class="mb-3">
-                    <h5 class="bg-primary mx-5 p-3 text-white" id="departmentsName1">
+                <div class="mb-3 cardBlock">
+                    <h5 class="bg-primary mx-5 p-3 text-white rounded"
+                        id="departmentsName1">
                         <div class="row">
                             <div class="col-3 d-flex align-items-center justify-content-center">
                                 <img class="img-fluid photoUser" src="resources/images/logo.png">

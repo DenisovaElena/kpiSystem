@@ -136,7 +136,11 @@ function getFunctionsDepartments(id, element) {
         for (var i in data) {
             var row = data[i];
             $(element).append(
-                '<div class="card functions p-2 my-2 mx-5 font-size-small pointer" id="arrow' + row.id + '" data-id="' + row.id + '">' + row.name + '</div>'
+                '<div class="card functions p-2 my-2 mx-2 font-size-small' +
+                ' pointer"' +
+                ' id="arrow'+row.id+'"' +
+                ' data-id="'+row.id+'"' +
+                ' data-parent="'+element+'">'+row.name+'</div>'
             );
             if(element != '#division') {
                 //getArrow(row.id, '#arrow' + row.id, element);
@@ -164,8 +168,9 @@ function getDivisions(id, key, level, levelUp, levelUp1) {
                     }
                 }
                 $('#' + level).append(
-                    '<div class="mb-3" id="'+level+key+keys+'">' + //border border-dark
-                    '   <h5 class="bg-primary p-3 mx-5 text-white" id="'+level+'Name'+key+keys+'">' +
+                    '<div class="mb-3 cardBlock" id="'+level+key+keys+'">' + //border
+                    // border-dark
+                    '   <h5 class="bg-primary p-3 mx-5 text-white rounded" id="'+level+'Name'+key+keys+'">' +
                     '       <div class="row">' +
                     '           <div class="col-3 d-flex' +
                     ' align-items-center justify-content-center">' +
@@ -229,8 +234,9 @@ function getArrowChildDeep2 (id) {
         for(var i in data) {
             var row = data[i].childAuthorities;
             for(var y in row) {
+                var idParent = $('.card[data-id='+row[y].id+']').attr('data-parent');
+                $(idParent).removeClass('d-none');
                 $('.card[data-id='+row[y].id+']').css('background', '#fc6').removeClass('d-none');
-                console.log('#arrow'+id, '#arrow'+row[y].id);
                 arrowReturn1.arrow('#arrow'+id, '#arrow'+row[y].id);
             }
         }
@@ -243,10 +249,10 @@ function getArrowChildDeep (id) {
         for(var i in data) {
             var row = data[i].childAuthorities;
             for(var y in row) {
+                var idParent = $('.card[data-id='+row[y].id+']').attr('data-parent');
+                $(idParent).removeClass('d-none');
                 $('.card[data-id='+row[y].id+']').css('background', '#fc6').removeClass('d-none');
                 arrowReturn1.arrow('#arrow'+id, '#arrow'+row[y].id);
-                //arrowReturn1.arrow('#arrow'+row[y].id, '#arrow'+id);
-                console.log('#arrow'+id, '#arrow'+row[y].id);
                 getArrowChildDeep2(row[y].id);
             }
         }
@@ -259,10 +265,10 @@ function getArrowChild (id) {
         for(var i in data) {
             var row = data[i].childAuthorities;
             for(var y in row) {
+                var idParent = $('.card[data-id='+row[y].id+']').attr('data-parent');
+                $(idParent).removeClass('d-none');
                 $('.card[data-id='+row[y].id+']').css('background', '#fc6').removeClass('d-none');
                 arrowReturn1.arrow('#arrow'+id, '#arrow'+row[y].id);
-                //arrowReturn1.arrow('#arrow'+row[y].id, '#arrow'+id);
-                console.log('#arrow'+id, '#arrow'+row[y].id);
                 getArrowChildDeep(row[y].id);
             }
         }
@@ -275,9 +281,10 @@ function getArrowParentUp2 (id) {
         if(data.length > 0) {
             for(var i in data) {
                 var row = data[i];
+                var idParent = $('.card[data-id='+row.id+']').attr('data-parent');
+                $(idParent).removeClass('d-none');
                 $('.card[data-id='+row.id+']').css('background', '#fc6').removeClass('d-none');
                 arrowReturn1.arrow('#arrow'+row.id, '#arrow'+id);
-                //arrowReturn1.arrow('#arrow'+id,'#arrow'+row.id);
             }
         }
     });
@@ -289,8 +296,9 @@ function getArrowParentUp (id) {
         if(data.length > 0) {
             for(var i in data) {
                 var row = data[i];
+                var idParent = $('.card[data-id='+row.id+']').attr('data-parent');
+                $(idParent).removeClass('d-none');
                 $('.card[data-id='+row.id+']').css('background', '#fc6').removeClass('d-none');
-                //arrowReturn1.arrow('#arrow'+id,'#arrow'+row.id);
                 arrowReturn1.arrow('#arrow'+row.id, '#arrow'+id);
                 getArrowParentUp2 (row.id);
             }
@@ -304,8 +312,9 @@ function getArrowParent (id) {
         if(data.length > 0) {
             for(var i in data) {
                 var row = data[i];
+                var idParent = $('.card[data-id='+row.id+']').attr('data-parent');
+                $(idParent).removeClass('d-none');
                 $('.card[data-id='+row.id+']').css('background', '#fc6').removeClass('d-none');
-                //arrowReturn1.arrow('#arrow'+id,'#arrow'+row.id);
                 arrowReturn1.arrow('#arrow'+row.id, '#arrow'+id);
                 getArrowParentUp(row.id);
             }
@@ -318,9 +327,11 @@ $(document).on('click', '.functions', function () {
     arrowAdd5.clear();
     arrowReturn1.clear();
     $('.card').css('background', '#fff').addClass('d-none');
+    $('.cardBlock').addClass('d-none');
     var id = parseInt($(this).attr('data-id'));
+    var idParent = $(this).attr('data-parent');
+    $(idParent).removeClass('d-none');
     $('.card[data-id='+id+']').css('background', '#fc6').removeClass('d-none');
-    //alert(id);
     if (id > 0) {
         getArrowChild(id);
         getArrowParent(id);
@@ -389,6 +400,7 @@ $(document).on('click', '.functions', function () {
     // Отменяем покраску всех блоков и стрелки
     $(document).on('click', '#refresh', function() {
         $('.card').css('background','#fff').removeClass('d-none');
+        $('.cardBlock').removeClass('d-none');
         arrowReturn1.clear();
     });
 });
