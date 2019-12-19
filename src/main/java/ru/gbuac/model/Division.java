@@ -10,6 +10,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -21,19 +22,19 @@ public class Division extends NamedEntity {
     @Column(name="top_level")
     private boolean topLevel;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "division_employees",
             joinColumns = @JoinColumn(name = "division_id"),
             inverseJoinColumns = @JoinColumn(name = "employee_id")
     )
-    private List<Employee> employees;
+    private Set<Employee> employees;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "division_child_division",
             joinColumns = @JoinColumn(name = "division_id"),
             inverseJoinColumns = @JoinColumn(name = "child_division_id")
     )
-    private List<Division> childDivision;
+    private Set<Division> childDivision;
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
