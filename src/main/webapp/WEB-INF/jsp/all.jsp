@@ -7,7 +7,8 @@
         <div class="row canvas">
             <div class="col-sm-3" id="division">
                 <div class="mb-3">
-                    <h5 class="bg-primary mx-5 p-3 text-white" id="divisionName">
+                    <h5 class="bg-primary p-3 text-white rounded"
+                        id="divisionName">
                         <div class="row">
                             <div class="col-3 d-flex
                             align-items-center justify-content-center">
@@ -51,8 +52,9 @@
                 </div>
             </div>
             <div class="col-sm-3" id="administrators"></div>
-            <div class="col-sm-3" id="managements"></div>
-            <div class="col-sm-3" id="departments"></div>
+            <div class="col-sm-2" id="managements"></div>
+            <div class="col-sm-2" id="departments"></div>
+            <div class="col-sm-2" id="users"></div>
         </div>
     </div>
 </main>
@@ -79,8 +81,8 @@
                                 img = administrators.chiefEmployee.photo;
                             }
                             $('#administrators').append(
-                                '<div class="mb-3" id="administrators' + key + '">' +
-                                '   <h5 class="bg-primary p-3 mx-5 text-white" id="administratorsName' + key + '">' +
+                                '<div class="mb-3 cardBlock" id="administrators' + key + '">' +
+                                '   <h5 class="bg-primary p-3 text-white rounded" id="administratorsName' + key + '">' +
                                 '       <div class="row">' +
                                 '           <div class="col-3 d-flex align-items-center justify-content-center">' +
                                 '               <img class="img-fluid" src="' + img + '">' +
@@ -145,8 +147,9 @@
                                         }
                                     }
                                     $('#' + level).append(
-                                        '<div class="mb-3" id="' + level + key + keys + '">' + //border border-dark
-                                        '   <h5 class="bg-primary p-3 mx-5 text-white" id="' + level + 'Name' + key + keys + '">' +
+                                        '<div class="mb-3 cardBlock" id="' + level +
+                                        key + keys + '">' + //border border-dark
+                                        '   <div class="bg-primary p-3 text-white rounded" id="' + level + 'Name' + key + keys + '">' +
                                         '       <div class="row">' +
                                         '           <div class="col-3 d-flex' +
                                         ' align-items-center justify-content-center">' +
@@ -188,7 +191,7 @@
                                         '               </div>' +
                                         '           </div>' +
                                         '       </div>' +
-                                        '   </h5>' +
+                                        '   </div>' +
                                         '</div>'
                                     );
                                     getFunctionsDepartments(managements.id, '#managements' + key + keys);
@@ -214,8 +217,9 @@
                                                 }
                                             }
                                             $('#' + level).append(
-                                                '<div class="mb-3" id="' + level + key + keys + '">' + //border border-dark
-                                                '   <h5 class="bg-primary p-3 mx-5 text-white" id="' + level + 'Name' + key + keys + '">' +
+                                                '<div class="mb-3 cardBlock" id="' +
+                                                level + key + keys + '">' + //border border-dark
+                                                '   <div class="bg-primary p-3 text-white rounded" id="' + level + 'Name' + key + keys + '">' +
                                                 '       <div class="row">' +
                                                 '           <div class="col-3 d-flex' +
                                                 ' align-items-center justify-content-center">' +
@@ -257,7 +261,7 @@
                                                 '               </div>' +
                                                 '           </div>' +
                                                 '       </div>' +
-                                                '   </h5>' +
+                                                '   </div>' +
                                                 '</div>'
                                             );
                                             getFunctionsDepartments(departments.id, '#departments' + key + keys);

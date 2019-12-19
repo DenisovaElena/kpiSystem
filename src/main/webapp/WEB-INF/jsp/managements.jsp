@@ -16,8 +16,9 @@
     <div class="container-fluid" id="iconBlock">
         <div class="row canvas">
             <div class="col-sm-3" id="managements">
-                <div class="mb-3">
-                    <h5 class="bg-primary mx-5 p-3 text-white" id="managementsName1">
+                <div class="mb-3 cardBlock">
+                    <h5 class="bg-primary mx-5 p-3 text-white rounded"
+                        id="managementsName1">
                         <div class="row">
                             <div class="col-3 d-flex align-items-center justify-content-center">
                                 <img class="img-fluid photoUser" src="resources/images/logo.png">
@@ -121,8 +122,9 @@
                                                 }
                                             }
                                             $('#' + level).append(
-                                                '<div class="mb-3" id="' + level + key + keys + '">' + //border border-dark
-                                                '   <h5 class="bg-primary p-3 mx-5 text-white" id="' + level + 'Name' + key + keys + '">' +
+                                                '<div class="mb-3 cardBlock" id="' +
+                                                level + key + keys + '">' + //border border-dark
+                                                '   <h5 class="bg-primary p-3 mx-5 text-white rounded" id="' + level + 'Name' + key + keys + '">' +
                                                 '       <div class="row">' +
                                                 '           <div class="col-3 d-flex' +
                                                 ' align-items-center justify-content-center">' +
