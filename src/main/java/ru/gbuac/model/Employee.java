@@ -83,4 +83,12 @@ public class Employee extends NamedEntity {
             inverseJoinColumns = @JoinColumn(name = "variance_id")
     )
     private List<Variance> variances;
+
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "employee_tasks",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "task_id")
+    )
+    private List<Task> tasks;
 }

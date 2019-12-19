@@ -178,7 +178,7 @@ CREATE TABLE kpi.variance
 
 CREATE TABLE kpi.goal_variances
 (   goal_id                   INTEGER,
-    variance_id                    INTEGER,
+    variance_id               INTEGER,
     FOREIGN KEY (goal_id) REFERENCES kpi.goal(id) ON DELETE CASCADE,
     FOREIGN KEY (variance_id) REFERENCES kpi.variance (id) ON DELETE CASCADE
 );
@@ -203,6 +203,35 @@ CREATE TABLE kpi.division_variances
     FOREIGN KEY (division_id) REFERENCES kpi.division(id) ON DELETE CASCADE,
     FOREIGN KEY (variance_id) REFERENCES kpi.variance (id) ON DELETE CASCADE
 );
+
+CREATE TABLE kpi.process
+(
+    id                      INTEGER PRIMARY KEY DEFAULT nextval('kpi.global_seq'),
+    name                    VARCHAR                              ,
+    description             VARCHAR                              ,
+    create_date             DATE                                  ,
+    execution_date          DATE                                  ,
+    control_date            DATE
+);
+
+CREATE TABLE kpi.task
+(
+    id                      INTEGER PRIMARY KEY DEFAULT nextval('kpi.global_seq'),
+    name                    VARCHAR                              ,
+    description             VARCHAR                              ,
+    create_date             DATE                                  ,
+    execution_date          DATE                                  ,
+    control_date            DATE
+);
+
+CREATE TABLE kpi.employee_tasks
+(   employee_id                   INTEGER,
+    task_id                    INTEGER,
+    FOREIGN KEY (employee_id) REFERENCES kpi.employee(id) ON DELETE CASCADE,
+    FOREIGN KEY (task_id) REFERENCES kpi.task(id) ON DELETE CASCADE
+);
+
+
 
 -- CREATE OR REPLACE FUNCTION kpi.getRootAuthorityByChildId (childId INTEGER)
 --     RETURNS INTEGER AS $$
