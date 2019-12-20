@@ -18,9 +18,9 @@
     </div>
     <div class="container-fluid" id="iconBlock">
         <div class="row canvas">
-            <div class="col-sm-3" id="departments">
+            <div class="col-lg-3 col-6" id="departments">
                 <div class="mb-3 cardBlock">
-                    <h5 class="bg-primary mx-5 p-3 text-white rounded"
+                    <h5 class="bg-primary p-3 text-white rounded"
                         id="departmentsName1">
                         <div class="row">
                             <div class="col-3 d-flex align-items-center justify-content-center">
@@ -70,6 +70,7 @@
                     </h5>
                 </div>
             </div>
+            <div class="col-lg-3 col-6" id="users"></div>
         </div>
     </div>
 </main>
@@ -80,12 +81,22 @@
     $(function() {
         var poleId = getId('id');
         $('#divisionId').attr('href', 'division?id='+poleId);
-        var levelUp = getId('levelUp');
-        var levelUp1 = getId('levelUp1');
-        $('.levelUp1 a').attr('href', 'administrators?id='+levelUp1);
-        $('.levelUp a').attr('href', 'managements?id='+levelUp);
+        var managId = getId('managements');
+        var adminId = getId('administrators');
+        $('.levelUp1 a').attr('href', 'administrators?id='+adminId+'&department=1');
+        $('.levelUp a').attr('href', 'managements?id='+managId+'&administrators='+adminId+'&department=1');
+        getTopLevel();
         getDepartments('rest/profile/divisions/', poleId, 'departments');
         getFunctionsDepartments(poleId, '#departments');
+
+        function getTopLevel() {
+            $.getJSON('rest/profile/divisions/'+poleId, function (data) {
+                var key = data.id;
+                if (data.employees.length > 0) {
+                    getUsers(data.employees, key);
+                }
+            });
+        }
 
         // Получаем список функций по клику
         $(document).on('click', '.plusBtn', function () {
@@ -110,6 +121,27 @@
             if (row === 'departments') {
                 arrowAdd3.clear();
                 $('#' + row + ' .functions').remove();
+            }
+        });
+
+        // Подсветка похожих функций при нажатии на отдел
+        $(document).on('click', '.functions', function () {
+            arrowAdd5.clear();
+            arrowReturn1.clear();
+            $('.card').css('background', '#fff').addClass('d-none');
+            $('#users .cardBlock').addClass('d-none');
+            var id = parseInt($(this).attr('data-id'));
+            var idParent = $(this).attr('data-parent');
+            $(idParent).removeClass('d-none');
+            $('.card[data-id=' + id + ']').css('background', '#fc6').removeClass('d-none');
+            if (id > 0) {
+                getArrowChild(id);
+                getArrowParent(id);
+                $('body,html').animate({
+                    scrollTop: 0
+                }, 500);
+            } else {
+                $('.card').css('background', '#fff');
             }
         });
 
