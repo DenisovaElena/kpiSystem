@@ -224,7 +224,9 @@ CREATE TABLE kpi.task
     description             VARCHAR                              ,
     create_date             DATE                                  ,
     execution_date          DATE                                  ,
-    control_date            DATE
+    control_date            DATE                                  ,
+    process_id              DATE                                  ,
+    FOREIGN KEY (process_id) REFERENCES kpi.process (id) ON DELETE CASCADE
 );
 
 CREATE TABLE kpi.employee_tasks
@@ -234,6 +236,25 @@ CREATE TABLE kpi.employee_tasks
     FOREIGN KEY (task_id) REFERENCES kpi.task(id) ON DELETE CASCADE
 );
 
+CREATE TABLE kpi.process_template
+(
+    id                      INTEGER PRIMARY KEY DEFAULT nextval('kpi.global_seq'),
+    name                    VARCHAR                              ,
+    description             VARCHAR                              ,
+    duration                INTEGER
+);
+
+CREATE TABLE kpi.task_template
+(
+    id                      INTEGER PRIMARY KEY DEFAULT nextval('kpi.global_seq'),
+    name                    VARCHAR                              ,
+    description             VARCHAR                              ,
+    create_date             DATE                                  ,
+    execution_date          DATE                                  ,
+    control_date            DATE                                  ,
+    process_template_id     INTEGER                               ,
+    FOREIGN KEY (process_template_id) REFERENCES kpi.process_template (id) ON DELETE CASCADE
+);
 
 
 -- CREATE OR REPLACE FUNCTION kpi.getRootAuthorityByChildId (childId INTEGER)

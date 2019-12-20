@@ -29,7 +29,7 @@ public class GoalServiceImpl implements GoalService {
 
     @Override
     public Goal save(Goal goal) {
-        Assert.notNull(goal, "catalog must not be null");
+        Assert.notNull(goal, "goal must not be null");
         return goalRepository.save(goal);
     }
 
@@ -40,7 +40,7 @@ public class GoalServiceImpl implements GoalService {
 
     @Override
     public Goal update(Goal goal, int id) {
-        Assert.notNull(goal, "catalog must not be null");
+        Assert.notNull(goal, "goal must not be null");
         Goal savedGoal = checkNotFoundWithId(goalRepository.save(goal), id);
         return savedGoal;
     }

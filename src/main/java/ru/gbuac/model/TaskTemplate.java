@@ -1,20 +1,21 @@
 package ru.gbuac.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.validator.constraints.SafeHtml;
-import ru.gbuac.util.DateTimeUtil;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "process")
-public class Process extends NamedEntity {
+@Table(name = "task_template")
+public class TaskTemplate extends NamedEntity {
 
     @SafeHtml
     @Column(name = "description")
@@ -28,4 +29,8 @@ public class Process extends NamedEntity {
 
     @Column(name = "control_date")
     private Date controlDate;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "process_template_id", nullable = false)
+    private ProcessTemplate processTemplate;
 }

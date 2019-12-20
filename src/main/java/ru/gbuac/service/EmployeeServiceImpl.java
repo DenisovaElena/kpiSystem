@@ -79,7 +79,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee save(Employee employee) {
-        Assert.notNull(employee, "catalog must not be null");
+        Assert.notNull(employee, "employee must not be null");
         return employeeRepository.save(employee);
     }
 
@@ -90,7 +90,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee update(Employee employee, int id) {
-        Assert.notNull(employee, "catalog must not be null");
+        Assert.notNull(employee, "employee must not be null");
         Employee savedEmployee = checkNotFoundWithId(employeeRepository.save(employee), id);
         return savedEmployee;
     }
