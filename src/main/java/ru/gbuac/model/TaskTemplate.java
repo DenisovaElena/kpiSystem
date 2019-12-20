@@ -1,10 +1,13 @@
 package ru.gbuac.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.persistence.*;
@@ -36,9 +39,11 @@ public class TaskTemplate extends NamedEntity {
             inverseJoinColumns = @JoinColumn(name = "task_id")
     )
     private List<Process> processes;
-
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "goal_id", nullable = false)
-    private Goal goal;
+//
+//    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+//    @JoinColumn(name = "goal_id", nullable = false)
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+//    @JsonInclude
+//    private Goal goal;
 
 }
