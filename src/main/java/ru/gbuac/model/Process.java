@@ -28,7 +28,4 @@ public class Process extends NamedEntity {
 
     @Column(name = "control_date")
     private Date controlDate;
-
-    @OneToMany(mappedBy = "process", cascade = CascadeType.ALL)
-    private List<Task> task;
 }

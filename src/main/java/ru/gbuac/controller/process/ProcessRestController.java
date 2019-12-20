@@ -6,12 +6,19 @@ import org.springframework.web.bind.annotation.*;
 import ru.gbuac.model.Process;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = ProcessRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class ProcessRestController extends AbstractProcessRestController {
 
     public static final String REST_URL = "/rest/profile/processes";
+
+    @Override
+    @GetMapping
+    public List<Process> getAll() {
+        return super.getAll();
+    }
 
     @Override
     @GetMapping(value = "/{id}")

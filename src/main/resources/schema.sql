@@ -24,6 +24,8 @@ DROP TABLE IF EXISTS kpi.division_variances CASCADE;
 DROP TABLE IF EXISTS kpi.process CASCADE;
 DROP TABLE IF EXISTS kpi.task CASCADE;
 DROP TABLE IF EXISTS kpi.employee_tasks CASCADE;
+DROP TABLE IF EXISTS kpi.process_template CASCADE;
+DROP TABLE IF EXISTS kpi.task_template CASCADE;
 DROP SEQUENCE IF EXISTS kpi.global_seq;
 
 CREATE SEQUENCE kpi.global_seq START 100000;
@@ -224,7 +226,9 @@ CREATE TABLE kpi.task
     description             VARCHAR                              ,
     create_date             DATE                                  ,
     execution_date          DATE                                  ,
-    control_date            DATE
+    control_date            DATE                                  ,
+    process_id              INTEGER                                ,
+    FOREIGN KEY (process_id) REFERENCES kpi.process (id) ON DELETE CASCADE
 );
 
 CREATE TABLE kpi.employee_tasks
@@ -234,6 +238,23 @@ CREATE TABLE kpi.employee_tasks
     FOREIGN KEY (task_id) REFERENCES kpi.task(id) ON DELETE CASCADE
 );
 
+CREATE TABLE kpi.process_template
+(
+    id                      INTEGER PRIMARY KEY DEFAULT nextval('kpi.global_seq'),
+    name                    VARCHAR                              ,
+    description             VARCHAR                              ,
+    duration                INTEGER
+);
+
+CREATE TABLE kpi.task_template
+(
+    id                      INTEGER PRIMARY KEY DEFAULT nextval('kpi.global_seq'),
+    name                    VARCHAR                              ,
+    description             VARCHAR                              ,
+    duration                INTEGER                              ,
+    process_template_id     INTEGER                              ,
+    FOREIGN KEY (process_template_id) REFERENCES kpi.process_template (id) ON DELETE CASCADE
+);
 
 
 -- CREATE OR REPLACE FUNCTION kpi.getRootAuthorityByChildId (childId INTEGER)

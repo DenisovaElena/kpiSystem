@@ -6,11 +6,18 @@ import org.springframework.web.bind.annotation.*;
 import ru.gbuac.model.Task;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = TaskRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class TaskRestController extends AbstractTaskRestController {
     public static final String REST_URL = "/rest/profile/tasks";
+
+    @Override
+    @GetMapping
+    public List<Task> getAll() {
+        return super.getAll();
+    }
 
     @Override
     @GetMapping(value = "/{id}")
