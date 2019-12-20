@@ -85,4 +85,9 @@ public abstract class AbstractAuthorityRestController {
         LOG.info("getAuthoritiesByGoalId");
         return authorityService.getAuthoritiesByGoalId(id);
     }
+
+    public List<Authority> getAuthoritiesByEmployeeId(int id) {
+        LOG.info("getAuthoritiesByEmployeeId");
+        return authorityService.getAuthoritiesByEmployeeId(id);
+    }
 }

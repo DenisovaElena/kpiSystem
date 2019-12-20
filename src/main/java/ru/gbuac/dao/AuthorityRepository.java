@@ -41,4 +41,7 @@ public interface AuthorityRepository extends JpaRepository<Authority, Integer> {
 
     @Query("SELECT a FROM Authority a JOIN a.goals g WHERE g.id=:id")
     List<Authority> getAuthoritiesByGoalId(@Param("id") int id);
+
+    @Query("SELECT a FROM Authority a JOIN a.employees e WHERE e.id =:id")
+    List<Authority> getAuthoritiesByEmployeeId(@Param("id") int id);
 }

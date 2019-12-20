@@ -38,4 +38,12 @@ public class Task extends NamedEntity {
     )
     private List<Employee> employees;
 
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "task_process_templates",
+            joinColumns = @JoinColumn(name = "task_id"),
+            inverseJoinColumns = @JoinColumn(name = "task_template_id")
+    )
+    private List<TaskTemplate> taskTemplates;
+
 }

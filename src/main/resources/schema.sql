@@ -256,6 +256,20 @@ CREATE TABLE kpi.task_template
     FOREIGN KEY (process_template_id) REFERENCES kpi.process_template (id) ON DELETE CASCADE
 );
 
+CREATE TABLE kpi.task_task_template
+(   task_template_id                   INTEGER,
+    task_id                    INTEGER,
+    FOREIGN KEY (task_template_id) REFERENCES kpi.task_template(id) ON DELETE CASCADE,
+    FOREIGN KEY (task_id) REFERENCES kpi.task(id) ON DELETE CASCADE
+);
+
+CREATE TABLE kpi.process_process_template
+(   process_id                   INTEGER,
+    process_template_id                    INTEGER,
+    FOREIGN KEY (process_id) REFERENCES kpi.process(id) ON DELETE CASCADE,
+    FOREIGN KEY (process_template_id) REFERENCES kpi.process_template(id) ON DELETE CASCADE
+);
+
 
 -- CREATE OR REPLACE FUNCTION kpi.getRootAuthorityByChildId (childId INTEGER)
 --     RETURNS INTEGER AS $$

@@ -1,5 +1,6 @@
 package ru.gbuac.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,4 +24,12 @@ public class ProcessTemplate extends NamedEntity {
 
     @Column(name = "duration")
     private Integer duration;
+
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "process_process_templates",
+            joinColumns = @JoinColumn(name = "process_template_id"),
+            inverseJoinColumns = @JoinColumn(name = "process_id")
+    )
+    private List<Process> processes;
 }
