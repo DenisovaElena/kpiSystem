@@ -24,6 +24,8 @@ DROP TABLE IF EXISTS kpi.division_variances CASCADE;
 DROP TABLE IF EXISTS kpi.process CASCADE;
 DROP TABLE IF EXISTS kpi.task CASCADE;
 DROP TABLE IF EXISTS kpi.employee_tasks CASCADE;
+DROP TABLE IF EXISTS kpi.process_template CASCADE;
+DROP TABLE IF EXISTS kpi.task_template CASCADE;
 DROP SEQUENCE IF EXISTS kpi.global_seq;
 
 CREATE SEQUENCE kpi.global_seq START 100000;
@@ -225,7 +227,7 @@ CREATE TABLE kpi.task
     create_date             DATE                                  ,
     execution_date          DATE                                  ,
     control_date            DATE                                  ,
-    process_id              DATE                                  ,
+    process_id              INTEGER                                ,
     FOREIGN KEY (process_id) REFERENCES kpi.process (id) ON DELETE CASCADE
 );
 
