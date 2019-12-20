@@ -41,13 +41,6 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 my-3 mr-3 d-flex align-items-center">
-                                        <%--<i class="fas fa-sitemap mr-4 pointer Sitemap"
-                                           data-toggle="tooltip"
-                                           data-placement="bottom"
-                                           data-id="1"
-                                           data-block="division"
-                                           data-key="1"
-                                           title="Карта подразделения"></i>--%>
                                         <i class="far fa-file-word mr-4 pointer"
                                            data-toggle="tooltip" data-placement="bottom" title="Нормативный документ"></i>
                                         <a href="division?id=1">
