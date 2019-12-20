@@ -25,8 +25,12 @@ DROP TABLE IF EXISTS kpi.process CASCADE;
 DROP TABLE IF EXISTS kpi.task CASCADE;
 DROP TABLE IF EXISTS kpi.employee_tasks CASCADE;
 DROP TABLE IF EXISTS kpi.process_template CASCADE;
+DROP TABLE IF EXISTS kpi.process_process_templates CASCADE;
 DROP TABLE IF EXISTS kpi.task_template CASCADE;
-DROP SEQUENCE IF EXISTS kpi.global_seq;
+DROP TABLE IF EXISTS kpi.task_task_templates CASCADE;
+DROP TABLE IF EXISTS kpi.authority_process_templates CASCADE;
+DROP TABLE IF EXISTS kpi.goal_task_templates CASCADE;
+DROP SEQUENCE IF EXISTS kpi.global_seq CASCADE;
 
 CREATE SEQUENCE kpi.global_seq START 100000;
 
@@ -243,7 +247,9 @@ CREATE TABLE kpi.process_template
     id                      INTEGER PRIMARY KEY DEFAULT nextval('kpi.global_seq'),
     name                    VARCHAR                              ,
     description             VARCHAR                              ,
-    duration                INTEGER
+    duration                INTEGER                              ,
+    authority_id            INTEGER                              ,
+    FOREIGN KEY (authority_id) REFERENCES kpi.authority(id) ON DELETE CASCADE
 );
 
 CREATE TABLE kpi.task_template
@@ -253,22 +259,25 @@ CREATE TABLE kpi.task_template
     description             VARCHAR                              ,
     duration                INTEGER                              ,
     process_template_id     INTEGER                              ,
+    goal_id                 INTEGER                              ,
+    FOREIGN KEY (goal_id) REFERENCES kpi.goal(id) ON DELETE CASCADE,
     FOREIGN KEY (process_template_id) REFERENCES kpi.process_template (id) ON DELETE CASCADE
 );
 
-CREATE TABLE kpi.task_task_template
+CREATE TABLE kpi.task_task_templates
 (   task_template_id                   INTEGER,
     task_id                    INTEGER,
     FOREIGN KEY (task_template_id) REFERENCES kpi.task_template(id) ON DELETE CASCADE,
     FOREIGN KEY (task_id) REFERENCES kpi.task(id) ON DELETE CASCADE
 );
 
-CREATE TABLE kpi.process_process_template
+CREATE TABLE kpi.process_process_templates
 (   process_id                   INTEGER,
-    process_template_id                    INTEGER,
+    process_template_id          INTEGER,
     FOREIGN KEY (process_id) REFERENCES kpi.process(id) ON DELETE CASCADE,
     FOREIGN KEY (process_template_id) REFERENCES kpi.process_template(id) ON DELETE CASCADE
 );
+
 
 
 -- CREATE OR REPLACE FUNCTION kpi.getRootAuthorityByChildId (childId INTEGER)

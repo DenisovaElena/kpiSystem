@@ -36,4 +36,9 @@ public class TaskTemplate extends NamedEntity {
             inverseJoinColumns = @JoinColumn(name = "task_id")
     )
     private List<Process> processes;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "goal_id", nullable = false)
+    private Goal goal;
+
 }

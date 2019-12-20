@@ -23,8 +23,14 @@ public class Task extends NamedEntity {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "duration")
-    private Integer duration;
+    @Column(name = "create_date")
+    private Date createDate;
+
+    @Column(name = "execution_date")
+    private Date executionDate;
+
+    @Column(name = "control_date")
+    private Date controlDate;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "process_id", nullable = false)
@@ -40,10 +46,9 @@ public class Task extends NamedEntity {
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "task_process_templates",
+    @JoinTable(name = "task_task_templates",
             joinColumns = @JoinColumn(name = "task_id"),
             inverseJoinColumns = @JoinColumn(name = "task_template_id")
     )
     private List<TaskTemplate> taskTemplates;
-
 }

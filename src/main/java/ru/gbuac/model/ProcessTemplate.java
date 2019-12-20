@@ -32,4 +32,8 @@ public class ProcessTemplate extends NamedEntity {
             inverseJoinColumns = @JoinColumn(name = "process_id")
     )
     private List<Process> processes;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "authority_id", nullable = false)
+    private Authority authority;
 }
