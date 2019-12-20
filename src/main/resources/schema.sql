@@ -251,10 +251,8 @@ CREATE TABLE kpi.task_template
     id                      INTEGER PRIMARY KEY DEFAULT nextval('kpi.global_seq'),
     name                    VARCHAR                              ,
     description             VARCHAR                              ,
-    create_date             DATE                                  ,
-    execution_date          DATE                                  ,
-    control_date            DATE                                  ,
-    process_template_id     INTEGER                               ,
+    duration                INTEGER                              ,
+    process_template_id     INTEGER                              ,
     FOREIGN KEY (process_template_id) REFERENCES kpi.process_template (id) ON DELETE CASCADE
 );
 

@@ -18,7 +18,7 @@ import java.util.List;
 public class ProcessTemplate extends NamedEntity {
 
     @SafeHtml
-    @Column(name = "descroption")
+    @Column(name = "description")
     private String description;
 
     @Column(name = "duration")

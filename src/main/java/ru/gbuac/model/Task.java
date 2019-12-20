@@ -23,14 +23,8 @@ public class Task extends NamedEntity {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "create_date")
-    private Date startDate;
-
-    @Column(name = "execution_date")
-    private Date executionDate;
-
-    @Column(name = "control_date")
-    private Date controlDate;
+    @Column(name = "duration")
+    private Integer duration;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "process_id", nullable = false)

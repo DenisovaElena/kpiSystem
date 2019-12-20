@@ -7,7 +7,6 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @NoArgsConstructor
@@ -21,14 +20,8 @@ public class TaskTemplate extends NamedEntity {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "create_date")
-    private Date createDate;
-
-    @Column(name = "execution_date")
-    private Date executionDate;
-
-    @Column(name = "control_date")
-    private Date controlDate;
+    @Column(name = "duration")
+    private Integer duration;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "process_template_id", nullable = false)
