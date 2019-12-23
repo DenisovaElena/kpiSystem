@@ -19,11 +19,11 @@
     // Поиск по функциям
     $('.searchBtn').click(function(e) {
         e.preventDefault();
-        let word = $('#searchWord').val();
+        var word = $('#searchWord').val();
         if(word!= '') {
             $.getJSON('rest/profile/authorities/searchAuthorities?word='+word, function(data) {
                 if(data.length > 0) {
-                    for(let i in data) {
+                    for(var i in data) {
                         $('.card [data-id='+data[i].id+']').css('background','#f00');
                     }
                 } else {
@@ -50,7 +50,7 @@
     }
 
     // Инициализация стрелок
-    let arrowAdd1 = $cArrows('#iconBlock', {
+    var arrowAdd1 = $cArrows('#iconBlock', {
         render : { strokeStyle: '#999999'},
         arrow: {
             arrowType: 'line',
@@ -60,7 +60,7 @@
         }
     });
 
-    let arrowAdd2 = $cArrows('#iconBlock', {
+    var arrowAdd2 = $cArrows('#iconBlock', {
         render : { strokeStyle: '#999999'},
         arrow: {
             arrowType: 'line',
@@ -70,7 +70,7 @@
         }
     });
 
-    let arrowAdd3 = $cArrows('#iconBlock', {
+    var arrowAdd3 = $cArrows('#iconBlock', {
         render : { strokeStyle: '#999999'},
         arrow: {
             arrowType: 'line',
@@ -80,7 +80,7 @@
         }
     });
 
-    let arrowAdd5 = $cArrows('#iconBlock', {
+    var arrowAdd5 = $cArrows('#iconBlock', {
         render : { strokeStyle: '#999999'},
         arrow: {
             arrowType: 'arrow',
@@ -90,7 +90,7 @@
         }
     });
 
-    let arrowReturn1 = $cArrows('#iconBlock', {
+    var arrowReturn1 = $cArrows('#iconBlock', {
         render : { strokeStyle: 'red'},
         arrow: {
             arrowType: 'arrow',
@@ -104,8 +104,8 @@
     function getArrow (id, element, dep) {
         $.getJSON('rest/profile/authorities/getAllTopLevelAuthoritiesByChildAuthorityId/'+id, function(data) {
             /*if(data.childAuthorities.length > 0) {
-                for(let i in data.childAuthorities) {
-                    let end = parseInt(data.childAuthorities[i].id);
+                for(var i in data.childAuthorities) {
+                    var end = parseInt(data.childAuthorities[i].id);
                     end = '#arrow'+end;
                     console.log(element+' - '+end);
                     if(dep != '#division') {
@@ -115,8 +115,8 @@
                     }
                 }
             }*/
-            for(let i in data) {
-                let end = parseInt(data[i].id);
+            for(var i in data) {
+                var end = parseInt(data[i].id);
                 end = '#arrow'+end;
                 //console.log(element+' - '+end);
                 if(dep != '#division') {
@@ -128,13 +128,13 @@
         });
     }
 
-    // Получаем функции по элементам
+    // Получаем функции по подразделениям
     function getFunctionsDepartments(id, element) {
         $.getJSON('rest/profile/authorities/getAuthoritiesByDivisionId/' + id, function (data) {
             //if(data.length == 0) {$(element+'
             // .addBtn').removeClass('d-none').addClass('d-none');}
-            for (let i in data) {
-                let row = data[i];
+            for (var i in data) {
+                var row = data[i];
                 $(element).append(
                     '<div class="card functions p-2 my-2 mx-2 font-size-small' +
                     ' pointer"' +
@@ -145,6 +145,22 @@
                 if(element != '#division') {
                     //getArrow(row.id, '#arrow' + row.id, element);
                 }
+            }
+        });
+    }
+
+    // Получаем функции по пользователям
+    function getFunctionsEmployees(id, element) {
+        $.getJSON('rest/profile/authorities/getAuthoritiesByEmployeeId/' + id, function (data) {
+            for (var i in data) {
+                var row = data[i];
+                $(element).append(
+                    '<div class="card functions p-2 my-2 mx-2 font-size-small' +
+                    ' pointer"' +
+                    ' id="arrow'+row.id+'"' +
+                    ' data-id="'+row.id+'"' +
+                    ' data-parent="'+element+'">'+row.name+'</div>'
+                );
             }
         });
     }
@@ -183,7 +199,7 @@
                 '                       </a>' +
                 '                       <i class="far fa-file-word mr-4 pointer"' +
                 ' data-toggle="tooltip" data-placement="bottom" title="Нормативный документ"></i>' +
-                '                       <a href="users?id='+itemId+'">' +
+                '                       <a href="division?id='+itemId+'">' +
                 '                           <i class="far fa-address-card mr-4 pointer text-white"' +
                 ' data-toggle="tooltip"' +
                 ' data-placement="bottom"' +
@@ -211,10 +227,10 @@
     // Получение связанных функций детей 3 порядка
     function getArrowChildDeep2 (id) {
         $.getJSON('rest/profile/authorities/getAllChilds/' + id, function (data) {
-            for(let i in data) {
-                let row = data[i].childAuthorities;
-                for(let y in row) {
-                    let idParent = $('.card[data-id='+row[y].id+']').attr('data-parent');
+            for(var i in data) {
+                var row = data[i].childAuthorities;
+                for(var y in row) {
+                    var idParent = $('.card[data-id='+row[y].id+']').attr('data-parent');
                     $(idParent).removeClass('d-none');
                     $('.card[data-id='+row[y].id+']').css('background', '#fc6').removeClass('d-none');
                     arrowReturn1.arrow('#arrow'+id, '#arrow'+row[y].id);
@@ -226,10 +242,10 @@
     // Получение связанных функций детей 2 порядка
     function getArrowChildDeep (id) {
         $.getJSON('rest/profile/authorities/getAllChilds/' + id, function (data) {
-            for(let i in data) {
-                let row = data[i].childAuthorities;
-                for(let y in row) {
-                    let idParent = $('.card[data-id='+row[y].id+']').attr('data-parent');
+            for(var i in data) {
+                var row = data[i].childAuthorities;
+                for(var y in row) {
+                    var idParent = $('.card[data-id='+row[y].id+']').attr('data-parent');
                     $(idParent).removeClass('d-none');
                     $('.card[data-id='+row[y].id+']').css('background', '#fc6').removeClass('d-none');
                     arrowReturn1.arrow('#arrow'+id, '#arrow'+row[y].id);
@@ -242,10 +258,10 @@
     // Получение связанных функций детей
     function getArrowChild (id) {
         $.getJSON('rest/profile/authorities/getAllChilds/' + id, function (data) {
-            for(let i in data) {
-                let row = data[i].childAuthorities;
-                for(let y in row) {
-                    let idParent = $('.card[data-id='+row[y].id+']').attr('data-parent');
+            for(var i in data) {
+                var row = data[i].childAuthorities;
+                for(var y in row) {
+                    var idParent = $('.card[data-id='+row[y].id+']').attr('data-parent');
                     $(idParent).removeClass('d-none');
                     $('.card[data-id='+row[y].id+']').css('background', '#fc6').removeClass('d-none');
                     arrowReturn1.arrow('#arrow'+id, '#arrow'+row[y].id);
@@ -259,9 +275,9 @@
     function getArrowParentUp2 (id) {
         $.getJSON('rest/profile/authorities/getAllParents/' + id, function (data) {
             if(data.length > 0) {
-                for(let i in data) {
-                    let row = data[i];
-                    let idParent = $('.card[data-id='+row.id+']').attr('data-parent');
+                for(var i in data) {
+                    var row = data[i];
+                    var idParent = $('.card[data-id='+row.id+']').attr('data-parent');
                     $(idParent).removeClass('d-none');
                     $('.card[data-id='+row.id+']').css('background', '#fc6').removeClass('d-none');
                     arrowReturn1.arrow('#arrow'+row.id, '#arrow'+id);
@@ -274,9 +290,9 @@
     function getArrowParentUp (id) {
         $.getJSON('rest/profile/authorities/getAllParents/' + id, function (data) {
             if(data.length > 0) {
-                for(let i in data) {
-                    let row = data[i];
-                    let idParent = $('.card[data-id='+row.id+']').attr('data-parent');
+                for(var i in data) {
+                    var row = data[i];
+                    var idParent = $('.card[data-id='+row.id+']').attr('data-parent');
                     $(idParent).removeClass('d-none');
                     $('.card[data-id='+row.id+']').css('background', '#fc6').removeClass('d-none');
                     arrowReturn1.arrow('#arrow'+row.id, '#arrow'+id);
@@ -290,9 +306,9 @@
     function getArrowParent (id) {
         $.getJSON('rest/profile/authorities/getAllParents/' + id, function (data) {
             if(data.length > 0) {
-                for(let i in data) {
-                    let row = data[i];
-                    let idParent = $('.card[data-id='+row.id+']').attr('data-parent');
+                for(var i in data) {
+                    var row = data[i];
+                    var idParent = $('.card[data-id='+row.id+']').attr('data-parent');
                     $(idParent).removeClass('d-none');
                     $('.card[data-id='+row.id+']').css('background', '#fc6').removeClass('d-none');
                     arrowReturn1.arrow('#arrow'+row.id, '#arrow'+id);
@@ -303,18 +319,19 @@
     }
 
     // Получение пользователей
-    function getUsers (data, key) {
-        for (let z in data) {
-            let users = data[z];
-            let keys = parseInt(z) + 1;
-            let img = 'resources/images/logo.png';
-            let currentName = '';
-            let userPosition = '';
+    function getUsers (data) {
+        for (var z in data) {
+            var users = data[z];
+            var key = users.id;
+            var keys = parseInt(z) + 1;
+            var img = 'resources/images/logo.png';
+            var currentName = '';
+            var userPosition = '';
             if(users.position && users.position != '') {userPosition = users.position;}
             if(users.firstname && users.firstname != '') {
-                let newFirstname =
+                var newFirstname =
                     users.firstname.substr(0,1)+'.';
-                let newPatronym =
+                var newPatronym =
                     users.patronym.substr(0,1)+'.';
                 currentName =
                     users.lastname+' '+newFirstname+' '+newPatronym+'<br>'+userPosition;
@@ -331,13 +348,20 @@
                 '               <div class="row">' +
                 '                   <div class="col-9 d-flex align-items-center justify-content-start font-size-small">'+currentName+'</div>' +
                 '                   <div class="col-3 d-flex align-items-start justify-content-end">' +
+                '                       <div class="pointer addBtn"' +
+                ' data-block="users"' +
+                ' data-id="'+users.id+'"' +
+                ' data-key='+key+keys+'>' +
+                '                           <i class="far fa-minus-square minusBtn"></i>' +
+                '                           <i class="far fa-plus-square plusBtn d-none"></i>' +
+                '                       </div>' +
                 '                   </div>' +
                 '               </div>' +
                 '               <div class="row">' +
                 '                   <div class="col-12 my-3 mr-3 d-flex align-items-center">' +
                 '                       <i class="far fa-file-word mr-4 pointer"' +
                 ' data-toggle="tooltip" data-placement="bottom" title="Нормативный документ"></i>' +
-                '                       <a href="division?id='+users.id+'">' +
+                '                       <a href="users?id='+users.id+'">' +
                 '                           <i class="far fa-address-card mr-4 pointer text-white"' +
                 ' data-toggle="tooltip"' +
                 ' data-placement="bottom"' +
@@ -353,7 +377,8 @@
                 '   </div>' +
                 '</div>'
             );
-            getFunctionsDepartments(users.id, '#users'+key+keys);
+            getFunctionsEmployees(users.id,'#users'+key+keys);
+            console.log(users.id,'#users'+key+keys);
         }
     }
 

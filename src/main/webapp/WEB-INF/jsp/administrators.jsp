@@ -95,7 +95,7 @@
                         getDivisions(key,keys,img,'managements',managements.name,managements.id,link);
                         getFunctionsDepartments(managements.id, '#managements'+key+keys);
                         if (managements.employees.length > 0) {
-                            getUsers(managements.employees, key);
+                            getUsers(managements.employees);
                         }
                         if (managements.childDivision.length > 0) {
                             for (var z in managements.childDivision) {
@@ -111,7 +111,7 @@
                                 getDivisions(key,keys,img,'departments',departments.name,departments.id,link);
                                 getFunctionsDepartments(departments.id, '#departments'+key+keys);
                                 if (departments.employees.length > 0) {
-                                    getUsers(departments.employees, key);
+                                    getUsers(departments.employees);
                                 }
                             }
                         }
@@ -130,20 +130,24 @@
             $('.minusBtn', parent).removeClass('d-none');
             if (row === 'administrators') {
                 //$('#managements').empty().removeClass('d-none');
-                arrowAdd1.clear();
+                arrowReturn1.clear();
                 getDivisions(id, key, 'managements', 'administratorsName'+key);
                 getFunctionsDepartments(id, '#administrators');
             }
             if (row === 'managements') {
                 //$('#departments').removeClass('d-none');
                 //arrowAdd2.clear();
-                arrowAdd3.clear();
+                arrowReturn1.clear();
                 getDivisions(id, key, 'departments', 'managementsName'+key);
-                getFunctionsDepartments(id, '#managements' + key);
+                getFunctionsDepartments(id, '#managements'+key);
             }
             if (row === 'departments') {
-                arrowAdd3.clear();
-                getFunctionsDepartments(id, '#departments' + key);
+                arrowReturn1.clear();
+                getFunctionsDepartments(id, '#departments'+key);
+            }
+            if (row === 'users') {
+                arrowReturn1.clear();
+                getFunctionsDepartments(id, '#users'+key);
             }
         });
 
@@ -154,49 +158,42 @@
             var key = $(parent).attr('data-key');
             $('.plusBtn', parent).removeClass('d-none');
             if (row === 'administrators') {
-                arrowAdd2.clear();
-                arrowAdd3.clear();
+                arrowReturn1.clear();
                 //$('#managements, #departments').empty().addClass('d-none');
                 $('#administrators .functions').remove();
             }
             if (row === 'managements') {
-                arrowAdd2.clear();
-                arrowAdd3.clear();
-                arrowAdd5.clear();
+                arrowReturn1.clear();
                 //$('#departments').empty().addClass('d-none');
-                $('#managements' + key + ' .functions').remove();
+                $('#managements'+key+' .functions').remove();
             }
             if (row === 'departments') {
-                arrowAdd3.clear();
-                $('#departments' + key + ' .functions').remove();
+                arrowReturn1.clear();
+                $('#departments'+key+' .functions').remove();
             }
         });
 
         // Открываем подразделения по клику на карту
         $(document).on('click', '.Sitemap', function() {
-            arrowAdd5.clear();
-            arrowAdd2.clear();
-            arrowAdd3.clear();
+            arrowReturn1.clear();
             var id = $(this).attr('data-id');
             var row = $(this).attr('data-block');
             var key = $(this).attr('data-key');
             if (row === 'administrators') {
                 $('#managements').empty().removeClass('d-none');
-                arrowAdd1.clear();
+                arrowReturn1.clear();
                 getDivisions(id, key, 'managements', 'administratorsName'+key);
             }
             if (row === 'managements') {
-                $('#administrators').remove();
+                //$('#administrators').remove();
                 $('#departments').empty().removeClass('d-none');
-                arrowAdd2.clear();
-                arrowAdd3.clear();
+                arrowReturn1.clear();
                 getDivisions(id, key, 'departments', 'managementsName'+key);
             }
         });
 
         // Подсветка похожих функций при нажатии на отдел
         $(document).on('click', '.functions', function () {
-            arrowAdd5.clear();
             arrowReturn1.clear();
             $('.card').css('background', '#fff').addClass('d-none');
             $('#managements .cardBlock').addClass('d-none');

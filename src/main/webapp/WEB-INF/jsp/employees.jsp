@@ -77,18 +77,14 @@
                         </div>
                     </div>
                     <!--вторая штука-->
-                    <div id="function" class="d-none">
-                        <h5 class="my-3">Функции</h5>
-                        <div class="card bg-light my-3">
-                            <div class="card-body" id="functionBlock"></div>
-                        </div>
+                    <h5 class="my-3">Функции</h5>
+                    <div class="card bg-light my-3">
+                        <div class="card-body" id="functionBlock"></div>
                     </div>
                     <!--третья штука-->
-                    <div id="childDivision" class="d-none">
-                        <h5 class="my-3">Подразделения</h5>
-                        <div class="card bg-light my-3">
-                            <div class="card-body" id="childDivisionBlock"></div>
-                        </div>
+                    <h5 class="my-3">Подразделения</h5>
+                    <div class="card bg-light my-3">
+                        <div class="card-body" id="childDivisionBlock"></div>
                     </div>
                     <!--Четвертая  штука-->
                     <div id="chiefEmployees" class="d-none">

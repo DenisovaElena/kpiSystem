@@ -85,9 +85,8 @@
 
         function getTopLevel() {
             $.getJSON('rest/profile/divisions/'+poleId, function (data) {
-                var key = data.id;
                 if (data.employees.length > 0) {
-                    getUsers(data.employees, key);
+                    getUsers(data.employees);
                 }
             });
         }
@@ -101,8 +100,12 @@
             var key = $(parent).attr('data-key');
             $('.minusBtn', parent).removeClass('d-none');
             if (row === 'departments') {
-                arrowAdd3.clear();
-                getFunctionsDepartments(id, '#' + row);
+                arrowReturn1.clear();
+                getFunctionsDepartments(id, '#departments');
+            }
+            if (row === 'users') {
+                arrowReturn1.clear();
+                getFunctionsEmployees(id,'#users'+key);
             }
         });
 
@@ -113,14 +116,17 @@
             var key = $(parent).attr('data-key');
             $('.plusBtn', parent).removeClass('d-none');
             if (row === 'departments') {
-                arrowAdd3.clear();
-                $('#' + row + ' .functions').remove();
+                arrowReturn1.clear();
+                $('#departments'+key+' .functions').remove();
+            }
+            if (row === 'users') {
+                arrowReturn1.clear();
+                $('#users'+key+' .functions').remove();
             }
         });
 
         // Подсветка похожих функций при нажатии на отдел
         $(document).on('click', '.functions', function () {
-            arrowAdd5.clear();
             arrowReturn1.clear();
             $('.card').css('background', '#fff').addClass('d-none');
             $('#users .cardBlock').addClass('d-none');
@@ -138,23 +144,6 @@
                 $('.card').css('background', '#fff');
             }
         });
-
-        // Открываем подразделения по клику на карту
-        /*$(document).on('click', '.Sitemap', function() {
-            arrowAdd1.clear();
-            arrowAdd2.clear();
-            arrowAdd3.clear();
-            arrowAdd5.clear();
-            var id = $(this).attr('data-id');
-            var row = $(this).attr('data-block');
-            var key = $(this).attr('data-key');
-            if (row === 'managements') {
-                $('#administrators').remove();
-                $('#departments').empty().removeClass('d-none');
-                arrowAdd2.clear();
-                getDivisions(id, key, 'departments', 'managementsName'+key);
-            }
-        });*/
 
     });
 </script>

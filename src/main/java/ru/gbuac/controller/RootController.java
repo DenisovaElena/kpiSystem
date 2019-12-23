@@ -69,8 +69,8 @@ public class RootController {
     @GetMapping(value = "/departments")
     public String departments() { return "departments"; }
 
-    @GetMapping(value = "/temp-list")
-    public String tempList() { return "temp-list"; }
+    @GetMapping(value = "/employees")
+    public String employees() { return "employees"; }
 
     @GetMapping(value = "/all")
     public String all() { return "all"; }

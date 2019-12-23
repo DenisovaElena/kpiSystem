@@ -68,11 +68,19 @@ $.ajax({
 addElement('rest/profile/authorities/getAuthoritiesByDivisionId/' + id, '#functionBlock', 'funcN');
 addElement('rest/profile/divisions/getChildDivisionByDivisionId/' + id, '#childDivisionBlock', 'column');
 addUsers('rest/profile/employees/getEmployeesByDivisionId/' + id, '#employeesDivisionBlock');
+var functionBlock = countElem('rest/profile/authorities/getAuthoritiesByDivisionId/' + id);
+var childDivision = countElem('rest/profile/divisions/getChildDivisionByDivisionId/' + id);
 var sumEmployees = countElem('rest/profile/employees/getEmployeesByDivisionId/' + id);
-console.log(sumEmployees);
+if (functionBlock && functionBlock > 0) {
+    $('#function').removeClass('d-none');
+}
+if (childDivision > 0) {
+    $('#childDivision').removeClass('d-none');
+}
 if (sumEmployees > 0) {
     $('#chiefEmployees').removeClass('d-none');
 }
+console.log(functionBlock);
 /*
 $.ajax({
     url: "rest/profile/authorities/getAuthoritiesByDivisionId/" + getId(),
