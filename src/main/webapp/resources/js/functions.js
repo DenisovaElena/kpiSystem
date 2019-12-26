@@ -224,6 +224,21 @@
             }*/
     }
 
+    // Получение связанных функций детей 4 порядка
+    function getArrowChildDeep3 (id) {
+        $.getJSON('rest/profile/authorities/getAllChilds/' + id, function (data) {
+            for(var i in data) {
+                var row = data[i].childAuthorities;
+                for(var y in row) {
+                    var idParent = $('.card[data-id='+row[y].id+']').attr('data-parent');
+                    $(idParent).removeClass('d-none');
+                    $('.card[data-id='+row[y].id+']').css('background', '#fc6').removeClass('d-none');
+                    arrowReturn1.arrow('#arrow'+id, '#arrow'+row[y].id);
+                }
+            }
+        });
+    }
+
     // Получение связанных функций детей 3 порядка
     function getArrowChildDeep2 (id) {
         $.getJSON('rest/profile/authorities/getAllChilds/' + id, function (data) {
@@ -234,6 +249,7 @@
                     $(idParent).removeClass('d-none');
                     $('.card[data-id='+row[y].id+']').css('background', '#fc6').removeClass('d-none');
                     arrowReturn1.arrow('#arrow'+id, '#arrow'+row[y].id);
+                    getArrowChildDeep3(row[y].id);
                 }
             }
         });
@@ -271,6 +287,21 @@
         });
     }
 
+    // Получение связанных функций родителей 4 порядка
+    function getArrowParentUp3 (id) {
+        $.getJSON('rest/profile/authorities/getAllParents/' + id, function (data) {
+            if(data.length > 0) {
+                for(var i in data) {
+                    var row = data[i];
+                    var idParent = $('.card[data-id='+row.id+']').attr('data-parent');
+                    $(idParent).removeClass('d-none');
+                    $('.card[data-id='+row.id+']').css('background', '#fc6').removeClass('d-none');
+                    arrowReturn1.arrow('#arrow'+row.id, '#arrow'+id);
+                }
+            }
+        });
+    }
+
     // Получение связанных функций родителей 3 порядка
     function getArrowParentUp2 (id) {
         $.getJSON('rest/profile/authorities/getAllParents/' + id, function (data) {
@@ -281,6 +312,7 @@
                     $(idParent).removeClass('d-none');
                     $('.card[data-id='+row.id+']').css('background', '#fc6').removeClass('d-none');
                     arrowReturn1.arrow('#arrow'+row.id, '#arrow'+id);
+                    getArrowParentUp3 (row.id);
                 }
             }
         });

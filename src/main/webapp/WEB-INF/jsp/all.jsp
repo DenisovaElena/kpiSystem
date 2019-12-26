@@ -201,7 +201,7 @@
                 arrowAdd5.clear();
                 arrowAdd2.clear();
                 arrowAdd3.clear();
-                getTopLevel();
+                //getTopLevel();
                 getFunctionsDepartments(id, '#' + row);
             }
             if (row === 'administrators') {
@@ -209,14 +209,14 @@
                 arrowAdd1.clear();
                 arrowAdd2.clear();
                 arrowAdd3.clear();
-                getDivisions(id, key, 'managements', 'administratorsName'+key);
+                //getDivisions(id, key, 'managements', 'administratorsName'+key);
                 getFunctionsDepartments(id, '#' + row + key);
             }
             if (row === 'managements') {
                 //$('#departments').empty().removeClass('d-none');
                 arrowAdd2.clear();
                 arrowAdd3.clear();
-                getDivisions(id, key, 'departments', 'managementsName'+key);
+                //getDivisions(id, key, 'departments', 'managementsName'+key);
                 getFunctionsDepartments(id, '#' + row + key);
             }
             if (row === 'departments') {
@@ -232,7 +232,7 @@
             var key = $(parent).attr('data-key');
             $('.plusBtn', parent).removeClass('d-none');
             if (row === 'division') {
-                //$('#administrators, #managements, #departments').empty().addClass('d-none');
+                /*$('#administrators, #managements, #departments').empty().addClass('d-none');*/
                 $('#division .functions').remove();
                 arrowAdd1.clear();
                 arrowAdd2.clear();
@@ -244,12 +244,12 @@
                 arrowAdd2.clear();
                 arrowAdd3.clear();
                 arrowAdd5.clear();
-                //$('#managements, #departments').empty().addClass('d-none');
+                /*$('#managements, #departments').empty().addClass('d-none');*/
                 $('#' + row + key + ' .functions').remove();
             }
             if (row === 'managements') {
                 arrowAdd3.clear();
-                //$('#departments').empty().addClass('d-none');
+                /*$('#departments').empty().addClass('d-none');*/
                 $('#' + row + key + ' .functions').remove();
             }
             if (row === 'departments') {
