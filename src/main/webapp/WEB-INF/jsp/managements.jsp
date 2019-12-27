@@ -117,7 +117,7 @@
             if (row === 'managements') {
                 $('#departments').removeClass('d-none');
                 arrowReturn1.clear();
-                getDivisions(id, key, 'departments', 'managementsName'+key, adminId);
+                //getDivisions(id, key, 'departments', 'managementsName'+key, adminId);
                 getFunctionsDepartments(id, '#managements'+key);
             }
             if (row === 'departments') {
@@ -163,7 +163,7 @@
             }
         });
 
-        // Подсветка похожих функций при нажатии на отдел
+        // Подсветка похожих функций при нажатии на функцию
         $(document).on('click', '.functions', function () {
             arrowReturn1.clear();
             $('.card').css('background', '#fff').addClass('d-none');
@@ -182,6 +182,7 @@
             } else {
                 $('.card').css('background', '#fff');
             }
+
         });
 
     });

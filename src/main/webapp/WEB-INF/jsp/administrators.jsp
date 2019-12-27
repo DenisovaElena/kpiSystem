@@ -131,14 +131,14 @@
             if (row === 'administrators') {
                 //$('#managements').empty().removeClass('d-none');
                 arrowReturn1.clear();
-                getDivisions(id, key, 'managements', 'administratorsName'+key);
+                //getDivisions(id, key, 'managements', 'administratorsName'+key);
                 getFunctionsDepartments(id, '#administrators');
             }
             if (row === 'managements') {
                 //$('#departments').removeClass('d-none');
                 //arrowAdd2.clear();
                 arrowReturn1.clear();
-                getDivisions(id, key, 'departments', 'managementsName'+key);
+                //getDivisions(id, key, 'departments', 'managementsName'+key);
                 getFunctionsDepartments(id, '#managements'+key);
             }
             if (row === 'departments') {
@@ -212,6 +212,7 @@
             } else {
                 $('.card').css('background', '#fff');
             }
+            arrowReturn1.redraw();
         });
 
     });
