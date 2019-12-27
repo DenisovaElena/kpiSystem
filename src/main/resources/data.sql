@@ -2750,7 +2750,6 @@ INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) V
 INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) VALUES (722, 975);
 INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) VALUES (723, 977);
 INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) VALUES (724, 974);
-INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) VALUES (887, 887);
 INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) VALUES (1103, 1097);
 INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) VALUES (1104, 1098);
 INSERT INTO kpi.authority_child_authorities (authority_id, child_authority_id) VALUES (1108, 1101);
