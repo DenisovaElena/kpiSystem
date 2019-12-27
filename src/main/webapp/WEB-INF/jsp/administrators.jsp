@@ -53,7 +53,7 @@
                                             </i>
                                         </a>
                                         <i class="fas fa-chart-pie mr-4 pointer"
-                                           data-toggle="tooltip" data-placement="bottom" title="Проказатель качества"></i>
+                                           data-toggle="tooltip" data-placement="bottom" title="Показатель качества"></i>
                                     </div>
                                 </div>
                             </div>
@@ -122,6 +122,11 @@
 
         // Получаем список функций по клику
         $(document).on('click', '.plusBtn', function () {
+            // Убираем лишнее
+            arrowReturn1.clear();
+            $('.card').css('background', '#fff');
+            $('.iconErrorParent').remove();
+
             var parent = $(this).parent('.addBtn');
             $(this).addClass('d-none');
             var row = $(parent).attr('data-block');
@@ -130,72 +135,75 @@
             $('.minusBtn', parent).removeClass('d-none');
             if (row === 'administrators') {
                 //$('#managements').empty().removeClass('d-none');
-                arrowReturn1.clear();
                 //getDivisions(id, key, 'managements', 'administratorsName'+key);
                 getFunctionsDepartments(id, '#administrators');
             }
             if (row === 'managements') {
                 //$('#departments').removeClass('d-none');
                 //arrowAdd2.clear();
-                arrowReturn1.clear();
                 //getDivisions(id, key, 'departments', 'managementsName'+key);
                 getFunctionsDepartments(id, '#managements'+key);
             }
             if (row === 'departments') {
-                arrowReturn1.clear();
                 getFunctionsDepartments(id, '#departments'+key);
             }
             if (row === 'users') {
-                arrowReturn1.clear();
                 getFunctionsDepartments(id, '#users'+key);
             }
         });
 
         $(document).on('click', '.minusBtn', function () {
+            // Убираем лишнее
+            arrowReturn1.clear();
+            $('.card').css('background', '#fff');
+            $('.iconErrorParent').remove();
+
             var parent = $(this).parent('.addBtn');
             $(this).addClass('d-none');
             var row = $(parent).attr('data-block');
             var key = $(parent).attr('data-key');
             $('.plusBtn', parent).removeClass('d-none');
             if (row === 'administrators') {
-                arrowReturn1.clear();
                 //$('#managements, #departments').empty().addClass('d-none');
                 $('#administrators .functions').remove();
             }
             if (row === 'managements') {
-                arrowReturn1.clear();
                 //$('#departments').empty().addClass('d-none');
                 $('#managements'+key+' .functions').remove();
             }
             if (row === 'departments') {
-                arrowReturn1.clear();
                 $('#departments'+key+' .functions').remove();
             }
         });
 
         // Открываем подразделения по клику на карту
         $(document).on('click', '.Sitemap', function() {
+            // Убираем лишнее
             arrowReturn1.clear();
+            $('.card').css('background', '#fff');
+            $('.iconErrorParent').remove();
+
             var id = $(this).attr('data-id');
             var row = $(this).attr('data-block');
             var key = $(this).attr('data-key');
             if (row === 'administrators') {
                 $('#managements').empty().removeClass('d-none');
-                arrowReturn1.clear();
                 getDivisions(id, key, 'managements', 'administratorsName'+key);
             }
             if (row === 'managements') {
                 //$('#administrators').remove();
                 $('#departments').empty().removeClass('d-none');
-                arrowReturn1.clear();
                 getDivisions(id, key, 'departments', 'managementsName'+key);
             }
         });
 
         // Подсветка похожих функций при нажатии на отдел
         $(document).on('click', '.functions', function () {
+            // Убираем лишнее
             arrowReturn1.clear();
+            $('.iconErrorParent').remove();
             $('.card').css('background', '#fff').addClass('d-none');
+
             $('#managements .cardBlock').addClass('d-none');
             $('#departments .cardBlock').addClass('d-none');
             $('#users .cardBlock').addClass('d-none');

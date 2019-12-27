@@ -93,6 +93,11 @@
 
         // Получаем список функций по клику
         $(document).on('click', '.plusBtn', function () {
+            // Убираем лишнее
+            arrowReturn1.clear();
+            $('.card').css('background', '#fff');
+            $('.iconErrorParent').remove();
+
             var parent = $(this).parent('.addBtn');
             $(this).addClass('d-none');
             var row = $(parent).attr('data-block');
@@ -100,34 +105,38 @@
             var key = $(parent).attr('data-key');
             $('.minusBtn', parent).removeClass('d-none');
             if (row === 'departments') {
-                arrowReturn1.clear();
                 getFunctionsDepartments(id, '#departments');
             }
             if (row === 'users') {
-                arrowReturn1.clear();
                 getFunctionsEmployees(id,'#users'+key);
             }
         });
 
         $(document).on('click', '.minusBtn', function () {
+            // Убираем лишнее
+            arrowReturn1.clear();
+            $('.card').css('background', '#fff');
+            $('.iconErrorParent').remove();
+
             var parent = $(this).parent('.addBtn');
             $(this).addClass('d-none');
             var row = $(parent).attr('data-block');
             var key = $(parent).attr('data-key');
             $('.plusBtn', parent).removeClass('d-none');
             if (row === 'departments') {
-                arrowReturn1.clear();
                 $('#departments'+key+' .functions').remove();
             }
             if (row === 'users') {
-                arrowReturn1.clear();
                 $('#users'+key+' .functions').remove();
             }
         });
 
         // Подсветка похожих функций при нажатии на отдел
         $(document).on('click', '.functions', function () {
+            // Убираем лишнее
             arrowReturn1.clear();
+            $('.iconErrorParent').remove();
+
             $('.card').css('background', '#fff').addClass('d-none');
             $('#users .cardBlock').addClass('d-none');
             var id = parseInt($(this).attr('data-id'));
@@ -143,6 +152,7 @@
             } else {
                 $('.card').css('background', '#fff');
             }
+            arrowReturn1.redraw();
         });
 
     });

@@ -3,7 +3,6 @@
 
 <main>
     <div class="container-fluid" id="iconBlock">
-
         <div class="row canvas">
             <div class="col-sm-3" id="division">
                 <div class="mb-3">
@@ -63,6 +62,7 @@
 <jsp:include page="fragments/footerScript.jsp"/>
 <script>
     $(function() {
+        arrowReturn1.clear();
         getTopLevel();
         getFunctionsDepartments(1, '#division');
 
@@ -190,6 +190,11 @@
 
         // Получаем список функций по клику
         $(document).on('click', '.plusBtn', function () {
+            // Убираем лишнее
+            arrowReturn1.clear();
+            $('.card').css('background', '#fff');
+            $('.iconErrorParent').remove();
+
             var parent = $(this).parent('.addBtn');
             $(this).addClass('d-none');
             var row = $(parent).attr('data-block');
@@ -198,24 +203,16 @@
             $('.minusBtn', parent).removeClass('d-none');
             if (row === 'division') {
                 //$('#administrators').empty().removeClass('d-none');
-                arrowAdd5.clear();
-                arrowAdd2.clear();
-                arrowAdd3.clear();
                 //getTopLevel();
                 getFunctionsDepartments(id, '#' + row);
             }
             if (row === 'administrators') {
                 //$('#managements').empty().removeClass('d-none');
-                arrowAdd1.clear();
-                arrowAdd2.clear();
-                arrowAdd3.clear();
                 //getDivisions(id, key, 'managements', 'administratorsName'+key);
                 getFunctionsDepartments(id, '#' + row + key);
             }
             if (row === 'managements') {
                 //$('#departments').empty().removeClass('d-none');
-                arrowAdd2.clear();
-                arrowAdd3.clear();
                 //getDivisions(id, key, 'departments', 'managementsName'+key);
                 getFunctionsDepartments(id, '#' + row + key);
             }
@@ -223,9 +220,15 @@
                 arrowAdd3.clear();
                 getFunctionsDepartments(id, '#' + row + key);
             }
+            arrowReturn1.redraw();
         });
 
         $(document).on('click', '.minusBtn', function () {
+            // Убираем лишнее
+            arrowReturn1.clear();
+            $('.card').css('background', '#fff');
+            $('.iconErrorParent').remove();
+
             var parent = $(this).parent('.addBtn');
             $(this).addClass('d-none');
             var row = $(parent).attr('data-block');
@@ -234,36 +237,28 @@
             if (row === 'division') {
                 /*$('#administrators, #managements, #departments').empty().addClass('d-none');*/
                 $('#division .functions').remove();
-                arrowAdd1.clear();
-                arrowAdd2.clear();
-                arrowAdd3.clear();
-                arrowAdd5.clear();
             }
             if (row === 'administrators') {
-                arrowAdd1.clear();
-                arrowAdd2.clear();
-                arrowAdd3.clear();
-                arrowAdd5.clear();
                 /*$('#managements, #departments').empty().addClass('d-none');*/
                 $('#' + row + key + ' .functions').remove();
             }
             if (row === 'managements') {
-                arrowAdd3.clear();
                 /*$('#departments').empty().addClass('d-none');*/
                 $('#' + row + key + ' .functions').remove();
             }
             if (row === 'departments') {
-                arrowAdd3.clear();
                 $('#' + row + key + ' .functions').remove();
             }
+            arrowReturn1.redraw();
         });
 
         // Открываем подразделения по клику на карту
         $(document).on('click', '.Sitemap', function() {
-            arrowAdd5.clear();
-            arrowAdd2.clear();
-            arrowAdd3.clear();
-            arrowAdd1.clear();
+            // Убираем лишнее
+            arrowReturn1.clear();
+            $('.card').css('background', '#fff');
+            $('.iconErrorParent').remove();
+
             $('#administrators').empty();
             var id = $(this).attr('data-id');
             var row = $(this).attr('data-block');
@@ -275,15 +270,17 @@
             if (row === 'administrators') {
                 $('#division').remove();
                 $('#managements').empty().removeClass('d-none');
-                arrowAdd1.clear();
                 getDivisions(id, key, 'managements', 'administratorsName'+key);
             }
         });
 
         // Подсветка похожих функций при нажатии на отдел
         $(document).on('click', '.functions', function () {
-            arrowAdd5.clear();
+            // Убираем стрелки
             arrowReturn1.clear();
+            // Убираем сообщения об ошибках
+            $('.iconErrorParent').remove();
+            // Убираем цвет у всех карточек функций
             $('.card').css('background', '#fff').addClass('d-none');
             $('.cardBlock').addClass('d-none');
             var id = parseInt($(this).attr('data-id'));
@@ -299,6 +296,7 @@
             } else {
                 $('.card').css('background', '#fff');
             }
+            arrowReturn1.redraw();
         });
 
     });
