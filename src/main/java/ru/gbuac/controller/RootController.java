@@ -53,7 +53,7 @@ public class RootController {
 
     @GetMapping(value = "/index")
     public String index() {
-        return "all";
+        return "template";
     }
 
     @GetMapping(value = "/template")

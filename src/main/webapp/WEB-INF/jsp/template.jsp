@@ -1,145 +1,252 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="fragments/headerNew.jsp"/>
+<jsp:include page="fragments/header.jsp"/>
 <main>
-    <div class="container-fluid" id="iconBlock">
-        <div class="row canvas">
-            <div class="col-3">
-                <div id="element1">
-                    <div style="width: 300px; height: 100px;"
-                          class="bg-primary" id="name1"></div>
-                    <div class="elementBlock d-none" style="width: 300px;">
-                        <div class="child bg-warning my-3" style="height: 50px;"
-                             id="child1"></div>
-                        <div class="child bg-warning my-3" style="height: 50px;"
-                             id="child2"></div>
-                        <div class="child bg-warning my-3" style="height: 50px;"
-                             id="child3"></div>
-                        <div class="child bg-warning my-3" style="height: 50px;"
-                             id="child4"></div>
+    <div class="container-fluid mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="container-fluid">
+                    <form class="mb-3">
+                        <div class="alert alert-primary text-center mb-3">
+                            <h4 class="mt-2">Задачи на исполнении</h4>
+                        </div>
+                        <h6 class="mb-3">
+                            Сортировка:
+                            <div id="sortLeft"
+                                 class="btn btn-sm btn-outline-mdb-color
+                                ml-3 mr-1 rounded">
+                                по дате постановки
+                            </div>
+                            <div id="sortRight"
+                                 class="btn btn-sm btn-mdb-color rounded">
+                                по дате контроля
+                            </div>
+                        </h6>
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="row mb-3 d-flex align-items-center">
+                                    <div class="col-2">
+                                        <h6>Задачи:</h6>
+                                    </div>
+                                    <div class="col-10">
+                                        <select
+                                                class="chosen-select"
+                                                id="taskList" name="taskList[]"
+                                                data-placeholder="Выберите из справочника" multiple>
+                                            <%--<option value="" selected>Выбрать </option>--%>
+                                            <option value="11" selected>Задача 1.1</option>
+                                            <option value="12" selected>Задача 1.2</option>
+                                            <option value="13" selected>Задача 1.3</option>
+                                            <option value="14" selected>Задача 1.4</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-2">
+                                        <h6>Тип:</h6>
+                                    </div>
+                                    <div class="col-10">
+                                        <div id="typeLeft"
+                                             class="btn btn-sm btn-outline-mdb-color ml-0 mr-1 rounded">
+                                            Процесс
+                                        </div>
+                                        <div id="typeRight"
+                                             class="btn btn-sm btn-mdb-color rounded">
+                                            Проект
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 d-flex align-items-center">
+                                    <div class="col-2">
+                                        <h6>Функции:</h6>
+                                    </div>
+                                    <div class="col-10">
+                                        <select
+                                                class="chosen-select"
+                                                id="functList" name="functList[]"
+                                                data-placeholder="Выберите из справочника" multiple>
+                                            <%--<option value="" selected>Выбрать </option>--%>
+                                            <option value="1" selected>
+                                                Разработка проекта
+                                            </option>
+                                            <option value="2" selected>
+                                                Согласование
+                                            </option>
+                                            <option value="3" selected>
+                                                Исполнение
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="demo"></div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-2 border-right text-center">
+                                    <h3>
+                                        <span class="badge badge-pill mdb-color">1</span>
+                                    </h3>
+                                    <p>
+                                        Тип: <strong class="text-dark">процесс</strong>
+                                    </p>
+                                </div>
+                                <div class="col-8 border-right">
+                                    <h6 class="alert alert-secondary">
+                                        <div class="mb-2">
+                                            Наименование: <strong сlass="ml-2">Задача 1.1. Разработка технологической документации</strong>
+                                        </div>
+                                        <div>
+                                            Функция: <strong сlass="ml-2">Разработка проекта</strong>
+                                        </div>
+                                    </h6>
+                                </div>
+                                <div class="col-2 text-center">
+                                    <p>
+                                        Дата постановки:<br>
+                                        <strong class="text-dark">10.01.2020</strong>
+                                    </p>
+                                    <p>
+                                        Дата контроля:<br>
+                                        <strong class="text-dark">15.01.2020</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-2 border-right text-center">
+                                    <h3>
+                                        <span class="badge badge-pill mdb-color">2</span>
+                                    </h3>
+                                    <p>
+                                        Тип: <strong class="text-dark">процесс</strong>
+                                    </p>
+                                </div>
+                                <div class="col-8 border-right">
+                                    <h6 class="alert alert-secondary">
+                                        <div class="mb-2">
+                                            Наименование: <strong
+                                                сlass="ml-2">Задача 2.3.
+                                            Рассылка информационных
+                                            писем</strong>
+                                        </div>
+                                        <div>
+                                            Функция: <strong
+                                                сlass="ml-2">Согласование
+                                        </strong>
+                                        </div>
+                                    </h6>
+                                </div>
+                                <div class="col-2 text-center">
+                                    <p>
+                                        Дата постановки:<br>
+                                        <strong class="text-dark">17.01
+                                            .2020</strong>
+                                    </p>
+                                    <p>
+                                        Дата контроля:<br>
+                                        <strong class="text-dark">20.01
+                                            .2020</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-2 border-right text-center">
+                                    <h3>
+                                        <span
+                                                class="badge badge-pill mdb-color">3</span>
+                                    </h3>
+                                    <p>
+                                        Тип: <strong class="text-dark">проект
+                                    </strong>
+                                    </p>
+                                </div>
+                                <div class="col-8 border-right">
+                                    <h6 class="alert alert-secondary">
+                                        <div class="mb-2">
+                                            Наименование: <strong
+                                                сlass="ml-2">Задача 3.1.
+                                            Подготовка статистической
+                                            отчётности</strong>
+                                        </div>
+                                        <div>
+                                            Функция: <strong
+                                                сlass="ml-2">Исполнение
+                                        </strong>
+                                        </div>
+                                    </h6>
+                                </div>
+                                <div class="col-2 text-center">
+                                    <p>
+                                        Дата постановки:<br>
+                                        <strong class="text-dark">02.01
+                                            .2020</strong>
+                                    </p>
+                                    <p>
+                                        Дата контроля:<br>
+                                        <strong class="text-dark">09.01
+                                            .2020</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-3">
-                <div id="element2" class="d-none">
-                    <div style="width: 300px; height: 100px;"
-                         class="bg-success" id="name2"></div>
-                    <div class="elementBlock d-none" style="width: 300px;">
-                        <div class="child bg-warning my-3" style="height: 50px;"
-                             id="child5" data-id="5"></div>
-                        <div class="child bg-warning my-3" style="height: 50px;"
-                             id="child6" data-id="6"></div>
-                        <div class="child bg-warning my-3" style="height: 50px;"
-                             id="child7" data-id="7"></div>
-                        <div class="child bg-warning my-3" style="height: 50px;"
-                             id="child8" data-id="8"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div id="element3" class="d-none">
-                    <div style="width: 300px; height: 100px;"
-                         class="bg-secondary" id="name3"></div>
-                    <div class="elementBlock d-none" style="width: 300px;">
-                        <div class="child bg-warning my-3" style="height: 50px;"
-                             id="child9" data-id="9"></div>
-                        <div class="child bg-warning my-3" style="height: 50px;"
-                             id="child10" data-id="10"></div>
-                        <div class="child bg-warning my-3" style="height: 50px;"
-                             id="child11" data-id="11"></div>
-                        <div class="child bg-warning my-3" style="height: 50px;"
-                             id="child12" data-id="12"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="btn btn-primary" id="addArrow1">Add</div>
-                <div class="btn btn-primary" id="addArrow">Add</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 my-5">
-                <svg id="circle"></svg>
             </div>
         </div>
     </div>
 </main>
 
 <jsp:include page="fragments/footerNew.jsp"/>
-<jsp:include page="fragments/footerScript.jsp"/>
+<jsp:include page="fragments/footerScriptNew.jsp"/>
 <script>
     $(function() {
-        var arrowAdd1 = $cArrows('#iconBlock', {
-            render : { strokeStyle: 'green'},
-            arrow: { connectionType: 'rectangleAngle', angleFrom: 0, angleTo: 180}
+        $('#sortLeft').on('click', function() {
+            $(this).removeClass('btn-mdb-color').addClass('btn-outline-mdb-color');
+            $('#sortRight').removeClass('btn-outline-mdb-color').addClass('btn-mdb-color');
         });
 
-        var arrowAdd2 = $cArrows('#iconBlock', {
-            render : { strokeStyle: 'red'},
-            arrow: { connectionType: 'rectangleAngle', angleFrom: 180,
-                angleTo: 0}
+        $('#sortRight').on('click', function() {
+            $(this).removeClass('btn-mdb-color').addClass('btn-outline-mdb-color');
+            $('#sortLeft').removeClass('btn-outline-mdb-color').addClass('btn-mdb-color');
         });
 
-        function getBlockArrow () {
-            arrowAdd1.arrow('#name1', '#name2');
-            arrowAdd1.arrow('#name1', '#name5');
-            arrowAdd1.arrow('#name1', '#name6');
-            arrowAdd1.arrow('#name1', '#name7');
-            arrowAdd1.arrow('#name1', '#name8');
-        }
-
-        function getArrowRight () {
-            arrowAdd1.arrow('#child1', '#child5');
-            arrowAdd1.arrow('#child2', '#child5');
-            arrowAdd1.arrow('#child5', '#child9');
-            arrowAdd1.arrow('#child5', '#child10');
-        }
-
-
-        function getArrow () {
-            $.getJSON('rest/profile/authorities/1110', function() {
-                var id = parseInt($('#element3 .child:last').attr('data-id'));
-                var newId = id+1;
-                var oldId1 = id-5;
-                var oldId2 = id-6;
-                $('#element3 .elementBlock').append(
-                    '<div class="child bg-warning my-3" style="height: 50px;" id="child'+newId+'" data-id="'+newId+'"></div>'
-                );
-                arrowAdd2.arrow('#child'+newId, '#child'+oldId1);
-                arrowAdd2.arrow('#child'+oldId1, '#child1');
-                arrowAdd2.arrow('#child'+newId, '#child'+oldId2);
-                arrowAdd2.arrow('#child'+oldId2, '#child2');
-            });
-        }
-
-        $(document).on('click', '#addArrow1', function() {
-            $('#element2').append(
-                '<div style="width: 300px; height: 100px;" class="bg-success my-3" id="name5"></div>'
-            );
-            $('#element1 .elementBlock, #element2').removeClass('d-none');
-            getBlockArrow();
+        $('.demo').datepicker({
+            format: 'mm/dd/yyyy',
+            language: 'ru',
+            weekStart: 1,
+            multidate: true,
+            todayHighlight: true
         });
 
-        $(document).on('click', '#addArrow', function() {
-            arrowAdd1.clear();
-            $('#element3, .elementBlock').removeClass('d-none');
-            getArrowRight();
-            getArrow();
+        var arrayDate = (['01/09/2020', '01/15/2020', '01/20/2020']);
+        $('.demo').datepicker('setDates', arrayDate);
+
+
+        $(".chosen-select").chosen({
+            width: "100%",
+            no_results_text: "Ничего не найдено!"
         });
 
-        /*$(document).on('click', '#addArrow', function() {
-            var id = parseInt($('#element3 .child:last').attr('data-id'));
-            var newId = id+1;
-            $('#element3 .elementBlock').append(
-                '<div class="child bg-warning my-3" style="height: 50px;" id="child'+newId+'" data-id="'+newId+'"></div>'
-            );
-            arrowAdd2.arrow('#child'+newId, '#child5');
-        });*/
+        $('#typeLeft').on('click', function() {
+            $(this).removeClass('btn-mdb-color').addClass('btn-outline-mdb-color');
+            $('#typeRight').removeClass('btn-outline-mdb-color').addClass('btn-mdb-color');
+        });
 
-        /*var s = Snap("#circle");
-        var circle = s.circle(150, 150, 100);*/
-
+        $('#typeRight').on('click', function() {
+            $(this).removeClass('btn-mdb-color').addClass('btn-outline-mdb-color');
+            $('#typeLeft').removeClass('btn-outline-mdb-color').addClass('btn-mdb-color');
+        });
     });
 </script>
 <jsp:include page="fragments/footerBasement.jsp"/>
