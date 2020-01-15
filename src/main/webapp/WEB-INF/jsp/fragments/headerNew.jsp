@@ -24,15 +24,15 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <button id="refresh" class="btn btn-sm btn-outline-light">Вернуть
-        </button>
+        <button id="refresh" class="btn btn-sm btn-outline-light">Очистить</button>
 
-        <%--<div class="collapse navbar-collapse mr-2" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse mr-2" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="#">Поддержка</a></li>
+                <%--<li class="nav-item"><a class="nav-link" href="#">Поддержка</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Личный кабинет</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Пользователь</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Пользователь</a></li>--%>
+                <li class="nav-item"><a class="nav-link btn btn-sm btn-outline-light" href="index">Вернуться на главную</a></li>
             </ul>
-        </div>--%>
+        </div>
     </nav>
 </header>

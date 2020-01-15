@@ -31,14 +31,14 @@ public class RootController {
         return "admin/quest";
     }
 
-    @GetMapping(value = "/my-quests")
-    public String myQuests() {
-        return "my-quests";
+    @GetMapping(value = "/constructor")
+    public String constructor() {
+        return "constructor";
     }
 
-    @GetMapping(value = "/my-quest")
-    public String myQuest() {
-        return "my-quest";
+    @GetMapping(value = "/launch")
+    public String launch() {
+        return "launch";
     }
 
     @GetMapping(value = "/login")
@@ -75,14 +75,14 @@ public class RootController {
     @GetMapping(value = "/all")
     public String all() { return "all"; }
 
-    @GetMapping(value = "/in-work")
-    public String inWork() { return "in-work"; }
+    @GetMapping(value = "/instruction")
+    public String instruction() { return "instruction"; }
 
-    @GetMapping(value = "/agreement")
-    public String agreement() { return "agreement"; }
+    @GetMapping(value = "/process")
+    public String process() { return "process"; }
 
-    @GetMapping(value = "/agreed")
-    public String agreed() { return "agreed"; }
+    @GetMapping(value = "/project")
+    public String project() { return "project"; }
 
     @GetMapping(value = "/registered")
     public String registered() { return "registered"; }

@@ -19,7 +19,7 @@
         <ul class="custom-scrollbar">
             <li>
                 <form class="search-form" role="search">
-                    <div class="md-form mt-0 pt-1 waves-light">
+                    <div class="md-form mt-3 pt-2 waves-light">
                         <%--<input type="text" class="form-control" placeholder="Поиск по документам">--%>
                         <input type="text" class="form-control" disabled>
                     </div>
@@ -27,8 +27,12 @@
             </li>
             <li>
                 <ul class="collapsible collapsible-accordion">
-                    <li class="active">
-                        <a class="collapsible-header waves-effect arrow-r active">
+                    <li>
+                        <a id="myTasks" class="collapsible-header waves-effect arrow-r" href="index">
+                            <i class="fa fa-edit mr-2"></i>
+                            Мои задачи
+                        </a>
+                        <%--<a class="collapsible-header waves-effect arrow-r active">
                             <i class="fa fa-edit mr-2"></i>
                             Задачи<span class="badge badge-pill badge-primary ml-2 agreementSum"></span>
                             <i class="fas fa-angle-down rotate-icon"></i>
@@ -37,23 +41,17 @@
                             <ul class="list-unstyled">
                                 <li>
                                     <a href="#" class="waves-effect">
-                                        На исполнении
-                                        <span class="badge badge-pill badge-primary ml-2 agreementSum">
-                                            5
-                                        </span>
+                                        На исполнении<span class="badge badge-pill badge-primary ml-2 agreementSum">5</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="waves-effect">
-                                        Инициативный запуск
-                                    </a>
-                                </li>
+                                    <a href="#" class="waves-effect">Инициативный запуск</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div>--%>
                     </li>
                     <li>
-                        <a class="collapsible-header waves-effect arrow-r" href="#">
+                        <a id="constructor" class="collapsible-header waves-effect arrow-r" href="constructor">
                             <i class="fas fa-project-diagram mr-2"></i>
                             Конструктор процессов/проектов
                         </a>
@@ -71,7 +69,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="collapsible-header waves-effect arrow-r" href="#">
+                        <a class="collapsible-header waves-effect arrow-r" href="all">
                             <i class="fas fa-chart-line mr-2"></i>
                             Анализ функций
                         </a>
@@ -103,11 +101,11 @@
                 <a class="nav-link" data-toggle="modal" data-target="#helpBlock"><i class="far fa-question-circle mr-2"></i><span class="clearfix d-none d-sm-inline-block mr-3">Поддержка</span></a>
             </li>--%>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDrop" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-user mr-2"></i><span id="templateUser"><sec:authentication property="principal.username"/></span>
                 </a>
                 <div id="currentUser" class="fontSmall"></div>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDrop">
                     <form:form id="form-logout" class="dropdown-item" action="logout" method="post">
                     <span type="submit" onclick="document.forms['form-logout'].submit();">
                         <i class="fas fa-sign-out-alt"></i> <spring:message code="app.quit"/>

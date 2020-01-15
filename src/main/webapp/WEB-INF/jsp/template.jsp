@@ -174,29 +174,14 @@
                                 <div class="col-8 border-right">
                                     <h6 class="alert alert-secondary">
                                         <div class="mb-2">
-                                            Наименование: <strong
-                                                сlass="ml-2">Задача 3.1.
-                                            Подготовка статистической
-                                            отчётности</strong>
+                                            Наименование: <strong  сlass="ml-2">Задача 3.1. Подготовка статистической отчётности</strong>
                                         </div>
-                                        <div>
-                                            Функция: <strong
-                                                сlass="ml-2">Исполнение
-                                        </strong>
-                                        </div>
+                                        <div>Функция: <strong сlass="ml-2">Исполнение</strong></div>
                                     </h6>
                                 </div>
                                 <div class="col-2 text-center">
-                                    <p>
-                                        Дата постановки:<br>
-                                        <strong class="text-dark">02.01
-                                            .2020</strong>
-                                    </p>
-                                    <p>
-                                        Дата контроля:<br>
-                                        <strong class="text-dark">09.01
-                                            .2020</strong>
-                                    </p>
+                                    <p>Дата постановки:<br><strong class="text-dark">02.01.2020</strong></p>
+                                    <p>Дата контроля:<br><strong class="text-dark">09.01.2020</strong></p>
                                 </div>
                             </div>
                         </div>
@@ -221,22 +206,8 @@
             $('#sortLeft').removeClass('btn-outline-mdb-color').addClass('btn-mdb-color');
         });
 
-        $('.demo').datepicker({
-            format: 'mm/dd/yyyy',
-            language: 'ru',
-            weekStart: 1,
-            multidate: true,
-            todayHighlight: true
-        });
-
         var arrayDate = (['01/09/2020', '01/15/2020', '01/20/2020']);
         $('.demo').datepicker('setDates', arrayDate);
-
-
-        $(".chosen-select").chosen({
-            width: "100%",
-            no_results_text: "Ничего не найдено!"
-        });
 
         $('#typeLeft').on('click', function() {
             $(this).removeClass('btn-mdb-color').addClass('btn-outline-mdb-color');

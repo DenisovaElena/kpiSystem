@@ -8,4 +8,5 @@
 <script type="text/javascript" src="resources/js/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript" src="resources/js/locales/bootstrap-datepicker.ru.min.js"></script>
 <script type="text/javascript" src="resources/js/mdb.min.js"></script>
+<script type="text/javascript" src="resources/js/addons/rating.js"></script>
 <script type="text/javascript" src="resources/js/functions_new.js"></script>
