@@ -56,71 +56,29 @@
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div class="row d-flex align-items-center">
-                                    <div class="col-md-3">
-                                        <a href="#" class="btn btn-primary btn-sm rounded" id="newBtn">Создать новый</a>
+                                    <div class="col-md-3 text-md-left text-center mb-3">
+                                        <a href="#" class="btn btn-primary rounded" id="newBtn">Создать новый</a>
                                     </div>
-                                    <div class="col-md-9">
-                                        Сортировать:
-                                        <div id="sortLeft" class="btn btn-sm btn-outline-mdb-color ml-3 mr-1 rounded">
-                                            <i id="sortLeftIconUp" data-sort="1" class="fas fa-sort-amount-down-alt mr-2 d-inline active"></i>
-                                            <i id="sortLeftIconDown" data-sort="2" class="fas fa-sort-amount-up-alt mr-2 d-none no-active"></i>
-                                            по дате постановки
-                                        </div>
-                                        <div id="sortRight" class="btn btn-sm btn-mdb-color rounded">
-                                            <i id="sortRightIconUp" data-sort="1" class="fas fa-sort-amount-down-alt mr-2 d-inline active"></i>
-                                            <i id="sortRightIconDown" data-sort="2" class="fas fa-sort-amount-up-alt mr-2 d-none no-active"></i>
-                                            по дате контроля
-                                        </div>
-                                        <div id="filterBtn" class="btn btn-sm btn-mdb-color rounded float-md-right">
-                                            <i class="fas fa-filter mr-2"></i>Фильтрация
-                                        </div>
-                                    </div>
-                                    <div class="col-12 d-none mt-3" id="filterBlock">
-                                        <div class="row mb-2 d-flex align-items-center">
-                                            <div class="col-2">
-                                                <h6>Задачи:</h6>
+                                    <div class="col-md-9 text-md-left text-center mb-3" id="tempLate">
+                                        <div class="row d-flex align-items-center ml-md-5">
+                                            <div class="col-md-12">
+                                                <h6 class="alert activeMenu rounded" id="textTemplate">Шаблон проекта</h6>
                                             </div>
-                                            <div class="col-10">
-                                                <select class="chosen-select" id="taskList" name="taskList[]" data-placeholder="Выберите из справочника" multiple>
-                                                    <%--<option value="">Выбрать </option>--%>
-                                                    <option value="11" >Задача 1.1</option>
-                                                    <option value="12">Задача 1.2</option>
-                                                    <option value="13">Задача 1.3</option>
-                                                    <option value="14">Задача 1.4</option>
+                                            <div class="col-md-7 mb-3">
+                                                <select class="chosen-select" id="optionList" name="optionList[]" data-placeholder="Выберите из справочника">
+                                                    <option value="" selected>Выберите из справочника</option>
                                                 </select>
                                             </div>
-                                        </div>
-                                        <%--<div class="row mb-3">
-                                            <div class="col-2">
-                                                <h6>Тип:</h6>
-                                            </div>
-                                            <div class="col-10">
-                                                <select class="chosen-select" id="optionList" name="optionList[]" data-placeholder="Выберите из справочника" multiple>
-                                                    <option value="" selected>Выбрать </option>
-                                                    <option value="1" selected>Проект</option>
-                                                    <option value="2" selected>Процесс</option>
-                                                    <option value="3" selected>Поручение</option>
-                                                </select>
-                                            </div>
-                                        </div>--%>
-                                        <div class="row mb-2 d-flex align-items-center">
-                                            <div class="col-2">
-                                                <h6>Функции:</h6>
-                                            </div>
-                                            <div class="col-10">
-                                                <select class="chosen-select" id="functList" name="functList[]" data-placeholder="Выберите из справочника" multiple>
-                                                    <%--<option value="">Выбрать </option>--%>
-                                                    <option value="1">Разработка проекта</option>
-                                                    <option value="2">Согласование</option>
-                                                    <option value="3">Исполнение</option>
-                                                </select>
+                                            <div class="col-md-5 mb-3 text-md-center">
+                                                <a href="#" class="btn btn-primary btn-sm rounded"><i class="fas fa-pencil-alt mr-2"></i>Внести изменения</a>
+                                                <a href="#" class="btn btn-sm btn-danger rounded"><i class="far fa-trash-alt mr-2"></i>Удалить</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card mb-3">
+                        <%--<div class="card mb-3">
                             <div class="card-body">
                                 <div class="row d-flex align-items-center">
                                     <div class="col-md-1 mb-3">
@@ -237,6 +195,26 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>--%>
+                        <div class="card mb-3 d-none" id="elementBlock">
+                            <div class="card-body">
+                                <h5 class="alert alert-primary my-3">
+                                    <span id="textTemplateElement" class="mr-2"></span>
+                                    <strong id="elementName"></strong>
+                                </h5>
+                                <div class="alert alert-secondary mb-3">
+                                    Цель:<strong class="ml-2" id="textTarget"></strong>
+                                </div>
+                                <div class="alert alert-secondary mb-3">
+                                    Задача:<strong class="ml-2" id="textTask"></strong>
+                                </div>
+                                <div id="processCard">
+                                    <div class="alert alert-secondary">
+                                        <strong>Карта процесса</strong>
+                                    </div>
+                                    <img src="resources/img/diagramm.png" class="img-fluid rounded">
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -257,20 +235,63 @@
         // Данные страницы процессов
         if(page == 'process') {
             $('#headTitle').html('Процессы');
+            $('#textTemplate').html('Управление шаблонами процессов');
+            $('#textTemplateElement').html('Шаблон процесса:');
+            $('#textTarget').html('Цель процесса');
+            $('#textTask').html('Задача процесса');
             $('#newBtn').html('Создать новый процесс').attr('href','process');
+            $('#optionList').append(
+                '<option value="1">Процесс 1</option>' +
+                '<option value="2">Процесс 2</option>' +
+                '<option value="3">Процесс 3</option>'
+            );
+            $('#optionList').trigger("chosen:updated");
         }
 
         // Данные страницы проектов
         if(page == 'project') {
             $('#headTitle').html('Проекты');
+            $('#textTemplate').html('Управление шаблонами проектов');
+            $('#textTemplateElement').html('Шаблон проекта:');
+            $('#textTarget').html('Цель проекта');
+            $('#textTask').html('Задача проекта');
             $('#newBtn').html('Создать новый проект').attr('href','project');
+            $('#optionList').append(
+                '<option value="1">Проект 1</option>' +
+                '<option value="2">Проект 2</option>' +
+                '<option value="3">Проект 3</option>'
+            );
+            $('#optionList').trigger("chosen:updated");
         }
 
         // Данные страницы поручений
         if(page == 'instruction') {
             $('#headTitle').html('Поручения');
+            $('#textTemplate').html('Управление шаблонами поручений');
+            $('#textTemplateElement').html('Шаблон поручения:');
+            $('#textTarget').html('Цель поручения');
+            $('#textTask').html('Задача поручения');
             $('#newBtn').html('Создать новое поручение').attr('href','instruction');
+            $('#optionList').append(
+                '<option value="1">Поручение 1</option>' +
+                '<option value="2">Поручение 2</option>' +
+                '<option value="3">Поручение 3</option>'
+            );
+            $('#optionList').trigger("chosen:updated");
+            $('#processCard').addClass('d-none');
         }
+
+        // Показ данных элемента по выбору селекта
+        $(document).on('change', '#optionList', function() {
+            var element = $(this).val();
+            if(element && element > 0) {
+                $('#elementBlock').removeClass('d-none');
+                var elementName = $('option:selected', this).html();
+                $('#elementName').html(elementName);
+            } else {
+                $('#elementBlock').addClass('d-none');
+            }
+        });
 
     });
 </script>

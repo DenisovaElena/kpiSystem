@@ -80,8 +80,8 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="row align-items-center">
-                                                    <div class="col-md-auto">Потребители</div>
-                                                    <div class="col-md-auto">
+                                                    <div class="col-md-4 mb-3">Потребители</div>
+                                                    <div class="col-md-8 mb-3">
                                                         <select class="chosen-select w-100" id="consumersList" name="consumersList[]" data-placeholder="Выберите из справочника">
                                                             <option value="" selected>Выберите из справочника</option>
                                                             <option value="1">Потребитель 1</option>
@@ -93,11 +93,11 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="row align-items-center">
-                                                    <div class="col-md-auto">Поставщики</div>
-                                                    <div class="col-md-auto">
+                                                    <div class="col-md-4 mb-3">Поставщики</div>
+                                                    <div class="col-md-8 mb-3">
                                                         <select class="chosen-select w-100" id="vendorsList" name="vendorsList[]" data-placeholder="Выберите из справочника">
                                                             <option value="" selected>Выберите из справочника</option>
-                                                            <option value="1">Поставщик, длинное название</option>
+                                                            <option value="1">Поставщик 1</option>
                                                             <option value="2">Поставщик 2</option>
                                                             <option value="3">Поставщик 3</option>
                                                         </select>
@@ -152,6 +152,7 @@
     $(function() {
         // Подсветка меню
         $('#constructor').addClass('active');
+        $('#process').addClass('activeMenu');
 
         // Показ карты при выборе процесса
         $('#functList').on('change', function() {

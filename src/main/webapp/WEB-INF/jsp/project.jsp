@@ -119,6 +119,7 @@
     $(function() {
         // Подсветка меню
         $('#constructor').addClass('active');
+        $('#project').addClass('activeMenu');
     });
 </script>
 <jsp:include page="fragments/footerBasement.jsp"/>

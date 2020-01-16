@@ -15,8 +15,16 @@ header, main, footer {padding-left: 240px;}
 @media only screen and (max-width : 768px) {header, main, footer {padding-left: 0;}}
 /* Меняем дефолтные цвета */
 .black, .black-skin .gradient {background: #343a40 !important;}
-.activeMenu {
+.activeMenu, #myTasks.active, #constructor.active {
     background: #f7ca77!important;
     color: #000000!important;
 }
 .datepicker {margin-left: 1rem!important;}
+#tempLate {border-left: 1px solid #cccccc;}
+@media (max-width: 767px) {
+    #tempLate {border: none;}
+}
+a.disabled {
+    pointer-events: none; /* делаем ссылку некликабельной */
+    cursor: default;  /* устанавливаем курсор в виде стрелки */
+}

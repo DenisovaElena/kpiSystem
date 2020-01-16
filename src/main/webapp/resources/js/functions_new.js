@@ -83,3 +83,7 @@
             $('.'+idParent).hide(500).remove();
         }
     });
+
+    $('#constructor').on('click', function(e) {
+        e.preventDefault();
+    });
