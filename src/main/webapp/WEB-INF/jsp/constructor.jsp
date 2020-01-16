@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="container-fluid">
-                    <form class="mb-3">
+                    <%--<form class="mb-3">
                         <div class="alert alert-primary text-center mb-3">
                             <h4 class="mt-2">Конструктор</h4>
                         </div>
@@ -48,6 +48,196 @@
                                 </div>
                             </div>
                         </div>
+                    </form>--%>
+                    <form class="mb-3">
+                        <div class="alert alert-primary text-center mb-3">
+                            <h4 class="mt-2" id="headTitle">Конструктор</h4>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="row d-flex align-items-center">
+                                    <div class="col-md-3">
+                                        <a href="#" class="btn btn-primary btn-sm rounded" id="newBtn">Создать новый</a>
+                                    </div>
+                                    <div class="col-md-9">
+                                        Сортировать:
+                                        <div id="sortLeft" class="btn btn-sm btn-outline-mdb-color ml-3 mr-1 rounded">
+                                            <i id="sortLeftIconUp" data-sort="1" class="fas fa-sort-amount-down-alt mr-2 d-inline active"></i>
+                                            <i id="sortLeftIconDown" data-sort="2" class="fas fa-sort-amount-up-alt mr-2 d-none no-active"></i>
+                                            по дате постановки
+                                        </div>
+                                        <div id="sortRight" class="btn btn-sm btn-mdb-color rounded">
+                                            <i id="sortRightIconUp" data-sort="1" class="fas fa-sort-amount-down-alt mr-2 d-inline active"></i>
+                                            <i id="sortRightIconDown" data-sort="2" class="fas fa-sort-amount-up-alt mr-2 d-none no-active"></i>
+                                            по дате контроля
+                                        </div>
+                                        <div id="filterBtn" class="btn btn-sm btn-mdb-color rounded float-md-right">
+                                            <i class="fas fa-filter mr-2"></i>Фильтрация
+                                        </div>
+                                    </div>
+                                    <div class="col-12 d-none mt-3" id="filterBlock">
+                                        <div class="row mb-2 d-flex align-items-center">
+                                            <div class="col-2">
+                                                <h6>Задачи:</h6>
+                                            </div>
+                                            <div class="col-10">
+                                                <select class="chosen-select" id="taskList" name="taskList[]" data-placeholder="Выберите из справочника" multiple>
+                                                    <%--<option value="">Выбрать </option>--%>
+                                                    <option value="11" >Задача 1.1</option>
+                                                    <option value="12">Задача 1.2</option>
+                                                    <option value="13">Задача 1.3</option>
+                                                    <option value="14">Задача 1.4</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <%--<div class="row mb-3">
+                                            <div class="col-2">
+                                                <h6>Тип:</h6>
+                                            </div>
+                                            <div class="col-10">
+                                                <select class="chosen-select" id="optionList" name="optionList[]" data-placeholder="Выберите из справочника" multiple>
+                                                    <option value="" selected>Выбрать </option>
+                                                    <option value="1" selected>Проект</option>
+                                                    <option value="2" selected>Процесс</option>
+                                                    <option value="3" selected>Поручение</option>
+                                                </select>
+                                            </div>
+                                        </div>--%>
+                                        <div class="row mb-2 d-flex align-items-center">
+                                            <div class="col-2">
+                                                <h6>Функции:</h6>
+                                            </div>
+                                            <div class="col-10">
+                                                <select class="chosen-select" id="functList" name="functList[]" data-placeholder="Выберите из справочника" multiple>
+                                                    <%--<option value="">Выбрать </option>--%>
+                                                    <option value="1">Разработка проекта</option>
+                                                    <option value="2">Согласование</option>
+                                                    <option value="3">Исполнение</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="row d-flex align-items-center">
+                                    <div class="col-md-1 mb-3">
+                                        <h3><span class="badge badge-pill mdb-color">1</span></h3>
+                                    </div>
+                                    <div class="col-md-8 mb-3">
+                                        <h6 class="alert alert-secondary">
+                                            <div class="mb-2">
+                                                Наименование: <strong сlass="ml-2">Разработка технологической документации</strong>
+                                            </div>
+                                            <div>
+                                                Функция: <strong сlass="ml-2">Разработка проекта</strong>
+                                            </div>
+                                        </h6>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="#" class="btn btn-primary btn-sm rounded"><i class="fas fa-pencil-alt mr-2"></i>Изменить</a>
+                                        <button class="btn btn-sm btn-danger rounded"><i class="far fa-trash-alt mr-2"></i>Удалить</button>
+                                    </div>
+                                </div>
+                                <div class="row d-flex align-items-center">
+                                    <div class="col-md-1 mb-3">
+                                        <h3><span class="badge badge-pill mdb-color">2</span></h3>
+                                    </div>
+                                    <div class="col-md-8 mb-3">
+                                        <h6 class="alert alert-secondary">
+                                            <div class="mb-2">
+                                                Наименование: <strong сlass="ml-2">Разработка технологической документации</strong>
+                                            </div>
+                                            <div>
+                                                Функция: <strong сlass="ml-2">Разработка проекта</strong>
+                                            </div>
+                                        </h6>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="#" class="btn btn-primary btn-sm rounded"><i class="fas fa-pencil-alt mr-2"></i>Изменить</a>
+                                        <button class="btn btn-sm btn-danger rounded"><i class="far fa-trash-alt mr-2"></i>Удалить</button>
+                                    </div>
+                                </div>
+                                <div class="row d-flex align-items-center">
+                                    <div class="col-md-1 mb-3">
+                                        <h3><span class="badge badge-pill mdb-color">3</span></h3>
+                                    </div>
+                                    <div class="col-md-8 mb-3">
+                                        <h6 class="alert alert-secondary">
+                                            <div class="mb-2">
+                                                Наименование: <strong сlass="ml-2">Разработка технологической документации</strong>
+                                            </div>
+                                            <div>
+                                                Функция: <strong сlass="ml-2">Разработка проекта</strong>
+                                            </div>
+                                        </h6>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="#" class="btn btn-primary btn-sm rounded"><i class="fas fa-pencil-alt mr-2"></i>Изменить</a>
+                                        <button class="btn btn-sm btn-danger rounded"><i class="far fa-trash-alt mr-2"></i>Удалить</button>
+                                    </div>
+                                </div>
+                                <div class="row d-flex align-items-center">
+                                    <div class="col-md-1 mb-3">
+                                        <h3><span class="badge badge-pill mdb-color">4</span></h3>
+                                    </div>
+                                    <div class="col-md-8 mb-3">
+                                        <h6 class="alert alert-secondary">
+                                            <div class="mb-2">
+                                                Наименование: <strong сlass="ml-2">Разработка технологической документации</strong>
+                                            </div>
+                                            <div>
+                                                Функция: <strong сlass="ml-2">Разработка проекта</strong>
+                                            </div>
+                                        </h6>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="#" class="btn btn-primary btn-sm rounded"><i class="fas fa-pencil-alt mr-2"></i>Изменить</a>
+                                        <button class="btn btn-sm btn-danger rounded"><i class="far fa-trash-alt mr-2"></i>Удалить</button>
+                                    </div>
+                                </div>
+                                <div class="row d-flex align-items-center">
+                                    <div class="col-md-1 mb-3">
+                                        <h3><span class="badge badge-pill mdb-color">5</span></h3>
+                                    </div>
+                                    <div class="col-md-8 mb-3">
+                                        <h6 class="alert alert-secondary">
+                                            <div class="mb-2">
+                                                Наименование: <strong сlass="ml-2">Разработка технологической документации</strong>
+                                            </div>
+                                            <div>
+                                                Функция: <strong сlass="ml-2">Разработка проекта</strong>
+                                            </div>
+                                        </h6>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="#" class="btn btn-primary btn-sm rounded"><i class="fas fa-pencil-alt mr-2"></i>Изменить</a>
+                                        <button class="btn btn-sm btn-danger rounded"><i class="far fa-trash-alt mr-2"></i>Удалить</button>
+                                    </div>
+                                </div>
+                                <div class="row d-flex align-items-center">
+                                    <div class="col-md-1 mb-3">
+                                        <h3><span class="badge badge-pill mdb-color">6</span></h3>
+                                    </div>
+                                    <div class="col-md-8 mb-3">
+                                        <h6 class="alert alert-secondary">
+                                            <div class="mb-2">
+                                                Наименование: <strong сlass="ml-2">Разработка технологической документации</strong>
+                                            </div>
+                                            <div>
+                                                Функция: <strong сlass="ml-2">Разработка проекта</strong>
+                                            </div>
+                                        </h6>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="#" class="btn btn-primary btn-sm rounded"><i class="fas fa-pencil-alt mr-2"></i>Изменить</a>
+                                        <button class="btn btn-sm btn-danger rounded"><i class="far fa-trash-alt mr-2"></i>Удалить</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -60,42 +250,28 @@
 <script>
     $(function() {
         // Подсветка меню
+        var page = getId('id');
         $('#constructor').addClass('active');
+        $('#'+page).addClass('activeMenu');
 
-        // Радио кнопки верх
-        $('#process').on('click', function() {
-            $(this).removeClass('btn-outline-mdb-color').addClass('btn-mdb-color');
-            $('#project, #instruction').removeClass('btn-mdb-color').addClass('btn-outline-mdb-color');
-            $('#launch').attr('href','process');
-        });
+        // Данные страницы процессов
+        if(page == 'process') {
+            $('#headTitle').html('Процессы');
+            $('#newBtn').html('Создать новый процесс').attr('href','process');
+        }
 
-        $('#project').on('click', function() {
-            $(this).removeClass('btn-outline-mdb-color').addClass('btn-mdb-color');
-            $('#process, #instruction').removeClass('btn-mdb-color').addClass('btn-outline-mdb-color');
-            $('#launch').attr('href','project');
-        });
+        // Данные страницы проектов
+        if(page == 'project') {
+            $('#headTitle').html('Проекты');
+            $('#newBtn').html('Создать новый проект').attr('href','project');
+        }
 
-        $('#instruction').on('click', function() {
-            $(this).removeClass('btn-outline-mdb-color').addClass('btn-mdb-color');
-            $('#process, #project').removeClass('btn-mdb-color').addClass('btn-outline-mdb-color');
-            $('#launch').attr('href','instruction');
-        });
+        // Данные страницы поручений
+        if(page == 'instruction') {
+            $('#headTitle').html('Поручения');
+            $('#newBtn').html('Создать новое поручение').attr('href','instruction');
+        }
 
-        // Радио кнопки низ
-        $('#processBtn').on('click', function() {
-            $(this).removeClass('btn-outline-mdb-color').addClass('btn-mdb-color');
-            $('#projectBtn, #instructionBtn').removeClass('btn-mdb-color').addClass('btn-outline-mdb-color');
-        });
-
-        $('#projectBtn').on('click', function() {
-            $(this).removeClass('btn-outline-mdb-color').addClass('btn-mdb-color');
-            $('#processBtn, #instructionBtn').removeClass('btn-mdb-color').addClass('btn-outline-mdb-color');
-        });
-
-        $('#instructionBtn').on('click', function() {
-            $(this).removeClass('btn-outline-mdb-color').addClass('btn-mdb-color');
-            $('#processBtn, #projectBtn').removeClass('btn-mdb-color').addClass('btn-outline-mdb-color');
-        });
     });
 </script>
 <jsp:include page="fragments/footerBasement.jsp"/>

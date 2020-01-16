@@ -37,6 +37,37 @@
         todayHighlight: true
     });
 
+    var arrayDate = (['01/09/2020', '01/15/2020', '01/20/2020']);
+    $('.demoLeft').datepicker({
+        format: 'mm/dd/yyyy',
+        language: 'ru',
+        weekStart: 1,
+        multidate: true,
+        todayHighlight: true
+    });
+    $('.demoLeft').datepicker('setDates', arrayDate);
+
+    // Сортировка
+    $('#sortLeft').on('click', function() {
+        $(this).removeClass('btn-mdb-color').addClass('btn-outline-mdb-color');
+        $('#sortRight').removeClass('btn-outline-mdb-color').addClass('btn-mdb-color');
+        $('#sortLeftIconUp').toggleClass('d-none d-inline active no-active');
+        $('#sortLeftIconDown').toggleClass('d-none d-inline active no-active');
+    });
+
+    $('#sortRight').on('click', function() {
+        $(this).removeClass('btn-mdb-color').addClass('btn-outline-mdb-color');
+        $('#sortLeft').removeClass('btn-outline-mdb-color').addClass('btn-mdb-color');
+        $('#sortRightIconUp').toggleClass('d-none d-inline active no-active');
+        $('#sortRightIconDown').toggleClass('d-none d-inline active no-active');
+    });
+
+    // Блок фильтрации
+    $('#filterBtn').on('click', function() {
+        $(this).toggleClass('btn-mdb-color');
+        $('#filterBlock').toggleClass('d-none');
+    });
+
     // Рейтинг звёздочки
     $('#rateMe').mdbRate();
 

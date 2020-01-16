@@ -7,7 +7,7 @@
                 <div class="container-fluid">
                     <form class="mb-3">
                         <div class="alert alert-primary text-center mb-3">
-                            <h4 class="mt-2">Конструктор / Инициирование поручения</h4>
+                            <h4 class="mt-2">Инициирование поручения</h4>
                         </div>
                         <div class="card mb-3">
                             <div class="card-body">
