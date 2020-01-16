@@ -41,10 +41,10 @@
                         <%--<div class="collapsible-body">--%>
                             <ul class="list-unstyled">
                                 <li>
-                                    <a id="project" href="constructor?id=project" class="waves-effect pl-4">Проекты</a>
+                                    <a id="process" href="constructor?id=process" class="waves-effect pl-4">Процессы</a>
                                 </li>
                                 <li>
-                                    <a id="process" href="constructor?id=process" class="waves-effect pl-4">Процессы</a>
+                                    <a id="project" href="constructor?id=project" class="waves-effect pl-4">Проекты</a>
                                 </li>
                                 <li>
                                     <a id="instruction" href="constructor?id=instruction" class="waves-effect pl-4">Поручения</a>
