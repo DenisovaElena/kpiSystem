@@ -3,6 +3,7 @@
 @import url("mdb.min.css");
 @import url("chosen_new.css");
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
+@import url('addons/rating.css');
 html, body {height: 100%;}
 body {
     font-family: 'Roboto Condensed', sans-serif;

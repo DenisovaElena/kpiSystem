@@ -30,7 +30,6 @@
                                 </div>
                                 <div class="col-10">
                                     <select class="chosen-select" id="taskList" name="taskList[]" data-placeholder="Выберите из справочника" multiple>
-                                        <%--<option value="">Выбрать </option>--%>
                                         <option value="11" >Задача 1.1</option>
                                         <option value="12">Задача 1.2</option>
                                         <option value="13">Задача 1.3</option>
@@ -56,7 +55,6 @@
                                 </div>
                                 <div class="col-10">
                                     <select class="chosen-select" id="functList" name="functList[]" data-placeholder="Выберите из справочника" multiple>
-                                        <%--<option value="">Выбрать </option>--%>
                                         <option value="1">Разработка проекта</option>
                                         <option value="2">Согласование</option>
                                         <option value="3">Исполнение</option>

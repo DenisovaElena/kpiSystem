@@ -21,8 +21,6 @@
                                             <option value="3">Процесс 3</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="row d-flex align-items-center">
                                     <div class="col-md-3 mb-3"><i class="fas fa-bullseye mr-2"></i>Цель</div>
                                     <div class="col-md-9 mb-3" id="targetListBlock">
                                         <select class="chosen-select other" id="targetList" name="targetList[]" data-placeholder="Выберите из справочника">
@@ -111,8 +109,6 @@
                                         <input class="form-control">
                                         <div class="ml-3">млн.&nbsp;руб.</div>
                                     </div>
-                                </div>
-                                <div class="row d-flex align-items-center">
                                     <div class="col-md-3 mb-3"><i class="fas fa-thumbtack mr-2"></i>Уточняющие наименование</div>
                                     <div class="col-md-9 mb-3">
                                         <textarea class="form-control"></textarea>
@@ -120,7 +116,11 @@
                                     <div class="col-md-6 mb-3">
                                         <div class="row d-flex align-items-center">
                                             <div class="col-sm-4"><i class="fas fa-dumbbell mr-2"></i>Уровень сложности</div>
-                                            <div class="col-sm-8"><span id="rateMe" class="empty-stars"></span></div>
+                                            <div class="col-sm-8">
+                                                <div class="container mdb-rating">
+                                                    <span id="rateMe" class="empty-stars"></span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-3">

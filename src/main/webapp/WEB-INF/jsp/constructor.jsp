@@ -51,29 +51,62 @@
                     </form>--%>
                     <form class="mb-3">
                         <div class="alert alert-primary text-center mb-3">
-                            <h4 class="mt-2" id="headTitle">Конструктор</h4>
+                            <div class="row d-flex align-items-center">
+                                <div class="col-md-3 text-left">
+                                    <a href="#" class="btn btn-primary rounded my-0" id="newBtn">Создать новый</a>
+                                </div>
+                                <div class="col-md-8 text-center">
+                                    <h4 class="" id="headTitle">Конструктор</h4>
+                                </div>
+                            </div>
                         </div>
                         <div class="card mb-3">
                             <div class="card-body">
-                                <div class="row d-flex align-items-center">
-                                    <div class="col-md-3 text-md-left text-center mb-3">
-                                        <a href="#" class="btn btn-primary rounded" id="newBtn">Создать новый</a>
-                                    </div>
-                                    <div class="col-md-9 text-md-left text-center mb-3" id="tempLate">
-                                        <div class="row d-flex align-items-center ml-md-5">
-                                            <div class="col-md-12">
-                                                <h6 class="alert activeMenu rounded" id="textTemplate">Шаблон проекта</h6>
-                                            </div>
-                                            <div class="col-md-7 mb-3">
-                                                <select class="chosen-select" id="optionList" name="optionList[]" data-placeholder="Выберите из справочника">
-                                                    <option value="" selected>Выберите из справочника</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-5 mb-3 text-md-center">
-                                                <a href="#" class="btn btn-primary btn-sm rounded"><i class="fas fa-pencil-alt mr-2"></i>Внести изменения</a>
-                                                <a href="#" class="btn btn-sm btn-danger rounded"><i class="far fa-trash-alt mr-2"></i>Удалить</a>
-                                            </div>
+                                <div class="col-12">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-md-2 mb-2">
+                                            <h6>Цели</h6>
                                         </div>
+                                        <div class="col-md-10 mb-2">
+                                            <select class="chosen-select" id="targetListAll" name="targetListAll[]" data-placeholder="Выберите из справочника" multiple>
+                                                <option value="1">Цель 1</option>
+                                                <option value="2">Цель 2</option>
+                                                <option value="3">Цель 3</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2 mb-2">
+                                            <h6>Задачи</h6>
+                                        </div>
+                                        <div class="col-md-10 mb-2">
+                                            <select class="chosen-select" id="taskListAll" name="taskListAll[]" data-placeholder="Выберите из справочника" multiple>
+                                                <option value="11">Задача 1</option>
+                                                <option value="12">Задача 2</option>
+                                                <option value="13">Задача 3</option>
+                                                <option value="14">Задача 4</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2 mb-2">
+                                            <h6>Подразделения</h6>
+                                        </div>
+                                        <div class="col-md-10 mb-2">
+                                            <select class="chosen-select" id="itemsListAll" name="itemsListAll[]" data-placeholder="Выберите из справочника" multiple>
+                                                <option value="1">Подразделение 1</option>
+                                                <option value="2">Подразделение 2</option>
+                                                <option value="3">Подразделение 3</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2 mb-2">
+                                            <h6 id="textTemplate">Подразделения:</h6>
+                                        </div>
+                                        <div class="col-md-10 mb-2">
+                                            <select class="chosen-select" id="optionListAll" name="optionListAll[]" data-placeholder="Выберите из справочника">
+                                                <option value="">Выберите из справочника</option>
+                                            </select>
+                                        </div>
+                                        <%--<div class="col-12 mb-3 text-md-center">
+                                            <a href="#" class="btn btn-primary btn-sm rounded"><i class="fas fa-pencil-alt mr-2"></i>Внести изменения</a>
+                                            <a href="#" class="btn btn-sm btn-danger rounded"><i class="far fa-trash-alt mr-2"></i>Удалить</a>
+                                        </div>--%>
                                     </div>
                                 </div>
                             </div>
@@ -198,15 +231,285 @@
                         </div>--%>
                         <div class="card mb-3 d-none" id="elementBlock">
                             <div class="card-body">
-                                <h5 class="alert alert-primary my-3">
-                                    <span id="textTemplateElement" class="mr-2"></span>
-                                    <strong id="elementName"></strong>
-                                </h5>
-                                <div class="alert alert-secondary mb-3">
-                                    Цель:<strong class="ml-2" id="textTarget"></strong>
+                                <div class="alert alert-primary my-3">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-md-6 text-left">
+                                            <h5 class="" id="elementName"></h5>
+                                        </div>
+                                        <div class="col-md-6 text-md-right">
+                                            <a href="#" class="btn btn-sm btn-success rounded my-0"><i class="fas fa-play mr-2"></i>Запустить</a>
+                                            <a href="#" class="btn btn-primary btn-sm rounded my-0"><i class="fas fa-pencil-alt mr-2"></i>Внести изменения</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="alert alert-secondary mb-3">
-                                    Задача:<strong class="ml-2" id="textTask"></strong>
+                                <div class="row d-flex align-items-center" id="projectBlock">
+                                    <div class="col-md-3 mb-3"><i class="fas fa-bullseye mr-2"></i>Цель</div>
+                                    <div class="col-md-9 mb-3">
+                                        <select class="chosen-select other" data-placeholder="Выберите из справочника" disabled>
+                                            <option value="">Выберите из справочника</option>
+                                            <option value="1" selected>Цель 1</option>
+                                            <option value="2">Цель 2</option>
+                                            <option value="3">Цель 3</option>
+                                            <option value="0">Иное</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-tasks mr-2"></i>Задача</div>
+                                    <div class="col-md-9 mb-3">
+                                        <select class="chosen-select other" data-placeholder="Выберите из справочника" disabled>
+                                            <option value="">Выберите из справочника</option>
+                                            <option value="1">Задача 1</option>
+                                            <option value="2" selected>Задача 2</option>
+                                            <option value="3">Задача 3</option>
+                                            <option value="0">Иное</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-file-alt mr-2"></i>Цель проекта</div>
+                                    <div class="col-md-9 mb-3">
+                                        <input class="form-control" value="Наименование цели проекта" disabled>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-brain mr-2"></i>Конечный результат</div>
+                                    <div class="col-md-9 mb-3">
+                                        <select class="chosen-select" data-placeholder="Выберите из справочника" disabled>
+                                            <option value="">Выберите из справочника</option>
+                                            <option value="1">Документ</option>
+                                            <option value="2">ИАС</option>
+                                            <option value="3" selected>Продукт</option>
+                                            <option value="4">Услуга</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="far fa-calendar-alt mr-2"></i>Сроки исполнения</div>
+                                    <div class="col-md-9 mb-3">
+                                        <input type="text" class="form-control demo" placeholder="Выберите дату" value="15.05.2020" disabled>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-exclamation mr-2"></i>Риски</div>
+                                    <div class="col-md-9 mb-3">
+                                        <select class="chosen-select other" data-placeholder="Выберите из справочника" disabled>
+                                            <option value="">Выберите из справочника</option>
+                                            <option value="1">Риск 1</option>
+                                            <option value="2">Риск 2</option>
+                                            <option value="3">Риск 3</option>
+                                            <option value="0" selected>Иное</option>
+                                        </select>
+                                        <textarea class="form-control" disabled>Наименование рисков не из справочника</textarea>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-balance-scale mr-2"></i>Показатели эффективности</div>
+                                    <div class="col-md-9 mb-3">
+                                        <div class="btn btn-sm btn-primary rounded ml-0"><i class="fas fa-plus mr-2"></i>Методика расчета</div>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-users mr-2"></i>Заинтересованные стороны</div>
+                                    <div class="col-md-9 mb-3">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-auto">Потребители</div>
+                                                    <div class="col-md-auto">
+                                                        <select class="chosen-select w-100" data-placeholder="Выберите из справочника" disabled>
+                                                            <option value="">Выберите из справочника</option>
+                                                            <option value="1">Потребитель 1</option>
+                                                            <option value="2" selected>Потребитель 2</option>
+                                                            <option value="3">Потребитель 3</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-auto">Поставщики</div>
+                                                    <div class="col-md-auto">
+                                                        <select class="chosen-select w-100" data-placeholder="Выберите из справочника" disabled>
+                                                            <option value="">Выберите из справочника</option>
+                                                            <option value="1">Поставщик, длинное название</option>
+                                                            <option value="2" selected>Поставщик 2</option>
+                                                            <option value="3">Поставщик 3</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-ruble-sign mr-2"></i>Бюджет</div>
+                                    <div class="col-md-auto mb-3 d-flex align-items-center">
+                                        <input class="form-control" value="360" disabled>
+                                        <div class="ml-3">млн.&nbsp;руб.</div>
+                                    </div>
+                                </div>
+                                <div class="row d-flex align-items-center" id="processBlock">
+                                    <div class="col-md-3 mb-3"><i class="fas fa-book mr-2"></i>Каталог процессов</div>
+                                    <div class="col-md-9 mb-3">
+                                        <select class="chosen-select" data-placeholder="Выберите из справочника" disabled>
+                                            <option value="">Выберите из справочника</option>
+                                            <option value="1">Процесс 1</option>
+                                            <option value="2">Процесс 2</option>
+                                            <option value="3" selected>Процесс 3</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-bullseye mr-2"></i>Цель</div>
+                                    <div class="col-md-9 mb-3" id="targetListBlock">
+                                        <select class="chosen-select other" data-placeholder="Выберите из справочника" disabled>
+                                            <option value="">Выберите из справочника</option>
+                                            <option value="1">Цель 1</option>
+                                            <option value="2" selected>Цель 2</option>
+                                            <option value="3">Цель 3</option>
+                                            <option value="0">Иное</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-tasks mr-2"></i>Задача</div>
+                                    <div class="col-md-9 mb-3" id="taskListBlock">
+                                        <select class="chosen-select other" data-placeholder="Выберите из справочника" disabled>
+                                            <option value="">Выберите из справочника</option>
+                                            <option value="1">Задача 1</option>
+                                            <option value="2">Задача 2</option>
+                                            <option value="3">Задача 3</option>
+                                            <option value="0" selected>Иное</option>
+                                        </select>
+                                        <textarea class="form-control" disabled>Наименование задачи не из справочника</textarea>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-file-alt mr-2"></i>Цель проекта</div>
+                                    <div class="col-md-9 mb-3">
+                                        <input class="form-control" value="Наименование цели" disabled>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-brain mr-2"></i>Конечный результат</div>
+                                    <div class="col-md-9 mb-3">
+                                        <select class="chosen-select" data-placeholder="Выберите из справочника" disabled>
+                                            <option value="">Выберите из справочника</option>
+                                            <option value="1" selected>Документ</option>
+                                            <option value="2">ИАС</option>
+                                            <option value="3">Продукт</option>
+                                            <option value="4">Услуга</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="far fa-calendar-alt mr-2"></i>Сроки исполнения</div>
+                                    <div class="col-md-9 mb-3">
+                                        <input type="text" class="form-control demo" placeholder="Выберите дату" value="23.03.2020" disabled>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-exclamation mr-2"></i>Риски</div>
+                                    <div class="col-md-9 mb-3">
+                                        <select class="chosen-select other" data-placeholder="Выберите из справочника" disabled>
+                                            <option value="">Выберите из справочника</option>
+                                            <option value="1">Риск 1</option>
+                                            <option value="2">Риск 2</option>
+                                            <option value="3" selected>Риск 3</option>
+                                            <option value="0">Иное</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-balance-scale mr-2"></i>Показатели эффективности</div>
+                                    <div class="col-md-9 mb-3">
+                                        <div class="btn btn-sm btn-primary rounded ml-0"><i class="fas fa-plus mr-2"></i>Методика расчета</div>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-users mr-2"></i>Заинтересованные стороны</div>
+                                    <div class="col-md-9 mb-3">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-4 mb-3">Потребители</div>
+                                                    <div class="col-md-8 mb-3">
+                                                        <select class="chosen-select w-100" data-placeholder="Выберите из справочника" disabled>
+                                                            <option value="">Выберите из справочника</option>
+                                                            <option value="1">Потребитель 1</option>
+                                                            <option value="2" selected>Потребитель 2</option>
+                                                            <option value="3">Потребитель 3</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-4 mb-3">Поставщики</div>
+                                                    <div class="col-md-8 mb-3">
+                                                        <select class="chosen-select w-100" data-placeholder="Выберите из справочника" disabled>
+                                                            <option value="">Выберите из справочника</option>
+                                                            <option value="1" selected>Поставщик 1</option>
+                                                            <option value="2">Поставщик 2</option>
+                                                            <option value="3">Поставщик 3</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-ruble-sign mr-2"></i>Бюджет</div>
+                                    <div class="col-md-3 mb-3 d-flex align-items-center">
+                                        <input class="form-control" value="23" disabled>
+                                        <div class="ml-3">млн.&nbsp;руб.</div>
+                                    </div>
+                                    <div class="col-md-6">&nbsp;</div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-thumbtack mr-2"></i>Уточняющие наименование</div>
+                                    <div class="col-md-9 mb-3">
+                                        <textarea class="form-control" disabled>Текст уточняющего наименования</textarea>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-sm-4"><i class="fas fa-dumbbell mr-2"></i>Уровень сложности</div>
+                                            <div class="col-sm-8">
+                                                <div class="container mdb-rating">
+                                                    <span id="rateMe" class="empty-stars"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <a href="#" class="btn btn-sm btn-primary rounded"><i class="fas fa-users mr-2"></i>Назначение исполнителей</a>
+                                    </div>
+                                </div>
+                                <div class="row d-flex align-items-center" id="instructionBlock">
+                                    <div class="col-md-3 mb-3"><i class="fas fa-user mr-2"></i>Ответсвенный</div>
+                                    <div class="col-md-9 mb-3">
+                                        <select class="chosen-select" data-placeholder="Выберите из справочника" disabled>
+                                            <option value="">Выберите из справочника</option>
+                                            <option value="1">Исполнитель 1</option>
+                                            <option value="2" selected>Исполнитель 2</option>
+                                            <option value="3">Исполнитель 3</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-bullseye mr-2"></i>Цель</div>
+                                    <div class="col-md-9 mb-3">
+                                        <select class="chosen-select" data-placeholder="Выберите из справочника" disabled>
+                                            <option value="">Выберите из справочника</option>
+                                            <option value="1">Цель 1</option>
+                                            <option value="2" selected>Цель 2</option>
+                                            <option value="3">Цель 3</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-tasks mr-2"></i>Задача</div>
+                                    <div class="col-md-9 mb-3">
+                                        <select class="chosen-select" data-placeholder="Выберите из справочника" disabled>
+                                            <option value="">Выберите из справочника</option>
+                                            <option value="1">Задача 1</option>
+                                            <option value="2">Задача 2</option>
+                                            <option value="3" selected>Задача 3</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-paperclip mr-2"></i>Действие</div>
+                                    <div class="col-md-9 mb-3">
+                                        <select class="chosen-select" data-placeholder="Выберите из справочника" disabled>
+                                            <option value="">Выберите из справочника</option>
+                                            <option value="1">Разработать</option>
+                                            <option value="2" selected>Подготовить</option>
+                                            <option value="3">Согласовать</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-file-alt mr-2"></i>Наименование</div>
+                                    <div class="col-md-9 mb-3">
+                                        <input class="form-control" value="Название наименования" disabled>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-brain mr-2"></i>Конечный результат</div>
+                                    <div class="col-md-9 mb-3">
+                                        <select class="chosen-select" data-placeholder="Выберите из справочника" disabled>
+                                            <option value="">Выберите из справочника</option>
+                                            <option value="1">Документ</option>
+                                            <option value="2" selected>ИАС</option>
+                                            <option value="3">Продукт</option>
+                                            <option value="4">Услуга</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="far fa-calendar-alt mr-2"></i>Сроки исполнения</div>
+                                    <div class="col-md-9 mb-3">
+                                        <input type="text" class="form-control demo" placeholder="Выберите дату" disabled value="20.02.2020">
+                                    </div>
+                                    <div class="col-md-3 mb-3"><i class="fas fa-balance-scale mr-2"></i>Показатели эффективности</div>
+                                    <div class="col-md-9 mb-3">
+                                        <div class="btn btn-sm btn-primary rounded ml-0"><i class="fas fa-plus mr-2"></i>Методика расчета</div>
+                                    </div>
                                 </div>
                                 <div id="processCard">
                                     <div class="alert alert-secondary">
@@ -232,57 +535,8 @@
         $('#constructor').addClass('active');
         $('#'+page).addClass('activeMenu');
 
-        // Данные страницы процессов
-        if(page == 'process') {
-            $('#headTitle').html('Процессы');
-            $('#textTemplate').html('Управление шаблонами процессов');
-            $('#textTemplateElement').html('Шаблон процесса:');
-            $('#textTarget').html('Цель процесса');
-            $('#textTask').html('Задача процесса');
-            $('#newBtn').html('Создать новый процесс').attr('href','process');
-            $('#optionList').append(
-                '<option value="1">Процесс 1</option>' +
-                '<option value="2">Процесс 2</option>' +
-                '<option value="3">Процесс 3</option>'
-            );
-            $('#optionList').trigger("chosen:updated");
-        }
-
-        // Данные страницы проектов
-        if(page == 'project') {
-            $('#headTitle').html('Проекты');
-            $('#textTemplate').html('Управление шаблонами проектов');
-            $('#textTemplateElement').html('Шаблон проекта:');
-            $('#textTarget').html('Цель проекта');
-            $('#textTask').html('Задача проекта');
-            $('#newBtn').html('Создать новый проект').attr('href','project');
-            $('#optionList').append(
-                '<option value="1">Проект 1</option>' +
-                '<option value="2">Проект 2</option>' +
-                '<option value="3">Проект 3</option>'
-            );
-            $('#optionList').trigger("chosen:updated");
-        }
-
-        // Данные страницы поручений
-        if(page == 'instruction') {
-            $('#headTitle').html('Поручения');
-            $('#textTemplate').html('Управление шаблонами поручений');
-            $('#textTemplateElement').html('Шаблон поручения:');
-            $('#textTarget').html('Цель поручения');
-            $('#textTask').html('Задача поручения');
-            $('#newBtn').html('Создать новое поручение').attr('href','instruction');
-            $('#optionList').append(
-                '<option value="1">Поручение 1</option>' +
-                '<option value="2">Поручение 2</option>' +
-                '<option value="3">Поручение 3</option>'
-            );
-            $('#optionList').trigger("chosen:updated");
-            $('#processCard').addClass('d-none');
-        }
-
         // Показ данных элемента по выбору селекта
-        $(document).on('change', '#optionList', function() {
+        $(document).on('change', '#optionListAll', function() {
             var element = $(this).val();
             if(element && element > 0) {
                 $('#elementBlock').removeClass('d-none');
@@ -292,6 +546,71 @@
                 $('#elementBlock').addClass('d-none');
             }
         });
+
+        $('#rateMe .rate-popover').each(function() {
+            var star = $(this).attr("data-index");
+            if(star < 3) {
+                $(this).addClass('fas threeStars');
+            }
+        });
+
+        // Данные страницы процессов
+        if(page == 'process') {
+            $('#headTitle').html('Процессы');
+            $('#textTemplate').html('Каталог процессов');
+            $('#textTemplateElement').html('Шаблон процесса:');
+            $('#textTarget').html('Цель процесса');
+            $('#textTask').html('Задача процесса');
+            $('#newBtn').html('Создать новый процесс').attr('href','process');
+            $('#optionListAll').append(
+                '<option value="1">Процесс 1</option>' +
+                '<option value="2">Процесс 2</option>' +
+                '<option value="3">Процесс 3</option>'
+            );
+            $('#optionListAll').trigger("chosen:updated");
+            $('#processBlock').removeClass('d-none');
+            $('#projectBlock').removeClass('d-flex').addClass('d-none');
+            $('#instructionBlock').removeClass('d-flex').addClass('d-none');
+        }
+
+        // Данные страницы проектов
+        if(page == 'project') {
+            $('#headTitle').html('Проекты');
+            $('#textTemplate').html('Каталог проектов');
+            $('#textTemplateElement').html('Шаблон проекта:');
+            $('#textTarget').html('Цель проекта');
+            $('#textTask').html('Задача проекта');
+            $('#newBtn').html('Создать новый проект').attr('href','project');
+            $('#optionListAll').append(
+                '<option value="1">Проект 1</option>' +
+                '<option value="2">Проект 2</option>' +
+                '<option value="3">Проект 3</option>'
+            );
+            $('#optionListAll').trigger("chosen:updated");
+            $('#projectBlock').removeClass('d-none');
+            $('#processBlock').removeClass('d-flex').addClass('d-none');
+            $('#instructionBlock').removeClass('d-flex').addClass('d-none');
+        }
+
+        // Данные страницы поручений
+        if(page == 'instruction') {
+            $('#headTitle').html('Поручения');
+            $('#textTemplate').html('Каталог поручений');
+            $('#textTemplateElement').html('Шаблон поручения:');
+            $('#textTarget').html('Цель поручения');
+            $('#textTask').html('Задача поручения');
+            $('#newBtn').html('Создать новое поручение').attr('href','instruction');
+            $('#optionListAll').append(
+                '<option value="1">Поручение 1</option>' +
+                '<option value="2">Поручение 2</option>' +
+                '<option value="3">Поручение 3</option>'
+            );
+            $('#optionListAll').trigger("chosen:updated");
+            $('#processCard').addClass('d-none');
+            $('#instructionBlock').removeClass('d-none');
+            $('#projectBlock').removeClass('d-flex').addClass('d-none');
+            $('#processBlock').removeClass('d-flex').addClass('d-none');
+        }
 
     });
 </script>
