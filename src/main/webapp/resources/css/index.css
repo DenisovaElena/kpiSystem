@@ -29,3 +29,8 @@ a.disabled {
     pointer-events: none; /* делаем ссылку некликабельной */
     cursor: default;  /* устанавливаем курсор в виде стрелки */
 }
+/* Серый цвет у залоченных полей */
+.disableElem, .chosen-disabled {
+    background: rgb(232, 235, 237)!important;
+    color: #666666!important;
+}

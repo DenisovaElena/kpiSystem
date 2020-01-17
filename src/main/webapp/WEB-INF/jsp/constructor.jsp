@@ -245,7 +245,7 @@
                                 <div class="row d-flex align-items-center" id="projectBlock">
                                     <div class="col-md-3 mb-3"><i class="fas fa-bullseye mr-2"></i>Цель</div>
                                     <div class="col-md-9 mb-3">
-                                        <select class="chosen-select other" data-placeholder="Выберите из справочника" disabled>
+                                        <select class="chosen-select other disableElem" data-placeholder="Выберите из справочника" disabled>
                                             <option value="">Выберите из справочника</option>
                                             <option value="1" selected>Цель 1</option>
                                             <option value="2">Цель 2</option>
@@ -255,7 +255,7 @@
                                     </div>
                                     <div class="col-md-3 mb-3"><i class="fas fa-tasks mr-2"></i>Задача</div>
                                     <div class="col-md-9 mb-3">
-                                        <select class="chosen-select other" data-placeholder="Выберите из справочника" disabled>
+                                        <select class="chosen-select other disableElem" data-placeholder="Выберите из справочника" disabled>
                                             <option value="">Выберите из справочника</option>
                                             <option value="1">Задача 1</option>
                                             <option value="2" selected>Задача 2</option>
@@ -265,11 +265,11 @@
                                     </div>
                                     <div class="col-md-3 mb-3"><i class="fas fa-file-alt mr-2"></i>Цель проекта</div>
                                     <div class="col-md-9 mb-3">
-                                        <input class="form-control" value="Наименование цели проекта" disabled>
+                                        <input class="form-control disableElem" value="Наименование цели проекта" disabled>
                                     </div>
                                     <div class="col-md-3 mb-3"><i class="fas fa-brain mr-2"></i>Конечный результат</div>
                                     <div class="col-md-9 mb-3">
-                                        <select class="chosen-select" data-placeholder="Выберите из справочника" disabled>
+                                        <select class="chosen-select disableElem" data-placeholder="Выберите из справочника" disabled>
                                             <option value="">Выберите из справочника</option>
                                             <option value="1">Документ</option>
                                             <option value="2">ИАС</option>
@@ -279,18 +279,18 @@
                                     </div>
                                     <div class="col-md-3 mb-3"><i class="far fa-calendar-alt mr-2"></i>Сроки исполнения</div>
                                     <div class="col-md-9 mb-3">
-                                        <input type="text" class="form-control demo" placeholder="Выберите дату" value="15.05.2020" disabled>
+                                        <input type="text" class="form-control demo disableElem" placeholder="Выберите дату" value="15.05.2020" disabled>
                                     </div>
                                     <div class="col-md-3 mb-3"><i class="fas fa-exclamation mr-2"></i>Риски</div>
                                     <div class="col-md-9 mb-3">
-                                        <select class="chosen-select other" data-placeholder="Выберите из справочника" disabled>
+                                        <select class="chosen-select other disableElem" data-placeholder="Выберите из справочника" disabled>
                                             <option value="">Выберите из справочника</option>
                                             <option value="1">Риск 1</option>
                                             <option value="2">Риск 2</option>
                                             <option value="3">Риск 3</option>
                                             <option value="0" selected>Иное</option>
                                         </select>
-                                        <textarea class="form-control" disabled>Наименование рисков не из справочника</textarea>
+                                        <textarea class="form-control disableElem" disabled>Наименование рисков не из справочника</textarea>
                                     </div>
                                     <div class="col-md-3 mb-3"><i class="fas fa-balance-scale mr-2"></i>Показатели эффективности</div>
                                     <div class="col-md-9 mb-3">
@@ -303,7 +303,7 @@
                                                 <div class="row align-items-center">
                                                     <div class="col-md-auto">Потребители</div>
                                                     <div class="col-md-auto">
-                                                        <select class="chosen-select w-100" data-placeholder="Выберите из справочника" disabled>
+                                                        <select class="chosen-select w-100 disableElem" data-placeholder="Выберите из справочника" disabled>
                                                             <option value="">Выберите из справочника</option>
                                                             <option value="1">Потребитель 1</option>
                                                             <option value="2" selected>Потребитель 2</option>
@@ -316,7 +316,7 @@
                                                 <div class="row align-items-center">
                                                     <div class="col-md-auto">Поставщики</div>
                                                     <div class="col-md-auto">
-                                                        <select class="chosen-select w-100" data-placeholder="Выберите из справочника" disabled>
+                                                        <select class="chosen-select w-100 disableElem" data-placeholder="Выберите из справочника" disabled>
                                                             <option value="">Выберите из справочника</option>
                                                             <option value="1">Поставщик, длинное название</option>
                                                             <option value="2" selected>Поставщик 2</option>
@@ -329,7 +329,7 @@
                                     </div>
                                     <div class="col-md-3 mb-3"><i class="fas fa-ruble-sign mr-2"></i>Бюджет</div>
                                     <div class="col-md-auto mb-3 d-flex align-items-center">
-                                        <input class="form-control" value="360" disabled>
+                                        <input class="form-control disableElem" value="360" disabled>
                                         <div class="ml-3">млн.&nbsp;руб.</div>
                                     </div>
                                 </div>
