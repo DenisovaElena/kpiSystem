@@ -5,50 +5,6 @@
         <div class="card">
             <div class="card-body">
                 <div class="container-fluid">
-                    <%--<form class="mb-3">
-                        <div class="alert alert-primary text-center mb-3">
-                            <h4 class="mt-2">Конструктор</h4>
-                        </div>
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <div class="alert alert-secondary mb-3">Создать проект/процесс/поручение</div>
-                                <div class="row d-flex align-items-center">
-                                    <div class="col-md-4 mb-3">
-                                        <div id="process" class="btn btn-sm btn-mdb-color rounded">Процесс</div>
-                                        <div id="project" class="btn btn-sm btn-outline-mdb-color rounded">Проект</div>
-                                        <div id="instruction" class="btn btn-sm btn-outline-mdb-color rounded">Поручение</div>
-                                    </div>
-                                    <div class="col-md-8 mb-3">
-                                        <a href="process" class="btn btn-primary btn-sm rounded" id="launch"><i class="far fa-hand-point-down mr-2"></i>Инициативный запуск</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <div class="alert alert-secondary mb-3">Шаблон проекта/процесса/поручения</div>
-                                <div class="row d-flex align-items-center">
-                                    <div class="col-md-4 mb-3">
-                                        <div id="processBtn" class="btn btn-sm btn-mdb-color rounded" data-link="process">Процесс</div>
-                                        <div id="projectBtn" class="btn btn-sm btn-outline-mdb-color rounded" data-link="project">Проект</div>
-                                        <div id="instructionBtn" class="btn btn-sm btn-outline-mdb-color rounded" data-link="instruction">Поручение</div>
-                                    </div>
-                                    <div class="col-md-5 mb-3">
-                                        <select class="chosen-select" id="functList" name="functList[]" data-placeholder="Выберите из справочника">
-                                            <option value="" selected>Выберите из справочника</option>
-                                            <option value="1">Каталог процессов</option>
-                                            <option value="2">Каталог проектов</option>
-                                            <option value="3">Каталог поручений</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <a href="#" class="btn btn-primary btn-sm rounded"><i class="fas fa-pencil-alt mr-2"></i>Внести изменения</a>
-                                        <button class="btn btn-sm btn-danger rounded"><i class="far fa-trash-alt mr-2"></i>Удалить</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>--%>
                     <form class="mb-3">
                         <div class="alert alert-primary text-center mb-3">
                             <div class="row d-flex align-items-center">
@@ -56,57 +12,69 @@
                                     <a href="#" class="btn btn-primary rounded my-0" id="newBtn">Создать новый</a>
                                 </div>
                                 <div class="col-md-8 text-center">
-                                    <h4 class="" id="headTitle">Конструктор</h4>
+                                    <h4 class="" id="headTitle"></h4>
                                 </div>
                             </div>
                         </div>
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div class="col-12">
-                                    <div class="row d-flex align-items-center">
-                                        <div class="col-md-2 mb-2">
-                                            <h6>Цели</h6>
+                                    Сортировать:
+                                    <div id="sortLeft" class="btn btn-sm btn-outline-mdb-color ml-3 mr-1 rounded">
+                                        <i id="sortLeftIconUp" data-sort="1" class="fas fa-sort-amount-down-alt mr-2 d-inline active"></i>
+                                        <i id="sortLeftIconDown" data-sort="2" class="fas fa-sort-amount-up-alt mr-2 d-none no-active"></i>
+                                        по дате постановки
+                                    </div>
+                                    <div id="sortRight" class="btn btn-sm btn-mdb-color rounded">
+                                        <i id="sortRightIconUp" data-sort="1" class="fas fa-sort-amount-down-alt mr-2 d-inline active"></i>
+                                        <i id="sortRightIconDown" data-sort="2" class="fas fa-sort-amount-up-alt mr-2 d-none no-active"></i>
+                                        по дате контроля
+                                    </div>
+                                    <div id="filterBtn" class="btn btn-sm btn-mdb-color rounded float-md-right">
+                                        <i class="fas fa-filter mr-2"></i>Фильтрация
+                                    </div>
+                                    <div class="col-12 d-none mt-3" id="filterBlock">
+                                        <div class="row mb-2 d-flex align-items-center">
+                                            <div class="col-md-2 mb-2">
+                                                <h6>Цели</h6>
+                                            </div>
+                                            <div class="col-md-10 mb-2">
+                                                <select class="chosen-select" id="targetListAll" name="targetListAll[]" data-placeholder="Выберите из справочника" multiple>
+                                                    <option value="1">Цель 1</option>
+                                                    <option value="2">Цель 2</option>
+                                                    <option value="3">Цель 3</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2 mb-2">
+                                                <h6>Задачи</h6>
+                                            </div>
+                                            <div class="col-md-10 mb-2">
+                                                <select class="chosen-select" id="taskListAll" name="taskListAll[]" data-placeholder="Выберите из справочника" multiple>
+                                                    <option value="11">Задача 1</option>
+                                                    <option value="12">Задача 2</option>
+                                                    <option value="13">Задача 3</option>
+                                                    <option value="14">Задача 4</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2 mb-2">
+                                                <h6>Подразделения</h6>
+                                            </div>
+                                            <div class="col-md-10 mb-2">
+                                                <select class="chosen-select" id="itemsListAll" name="itemsListAll[]" data-placeholder="Выберите из справочника" multiple>
+                                                    <option value="1">Подразделение 1</option>
+                                                    <option value="2">Подразделение 2</option>
+                                                    <option value="3">Подразделение 3</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2 mb-2">
+                                                <h6 id="textTemplate">Подразделения:</h6>
+                                            </div>
+                                            <div class="col-md-10 mb-2">
+                                                <select class="chosen-select" id="optionListAll" name="optionListAll[]" data-placeholder="Выберите из справочника">
+                                                    <option value="">Выберите из справочника</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                        <div class="col-md-10 mb-2">
-                                            <select class="chosen-select" id="targetListAll" name="targetListAll[]" data-placeholder="Выберите из справочника" multiple>
-                                                <option value="1">Цель 1</option>
-                                                <option value="2">Цель 2</option>
-                                                <option value="3">Цель 3</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-2 mb-2">
-                                            <h6>Задачи</h6>
-                                        </div>
-                                        <div class="col-md-10 mb-2">
-                                            <select class="chosen-select" id="taskListAll" name="taskListAll[]" data-placeholder="Выберите из справочника" multiple>
-                                                <option value="11">Задача 1</option>
-                                                <option value="12">Задача 2</option>
-                                                <option value="13">Задача 3</option>
-                                                <option value="14">Задача 4</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-2 mb-2">
-                                            <h6>Подразделения</h6>
-                                        </div>
-                                        <div class="col-md-10 mb-2">
-                                            <select class="chosen-select" id="itemsListAll" name="itemsListAll[]" data-placeholder="Выберите из справочника" multiple>
-                                                <option value="1">Подразделение 1</option>
-                                                <option value="2">Подразделение 2</option>
-                                                <option value="3">Подразделение 3</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-2 mb-2">
-                                            <h6 id="textTemplate">Подразделения:</h6>
-                                        </div>
-                                        <div class="col-md-10 mb-2">
-                                            <select class="chosen-select" id="optionListAll" name="optionListAll[]" data-placeholder="Выберите из справочника">
-                                                <option value="">Выберите из справочника</option>
-                                            </select>
-                                        </div>
-                                        <%--<div class="col-12 mb-3 text-md-center">
-                                            <a href="#" class="btn btn-primary btn-sm rounded"><i class="fas fa-pencil-alt mr-2"></i>Внести изменения</a>
-                                            <a href="#" class="btn btn-sm btn-danger rounded"><i class="far fa-trash-alt mr-2"></i>Удалить</a>
-                                        </div>--%>
                                     </div>
                                 </div>
                             </div>
