@@ -111,7 +111,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card mb-3">
+                        <div class="card mb-3 elementList">
                             <div class="card-body">
                                 <div class="alert alert-primary my-3">
                                     <div class="row d-flex align-items-center">
@@ -143,7 +143,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card mb-3">
+                        <div class="card mb-3 elementList">
                             <div class="card-body">
                                 <div class="alert alert-primary my-3">
                                     <div class="row d-flex align-items-center">
@@ -177,7 +177,7 @@
                         </div>
                         <div class="card mb-3 d-none" id="elementBlock">
                             <div class="card-body">
-                                <div class="alert alert-primary my-3">
+                                <%--<div class="alert alert-primary my-3">
                                     <div class="row d-flex align-items-center">
                                         <div class="col-md-6 text-left">
                                             <h5 class="" id="elementName"></h5>
@@ -456,13 +456,45 @@
                                     <div class="col-md-9 mb-3">
                                         <div class="btn btn-sm btn-primary rounded ml-0"><i class="fas fa-plus mr-2"></i>Методика расчета</div>
                                     </div>
-                                </div>
+                                </div>--%>
                                 <%--<div id="processCard">
                                     <div class="alert alert-secondary">
                                         <strong>Карта процесса</strong>
                                     </div>
                                     <img src="resources/img/diagramm.png" class="img-fluid rounded">
                                 </div>--%>
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class="alert alert-primary my-3">
+                                            <div class="row d-flex align-items-center">
+                                                <div class="col-md-6 text-left pt-1">
+                                                    <h5>
+                                                        <span class="badge badge-pill mdb-color mr-2">Р-СМК-ОП 3216546</span>
+                                                        <span id="elementName">Разработка технологической документации</span>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-md-6 text-md-right">
+                                                    <a href="#" class="btn btn-sm btn-success rounded my-0"><i class="fas fa-play mr-2"></i>Запустить</a>
+                                                    <a href="#" class="btn btn-primary btn-sm rounded my-0"><i class="fas fa-pencil-alt mr-2"></i>Внести изменения</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-md-10 mb-3">
+                                                <div class="alert alert-secondary">
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris maximus commodo odio, vitae eleifend arcu tristique ac. Etiam non odio erat. Sed dapibus turpis ut nisi blandit, eu aliquet ligula vehicula. Duis gravida nec ante sed malesuada. Sed id eros id odio elementum tempor.
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 mb-3">
+                                                <ul class="list-unstyled">
+                                                    <li>запущеных:<span class="badge badge-pill primary-color ml-2 float-right">28</span></li>
+                                                    <li>просроченных:<span class="badge badge-pill danger-color ml-2 float-right">6</span></li>
+                                                    <li>% исполнения:<span class="badge badge-pill mdb-color ml-2 float-right">95%</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -486,10 +518,12 @@
             var element = $(this).val();
             if(element && element > 0) {
                 $('#elementBlock').removeClass('d-none');
+                $('.elementList').addClass('d-none');
                 var elementName = $('option:selected', this).html();
                 $('#elementName').html(elementName);
             } else {
                 $('#elementBlock').addClass('d-none');
+                $('.elementList').removeClass('d-none');
             }
         });
 
