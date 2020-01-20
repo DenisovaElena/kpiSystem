@@ -35,7 +35,7 @@
                     <li>
                         <%--<a class="collapsible-header waves-effect arrow-r active">--%>
                         <a id="constructor" class="collapsible-header waves-effect disabled">
-                            <i class="fas fa-project-diagram mr-2"></i>Менеджер
+                            <i class="fas fa-project-diagram mr-2"></i>Управление задачами
                             <%--<i class="fas fa-angle-down rotate-icon"></i>--%>
                         </a>
                         <%--<div class="collapsible-body">--%>

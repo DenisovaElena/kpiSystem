@@ -111,124 +111,70 @@
                                 </div>
                             </div>
                         </div>
-                        <%--<div class="card mb-3">
+                        <div class="card mb-3">
                             <div class="card-body">
-                                <div class="row d-flex align-items-center">
-                                    <div class="col-md-1 mb-3">
-                                        <h3><span class="badge badge-pill mdb-color">1</span></h3>
-                                    </div>
-                                    <div class="col-md-8 mb-3">
-                                        <h6 class="alert alert-secondary">
-                                            <div class="mb-2">
-                                                Наименование: <strong сlass="ml-2">Разработка технологической документации</strong>
-                                            </div>
-                                            <div>
-                                                Функция: <strong сlass="ml-2">Разработка проекта</strong>
-                                            </div>
-                                        </h6>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <a href="#" class="btn btn-primary btn-sm rounded"><i class="fas fa-pencil-alt mr-2"></i>Изменить</a>
-                                        <button class="btn btn-sm btn-danger rounded"><i class="far fa-trash-alt mr-2"></i>Удалить</button>
+                                <div class="alert alert-primary my-3">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-md-6 text-left pt-1">
+                                            <h5 class="elementName">
+                                                <span class="badge badge-pill mdb-color mr-2">Р-СМК-ОП 3216546</span>
+                                                Разработка технологической документации
+                                            </h5>
+                                        </div>
+                                        <div class="col-md-6 text-md-right">
+                                            <a href="#" class="btn btn-sm btn-success rounded my-0"><i class="fas fa-play mr-2"></i>Запустить</a>
+                                            <a href="#" class="btn btn-primary btn-sm rounded my-0"><i class="fas fa-pencil-alt mr-2"></i>Внести изменения</a>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center">
-                                    <div class="col-md-1 mb-3">
-                                        <h3><span class="badge badge-pill mdb-color">2</span></h3>
+                                    <div class="col-md-10 mb-3">
+                                        <div class="alert alert-secondary">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris maximus commodo odio, vitae eleifend arcu tristique ac. Etiam non odio erat. Sed dapibus turpis ut nisi blandit, eu aliquet ligula vehicula. Duis gravida nec ante sed malesuada. Sed id eros id odio elementum tempor.
+                                        </div>
                                     </div>
-                                    <div class="col-md-8 mb-3">
-                                        <h6 class="alert alert-secondary">
-                                            <div class="mb-2">
-                                                Наименование: <strong сlass="ml-2">Разработка технологической документации</strong>
-                                            </div>
-                                            <div>
-                                                Функция: <strong сlass="ml-2">Разработка проекта</strong>
-                                            </div>
-                                        </h6>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <a href="#" class="btn btn-primary btn-sm rounded"><i class="fas fa-pencil-alt mr-2"></i>Изменить</a>
-                                        <button class="btn btn-sm btn-danger rounded"><i class="far fa-trash-alt mr-2"></i>Удалить</button>
-                                    </div>
-                                </div>
-                                <div class="row d-flex align-items-center">
-                                    <div class="col-md-1 mb-3">
-                                        <h3><span class="badge badge-pill mdb-color">3</span></h3>
-                                    </div>
-                                    <div class="col-md-8 mb-3">
-                                        <h6 class="alert alert-secondary">
-                                            <div class="mb-2">
-                                                Наименование: <strong сlass="ml-2">Разработка технологической документации</strong>
-                                            </div>
-                                            <div>
-                                                Функция: <strong сlass="ml-2">Разработка проекта</strong>
-                                            </div>
-                                        </h6>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <a href="#" class="btn btn-primary btn-sm rounded"><i class="fas fa-pencil-alt mr-2"></i>Изменить</a>
-                                        <button class="btn btn-sm btn-danger rounded"><i class="far fa-trash-alt mr-2"></i>Удалить</button>
-                                    </div>
-                                </div>
-                                <div class="row d-flex align-items-center">
-                                    <div class="col-md-1 mb-3">
-                                        <h3><span class="badge badge-pill mdb-color">4</span></h3>
-                                    </div>
-                                    <div class="col-md-8 mb-3">
-                                        <h6 class="alert alert-secondary">
-                                            <div class="mb-2">
-                                                Наименование: <strong сlass="ml-2">Разработка технологической документации</strong>
-                                            </div>
-                                            <div>
-                                                Функция: <strong сlass="ml-2">Разработка проекта</strong>
-                                            </div>
-                                        </h6>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <a href="#" class="btn btn-primary btn-sm rounded"><i class="fas fa-pencil-alt mr-2"></i>Изменить</a>
-                                        <button class="btn btn-sm btn-danger rounded"><i class="far fa-trash-alt mr-2"></i>Удалить</button>
-                                    </div>
-                                </div>
-                                <div class="row d-flex align-items-center">
-                                    <div class="col-md-1 mb-3">
-                                        <h3><span class="badge badge-pill mdb-color">5</span></h3>
-                                    </div>
-                                    <div class="col-md-8 mb-3">
-                                        <h6 class="alert alert-secondary">
-                                            <div class="mb-2">
-                                                Наименование: <strong сlass="ml-2">Разработка технологической документации</strong>
-                                            </div>
-                                            <div>
-                                                Функция: <strong сlass="ml-2">Разработка проекта</strong>
-                                            </div>
-                                        </h6>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <a href="#" class="btn btn-primary btn-sm rounded"><i class="fas fa-pencil-alt mr-2"></i>Изменить</a>
-                                        <button class="btn btn-sm btn-danger rounded"><i class="far fa-trash-alt mr-2"></i>Удалить</button>
-                                    </div>
-                                </div>
-                                <div class="row d-flex align-items-center">
-                                    <div class="col-md-1 mb-3">
-                                        <h3><span class="badge badge-pill mdb-color">6</span></h3>
-                                    </div>
-                                    <div class="col-md-8 mb-3">
-                                        <h6 class="alert alert-secondary">
-                                            <div class="mb-2">
-                                                Наименование: <strong сlass="ml-2">Разработка технологической документации</strong>
-                                            </div>
-                                            <div>
-                                                Функция: <strong сlass="ml-2">Разработка проекта</strong>
-                                            </div>
-                                        </h6>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <a href="#" class="btn btn-primary btn-sm rounded"><i class="fas fa-pencil-alt mr-2"></i>Изменить</a>
-                                        <button class="btn btn-sm btn-danger rounded"><i class="far fa-trash-alt mr-2"></i>Удалить</button>
+                                    <div class="col-md-2 mb-3">
+                                        <ul class="list-unstyled">
+                                            <li>запущеных:<span class="badge badge-pill primary-color ml-2 float-right">28</span></li>
+                                            <li>просроченных:<span class="badge badge-pill danger-color ml-2 float-right">6</span></li>
+                                            <li>% исполнения:<span class="badge badge-pill mdb-color ml-2 float-right">95%</span></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                        </div>--%>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="alert alert-primary my-3">
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-md-6 text-left pt-1">
+                                            <h5 class="elementName">
+                                                <span class="badge badge-pill mdb-color mr-2">Р-СМК-ОП 866546</span>
+                                                Создание верной спецификации
+                                            </h5>
+                                        </div>
+                                        <div class="col-md-6 text-md-right">
+                                            <a href="#" class="btn btn-sm btn-success rounded my-0"><i class="fas fa-play mr-2"></i>Запустить</a>
+                                            <a href="#" class="btn btn-primary btn-sm rounded my-0"><i class="fas fa-pencil-alt mr-2"></i>Внести изменения</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row d-flex align-items-center">
+                                    <div class="col-md-10 mb-3">
+                                        <div class="alert alert-secondary">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris maximus commodo odio, vitae eleifend arcu tristique ac. Etiam non odio erat. Sed dapibus turpis ut nisi blandit, eu aliquet ligula vehicula. Duis gravida nec ante sed malesuada. Sed id eros id odio elementum tempor.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 mb-3">
+                                        <ul class="list-unstyled">
+                                            <li>запущеных:<span class="badge badge-pill primary-color ml-2 float-right">128</span></li>
+                                            <li>просроченных:<span class="badge badge-pill danger-color ml-2 float-right">4</span></li>
+                                            <li>% исполнения:<span class="badge badge-pill mdb-color ml-2 float-right">90%</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card mb-3 d-none" id="elementBlock">
                             <div class="card-body">
                                 <div class="alert alert-primary my-3">
@@ -511,12 +457,12 @@
                                         <div class="btn btn-sm btn-primary rounded ml-0"><i class="fas fa-plus mr-2"></i>Методика расчета</div>
                                     </div>
                                 </div>
-                                <div id="processCard">
+                                <%--<div id="processCard">
                                     <div class="alert alert-secondary">
                                         <strong>Карта процесса</strong>
                                     </div>
                                     <img src="resources/img/diagramm.png" class="img-fluid rounded">
-                                </div>
+                                </div>--%>
                             </div>
                         </div>
                     </form>
