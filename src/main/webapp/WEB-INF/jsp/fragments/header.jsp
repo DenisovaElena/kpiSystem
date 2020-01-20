@@ -33,6 +33,11 @@
                         </a>
                     </li>
                     <li>
+                        <a id="allTasks" class="collapsible-header waves-effect arrow-r" href="all-tasks">
+                            <i class="fas fa-tasks mr-2"></i>Задачи моего подразделения
+                        </a>
+                    </li>
+                    <li>
                         <%--<a class="collapsible-header waves-effect arrow-r active">--%>
                         <a id="constructor" class="collapsible-header waves-effect disabled">
                             <i class="fas fa-project-diagram mr-2"></i>Управление задачами

@@ -7,7 +7,7 @@
                 <div class="container-fluid">
                     <form class="mb-3">
                         <div class="alert alert-primary text-center mb-3">
-                            <h4 class="mt-2">Мои задачи</h4>
+                            <h4 class="mt-2">Задачи моего подразделения</h4>
                         </div>
                         Сортировать:
                         <div id="sortLeft" class="btn btn-sm btn-outline-mdb-color ml-3 mr-1 rounded">
@@ -294,7 +294,7 @@
 <jsp:include page="fragments/footerScriptNew.jsp"/>
 <script>
     $(function() {
-        $('#myTasks').addClass('activeMenu');
+        $('#allTasks').addClass('activeMenu');
 
         $('#sortLeft').on('click', function() {
             $(this).removeClass('btn-mdb-color').addClass('btn-outline-mdb-color');

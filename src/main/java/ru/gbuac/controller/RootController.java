@@ -36,9 +36,9 @@ public class RootController {
         return "constructor";
     }
 
-    @GetMapping(value = "/launch")
-    public String launch() {
-        return "launch";
+    @GetMapping(value = "/all-tasks")
+    public String allTasks() {
+        return "all-tasks";
     }
 
     @GetMapping(value = "/login")

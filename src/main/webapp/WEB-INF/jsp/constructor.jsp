@@ -91,15 +91,21 @@
                                         </div>
                                         <div class="col-md-6 text-md-right">
                                             <a href="#" class="btn btn-sm btn-success rounded my-0"><i class="fas fa-play mr-2"></i>Запустить</a>
-                                            <a href="#" class="btn btn-primary btn-sm rounded my-0"><i class="fas fa-pencil-alt mr-2"></i>Внести изменения</a>
+                                            <a href="#" class="btn btn-sm btn-primary rounded my-0"><i class="fas fa-pencil-alt mr-2"></i>Внести изменения</a>
+                                            <a href="#" class="btn btn-sm btn-danger rounded my-0"><i class="fas fa-trash mr-2"></i>Удалить</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center">
                                     <div class="col-md-10 mb-3">
-                                        <div class="alert alert-secondary">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris maximus commodo odio, vitae eleifend arcu tristique ac. Etiam non odio erat. Sed dapibus turpis ut nisi blandit, eu aliquet ligula vehicula. Duis gravida nec ante sed malesuada. Sed id eros id odio elementum tempor.
-                                        </div>
+                                        <h6 class="alert alert-secondary">
+                                            <div class="mb-2">
+                                                Цель: <strong сlass="ml-2">Разработка технологической документации</strong>
+                                            </div>
+                                            <div>
+                                                Задача: <strong сlass="ml-2">Разработка проекта</strong>
+                                            </div>
+                                        </h6>
                                     </div>
                                     <div class="col-md-2 mb-3">
                                         <ul class="list-unstyled">
@@ -124,14 +130,20 @@
                                         <div class="col-md-6 text-md-right">
                                             <a href="#" class="btn btn-sm btn-success rounded my-0"><i class="fas fa-play mr-2"></i>Запустить</a>
                                             <a href="#" class="btn btn-primary btn-sm rounded my-0"><i class="fas fa-pencil-alt mr-2"></i>Внести изменения</a>
+                                            <a href="#" class="btn btn-sm btn-danger rounded my-0"><i class="fas fa-trash mr-2"></i>Удалить</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row d-flex align-items-center">
                                     <div class="col-md-10 mb-3">
-                                        <div class="alert alert-secondary">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris maximus commodo odio, vitae eleifend arcu tristique ac. Etiam non odio erat. Sed dapibus turpis ut nisi blandit, eu aliquet ligula vehicula. Duis gravida nec ante sed malesuada. Sed id eros id odio elementum tempor.
-                                        </div>
+                                        <h6 class="alert alert-secondary">
+                                            <div class="mb-2">
+                                                Цель: <strong сlass="ml-2">Разработка технологической документации</strong>
+                                            </div>
+                                            <div>
+                                                Задача: <strong сlass="ml-2">Разработка проекта</strong>
+                                            </div>
+                                        </h6>
                                     </div>
                                     <div class="col-md-2 mb-3">
                                         <ul class="list-unstyled">
@@ -444,14 +456,20 @@
                                                 <div class="col-md-6 text-md-right">
                                                     <a href="#" class="btn btn-sm btn-success rounded my-0"><i class="fas fa-play mr-2"></i>Запустить</a>
                                                     <a href="#" class="btn btn-primary btn-sm rounded my-0"><i class="fas fa-pencil-alt mr-2"></i>Внести изменения</a>
+                                                    <a href="#" class="btn btn-sm btn-danger rounded my-0"><i class="fas fa-trash mr-2"></i>Удалить</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row d-flex align-items-center">
                                             <div class="col-md-10 mb-3">
-                                                <div class="alert alert-secondary">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris maximus commodo odio, vitae eleifend arcu tristique ac. Etiam non odio erat. Sed dapibus turpis ut nisi blandit, eu aliquet ligula vehicula. Duis gravida nec ante sed malesuada. Sed id eros id odio elementum tempor.
-                                                </div>
+                                                <h6 class="alert alert-secondary">
+                                                    <div class="mb-2">
+                                                        Цель: <strong сlass="ml-2">Разработка технологической документации</strong>
+                                                    </div>
+                                                    <div>
+                                                        Задача: <strong сlass="ml-2">Разработка проекта</strong>
+                                                    </div>
+                                                </h6>
                                             </div>
                                             <div class="col-md-2 mb-3">
                                                 <ul class="list-unstyled">
