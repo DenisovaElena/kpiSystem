@@ -92,4 +92,7 @@ public class RootController {
 
     @GetMapping(value = "/distributed")
     public String distributed() { return "distributed"; }
+
+    @GetMapping(value = "/creator")
+    public String creator() { return "creator"; }
 }

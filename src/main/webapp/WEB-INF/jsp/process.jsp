@@ -41,20 +41,6 @@
                                             <option value="0">Иное</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-3 mb-3"><i class="fas fa-file-alt mr-2"></i>Цель проекта</div>
-                                    <div class="col-md-9 mb-3">
-                                        <input class="form-control">
-                                    </div>
-                                    <div class="col-md-3 mb-3"><i class="fas fa-brain mr-2"></i>Конечный результат</div>
-                                    <div class="col-md-9 mb-3">
-                                        <select class="chosen-select" id="resultList" name="resultList[]" data-placeholder="Выберите из справочника">
-                                            <option value="" selected>Выберите из справочника</option>
-                                            <option value="1">Документ</option>
-                                            <option value="2">ИАС</option>
-                                            <option value="3">Продукт</option>
-                                            <option value="4">Услуга</option>
-                                        </select>
-                                    </div>
                                     <div class="col-md-3 mb-3"><i class="far fa-calendar-alt mr-2"></i>Сроки исполнения</div>
                                     <div class="col-md-9 mb-3">
                                         <input type="text" class="form-control demo" placeholder="Выберите дату">
