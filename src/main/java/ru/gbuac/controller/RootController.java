@@ -95,4 +95,7 @@ public class RootController {
 
     @GetMapping(value = "/creator")
     public String creator() { return "creator"; }
+
+    @GetMapping(value = "/organisation")
+    public String organisation() { return "organisation"; }
 }

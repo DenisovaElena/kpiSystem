@@ -62,6 +62,9 @@
 <jsp:include page="fragments/footerScript.jsp"/>
 <script>
     $(function() {
+
+        $('#namePage').html('<i class="fas fa-chart-line mr-2"></i>Анализ функций');
+
         arrowReturn1.clear();
         getTopLevel();
         getFunctionsDepartments(1, '#division');

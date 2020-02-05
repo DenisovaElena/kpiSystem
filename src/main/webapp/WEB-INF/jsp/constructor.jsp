@@ -498,6 +498,9 @@
         var page = getId('id');
         $('#constructor').addClass('active');
         $('#'+page).addClass('activeMenu');
+        var namePageUp = $('#constructor').html();
+        var namePage = $('#'+page).html();
+        $('#namePage').html(namePageUp+'&nbsp;&mdash;&nbsp;'+namePage);
 
         // Показ данных элемента по выбору селекта
         $(document).on('change', '#optionListAll', function() {

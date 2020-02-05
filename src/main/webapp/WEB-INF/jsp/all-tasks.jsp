@@ -295,6 +295,8 @@
 <script>
     $(function() {
         $('#allTasks').addClass('activeMenu');
+        var namePage = $('#allTasks').html();
+        $('#namePage').html(namePage);
 
         $('#sortLeft').on('click', function() {
             $(this).removeClass('btn-mdb-color').addClass('btn-outline-mdb-color');

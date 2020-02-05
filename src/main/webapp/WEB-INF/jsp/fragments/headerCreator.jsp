@@ -11,6 +11,8 @@
     <link href="resources/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <link rel="stylesheet" href="resources/css/indexCreator.css">
+    <link rel="stylesheet" href="https://unpkg.com/bpmn-js@6.2.1/dist/assets/diagram-js.css" />
+    <link rel="stylesheet" href="https://unpkg.com/bpmn-js@6.2.1/dist/assets/bpmn-font/css/bpmn.css" />
 </head>
 <body id="customSkin" class="dark-skin">
 
@@ -63,27 +65,23 @@
                         </a>
                     </li>--%>
                     <li>
-                        <a class="collapsible-header waves-effect arrow-r" href="#">
-                            <i class="fas fa-sitemap mr-2"></i>
-                            Орг. структура
+                        <a id="organisation" class="collapsible-header waves-effect arrow-r" href="organisation">
+                            <i class="fas fa-sitemap mr-2"></i>Орг. структура
                         </a>
                     </li>
                     <li>
                         <a class="collapsible-header waves-effect arrow-r" href="#">
-                            <i class="fas fa-bullseye mr-2"></i>
-                            Цели и задачи
+                            <i class="fas fa-bullseye mr-2"></i>Цели и задачи
                         </a>
                     </li>
                     <li>
                         <a class="collapsible-header waves-effect arrow-r" href="all">
-                            <i class="fas fa-chart-line mr-2"></i>
-                            Анализ функций
+                            <i class="fas fa-chart-line mr-2"></i>Анализ функций
                         </a>
                     </li>
                     <li>
                         <a class="collapsible-header waves-effect arrow-r" href="#">
-                            <i class="fas fa-file-alt mr-2"></i>
-                            Отчёты и документы
+                            <i class="fas fa-file-alt mr-2"></i>Отчёты и документы
                         </a>
                     </li>
                 </ul>
@@ -109,6 +107,9 @@
             <h6 class="mt-2">АИС "Ключевые показатели эффективности"</h6>
         </span>
         <ul class="nav navbar-nav nav-flex-icons ml-auto">
+            <li class="nav-item">
+                <div class="nav-link alert-primary rounded mr-3 px-3" id="namePage"></div>
+            </li>
             <%--<li class="nav-item">
                 <a class="nav-link" data-toggle="modal" data-target="#helpBlock">
                     <i class="far fa-question-circle mr-2"></i>

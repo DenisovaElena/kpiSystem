@@ -120,6 +120,8 @@
         // Подсветка меню
         $('#constructor').addClass('active');
         $('#project').addClass('activeMenu');
+        var namePageUp = $('#constructor').html();
+        $('#namePage').html(namePageUp+'&nbsp;&mdash;&nbsp;'+'Новый проект');
     });
 </script>
 <jsp:include page="fragments/footerBasement.jsp"/>

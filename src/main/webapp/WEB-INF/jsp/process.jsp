@@ -139,6 +139,8 @@
         // Подсветка меню
         $('#constructor').addClass('active');
         $('#process').addClass('activeMenu');
+        var namePageUp = $('#constructor').html();
+        $('#namePage').html(namePageUp+'&nbsp;&mdash;&nbsp;'+'Новый процесс');
 
         // Показ карты при выборе процесса
         $('#functList').on('change', function() {

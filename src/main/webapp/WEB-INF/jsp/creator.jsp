@@ -1,8 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="fragments/headerCreator.jsp"/>
 <main>
-    <div>
-        <div id="position">
+    <div class="h-100 mt-5 pt-5">
+        <a target="_blank" href="" download="" class="btn btn-primary btn-sm rounded" id="saveBtn">Сохранить</a>
+        <div class="w-25 px-2" id="position">
             <h6 class="alert alert-warning">Панель инструментов</h6>
             <div class="tree well">
                 <ul style="padding-left: 0;">
@@ -90,15 +91,20 @@
             <h6 class="alert alert-warning mt-3">Элементы управления</h6>
             <div class="border-dark border rounded element" id="elementBlock"></div>
         </div>
-        <div class="w-85" id="parrentBlock"></div>
+        <div class="w-75 px-2 mt-n3" id="canvas">
+            <h6 class="alert alert-warning">Конструктор</h6>
+        </div>
     </div>
 </main>
 
 <jsp:include page="fragments/footerNew.jsp"/>
 <jsp:include page="fragments/footerScriptNew.jsp"/>
-<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<%--<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>--%>
+<script src="https://unpkg.com/bpmn-js@6.2.1/dist/bpmn-modeler.development.js"></script>
 <script>
     $(function() {
+
+        $('#namePage').html('Конструктор');
 
         $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
         $('.tree li.parent_li > span').on('click', function (e) {
@@ -115,7 +121,7 @@
 
         $('.tree li a').after('      <div class="pull-right btn-group btn-group-sm"></div>');
 
-        $('.dragMenu').draggable({
+        /*$('.dragMenu').draggable({
             helper : 'clone',
             cursor :'move',
             revert: "invalid",
@@ -163,7 +169,84 @@
                 //Вставляем копию перемещаемого элемента
                 $('#parrentBlock .dragMenuClone').append(cloneElement);
             }
+        });*/
+
+        // BpmnJS
+        var diagramUrl = 'resources/diagram/diagram.bpmn';
+        //var diagramUrl = 'https://cdn.staticaly.com/gh/bpmn-io/bpmn-js-examples/dfceecba/starter/diagram.bpmn';
+
+        // modeler instance
+        var bpmnModeler = new BpmnJS({
+            container: '#canvas',
+            keyboard: {
+                bindTo: window
+            }
         });
+
+        /**
+         * Save diagram contents and print them to the console.
+         */
+        function exportDiagram() {
+
+            bpmnModeler.saveXML({ format: true }, function(err, xml) {
+
+                if (err) {
+                    return console.error('could not save BPMN 2.0 diagram', err);
+                }
+
+                alert('Diagram exported. Check the developer tools!');
+                /*link.setAttribute('href', '/diagram.bpmn');
+                link.setAttribute('download', 'diagram.bpmn');
+                link.click();
+                return false;*/
+                $('#saveBtn').attr('href', xml);
+                $('#saveBtn').attr('download', xml);
+                console.log('DIAGRAM', xml);
+            });
+        }
+
+        /**
+         * Open diagram in our modeler instance.
+         *
+         * @param {String} bpmnXML diagram to display
+         */
+        function openDiagram(bpmnXML) {
+
+            // import diagram
+            bpmnModeler.importXML(bpmnXML, function(err) {
+
+                if (err) {
+                    return console.error('could not import BPMN 2.0 diagram', err);
+                }
+
+                // access modeler components
+                var canvas = bpmnModeler.get('canvas');
+                var overlays = bpmnModeler.get('overlays');
+
+
+                // zoom to fit full viewport
+                canvas.zoom('fit-viewport');
+
+                // attach an overlay to a node
+                overlays.add('SCAN_OK', 'note', {
+                    position: {
+                        bottom: 0,
+                        right: 0
+                    },
+                    html: '<!--<div class="diagram-note">Mixed up the labels?</div>-->'
+                });
+
+            });
+        }
+
+        $.get(diagramUrl, openDiagram, 'text');
+
+        $('#saveBtn').click(exportDiagram);
+
+        /*$('#saveBtn').on('click', function() {
+            exportDiagram;
+        });*/
+
     });
 </script>
 <jsp:include page="fragments/footerBasement.jsp"/>

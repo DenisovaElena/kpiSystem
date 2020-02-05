@@ -4,7 +4,7 @@
 @import url("chosen_new.css");
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
 @import url('addons/rating.css');
-html, body {height: 100%;}
+html, body, main {height: 100%;}
 body {
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 0.9rem;
@@ -141,6 +141,21 @@ canvas {
     border:1px solid #94a0b4;
     color:#000
 }
-li {
-    line-height: 50px;
+.tree li {
+    line-height: 30px;
+}
+
+#canvas {
+    height: 100%;
+    margin-left: 25%;
+    width: auto;
+}
+
+.bjs-powered-by {display: none;}
+
+#saveBtn {
+    position: absolute;
+    right: 10px;
+    z-index: 3;
+    top: 81px;
 }
