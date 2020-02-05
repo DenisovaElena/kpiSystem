@@ -10,13 +10,14 @@
     <link href="resources/img/favicon.ico" rel="icon" type="image/x-icon">
     <link href="resources/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-    <script src="../release/go.js"></script>
-    <script src="../assets/js/goSamples.js"></script>  <!-- this is only for the GoJS Samples framework -->
-    <link rel="stylesheet" href="../extensions/dataInspector.css" />
-    <script src="../extensions/dataInspector.js"></script>
+    <link rel="stylesheet" href="resources/css/indexCreator.css">
+    <script src="resources/js/go.js"></script>
+    <%--<script src="resources/js/goSamples.js"></script>--%>
+    <link rel="stylesheet" href="resources/css/dataInspector.css" />
+    <script src="resources/js/dataInspector.js"></script>
     <script id="code">
         function init() {
-            if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
+            //if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
             var $ = go.GraphObject.make;  // for conciseness in defining templates
 
             myDiagram =
@@ -140,8 +141,8 @@
 
             // This converter is used by the Picture.
             function findHeadShot(key) {
-                if (key < 0 || key > 16) return "images/HSnopic.jpg"; // There are only 16 images on the server
-                return "images/HS" + key + ".jpg"
+                if (key < 0 || key > 16) return 'resources/images/logo.png'; // There are only 16 images on the server
+                return "resources/images/HS" + key + ".jpg"
             }
 
             // define the Node template
@@ -197,7 +198,8 @@
                                 desiredSize: new go.Size(70, 70),
                                 margin: 1.5,
                             },
-                            new go.Binding("source", "key", findHeadShot)),
+                            //new go.Binding("source", "key", findHeadShot)),
+                            new go.Binding("source")),
                         // define the panel where the text will appear
                         $(go.Panel, "Table",
                             {
@@ -215,7 +217,8 @@
                                     minSize: new go.Size(10, 16)
                                 },
                                 new go.Binding("text", "name").makeTwoWay()),
-                            $(go.TextBlock, "Title: ", textStyle(),
+                            /*$(go.TextBlock, "Должность: ", textStyle(),*/
+                            $(go.TextBlock, "", textStyle(),
                                 { row: 1, column: 0 }),
                             $(go.TextBlock, textStyle(),
                                 {
@@ -225,12 +228,12 @@
                                     margin: new go.Margin(0, 0, 0, 3)
                                 },
                                 new go.Binding("text", "title").makeTwoWay()),
-                            $(go.TextBlock, textStyle(),
+                            /*$(go.TextBlock, textStyle(),
                                 { row: 2, column: 0 },
-                                new go.Binding("text", "key", function(v) { return "ID: " + v; })),
-                            $(go.TextBlock, textStyle(),
-                                { name: "boss", row: 2, column: 3, }, // we include a name so we can access this TextBlock when deleting Nodes/Links
-                                new go.Binding("text", "parent", function(v) { return "Boss: " + v; })),
+                                new go.Binding("text", "key", function(v) { return "Номер: " + v; })),*/
+                            /*$(go.TextBlock, textStyle(),
+                                { name: "boss", row: 2, column: 3, },
+                                new go.Binding("text", "parent", function(v) { return "Начальник: " + v; })),*/
                             $(go.TextBlock, textStyle(),  // the comments
                                 {
                                     row: 3, column: 0, columnSpan: 5,
@@ -249,7 +252,7 @@
             myDiagram.nodeTemplate.contextMenu =
                 $("ContextMenu",
                     $("ContextMenuButton",
-                        $(go.TextBlock, "Vacate Position"),
+                        $(go.TextBlock, "Освободить"),
                         {
                             click: function(e, obj) {
                                 var node = obj.part.adornedPart;
@@ -257,7 +260,7 @@
                                     var thisemp = node.data;
                                     myDiagram.startTransaction("vacate");
                                     // update the key, name, and comments
-                                    myDiagram.model.setDataProperty(thisemp, "name", "(Vacant)");
+                                    myDiagram.model.setDataProperty(thisemp, "name", "(Свободно)");
                                     myDiagram.model.setDataProperty(thisemp, "comments", "");
                                     myDiagram.commitTransaction("vacate");
                                 }
@@ -265,7 +268,7 @@
                         }
                     ),
                     $("ContextMenuButton",
-                        $(go.TextBlock, "Remove Role"),
+                        $(go.TextBlock, "Удалить элемент"),
                         {
                             click: function(e, obj) {
                                 // reparent the subtree to this node's boss, then remove the node
@@ -286,7 +289,7 @@
                         }
                     ),
                     $("ContextMenuButton",
-                        $(go.TextBlock, "Remove Department"),
+                        $(go.TextBlock, "Удалить группу"),
                         {
                             click: function(e, obj) {
                                 // remove the whole subtree, including the node itself
@@ -308,8 +311,23 @@
                     $(go.Shape, { strokeWidth: 1.5, stroke: "#F5F5F5" }));  // the link shape
 
             // read in the JSON-format data from the "mySavedModel" element
-            load();
-
+            //load();
+            var myModel = $(go.TreeModel);
+            // in the model data, each node is represented by a JavaScript object:
+            myModel.nodeDataArray = [
+                {"key":1, "name":"Тихонов Денис Владимирович", "title":"Министр Правительства Москвы, руководитель Департамента", "source":"resources/foto/tihonov.jpg"},
+                {"key":2, "name":"Путин Дмитрий Валерьевич", "title":"Зам. руководителя", "parent":1, "source":"resources/foto/Pytin.jpg"},
+                {"key":3, "name":"Сибрин Александр Эдуардович", "title":"Первый зам. руководителя", "parent":1, "source":"resources/foto/Sibrin.jpg"},
+                {"key":4, "name":"Тётушкин Дмитрий Николаевич", "title":"Зам. руководителя", "parent":1, "source":"resources/foto/Tetushkin.jpg"},
+                {"key":5, "name":"Крючкова Полина Викторовна", "title":"Зам. руководителя", "parent":1, "source":"resources/foto/kryuchkova.jpg"},
+                {"key":6, "name":"Федоров Прохор Дмитриевич ", "title":"Зам. руководителя", "parent":1, "source":"resources/foto/fedorov.jpg"},
+                {"key":7, "name":"Багреева Мария Андреевна", "title":"Первый зам. руководителя", "parent":1, "source":"resources/foto/bagreeva.jpg"},
+                {"key":8, "name":"Гладких Михаил Викторович", "title":"Начальник Управления", "parent":2, "source":"resources/foto/Gladkikh.jpg"},
+                {"key":9, "name":"Кузьмина Наталья Владимировна", "title":"Начальник Управления", "parent":3, "source":"resources/foto/kuzmina.jpg"},
+                {"key":10, "name":"Чумаченко Наталья Сергеевна", "title":"Начальник Управления", "parent":7, "source":"resources/foto/chumachenko.jpg"},
+                {"key":11, "name":"Зоболева Елена Николаевна", "title":"Начальник Управления", "parent":7, "source":"resources/foto/zoboleva.jpg"}
+            ];
+            myDiagram.model = myModel;
 
             // support editing the properties of the selected person in HTML
             if (window.Inspector) myInspector = new Inspector("myInspector", myDiagram,
@@ -350,7 +368,7 @@
         }
     </script>
 </head>
-<body id="customSkin" class="dark-skin">
+<body id="customSkin" class="dark-skin" onload="init()">
 
 <header>
     <div id="slide-out" class="side-nav">
