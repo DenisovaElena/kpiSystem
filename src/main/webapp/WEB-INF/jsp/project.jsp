@@ -104,7 +104,7 @@
                             </div>
                         </div>
                         <div class="container text-center my-3">
-                            <div class="btn btn-primary rounded m-3">Переход к карте процесса</div>
+                            <a href="creator" class="btn btn-primary rounded m-3">Переход к карте процесса</a>
                         </div>
                     </form>
                 </div>

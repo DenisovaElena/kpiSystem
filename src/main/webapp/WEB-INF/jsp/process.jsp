@@ -110,7 +110,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <a href="#" class="btn btn-sm btn-primary rounded"><i class="fas fa-users mr-2"></i>Назначение исполнителей</a>
+                                        <a href="creator" class="btn btn-sm btn-primary rounded"><i class="fas fa-users mr-2"></i>Назначение исполнителей</a>
                                     </div>
                                 </div>
                             </div>
